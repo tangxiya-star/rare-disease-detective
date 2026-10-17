@@ -261,16 +261,25 @@ Every task saves checkpoints after meaningful completed stages.
 | No-spawn behavior | Agent can finish without creating children |
 | True recursion | Child independently requests and executes a deeper task |
 | Clinical verification | Verifier rejects unsupported claims |
+| Verifier challenge set | Verifier run alone on a fixed set of known-true and known-false claims (with their passages) catches the false ones and accepts the true ones |
 | Evidence-driven replanning | Rejection leads to an appropriate new runtime decision |
 | Autonomous recovery | Injected failure resumes from checkpoint |
 | State integrity | Finished sibling tasks are not rerun |
 | Motion visualization | Video plays; annotations match verified case findings |
-| Evidence grounding | Accepted claims trace to retrieved passages and case findings |
+| Evidence grounding | Accepted claims trace to retrieved passages and case findings. Checked in code, not by the model: each quoted passage must appear verbatim in the retrieved source text, and each cited case finding id must exist in `case.json` |
+| Can't-miss causes | Every report states whether Wilson disease and dopa-responsive dystonia were addressed, excluded by a named test, or remain open, when the presentation calls for them |
+| Anchoring | Case 08 ranks functional disorder in the top 2; case 09 finishes with "no rare cause indicated" and few or no children |
 | End-to-end | Hero case produces clinician-review report |
 
 **Evaluation metrics:** Reference diagnosis in Top 5, key findings covered, citation validity, verifier rejection quality, latency, retry success, and node execution counts.
 
-A single-model Nemotron baseline is a stretch goal for comparison, not required for the MVP.
+**Sealed references:** before the first scored run, compute a sha256 hash of each file in `cases/reference/` and commit only the hashes (`cases/REFERENCE_HASHES.txt`). Reveal the files at the demo. This shows the answers were fixed before any tuning.
+
+**Baseline (P1, not stretch):** one Nemotron Super call per case, same input, asked for the same report structure, no recursion and no verifier. Without it there is no evidence that recursion or verification adds anything, which is the first question judges will ask. It costs one API call per case.
+
+**Grading:** outputs from the baseline and the full system are stripped of labels and shuffled before Wiki grades them against the reference file, because Wiki also wrote the cases. Report results as counts ("3 of 4"), not percentages: ten cases is a feasibility check, not an accuracy study.
+
+**Additional safety metrics:** can't-miss causes addressed (target: all), unsupported accepted claims on a clinician spot-check of 20 claims (target: zero), unsafe recommendations (target: zero).
 
 ## 8. Team Responsibilities
 
@@ -324,6 +333,8 @@ Freeze changes before the actual organizer submission deadline.
 - Clinician-review report
 
 **P1 — High-value demo additions**
+- Single-model baseline run on every reviewed case, graded blind
+- Verifier challenge set
 - Hero case Motion Viewer
 - Physician-reviewed movement annotations
 - Three more clinically reviewed cases

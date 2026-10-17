@@ -6,7 +6,7 @@ This is your working document for the day. It pulls out everything the engineeri
 
 **The one thing to know about the system:** it is not a diagnosis generator. A Lead Agent reads the case, decides what it is uncertain about, and spawns child agents to investigate specific questions. A Verifier then accepts or rejects each claim based on evidence. Your job is to make sure the cases are clinically real, the agents are asking the right questions, and the verifier is rejecting the right things.
 
-**The case list is already decided.** The ten slots and what each one tests are fixed in [PRD §3](PRD.md#3-clinical-scope--10-case-dataset). You don't need to choose cases. What's still needed is the **clinical content** for each slot (history, exam, labs, imaging, movement findings) in the structured format, plus the held-out reference answer. Write each one as a synthetic case, or base it on a published de-identified case report if you know a good one.
+**The case list is already decided.** The ten slots and what each one tests are fixed in [PRD §3](PRD.md#3-clinical-scope--10-case-dataset). You don't need to choose cases. What's still needed is the **clinical content** for each slot (history, exam, labs, imaging, movement findings) in the structured format, plus the held-out reference answer. Write each one as a synthetic case, or base it on a published de-identified case report if you know a good one. **For scored cases, prefer synthetic:** older published case reports are likely in the models' training data, so the model may recognise the case instead of reasoning about it. If a case is adapted from a publication, mark it in `provenance` so we can report it separately.
 
 ---
 
@@ -20,11 +20,13 @@ This is your working document for the day. It pulls out everything the engineeri
 | **D. Verifier acceptance checklist** | 12:30 PM | Verifier prompt |
 | **E. Review of first investigation traces** | 1–3 PM | Prompt corrections before UI work |
 | **F. Three validation cases** (02, 04, 08 recommended) | 5 PM | P1 demo cases |
-| **G. Remaining six case stubs** (03, 05, 06, 07, 09, 10) | 7 PM | Ten-fixture target; stubs are fine |
+| **G0. Case 09 stub** (nonspecific focal dystonia) | 1 PM | PRD "no-spawn behavior" test needs a case where the right answer is to stop early |
+| **G. Remaining five case stubs** (03, 05, 06, 07, 10) | 7 PM | Ten-fixture target; stubs are fine |
+| **J. Verifier challenge set** (10 true + 10 false claims, each with its passage) | 1 PM | Verifier testing without depending on what the agents happen to say |
 | **H. Hero case movement annotations** | 5 PM | Motion Viewer |
 | **I. Clinical sign-off on demo report + safety language** | 9 PM | Submission |
 
-Priority order if time runs short: **A → B → D → C → E → H → F → I → G.** Item A is the only hard blocker. Everything else can be rough and iterated.
+Priority order if time runs short: **A → B → D → C → J → G0 → E → H → F → I → G.** Item A is the only hard blocker. Everything else can be rough and iterated.
 
 ---
 
@@ -63,11 +65,12 @@ File: `cases/reference/01_guitarist_drd.json`. This directory is gitignored and 
 Copy `cases/_template/reference.example.json`. Contents:
 
 - **reference_diagnosis**: the answer, with confidence (confirmed / probable / working)
-- **acceptable_top5**: other diagnoses that would be reasonable in a Top 5 for this presentation (e.g. young-onset PD, focal task-specific dystonia / musician's dystonia, Wilson disease, psychogenic/functional). We score "reference in Top 5" so this list defines what counts as a miss.
+- **acceptable_top5**: other diagnoses that would be reasonable in a Top 5 for this presentation (e.g. young-onset PD, focal task-specific dystonia / musician's dystonia, Wilson disease, functional movement disorder). We score "reference in Top 5" so this list defines what counts as a miss.
 - **competing_hypotheses**: for each, one line on why it's plausible and one line on what rules it out or down. This is what the Verifier compares agent reasoning against.
 - **key_evidence_gaps**: the 3–6 things a good clinician would want to know that are NOT in the case JSON. Example: "Has a levodopa trial been done?", "Is there diurnal fluctuation?", "DAT-SPECT result?", "GCH1 genetic testing?", "CSF neurotransmitter metabolites?". The agent should be asking for these. If it doesn't, that's a prompt problem.
 - **held_out_evidence**: the actual answers to those gaps. The test harness can release these to the agent one at a time to simulate "ordering" an investigation.
 - **discriminating_investigations**: what a physician should do next, ranked. The Clinical Report is scored on whether it suggests these.
+- **cant_miss**: treatable conditions the report must address for this presentation (e.g. Wilson disease in anyone under 50 with a movement disorder; DRD in any early-onset dystonia). Scored separately: missing one is a safety failure even if the Top 5 is right.
 - **red_flags_for_wrong_reasoning**: things that, if an agent says them, the Verifier should reject. Example: "Diagnosing DRD from MRI alone", "Treating normal MRI as evidence against DRD", "Confusing task-specific dystonia with DRD without considering diurnal pattern or levodopa response."
 
 ---
@@ -94,11 +97,18 @@ File: `docs/clinical/verifier_checklist.md`. Goes into the Verifier system promp
 
 The Verifier reads each child agent's findings and returns one of **ACCEPT / REVISE / INSUFFICIENT**. It needs rules for each. Suggested content:
 
+**Checked in code before the verifier model sees the claim** (Holly implements; you just confirm the rules):
+- A quoted literature passage must appear verbatim in the retrieved source text. Small models misquote; a model judge will often wave a near-miss through.
+- Every cited case finding must exist in `case.json` by its `id` (this is why labs, imaging and timeline entries now have ids).
+- A claim marked as the leading hypothesis must list at least one contradicting or missing finding.
+
 **ACCEPT only if all of:**
 - The claim cites a specific case finding or a retrieved literature passage (not "it is known that…")
 - The cited source actually supports the claim (the verifier sees the passage text)
 - The claim doesn't contradict a case finding
 - Confidence language matches evidence strength (no "confirms" on a single case report)
+- The source population matches the patient (e.g. a paediatric series is not used to rule out an adult-onset presentation)
+- A rule-out uses a test sensitive enough for that condition. Absence of a variable feature is not a rule-out (e.g. "no diurnal fluctuation, so not DRD"; "no family history, so not GCH1" when penetrance is incomplete)
 
 **REVISE if:**
 - Right direction but overclaimed, or cites a source that's tangential
@@ -115,6 +125,10 @@ Plus the **clinical red lines** from Deliverable B generalized across cases: thi
 5–15 rules. Be concrete. The verifier is a 120B model; it can follow nuance, but it can't read your mind.
 
 ---
+
+### Verifier challenge set (Deliverable J)
+
+File: `cases/reference/verifier_challenge.json` (held out). Twenty short claims, each with the passage it cites and the correct verdict: ten that should be accepted and ten that should be rejected, covering each rule above (misquoted passage, invented case finding, wrong population, unsafe rule-out, overclaim, ignored contradiction). Holly runs the verifier alone on these, so we can report "caught X of 10 false claims, accepted Y of 10 true ones" independent of how the agents behave on the day.
 
 ## 6. Deliverable E: Reviewing investigation traces (1–3 PM)
 
@@ -142,7 +156,9 @@ The slots are fixed by the PRD. Same JSON format as the hero case, same referenc
 | **04 Episodic Ataxia Type 2** | Episodic symptoms force the agent to reason about triggers and interictal exam; EA1 vs. EA2 is a real discrimination problem |
 | **08 Functional Movement Disorder** | The anti-anchoring test. Must include positive functional signs (distractibility, entrainment, variability, suggestibility). If the system calls this DRD, we have a problem and want to know |
 
-**Stubs (G):** For 03, 05, 06, 07, 09, 10, a case JSON with the core sections filled at the level of a good exam vignette is enough. Reference file with just `reference_diagnosis` and `acceptable_top5`. Case 10 (synthetic contradictory) needs one deliberate internal contradiction added if the source doesn't already have one, e.g. history says symptoms are worse in the morning but the timeline says evening. The agent should notice and flag it rather than pick one silently.
+**Case 09 early (G0):** a short vignette of adult-onset focal dystonia with a normal exam and no red flags. The correct behaviour is to finish with "no rare cause indicated" and few or no children. Needed by 1 PM because it is the PRD's no-spawn test.
+
+**Stubs (G):** For 03, 05, 06, 07, 10, a case JSON with the core sections filled at the level of a good exam vignette is enough. Reference file with just `reference_diagnosis` and `acceptable_top5`. Case 10 (synthetic contradictory) needs one deliberate internal contradiction added if the source doesn't already have one, e.g. history says symptoms are worse in the morning but the timeline says evening. The agent should notice and flag it rather than pick one silently.
 
 ---
 
@@ -177,7 +193,13 @@ Then be ready for Q&A. Likely judge questions: "How do you know the agent isn't 
 
 ---
 
-## 10. Ground rules
+## 10. Sealing and grading
+
+- Before the first scored run, Holly hashes each reference file and commits only the hashes to `cases/REFERENCE_HASHES.txt`. Do not edit a reference file after that; if you must, note the change and re-run every case.
+- You grade outputs from the baseline and the full system with labels removed and order shuffled, so you cannot tell which is which.
+- Grade only against the reference file. If you disagree with your own reference after seeing an output, note it separately rather than changing the score.
+
+## 11. Ground rules
 
 - **No PHI, ever.** Synthetic or properly licensed de-identified cases only. If in doubt, make it synthetic.
 - **Reference answers never go in `case.json`.** Only in `cases/reference/`, which git ignores.
@@ -185,7 +207,7 @@ Then be ready for Q&A. Likely judge questions: "How do you know the agent isn't 
 - **Don't make cases easy.** The demo is more convincing when the agent has to work for it.
 - **Rough and early beats polished and late.** Send the hero case at 10:30 even if sections are thin; we iterate.
 
-## 11. Working with the repo
+## 12. Working with the repo
 
 You have write access. Clone:
 

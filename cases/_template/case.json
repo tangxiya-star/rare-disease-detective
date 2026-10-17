@@ -16,7 +16,11 @@
   "chief_complaint": "",
   "history_of_present_illness": "",
   "symptom_timeline": [
-    { "when": "e.g. 18 months ago", "event": "" }
+    {
+      "id": "tl_01",
+      "when": "e.g. 18 months ago",
+      "event": ""
+    }
   ],
   "movement_findings": [
     {
@@ -38,15 +42,31 @@
     "other": ""
   },
   "labs": [
-    { "test": "", "result": "", "reference_range": "", "note": "" }
+    {
+      "id": "lab_01",
+      "test": "",
+      "result": "",
+      "reference_range": "",
+      "note": ""
+    }
   ],
   "imaging": [
-    { "modality": "MRI brain", "date": "", "report": "" }
+    {
+      "id": "img_01",
+      "modality": "MRI brain",
+      "date": "",
+      "report": ""
+    }
   ],
   "medications": {
     "current": [],
     "prior_trials": [
-      { "drug": "", "dose": "", "duration": "", "response": "" }
+      {
+        "drug": "",
+        "dose": "",
+        "duration": "",
+        "response": ""
+      }
     ]
   },
   "family_history": "",
