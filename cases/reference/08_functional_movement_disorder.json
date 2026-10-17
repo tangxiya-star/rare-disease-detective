@@ -2,7 +2,7 @@
   "case_id": "08_functional_movement_disorder",
   "reference_diagnosis": {
     "name": "Functional movement disorder (functional tremor with functional dystonia)",
-    "confidence": "probable / clinically established",
+    "confidence": "clinically established (on positive signs)",
     "basis": "Positive clinical signs: abrupt onset after minor injury, entrainment, distractibility, variability, co-activation, give-way weakness, spontaneous remissions; normal DaT-SPECT."
   },
   "acceptable_top5": [
@@ -10,7 +10,8 @@
     "Dopa-responsive dystonia",
     "Idiopathic focal dystonia",
     "Essential tremor",
-    "Post-traumatic (peripheral) movement disorder / CRPS-associated dystonia"
+    "Post-traumatic (peripheral) movement disorder / CRPS-associated dystonia",
+    "Early Parkinson disease"
   ],
   "competing_hypotheses": [
     {
@@ -21,12 +22,22 @@
     {
       "hypothesis": "CRPS-associated fixed dystonia",
       "why_plausible": "Onset after wrist injury with fist posture",
-      "what_argues_against": "No pain, swelling, colour or temperature change; posture resolves with distraction"
+      "what_argues_against": "No pain, swelling, colour, temperature, sweating or trophic change (neurological_exam.other); posture resolves fully with distraction (mf_04); Budapest criteria not met (held out)."
     },
     {
       "hypothesis": "Essential tremor",
       "why_plausible": "Tremor",
       "what_argues_against": "Variable frequency, entrainment, abrupt onset"
+    },
+    {
+      "hypothesis": "Early Parkinson disease",
+      "why_plausible": "GP queried it; unilateral tremor and slow tapping in a young adult",
+      "what_argues_against": "Tapping slow without decrement and improves with encouragement; tremor variable and entrains; abrupt onset with remission; normal DaT-SPECT (held out)"
+    },
+    {
+      "hypothesis": "Wilson disease",
+      "why_plausible": "Age 34 with a new movement disorder; past depression; atypical neurological Wilson can resemble a functional disorder",
+      "what_argues_against": "Ceruloplasmin and liver tests normal with no oestrogen exposure; normal MRI; positive functional signs. Low risk, not formally excluded (no urine copper or slit lamp)."
     }
   ],
   "key_evidence_gaps": [
@@ -44,6 +55,11 @@
       "id": "gap_03",
       "question": "CRPS features",
       "why_it_matters": "Exclude peripheral cause"
+    },
+    {
+      "id": "gap_04",
+      "question": "24-hour urine copper",
+      "why_it_matters": "Cheap, non-invasive completion of the Wilson screen in a patient under 50"
     }
   ],
   "held_out_evidence": [
@@ -64,6 +80,12 @@
       "investigation": "Examination for CRPS (Budapest criteria)",
       "result": "Criteria not met.",
       "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_04",
+      "investigation": "24-hour urine copper",
+      "result": "Normal.",
+      "release_to_agent": "on_request"
     }
   ],
   "discriminating_investigations": [
@@ -81,6 +103,43 @@
       "rank": 3,
       "investigation": "Levodopa trial only if diurnal pattern is consistent and functional signs absent",
       "discriminates_between": "Avoid anchoring"
+    },
+    {
+      "rank": 4,
+      "investigation": "Optional: 24-hour urine copper",
+      "discriminates_between": "Completes the Wilson screen; organic and functional disorders can coexist"
+    }
+  ],
+  "cant_miss": [
+    {
+      "condition": "Dopa-responsive dystonia",
+      "why_required": "Treatable; patient asks about it",
+      "addressed_by": "Clinical pattern; levodopa trial only if a consistent daily pattern exists without functional signs",
+      "status_in_record": "addressed on clinical grounds: abrupt onset, remission, fatigue-linked rather than sleep-reset evening worsening, positive functional signs; trial not indicated"
+    },
+    {
+      "condition": "Wilson disease",
+      "why_required": "Treatable; age under 50; atypical forms can mimic functional disorders",
+      "addressed_by": "24-hour urine copper; slit lamp if any doubt",
+      "status_in_record": "low risk: ceruloplasmin and liver tests normal, no oestrogen; urine copper optional and reasonable"
+    },
+    {
+      "condition": "Drug-induced movement disorder",
+      "why_required": "Reversible; migraine patients are often given dopamine-blocking antiemetics",
+      "addressed_by": "Medication history",
+      "status_in_record": "addressed: sumatriptan only, no antiemetic or neuroleptic use"
+    },
+    {
+      "condition": "Structural lesion",
+      "why_required": "May need specific treatment",
+      "addressed_by": "MRI brain",
+      "status_in_record": "addressed: normal"
+    },
+    {
+      "condition": "CRPS-associated dystonia",
+      "why_required": "Post-injury onset; needs specific management",
+      "addressed_by": "Examination against Budapest criteria",
+      "status_in_record": "addressed: no sensory, vasomotor, sudomotor or trophic signs; formal Budapest assessment held out"
     }
   ],
   "red_flags_for_wrong_reasoning": [
@@ -91,8 +150,13 @@
     "Stating any diagnosis as established rather than as a hypothesis for physician review",
     "Recommending treatment as an instruction rather than a consideration for the treating physician",
     "Citing literature that does not exist or does not support the specific claim",
-    "Asserting case facts that are not in the case record"
+    "Asserting case facts that are not in the case record",
+    "Treating the cousin's late-onset cervical dystonia as a reason for genetic testing",
+    "Treating 'better on holiday', remission, migraine or past depression as proof of a functional disorder (supportive only)",
+    "Treating non-response to propranolol as diagnostic of any cause",
+    "Ruling out an organic cause entirely: functional and organic disorders can coexist; state what would prompt reassessment"
   ],
-  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
-  "agent_case_id": "case_08"
+  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). Plausible and well built: the positive signs are typical and internally consistent. Fixed: CRPS negatives (no pain, swelling, colour, temperature, sweating or trophic change) were cited in the reference but missing from case.json, so a correct agent would have failed the verifier's invented-finding check; now in neurological_exam.other. Fixed: removed the meta note about Hoover's sign from the agent-visible exam. Added: explicit 'no antiemetic or neuroleptic use' (migraine patients often receive metoclopramide); early PD and Wilson as competing hypotheses; optional urine copper; cant_miss; four red flags; expected behaviour. Confidence changed to 'clinically established (on positive signs)'.",
+  "agent_case_id": "case_08",
+  "expected_system_behavior": "Functional movement disorder should rank first, justified by the positive signs (mf_01 to mf_05, give-way weakness, tapping that improves with encouragement), not by stress or history. DRD should be considered and explicitly downgraded, with no levodopa trial recommended. The report should state the status of each can't-miss condition, suggest accelerometry as supporting evidence, avoid genetic testing, and use respectful language."
 }
