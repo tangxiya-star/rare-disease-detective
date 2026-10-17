@@ -1,6 +1,8 @@
+import { BookOpen, FlaskConical, Gauge, GitBranch, RotateCcw, ShieldCheck, Sparkles } from 'lucide-react'
 import type { Evidence } from '../types'
 import type { RunState } from '../useRun'
 import { STATUS_LABEL } from './AgentTree'
+import { DiagnosisResult } from './DiagnosisResult'
 
 function SourceLink({ id, state }: { id: string | null; state: RunState }) {
   if (!id) return null
@@ -35,8 +37,9 @@ export function Inspector({ state, selected }: { state: RunState; selected: stri
     const grounded = state.evidence.filter(e => e.grounded).length
     return (
       <div className="panel-body">
+        <DiagnosisResult state={state} />
         <section className="panel-section">
-          <h3>Run</h3>
+          <h3><span className="sec-icon"><Gauge size={13} strokeWidth={2} /></span>Run</h3>
           {state.runId ? (
             <dl className="kv">
               <dt>Nodes</dt><dd>{n.length} (max depth {Math.max(0, ...n.map(x => x.depth))})</dd>
@@ -76,14 +79,14 @@ export function Inspector({ state, selected }: { state: RunState; selected: stri
 
       {a?.verification && (
         <section className={`panel-section verifier v-${a.verification.verdict}`}>
-          <h3>Verifier decision</h3>
+          <h3><span className="sec-icon"><ShieldCheck size={13} strokeWidth={2} /></span>Verifier decision</h3>
           <p><b>{a.verification.verdict.toUpperCase()}</b> {a.verification.feedback}</p>
         </section>
       )}
 
       {!!a?.decisions.length && (
         <section className="panel-section">
-          <h3>Runtime decisions</h3>
+          <h3><span className="sec-icon"><GitBranch size={13} strokeWidth={2} /></span>Runtime decisions</h3>
           <ul className="entries">
             {a.decisions.map((d, i) => (
               <li key={i}>
@@ -100,7 +103,7 @@ export function Inspector({ state, selected }: { state: RunState; selected: stri
 
       {!!a?.investigations.length && (
         <section className="panel-section">
-          <h3>Investigations requested</h3>
+          <h3><span className="sec-icon"><FlaskConical size={13} strokeWidth={2} /></span>Investigations requested</h3>
           <ul className="entries">
             {a.investigations.map((x, i) => (
               <li key={i} className={x.status === 'released' ? 'released' : 'muted'}>
@@ -114,7 +117,7 @@ export function Inspector({ state, selected }: { state: RunState; selected: stri
 
       {!!a?.searches.length && (
         <section className="panel-section">
-          <h3>Literature searches</h3>
+          <h3><span className="sec-icon"><BookOpen size={13} strokeWidth={2} /></span>Literature searches</h3>
           <ul className="entries">
             {a.searches.map((s, i) => (
               <li key={i}>
@@ -131,14 +134,14 @@ export function Inspector({ state, selected }: { state: RunState; selected: stri
 
       {!!ev.length && (
         <section className="panel-section">
-          <h3>Findings</h3>
+          <h3><span className="sec-icon"><Sparkles size={13} strokeWidth={2} /></span>Findings</h3>
           <ul className="evidence-list">{ev.map(e => <EvidenceItem key={e.id} ev={e} state={state} rejected={rejected.has(e.id)} />)}</ul>
         </section>
       )}
 
       {!!(a?.retries.length || a?.recovered.length) && (
         <section className="panel-section">
-          <h3>Recovery</h3>
+          <h3><span className="sec-icon"><RotateCcw size={13} strokeWidth={2} /></span>Recovery</h3>
           <ul className="entries">
             {a!.retries.map((r, i) => <li key={i}>↻ attempt {r.attempt} failed at <b>{r.checkpoint}</b>: <span className="muted">{r.reason}</span></li>)}
             {a!.recovered.map((c, i) => <li key={`c${i}`}>Restored from checkpoint <b>{c}</b>; finished stages not rerun.</li>)}

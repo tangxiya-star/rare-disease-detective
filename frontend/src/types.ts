@@ -39,6 +39,12 @@ export interface Evidence {
 
 export interface SourceRef { source_id: string; title: string; url: string }
 
+export interface SourceCitation {
+  title: string; url: string
+  meta: { pmid?: string | null; pmcid?: string | null; doi?: string | null; year?: string | null; authors?: string | null
+          journal?: string | null; volume?: string | null; issue?: string | null; pages?: string | null }
+}
+
 export interface Report {
   summary: string
   differential: {

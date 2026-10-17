@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { Activity, Bug, FileSearch, Stethoscope, LayoutGrid, MonitorPlay, Network, Play, RotateCcw, ScanSearch, SearchX, Workflow } from 'lucide-react'
 import { api } from './api'
 import { beats as toBeats } from './beats'
 import { AgentTree } from './components/AgentTree'
 import { BottomTabs } from './components/BottomTabs'
 import { EvidenceGraph } from './components/EvidenceGraph'
 import { Inspector } from './components/Inspector'
+import { KpiStrip } from './components/KpiStrip'
 import { PatientPanel } from './components/PatientPanel'
 import { Stage } from './components/Stage'
 import { Timeline } from './components/Timeline'
@@ -106,7 +108,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="topbar">
-        <div className="brand">Rare Disease Detective</div>
+        <div className="brand"><span className="brand-mark"><ScanSearch size={17} strokeWidth={2.2} /></span>Rare Disease Detective</div>
         <div className="case-picker">
           <div className="seg">
             {(['demo', 'scored'] as Mode[]).map(m => (
@@ -121,7 +123,8 @@ export default function App() {
         <div className="seg">
           {(['workbench', 'stage'] as Layout[]).map(l => (
             <button key={l} className={layout === l ? 'on' : ''} onClick={() => setLayout(l)}
-              title={l === 'stage' ? 'One main stage that cuts to each pivot; for projecting (keys: space, 1–5, 0)' : 'All panels at once'}>{l}</button>
+              title={l === 'stage' ? 'One main stage that cuts to each pivot; for projecting (keys: space, 1–5, 0)' : 'All panels at once'}>
+              {l === 'stage' ? <MonitorPlay size={13} /> : <LayoutGrid size={13} />}{l}</button>
           ))}
         </div>
         {recordings.length > 0 && (
@@ -139,13 +142,22 @@ export default function App() {
         <div className="spacer" />
         {running && (
           <div className="inject">
-            <button onClick={crash} title="Crash the selected investigator (or the next one) after its next checkpoint">Inject agent crash</button>
-            <button onClick={searchFail} title="Fail the next two search attempts">Inject search failure</button>
+            <button onClick={crash} title="Crash the selected investigator (or the next one) after its next checkpoint"><Bug size={13} />Inject agent crash</button>
+            <button onClick={searchFail} title="Fail the next two search attempts"><SearchX size={13} />Inject search failure</button>
           </div>
         )}
-        <button className="primary" onClick={start} disabled={running || !view}>
-          {running ? 'Investigating…' : live.status === 'idle' ? 'Start investigation' : 'Run again'}
-        </button>
+        {recording ? (
+          // A recording replays; it never starts a new (possibly mock) run by accident.
+          <button className="primary" onClick={() => { pb.scrub(live.events[0]?.seq ?? 0); pb.play() }} disabled={!live.events.length}>
+            <RotateCcw size={14} />Replay from start
+          </button>
+        ) : (
+          <button className={`primary ${backend === 'mock' ? 'is-mock' : ''}`} onClick={start} disabled={running || !view}
+            title={backend === 'mock' ? 'The backend runs the scripted mock model: not clinical output' : undefined}>
+            <Play size={14} />
+            {running ? 'Investigating…' : backend === 'mock' ? 'Run (mock model)' : live.status === 'idle' ? 'Start investigation' : 'Run again'}
+          </button>
+        )}
       </header>
       {error && <div className="error-bar" onClick={() => setError(null)}>{error}</div>}
       {runId && (
@@ -159,24 +171,31 @@ export default function App() {
       ) : (
       <main className="workspace">
         <aside className="panel left">
-          <div className="panel-title"><span className="mod-dot amber" />Motion viewer <span className="muted">· MediaPipe hand landmarks</span></div>
+          <div className="panel-title"><span className="title-icon rose"><Activity size={15} /></span>Patient &amp; motion
+            <span className="title-chip">MediaPipe</span></div>
           <PatientPanel view={view} highlighted={highlighted} released={state.releasedMedia} runId={runId} />
         </aside>
         <section className="panel center">
-          <div className="panel-title"><span className="mod-dot teal" />Clinical evidence graph
-            <span className="muted"> · {state.evidence.filter(e => e.grounded).length} grounded findings</span></div>
+          <div className="panel-title"><span className="title-icon"><Network size={15} /></span>Clinical evidence graph
+            <span className="title-chip">{state.evidence.filter(e => e.grounded).length} grounded findings</span></div>
           <div className="graph-pane">
-            <EvidenceGraph state={state} onSelectAgent={setSelected} />
+            <EvidenceGraph state={state} onSelectAgent={setSelected} runId={runId} caseRecord={view?.case} />
           </div>
+          <KpiStrip state={state} />
           <BottomTabs state={state} onSelect={setSelected} />
         </section>
         <aside className="panel right">
-          <div className="panel-title"><span className="mod-dot cyan" />Agent orchestration
-            <span className="muted"> · {state.order.length} nodes · each created by a model decision at runtime</span></div>
+          <div className="panel-title" title="Each agent was created by a model decision at runtime"><span className="title-icon violet"><Workflow size={15} /></span>Agent orchestration
+            <span className="title-chip">{state.order.length} agents</span></div>
           <div className="tree-pane">
             <AgentTree nodes={state.nodes} order={state.order} activity={state.activity} selected={selected} onSelect={setSelected} />
           </div>
-          <div className="panel-title sub">Evidence inspector</div>
+          <div className="panel-title sub">
+            {selected ? <><span className="title-icon green"><FileSearch size={15} /></span>Agent inspector
+              <button className="title-chip as-btn" onClick={() => setSelected(null)}>Back to result</button></>
+              : <><span className="title-icon rose"><Stethoscope size={15} /></span>Most likely diagnoses
+              <span className="title-chip">{state.report ? 'for clinician review' : 'in progress'}</span></>}
+          </div>
           <div className="inspector-pane">
             <Inspector state={state} selected={selected} />
           </div>
