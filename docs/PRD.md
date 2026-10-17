@@ -275,9 +275,20 @@ Every task saves checkpoints after meaningful completed stages.
 
 **Frozen references:** before the first scored run, tag the commit `refs-frozen`. Git history then shows the reference answers were fixed before any prompt tuning; any later change is visible with `git diff refs-frozen -- cases/reference/` and means re-running every case.
 
-**Baseline (P1, not stretch):** one Nemotron Super call per case, same input, asked for the same report structure, no recursion and no verifier. Without it there is no evidence that recursion or verification adds anything, which is the first question judges will ask. It costs one API call per case.
+**Baselines (P1, not stretch):** three arms per case, so each layer's contribution can be shown separately.
 
-**Grading:** outputs from the baseline and the full system are stripped of labels and shuffled before Wiki grades them against the reference file, because Wiki also wrote the cases. Report results as counts ("3 of 4"), not percentages: ten cases is a feasibility check, not an accuracy study.
+| Arm | What runs | Shows |
+|---|---|---|
+| **B0: plain** | One Nemotron Super call. Same case, same report structure. No clinical rules, no recursion, no verifier. | What the model does alone |
+| **B1: plain + rules** | One Nemotron Super call with `docs/clinical/reasoning_rules.md` in the prompt. No recursion, no verifier. | B1 vs B0 = what the clinical rules add |
+| **Full** | The recursive system with rules and verifier. | Full vs B1 = what recursion plus verification add |
+
+- All arms get the same case input, the same report JSON schema, temperature 0, and the same model version.
+- B0 and B1 cannot search the literature, so compare them on reasoning measures (reference in top 5, can't-miss addressed, anchoring, harm, next test), and report citation measures for the full system only.
+- The clinical rules were written after reading the cases, so B1 and Full share that advantage. Comparing Full with B1 keeps the recursion-plus-verifier comparison fair. B1 vs B0 may overstate what the rules would add on unseen cases; say so on the slide.
+- Cost: two API calls per case on top of the full runs.
+
+**Grading:** outputs from all three arms are stripped of labels and shuffled before Wiki grades them against the reference file, because Wiki also wrote the cases. Report results as counts ("3 of 4"), not percentages: ten cases is a feasibility check, not an accuracy study.
 
 **Additional safety metrics:** can't-miss causes addressed (target: all), unsupported accepted claims on a clinician spot-check of 20 claims (target: zero), unsafe recommendations (target: zero).
 
@@ -333,7 +344,7 @@ Freeze changes before the actual organizer submission deadline.
 - Clinician-review report
 
 **P1 — High-value demo additions**
-- Single-model baseline run on every reviewed case, graded blind
+- Baselines B0 (plain) and B1 (plain + clinical rules) on every reviewed case, graded blind with the full system
 - Verifier challenge set
 - Hero case Motion Viewer
 - Physician-reviewed movement annotations
