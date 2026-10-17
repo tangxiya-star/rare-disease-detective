@@ -18,6 +18,10 @@ Mode = Literal["scored", "demo"]
 MANIFEST = REPO_ROOT / "cases" / "manifest.json"
 
 
+_CASE_SECTIONS = ("chief_complaint", "history_of_present_illness", "family_history", "social_history",
+                  "prior_workup_and_opinions", "medications", "neurological_exam")
+
+
 @dataclass
 class CaseBundle:
     slot: str
@@ -26,6 +30,7 @@ class CaseBundle:
     reference: dict
     annotations: dict | None = None
     video: Path | None = None
+    landmarks: Path | None = None
     held_out_media: list[Path] = field(default_factory=list)
     retrieval_blocklist: list[str] = field(default_factory=list)
 
@@ -41,8 +46,10 @@ class CaseBundle:
         return view
 
     def case_sources(self) -> dict[str, str]:
-        """Case record entries as quotable sources, keyed by finding id."""
-        out = {}
+        """Case record entries (by finding id) and narrative sections (by key) as quotable sources."""
+        out = {k: str(self.case[k]) for k in _CASE_SECTIONS if self.case.get(k)}
+        for k, v in (self.case.get("neurological_exam") or {}).items():
+            out[f"neurological_exam.{k}"] = str(v)
         for key in ("movement_findings", "symptom_timeline", "labs", "imaging", "neurophysiology"):
             for entry in self.case.get(key, []):
                 if "id" in entry:
@@ -50,8 +57,8 @@ class CaseBundle:
         return out
 
     def finding_ids(self) -> set[str]:
-        """Every id a claim may cite: movement findings, timeline, labs, imaging, neurophysiology."""
-        ids = set()
+        """Every id a claim may cite: entry ids (mf_, tl_, lab_, img_, np_) and case section keys."""
+        ids = set(self.case_sources())
         for key in ("movement_findings", "symptom_timeline", "labs", "imaging", "neurophysiology"):
             for entry in self.case.get(key, []):
                 if "id" in entry:
@@ -85,6 +92,7 @@ def load_case(slot: str, mode: Mode) -> CaseBundle:
         reference=_load_json(e["reference"]),
         annotations=_load_json(e["annotations"]) if e.get("annotations") else None,
         video=REPO_ROOT / e["video"] if e.get("video") else None,
+        landmarks=REPO_ROOT / e["landmarks"] if e.get("landmarks") else None,
         held_out_media=[REPO_ROOT / p for p in e.get("held_out_media", [])],
         retrieval_blocklist=e.get("retrieval_blocklist", []),
     )
@@ -94,11 +102,11 @@ def load_case(slot: str, mode: Mode) -> CaseBundle:
 
 # Words that mean the same investigation. Each group collapses to its first term.
 _SYNONYMS = [
-    ["levodopa", "l-dopa", "ldopa", "carbidopa", "sinemet", "dopaminergic trial"],
-    ["dat", "datscan", "dat-spect", "ioflupane", "β-cit", "beta-cit", "dopamine transporter"],
+    ["levodopa", "dopa", "ldopa", "carbidopa", "sinemet"],
+    ["dat", "datscan", "spect", "ioflupane", "cit", "transporter"],
     ["genetic", "gene", "genes", "genetics", "panel", "sequencing", "exome", "genome", "variant", "mutation"],
     ["csf", "lumbar", "puncture", "cerebrospinal", "pterins", "neopterin", "biopterin", "hva"],
-    ["slit", "kayser", "fleischer", "slit-lamp"],
+    ["slit", "lamp", "kayser", "fleischer"],
     ["copper", "urine", "urinary"],
     ["emg", "electromyography", "myokymic", "myokymia"],
     ["eeg", "electroencephalogram"],
@@ -108,18 +116,20 @@ _SYNONYMS = [
     ["video", "home", "recording"],
     ["family", "relatives", "mother", "father", "aunt", "segregation"],
     ["evening", "diurnal", "morning", "repeat", "waking", "fluctuation"],
-    ["follow-up", "followup", "spread", "follow"],
+    ["follow", "followup", "spread"],
     ["accelerometry", "entrainment", "tapping"],
     ["records", "clarification", "referrer", "addendum", "radiology"],
 ]
 _CANON = {w: g[0] for g in _SYNONYMS for w in g}
+_CORE = {g[0] for g in _SYNONYMS}  # one canonical term per investigation type
 _STOP = {"the", "a", "an", "of", "and", "or", "to", "for", "with", "in", "on", "test", "testing",
          "trial", "exam", "examination", "study", "check", "assess", "order", "request", "please",
-         "result", "results", "if", "only", "x", "mg", "patient", "perform", "obtain"}
+         "result", "results", "if", "only", "x", "mg", "patient", "perform", "obtain",
+         "has", "have", "been", "ever", "done", "any", "other", "detailed", "clinical"}
 
 
 def _tokens(text: str) -> set[str]:
-    words = re.findall(r"[a-zA-Zβ0-9\-]+", text.lower())
+    words = re.findall(r"[a-zA-Zβ0-9]+", text.lower().replace("\u2011", "-"))
     return {_CANON.get(w, w) for w in words if w not in _STOP and len(w) > 1}
 
 
@@ -148,12 +158,17 @@ class HeldOutReleaser:
         self.released: dict[str, Release] = {}
 
     def _best(self, request: str) -> tuple[int, float]:
+        """Word overlap, boosted when request and result share an investigation type
+        (levodopa, DAT, genetics, CSF, slit lamp, ...), so long free-text requests still match."""
         req = _tokens(request)
         best, best_score = -1, 0.0
         for i, key in enumerate(self._keys):
             if not req or not key:
                 continue
-            score = len(req & key) / min(len(req), len(key))
+            shared = req & key
+            score = len(shared) / min(len(req), len(key))
+            if shared & _CORE:
+                score = max(score, 0.5 + score / 10)
             if score > best_score:
                 best, best_score = i, score
         return best, best_score

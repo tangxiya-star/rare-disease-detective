@@ -59,6 +59,7 @@
       "reference": "cases/reference/01_guitarist_drd.json",
       "annotations": "cases/01_guitarist_drd/annotations.json",
       "video": "cases/01_guitarist_drd/movement.mov",
+      "landmarks": "cases/01_guitarist_drd/landmarks.json",
       "held_out_media": [
         "cases/reference/media/01_S2_post_levodopa.mov"
       ],

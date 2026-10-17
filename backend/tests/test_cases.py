@@ -49,3 +49,24 @@ def test_release_after_depth_2_rule():
     r = HeldOutReleaser(load_case("01", "scored"))  # synthetic hero: CSF is after_depth_2
     assert r.request("CSF neurotransmitter metabolites and pterins", depth=1).status == "withheld"
     assert r.request("CSF neurotransmitter metabolites and pterins", depth=2).status == "released"
+
+
+@pytest.mark.parametrize("request_text,gap", [
+    ("supervised levodopa trial with gradual dose escalation and clinical rating for 4-6 weeks", "gap_01"),
+    ("GCH1 gene sequencing including deletion/duplication analysis", "gap_04"),
+    ("Slit‑lamp examination for Kayser-Fleischer rings", "gap_06"),
+])
+def test_release_matches_long_free_text_requests(request_text, gap):
+    rel = HeldOutReleaser(load_case("01", "demo")).request(request_text, depth=1)
+    assert rel.status == "released" and rel.gap_id == gap
+
+
+def test_case_sections_are_citable():
+    b = load_case("01", "demo")
+    assert {"family_history", "prior_workup_and_opinions", "neurological_exam.reflexes"} <= b.finding_ids()
+
+
+def test_release_hyphenated_terms():
+    r = HeldOutReleaser(load_case("01", "demo"))
+    assert r.request("L-dopa challenge", depth=1).gap_id == "gap_01"
+    assert r.request("123I-FP-CIT SPECT", depth=1).gap_id == "gap_02"
