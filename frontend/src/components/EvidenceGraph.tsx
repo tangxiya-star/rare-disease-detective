@@ -209,7 +209,8 @@ export function EvidenceGraph({ state, onSelectAgent, spotlight, rejected, padRi
           const pad = spot.length ? 60 : 0
           x0 -= pad; x1 += pad; y0 -= pad; y1 += pad
           // leave room for labels left and right, and for the legend at the bottom
-          const fw = w - padRef.current
+          // never let an overlay squeeze the framed area below 520px (narrow projectors)
+          const fw = w - Math.min(padRef.current, Math.max(0, w - 520))
           const k = Math.min(spot.length ? 3 : 2.2, (fw - 220) / Math.max(1, x1 - x0), (h - 130) / Math.max(1, y1 - y0))
           const v = view.current
           const ease = spot.length ? 0.05 : 0.08
