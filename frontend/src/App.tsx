@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { api } from './api'
 import { AgentCanvas } from './components/AgentCanvas'
 import { BottomTabs } from './components/BottomTabs'
+import { EvidenceGraph } from './components/EvidenceGraph'
 import { Inspector } from './components/Inspector'
 import { PatientPanel } from './components/PatientPanel'
 import type { CaseView, Health, Mode } from './types'
@@ -87,19 +88,27 @@ export default function App() {
 
       <main className="workspace">
         <aside className="panel left">
-          <div className="panel-title">Patient & motion</div>
+          <div className="panel-title"><span className="mod-dot amber" />Motion viewer <span className="muted">· MediaPipe hand landmarks</span></div>
           <PatientPanel view={view} highlighted={highlighted} released={state.releasedMedia} runId={runId} />
         </aside>
         <section className="panel center">
-          <div className="panel-title">Recursive agent canvas <span className="muted">· runtime-generated</span></div>
+          <div className="panel-title"><span className="mod-dot cyan" />Recursive agent tree
+            <span className="muted"> · {state.order.length} nodes · every node created by a model decision at runtime</span></div>
           <div className="canvas">
             <AgentCanvas nodes={state.nodes} order={state.order} activity={state.activity} selected={selected} onSelect={setSelected} />
           </div>
           <BottomTabs state={state} onSelect={setSelected} />
         </section>
         <aside className="panel right">
-          <div className="panel-title">Evidence inspector</div>
-          <Inspector state={state} selected={selected} />
+          <div className="panel-title"><span className="mod-dot teal" />Clinical evidence graph
+            <span className="muted"> · {state.evidence.filter(e => e.grounded).length} grounded findings</span></div>
+          <div className="graph-pane">
+            <EvidenceGraph state={state} onSelectAgent={setSelected} />
+          </div>
+          <div className="panel-title sub">Evidence inspector</div>
+          <div className="inspector-pane">
+            <Inspector state={state} selected={selected} />
+          </div>
         </aside>
       </main>
     </div>

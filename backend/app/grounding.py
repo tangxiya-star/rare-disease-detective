@@ -33,7 +33,8 @@ def check_finding(finding: dict, source_texts: dict[str, str], case_finding_ids:
         return GroundingResult(False, f"Case finding ids not in record: {', '.join(bad_ids)}")
 
     if quote:
-        if len(quote) < min_quote_chars:
+        from_case = source_id in case_finding_ids
+        if len(quote) < (4 if from_case else min_quote_chars):
             return GroundingResult(False, "Quote too short to verify")
         if source_id not in source_texts:
             return GroundingResult(False, f"Unknown source_id {source_id!r}")

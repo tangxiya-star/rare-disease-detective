@@ -1,54 +1,7 @@
-import { Fragment, useRef, useState } from 'react'
+import { Fragment } from 'react'
 import { api } from '../api'
-import type { Annotation, CaseView } from '../types'
-
-function fmt(t: number) {
-  return `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}.${Math.floor((t % 1) * 10)}`
-}
-
-function MotionViewer({ view, highlighted }: { view: CaseView; highlighted: Set<string> }) {
-  const ref = useRef<HTMLVideoElement>(null)
-  const [t, setT] = useState(0)
-  const [dur, setDur] = useState(0)
-  const anns: Annotation[] = (view.annotations?.annotations ?? []).filter(a => a.t_start != null)
-  const active = anns.filter(a => t >= a.t_start && t <= a.t_end)
-  const seek = (s: number) => { if (ref.current) { ref.current.currentTime = s; ref.current.play() } }
-
-  return (
-    <section className="panel-section">
-      <h3>Movement video</h3>
-      {view.has_video ? (
-        <>
-          <video ref={ref} className="video" src={`${api.videoUrl(view.slot, view.mode)}#t=0.1`} preload="metadata" controls muted playsInline
-            onTimeUpdate={e => setT(e.currentTarget.currentTime)}
-            onLoadedMetadata={e => setDur(e.currentTarget.duration)} />
-          {dur > 0 && (
-            <div className="ann-track" title="Physician-reviewed annotations">
-              {anns.map((a, i) => (
-                <button key={i} className={`ann-seg ${active.includes(a) ? 'on' : ''} ${highlighted.has(a.finding_id) ? 'cited' : ''}`}
-                  style={{ left: `${(a.t_start / dur) * 100}%`, width: `${Math.max(1.5, ((a.t_end - a.t_start) / dur) * 100)}%` }}
-                  onClick={() => seek(a.t_start)} title={`${fmt(a.t_start)}–${fmt(a.t_end)} ${a.label}`} />
-              ))}
-              <div className="ann-head" style={{ left: `${(t / dur) * 100}%` }} />
-            </div>
-          )}
-          <ul className="ann-list">
-            {anns.map((a, i) => (
-              <li key={i} className={active.includes(a) ? 'on' : ''} onClick={() => seek(a.t_start)}>
-                <span className="mono">{fmt(a.t_start)}</span>
-                <span>{a.label}</span>
-                <span className={`fid ${highlighted.has(a.finding_id) ? 'cited' : ''}`}>{a.finding_id}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="fineprint">{view.annotations?.video?.license}</p>
-        </>
-      ) : (
-        <p className="muted">No clinical video for this case.</p>
-      )}
-    </section>
-  )
-}
+import type { CaseView } from '../types'
+import { MotionViewer } from './MotionViewer'
 
 function Section({ title, children, open = false }: { title: string; children: React.ReactNode; open?: boolean }) {
   return (
@@ -59,8 +12,9 @@ function Section({ title, children, open = false }: { title: string; children: R
   )
 }
 
-export function PatientPanel({ view, highlighted, released, runId }: {
+export function PatientPanel({ view, highlighted, released, runId, showMotion = true }: {
   view: CaseView | null; highlighted: Set<string>; released: { gap_id: string; investigation: string }[]; runId: string | null
+  showMotion?: boolean
 }) {
   if (!view) return <div className="panel-body muted">Loading case…</div>
   const c = view.case
@@ -74,7 +28,7 @@ export function PatientPanel({ view, highlighted, released, runId }: {
         <div className="patient-demo">{d.age}{d.sex?.[0]?.toUpperCase()} · {d.handedness}-handed · {d.occupation}</div>
       </div>
 
-      {view.has_video && <MotionViewer view={view} highlighted={highlighted} />}
+      {showMotion && view.has_video && <MotionViewer view={view} highlighted={highlighted} />}
 
       {runId && released.map(m => (
         <section key={m.gap_id} className="panel-section reveal">
@@ -84,6 +38,17 @@ export function PatientPanel({ view, highlighted, released, runId }: {
         </section>
       ))}
 
+      {!!c.motion_analysis?.length && (
+        <Section title="Hand-tracking measurements · sent to agents" open>
+          <ul className="entries">
+            {c.motion_analysis.map(e => (
+              <li key={e.id} className={hl(e.id)}><span className="fid">{e.id}</span><b>{e.measure}</b> {e.result}</li>
+            ))}
+          </ul>
+          <p className="fineprint">The models are text-only. These numbers, computed from the MediaPipe landmarks
+            above, are how the video reaches them; agents cite them by id.</p>
+        </Section>
+      )}
       <Section title="Movement findings" open>
         <ul className="entries">
           {c.movement_findings.map(f => (

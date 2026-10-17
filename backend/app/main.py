@@ -63,7 +63,8 @@ def case(slot: str, mode: Mode = "demo"):
     except KeyError:
         raise HTTPException(404, "case not found")
     return {"slot": slot, "mode": mode, "case": b.agent_view(), "annotations": b.annotations,
-            "has_video": bool(b.video and b.video.exists())}
+            "has_video": bool(b.video and b.video.exists()),
+            "has_landmarks": bool(b.landmarks and b.landmarks.exists())}
 
 
 @app.get("/api/cases/{slot}/video")
@@ -73,6 +74,15 @@ def case_video(slot: str, mode: Mode = "demo"):
         raise HTTPException(404, "video not available locally; see cases/README.md")
     # H.264 in a QuickTime container; browsers play it when labelled video/mp4.
     return FileResponse(b.video, media_type="video/mp4")
+
+
+@app.get("/api/cases/{slot}/landmarks")
+def case_landmarks(slot: str, mode: Mode = "demo"):
+    """MediaPipe hand landmarks per video frame (motion coordinates only; not diagnostic)."""
+    b = load_case(slot, mode)
+    if not b.landmarks or not b.landmarks.exists():
+        raise HTTPException(404, "no landmarks for this case")
+    return FileResponse(b.landmarks, media_type="application/json")
 
 
 @app.post("/api/runs")

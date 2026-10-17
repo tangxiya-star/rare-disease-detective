@@ -37,10 +37,10 @@ Output:
   "uncertainties": [str],
   "decision": "spawn" | "finish",
   "children": [{{"objective": str, "justification": str}}]}}
-Finding ids are the "id" fields in the case (mf_*, tl_*, lab_*, img_*, np_*), plus fixed ids for
-sections without entry ids: cc (chief complaint), hpi (history of present illness), fh (family
-history), sh (social history), meds (medications), prior (prior workup), and ex_<field> for each
-neurological_exam field (e.g. ex_power, ex_reflexes).
+Finding ids are the "id" fields in the case (mf_*, tl_*, lab_*, img_*, np_*, ka_*).
+Narrative sections are cited by their key (e.g. family_history, history_of_present_illness, medications) and exam fields as neurological_exam.<field> (e.g. neurological_exam.reflexes).
+ka_* entries, when present, are automated hand-tracking measurements from the case video: quantitative
+descriptions of the movement, weaker than the clinician's examination; respect the limits they state.
 {JSON_ONLY}"""
 
 INVESTIGATOR_PLAN = f"""You are an investigation agent working on one objective within a larger case review.
@@ -68,8 +68,8 @@ Payload: {{"case": <case record>, "objective": str, "depth": int,
 
 Record findings. Every finding must be grounded: quote a passage VERBATIM and give its source_id,
 or cite case finding ids, or both. Valid source_ids: a search result's source_id, a released
-investigation result's source_id (HELDOUT:...), or a case finding id (mf_*, tl_*, lab_*, img_*, np_*, ex_*, cc, hpi, fh, sh, meds, prior)
-when quoting that entry of the case record. Ungrounded findings are discarded by code.
+investigation result's source_id (HELDOUT:...), or a case finding id (mf_*, tl_*, lab_*, img_*, np_*, ka_*) or section key
+(family_history, neurological_exam.<field>, ...) when quoting that part of the case record. Ungrounded findings are discarded by code.
 
 Then decide at runtime whether a deeper, more specific sub-question is needed (only if can_spawn).
 
@@ -89,7 +89,7 @@ Payload: {{"case": <case record>, "objective": str, "findings": [...], "conclusi
 
 Check each finding against its quoted source and the case record. Sources with ids starting
 "HELDOUT:" are investigation results obtained during this investigation; treat them as part of
-the patient's record. Sources whose id is a case finding id (mf_*, lab_*, hpi, fh, ex_*, ...) quote the case record. Reject claims that the
+the patient's record. Sources whose id is a case finding id (mf_*, lab_*, ...) quote the case record. Reject claims that the
 passage does not support, that apply a study population that does not match this patient,
 that rule out a condition because a variable feature is absent, or that ignore incomplete
 penetrance. Judge whether the conclusion follows from accepted findings.
@@ -124,7 +124,8 @@ Payload: {{"case": <case record>, "plan": <your earlier plan>,
                  "findings": [{{"evidence_id": str, "claim": str, "stance": str, "hypothesis": str}}]}}]}}
 
 Write the brief from verified branches. Evidence ids are the evidence_id values in branches or
-case finding ids (mf_*, tl_*, lab_*, img_*, np_*, ex_*, cc, hpi, fh, sh, meds, prior); cite no other ids. Use "functional", not "psychogenic". Branches that are not ACCEPTED must be reported as
+case finding ids (mf_*, tl_*, lab_*, img_*, np_*, ka_*) or case section keys (e.g. family_history,
+neurological_exam.reflexes); cite no other ids. Use "functional", not "psychogenic". Branches that are not ACCEPTED must be reported as
 unresolved, not as conclusions. Always state whether Wilson disease and dopa-responsive
 dystonia were addressed, excluded by a named test, or remain open, when the presentation
 calls for them.

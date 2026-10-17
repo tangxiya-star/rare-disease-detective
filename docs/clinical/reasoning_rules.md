@@ -58,6 +58,7 @@ Every report must state, for each relevant condition above: addressed, excluded 
 - **Rare-disease enthusiasm.** If the presentation has no red flags, the common explanation is usually right. Say so.
 - **Normal imaging is expected** in most of these conditions. A normal MRI does not count against DRD, the episodic ataxias or PKD, and does not exclude Wilson disease (MRI is usually abnormal in neurological Wilson, but not always).
 - **Do not invent findings** to make a hypothesis fit. If a supporting feature is missing, report it as missing.
+- **Video measurements (ka_*) describe, they do not diagnose.** They are automated, 2D and not physician-reviewed. They can support a physician-reviewed finding (mf_*) but never establish phenomenology on their own, never override the examination, and their stated limits apply.
 
 ## 5. Investigation hierarchy
 
@@ -83,4 +84,4 @@ Prefer the test that best separates the leading hypotheses, then the cheapest an
 - Hypotheses, never diagnoses: "most likely, for the treating physician to confirm".
 - Next steps are considerations: "consider a supervised levodopa trial", never a dose or an instruction.
 - Respectful language for functional disorders. The symptoms are real.
-- Every claim cites a case finding id or a retrieved passage. Narrative sections and exam fields have fixed ids: cc, hpi, fh, sh, meds, prior, and ex_<field> (for example ex_power).
+- Every claim cites a case finding id or a retrieved passage. Narrative sections are cited by their key (for example family_history) and exam fields as neurological_exam.<field> (for example neurological_exam.power).

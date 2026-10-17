@@ -51,13 +51,39 @@ def test_release_after_depth_2_rule():
     assert r.request("CSF neurotransmitter metabolites and pterins", depth=2).status == "released"
 
 
-def test_narrative_and_exam_facts_are_citable():
-    """Facts that only live in narrative sections or exam fields must be groundable."""
+@pytest.mark.parametrize("request_text,gap", [
+    ("supervised levodopa trial with gradual dose escalation and clinical rating for 4-6 weeks", "gap_01"),
+    ("GCH1 gene sequencing including deletion/duplication analysis", "gap_04"),
+    ("Slit‑lamp examination for Kayser-Fleischer rings", "gap_06"),
+])
+def test_release_matches_long_free_text_requests(request_text, gap):
+    rel = HeldOutReleaser(load_case("01", "demo")).request(request_text, depth=1)
+    assert rel.status == "released" and rel.gap_id == gap
+
+
+def test_case_sections_are_citable():
+    b = load_case("01", "demo")
+    assert {"family_history", "prior_workup_and_opinions", "neurological_exam.reflexes"} <= b.finding_ids()
+
+
+def test_release_hyphenated_terms():
+    r = HeldOutReleaser(load_case("01", "demo"))
+    assert r.request("L-dopa challenge", depth=1).gap_id == "gap_01"
+    assert r.request("123I-FP-CIT SPECT", depth=1).gap_id == "gap_02"
+
+
+def test_demo_hero_motion_analysis_is_citable():
     from app.grounding import check_finding
-    b = load_case("08", "scored")
-    ids, src = b.finding_ids(), b.case_sources()
-    assert {"hpi", "fh", "meds", "ex_power", "ex_other"} <= ids
-    give_way = {"quote": "Collapsing 'give-way' weakness of right grip", "source_id": "ex_power", "finding_ids": ["ex_power"]}
-    assert check_finding(give_way, src, ids).grounded
-    no_fh = {"quote": "", "source_id": "", "finding_ids": ["fh"]}
-    assert check_finding(no_fh, load_case("01", "demo").case_sources(), load_case("01", "demo").finding_ids()).grounded
+    b = load_case("01", "demo")
+    ka = b.agent_view()["motion_analysis"]
+    assert [e["id"] for e in ka] == ["ka_01", "ka_02", "ka_03", "ka_04", "ka_05"]
+    assert ka == load_case("01", "demo").agent_view()["motion_analysis"]  # deterministic
+    assert {"ka_02", "ka_03"} <= b.finding_ids()
+    quote = ka[2]["result"].split(":")[0]
+    assert check_finding({"quote": quote, "source_id": "ka_03"}, b.case_sources(), b.finding_ids()).grounded
+    assert "case_01_guitarist" not in json.dumps(ka) and "levodopa" not in json.dumps(ka).lower()
+
+
+def test_scored_cases_have_no_motion_analysis():
+    for c in list_cases("scored"):
+        assert "motion_analysis" not in load_case(c["slot"], "scored").agent_view()

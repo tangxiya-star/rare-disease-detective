@@ -22,6 +22,7 @@ export interface RunState {
   evidence: Evidence[]
   sources: Record<string, SourceRef & { held_out?: boolean; text?: string }>
   report: Report | null
+  hypotheses: string[]
   releasedMedia: { gap_id: string; investigation: string }[]
   events: RunEvent[]
   lastSeq: number
@@ -29,7 +30,7 @@ export interface RunState {
 
 const empty: RunState = {
   runId: null, status: 'idle', llmBackend: null, nodes: {}, order: [], activity: {}, evidence: [],
-  sources: {}, report: null, releasedMedia: [], events: [], lastSeq: 0,
+  sources: {}, report: null, hypotheses: [], releasedMedia: [], events: [], lastSeq: 0,
 }
 
 const blankActivity = (): NodeActivity => ({
@@ -61,7 +62,7 @@ function reduce(s: RunState, a: Action): RunState {
       return { ...next, nodes: { ...s.nodes, [n.id]: { ...n, status: d.status, checkpoint: d.checkpoint, verification: d.verification } } }
     }
     case 'node.decision':
-      return { ...next, activity: act(s, d.node_id, x => ({ ...x, decisions: [...x.decisions, {
+      return { ...next, hypotheses: d.hypotheses?.length ? d.hypotheses : s.hypotheses, activity: act(s, d.node_id, x => ({ ...x, decisions: [...x.decisions, {
         action: d.action, requested: d.requested_children, rationale: d.rationale, trigger: d.trigger, about: d.about }] })) }
     case 'spawn.rejected':
       return { ...next, activity: act(s, d.node_id, x => ({ ...x, rejectedSpawns: [...x.rejectedSpawns, { objective: d.objective, reason: d.reason }] })) }

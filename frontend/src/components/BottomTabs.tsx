@@ -63,20 +63,26 @@ function Report({ state }: { state: RunState }) {
 
 export function BottomTabs({ state, onSelect }: { state: RunState; onSelect: (id: string) => void }) {
   const [tab, setTab] = useState<'events' | 'evidence' | 'report'>('events')
+  const [open, setOpen] = useState(false)
+  const pick = (x: typeof tab) => { if (x === tab && open) setOpen(false); else { setTab(x); setOpen(true) } }
   const [showDiscarded, setShowDiscarded] = useState(false)
   const events = state.events.filter(e => !QUIET.has(e.type))
   const evidence = state.evidence.filter(e => showDiscarded || e.grounded)
   return (
-    <div className="tabs">
+    <div className={`tabs ${open ? '' : 'collapsed'}`}>
       <div className="tab-bar">
-        <button className={tab === 'events' ? 'on' : ''} onClick={() => setTab('events')}>Agent events <span className="count">{events.length}</span></button>
-        <button className={tab === 'evidence' ? 'on' : ''} onClick={() => setTab('evidence')}>Evidence <span className="count">{state.evidence.filter(e => e.grounded).length}</span></button>
-        <button className={tab === 'report' ? 'on' : ''} onClick={() => setTab('report')}>Clinical report {state.report && <span className="dot" />}</button>
-        {tab === 'evidence' && (
+        <button className={open && tab === 'events' ? 'on' : ''} onClick={() => pick('events')}>Agent events <span className="count">{events.length}</span></button>
+        <button className={open && tab === 'evidence' ? 'on' : ''} onClick={() => pick('evidence')}>Evidence <span className="count">{state.evidence.filter(e => e.grounded).length}</span></button>
+        <button className={open && tab === 'report' ? 'on' : ''} onClick={() => pick('report')}>Clinical report {state.report && <span className="dot" />}</button>
+        {!open && events.length > 0 && (
+          <div className="ticker"><span className="ev-type">{events[events.length - 1].type}</span>{describe(events[events.length - 1])}</div>
+        )}
+        <button className="tab-toggle" onClick={() => setOpen(o => !o)}>{open ? '▾ collapse' : '▴ expand'}</button>
+        {open && tab === 'evidence' && (
           <label className="tab-opt"><input type="checkbox" checked={showDiscarded} onChange={e => setShowDiscarded(e.target.checked)} /> show discarded</label>
         )}
       </div>
-      <div className="tab-body">
+      {open && <div className="tab-body">
         {tab === 'events' && (
           <ol className="event-log">
             {[...events].reverse().map(e => (
@@ -93,7 +99,7 @@ export function BottomTabs({ state, onSelect }: { state: RunState; onSelect: (id
           <ul className="evidence-list pad">{evidence.map(e => <EvidenceItem key={e.id} ev={e} state={state} />)}</ul>
         )}
         {tab === 'report' && <Report state={state} />}
-      </div>
+      </div>}
     </div>
   )
 }

@@ -74,6 +74,7 @@ export interface CaseRecord {
   labs: CaseEntry[]
   imaging: CaseEntry[]
   neurophysiology?: CaseEntry[]
+  motion_analysis?: CaseEntry[]
   medications: { current: string[]; prior_trials: Record<string, string>[] }
   family_history: string
   social_history: string
@@ -88,6 +89,7 @@ export interface CaseView {
   case: CaseRecord
   annotations: { annotations: Annotation[]; video: Record<string, any> } | null
   has_video: boolean
+  has_landmarks?: boolean
 }
 
 export interface Health { llm_backend: 'mock' | 'crusoe'; search_backend: string; lead_model: string; child_model: string }

@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/d3-force": "^3.0.10",
     "@xyflow/react": "^12.3.6",
+    "d3-force": "^3.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

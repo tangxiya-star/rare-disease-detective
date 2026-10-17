@@ -97,6 +97,10 @@ class MockClient:
         if mf:
             findings.append({"claim": "[mock] Observed movement finding bears on the objective", "quote": "",
                              "source_id": "", "finding_ids": mf, "stance": "neutral", "hypothesis": ""})
+        for ka in [e for e in p["case"].get("motion_analysis", []) if e["id"] in ("ka_02", "ka_03")][:1]:
+            findings.append({"claim": f"[mock] Hand tracking: {ka['measure'].lower()}",
+                             "quote": ka["result"].split(":")[0], "source_id": ka["id"],
+                             "finding_ids": [ka["id"]], "stance": "neutral", "hypothesis": ""})
         deeper = {
             "Assess": "Genetic confirmation: which gene testing results would confirm or refute the leading "
                       "hypothesis, including deletion/duplication analysis",
