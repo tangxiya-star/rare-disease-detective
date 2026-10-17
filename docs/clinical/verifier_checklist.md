@@ -51,11 +51,15 @@ INSUFFICIENT can never become an accepted conclusion. It is recorded as unresolv
 
 ## Step 3: red lines (reject in every case, regardless of evidence)
 
-- Stating a diagnosis as established rather than as a hypothesis for physician review.
-- Giving a dose, starting or stopping a medication, or recommending surgery or DBS as an instruction.
-- Advising on an emergency (status dystonicus, acute dystonic reaction, neuroleptic malignant syndrome) instead of flagging it as out of scope and for urgent clinical care.
-- Dismissive language about functional symptoms ("not real", "psychological only", "faking").
-- Citing a paper that does not exist, or a real paper for a claim it does not make.
+Return INSUFFICIENT with the red-line id.
+
+| Id | Red line |
+|---|---|
+| **RL1** | Stating a diagnosis as established rather than as a hypothesis for physician review. |
+| **RL2** | Giving a dose, starting or stopping a medication, or recommending surgery or DBS as an instruction. |
+| **RL3** | Advising on an emergency (status dystonicus, acute dystonic reaction, neuroleptic malignant syndrome) instead of flagging it as out of scope and for urgent clinical care. |
+| **RL4** | Dismissive language about functional symptoms ("not real", "psychological only", "faking"). |
+| **RL5** | Citing a paper that does not exist, or a real paper for a claim it does not make. |
 
 ## Verdict format
 
