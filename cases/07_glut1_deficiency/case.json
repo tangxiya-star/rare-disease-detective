@@ -14,25 +14,40 @@
     "occupation": "Student, receives learning support"
   },
   "chief_complaint": "Parents: \"After long walks or sports, especially before lunch, her legs twist and she has to sit down for half an hour.\"",
-  "history_of_present_illness": "Since age 7, episodes of dystonic stiffening and twisting of both legs, sometimes with choreic movements, lasting 10–40 minutes, occurring after 15+ minutes of continuous exercise. More likely when she has skipped breakfast or before meals; parents noticed a sugary snack seems to help her recover. Absence seizures began at age 2.5, partially responsive to valproate; currently on levetiracetam with occasional breakthrough absences. Mild learning difficulties in mathematics and reading. Occasional unsteadiness in the morning before breakfast.",
+  "history_of_present_illness": "Since age 7, episodes of dystonic stiffening and twisting of both legs, sometimes with choreic movements, lasting 10–40 minutes, occurring after 15+ minutes of continuous exercise such as walking to school, running in PE, or swimming. The legs are affected first and most; occasionally the arms become stiff in longer episodes. She stays fully alert and talks throughout. Episodes do not occur with sudden movement after rest. They are more likely when she has skipped breakfast, late in the morning before lunch, or when she is unwell; parents noticed a sugary snack seems to help her recover faster. Absence seizures began at age 2.5, partially responsive to valproate; currently on levetiracetam with occasional breakthrough absences, mostly in the morning. Mild learning difficulties in mathematics and reading; receives classroom support. Occasional unsteadiness and 'slurry' speech in the morning before breakfast that settles after eating. Walked at 17 months; speech mildly delayed.",
   "symptom_timeline": [
     {
       "id": "tl_01",
-      "when": "Age 2.5",
-      "event": "Absence seizures begin"
+      "when": "Age 17 months",
+      "event": "Walked independently (mildly late); speech mildly delayed"
     },
     {
       "id": "tl_02",
-      "when": "Age 4",
-      "event": "Valproate, partial response; switched later to levetiracetam"
+      "when": "Age 2.5",
+      "event": "Absence seizures begin, several per day"
     },
     {
       "id": "tl_03",
+      "when": "Age 3",
+      "event": "Valproate started; partial response"
+    },
+    {
+      "id": "tl_04",
+      "when": "Age 5",
+      "event": "Switched to levetiracetam because of weight gain and incomplete control"
+    },
+    {
+      "id": "tl_05",
       "when": "Age 7",
       "event": "Exercise-induced leg episodes begin"
     },
     {
-      "id": "tl_04",
+      "id": "tl_06",
+      "when": "Age 8",
+      "event": "MRI brain normal"
+    },
+    {
+      "id": "tl_07",
       "when": "Age 10",
       "event": "Episodes increase with school sports; referral"
     }
@@ -40,7 +55,7 @@
   "movement_findings": [
     {
       "id": "mf_01",
-      "observation": "Parent video (physician-reviewed): after a 25-minute walk, bilateral foot inversion and dystonic leg posturing with intermittent chorea, lasting ~20 minutes, improving with rest.",
+      "observation": "Parent video (physician-reviewed): after a 25-minute walk before lunch, bilateral foot inversion and dystonic leg posturing with intermittent chorea, lasting ~20 minutes, improving with rest; she is talking and responsive throughout.",
       "context": "exercise-induced episode",
       "reviewer": ""
     },
@@ -48,6 +63,18 @@
       "id": "mf_02",
       "observation": "Interictal: mild gait ataxia on tandem; no dystonia at rest.",
       "context": "interictal gait",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_03",
+      "observation": "In clinic, 10 minutes of brisk walking did not provoke an episode (examined after breakfast).",
+      "context": "provocation",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_04",
+      "observation": "Mild dysarthria with rapid syllable repetition; no tremor, no myokymia.",
+      "context": "speech",
       "reviewer": ""
     }
   ],
@@ -95,6 +122,7 @@
   ],
   "neurophysiology": [
     {
+      "id": "np_01",
       "study": "EEG",
       "date": "Age 9",
       "report": "Generalized 3–4 Hz spike-wave discharges, more frequent in fasting state per note."
@@ -102,18 +130,24 @@
   ],
   "medications": {
     "current": [
-      "Levetiracetam"
+      "Levetiracetam 500 mg BID"
     ],
     "prior_trials": [
       {
         "drug": "Valproate",
-        "dose": "",
-        "duration": "2 years",
-        "response": "Partial seizure control"
+        "dose": "up to 20 mg/kg/day",
+        "duration": "2 years (age 3–5)",
+        "response": "Partial seizure control; weight gain"
+      },
+      {
+        "drug": "Ethosuximide",
+        "dose": "250 mg BID",
+        "duration": "3 months (age 5)",
+        "response": "No clear benefit; stopped"
       }
     ]
   },
-  "family_history": "Negative.",
-  "social_history": "",
+  "family_history": "Parents (both 38) healthy, no seizures or movement disorders. One younger brother (6) healthy and developing normally. No consanguinity.",
+  "social_history": "Year 5 student with an individual learning plan for maths and reading. Enjoys swimming but often has to stop after 15–20 minutes. Often refuses breakfast. No other medications or supplements.",
   "prior_workup_and_opinions": "Previous view: early-onset absence epilepsy plus unrelated exercise-induced cramps."
 }

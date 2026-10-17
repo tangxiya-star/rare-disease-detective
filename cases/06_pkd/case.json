@@ -14,25 +14,30 @@
     "occupation": "Student"
   },
   "chief_complaint": "\"When I stand up from my desk or start to run, my arm and leg twist for a few seconds.\"",
-  "history_of_present_illness": "Since age 11, sudden attacks of twisting of the right arm and leg, sometimes both sides, lasting 5–30 seconds, up to 20 times per day. Triggered by sudden voluntary movement after rest (standing up, starting to run when the bell rings). He often feels a tingling 'warning' in the limb just before. Consciousness preserved; he can talk during attacks. Normal between attacks. Avoids sudden starts and has been teased at school.",
+  "history_of_present_illness": "Since age 11, sudden attacks of twisting of the right arm and leg, occasionally the left side or both sides, lasting 5–30 seconds, up to 20 times per day. Triggered by sudden voluntary movement after rest: standing up from his desk, starting to run when the school bell rings, getting off the bus. Walking steadily does not trigger them, and attacks do not occur after long exercise or with fasting. He often feels a tingling or tightness 'warning' in the limb just before, and has learned that if he gets up slowly or stretches first he can sometimes avoid an attack. Consciousness preserved; he can talk during attacks and remembers them fully. No falls with injury, no tongue biting, no incontinence, no post-attack drowsiness. Normal between attacks. Attacks are more frequent when he is anxious or excited (exams, matches). He avoids sudden starts, has stopped playing basketball, and has been teased at school.",
   "symptom_timeline": [
     {
       "id": "tl_01",
       "when": "Infancy (5 months)",
-      "event": "Cluster of afebrile seizures, resolved by 12 months without treatment, labelled 'benign infantile seizures'"
+      "event": "Cluster of afebrile focal seizures over 2 weeks; normal development; resolved by 12 months without long-term treatment; labelled 'benign infantile seizures'"
     },
     {
       "id": "tl_02",
       "when": "Age 11",
-      "event": "Attacks begin"
+      "event": "Brief twisting attacks begin, a few per week"
     },
     {
       "id": "tl_03",
       "when": "Age 12",
-      "event": "Labelled anxiety-related by school counsellor"
+      "event": "Labelled anxiety-related by school counsellor; MRI and EEG normal"
     },
     {
       "id": "tl_04",
+      "when": "Age 12–13",
+      "event": "Attacks increase to 10–20 per day"
+    },
+    {
+      "id": "tl_05",
       "when": "Age 13",
       "event": "Neurology referral"
     }
@@ -40,32 +45,51 @@
   "movement_findings": [
     {
       "id": "mf_01",
-      "observation": "Attack provoked by rising from a chair: right arm dystonic posturing with choreic movements, right leg inversion, 10 seconds, speech preserved.",
+      "observation": "Attack provoked by rising quickly from a chair after 10 minutes seated: right arm dystonic posturing (elbow flexion, wrist flexion, finger extension) with superimposed choreic movements, right leg inversion, lasting 10 seconds; speech preserved and he describes the attack as it happens.",
       "context": "provoked attack",
       "reviewer": ""
     },
     {
       "id": "mf_02",
-      "observation": "Between attacks: no abnormal movements.",
+      "observation": "Between attacks: no abnormal movements, no tics, no myokymia.",
       "context": "rest",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_03",
+      "observation": "Second attempt to provoke immediately after the first attack: no attack (brief refractory period); a third attempt 15 minutes later provoked a shorter left-sided attack of similar character.",
+      "context": "provoked attack",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_04",
+      "observation": "Attacks not provoked by 3 minutes of hyperventilation, by startle (unexpected loud clap), or by 10 minutes of brisk walking.",
+      "context": "provocation testing",
       "reviewer": ""
     }
   ],
   "neurological_exam": {
-    "mental_status": "Normal",
+    "mental_status": "Normal; appropriately worried",
     "cranial_nerves": "Normal",
     "tone": "Normal",
-    "power": "Normal",
-    "reflexes": "2+",
+    "power": "5/5 throughout",
+    "reflexes": "2+ symmetric, flexor plantars",
     "coordination": "Normal",
-    "gait": "Normal",
+    "gait": "Normal, including tandem and running from a standing start between attacks",
     "bradykinesia_screen": "Normal",
-    "other": "No myokymia, no nystagmus"
+    "other": "No myokymia, no nystagmus. Development normal. Head circumference 50th percentile."
   },
   "labs": [
     {
       "id": "lab_01",
-      "test": "CBC, CMP, calcium, glucose, TSH",
+      "test": "CBC, CMP, calcium, magnesium, glucose, TSH",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    },
+    {
+      "id": "lab_02",
+      "test": "Parathyroid hormone",
       "result": "Normal",
       "reference_range": "",
       "note": ""
@@ -81,6 +105,7 @@
   ],
   "neurophysiology": [
     {
+      "id": "np_01",
       "study": "Routine EEG",
       "date": "Age 12",
       "report": "Normal interictal recording; no attack captured."
@@ -90,7 +115,7 @@
     "current": [],
     "prior_trials": []
   },
-  "family_history": "Father had 'jerky starts' as a teenager that stopped in his 20s. Paternal cousin with infantile seizures.",
-  "social_history": "",
-  "prior_workup_and_opinions": "School counsellor: anxiety. Pediatrician: possible tics."
+  "family_history": "Father (41) had 'jerky starts' when standing up as a teenager that stopped in his 20s; never saw a doctor. Paternal cousin (age 4) had infantile seizures that resolved. Paternal aunt has migraine. Mother and sister (9) healthy. No consanguinity.",
+  "social_history": "Year 8 student, average grades, previously sociable; increasingly withdrawn because of teasing. Stopped basketball. No alcohol, smoking, or drugs. No regular medications.",
+  "prior_workup_and_opinions": "School counsellor (age 12): anxiety-related episodes, referred for CBT. Pediatrician: 'possible tics', suggested watchful waiting."
 }

@@ -1,203 +1,146 @@
 {
   "case_id": "case_01",
-  "title": "Young classical guitarist with progressive right-hand dystonia and new gait change",
+  "title": "Professional guitarist with ten years of right-arm dystonia that has spread beyond playing",
   "provenance": {
-    "type": "synthetic",
-    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective. Modeled on typical adult-onset presentations described in the movement-disorder literature; not derived from any individual patient.",
+    "type": "adapted_published",
+    "citation": "Adapted from a published, openly licensed case report (article CC BY 4.0; videos CC0 1.0) with patient consent for publication obtained by the original authors. Full citation is held in the reference file because the article title names the diagnosis. Fields the source does not report are marked as such and were not invented.",
     "reviewed_by": "",
     "review_status": "draft — pending W. Milczyńska review"
   },
   "demographics": {
-    "age": 23,
-    "sex": "female",
+    "age": 37,
+    "sex": "male",
     "handedness": "right",
-    "occupation": "Classical guitar performance student (conservatory, final year); practices 5–6 hours/day"
+    "occupation": "Professional guitarist (stopped performing about five years after symptom onset)"
   },
-  "chief_complaint": "\"My right-hand fingers curl into my palm when I play, and now it happens when I write too. Lately my right foot turns in when I walk home from rehearsal.\"",
-  "history_of_present_illness": "Two years ago the patient noticed that the right middle and ring fingers would curl toward the palm during fast right-hand passages (tremolo and arpeggio), but only after about an hour of practice. Early in a session, playing was normal. Over the following year the curling began earlier in practice sessions and became harder to suppress. She reorganized her schedule to do technical work in the morning because \"my hands are just better before lunch\"; evening ensemble rehearsals are now the most difficult. About 12 months ago handwriting became effortful, with cramping and excessive grip after roughly half a page. About 5 months ago her roommate noticed her right foot turning inward when they walked home after evening rehearsals; the patient had not noticed it herself. She reports that a nap in the afternoon \"sometimes resets\" her hand for a short while, which she attributes to reduced fatigue. No pain at rest. No sudden onset, no precipitating injury, no episodes of complete normality interrupted by attacks. No tremor at rest noticed. No speech, swallowing, or cognitive complaints. Mood: frustrated and anxious about her career; no prior psychiatric history.",
+  "chief_complaint": "Referred for reassessment of right upper limb dystonia of about ten years' duration, previously diagnosed as guitarist's cramp.",
+  "history_of_present_illness": "At age 27 he began practicing guitar for most of his waking hours. About three months later he developed difficulty holding the pick, with excessive extension of the right wrist and intermittent tremulous movements of the right fingers while playing. At 29 he was diagnosed with guitarist's cramp and treated with clonazepam and trihexyphenidyl without benefit. Switching from guitar to piano temporarily abolished the abnormal movements, but they returned. Over the following years the problem stopped being confined to playing: it is now also triggered by everyday tasks with the right hand, such as opening and closing screw-cap bottles and brushing his teeth. About five years after onset he had so much difficulty playing that he stopped performing. He is now referred, at 37, for reassessment.",
   "symptom_timeline": [
     {
       "id": "tl_01",
-      "when": "~24 months ago (age 21)",
-      "event": "Right digits 3–4 curl during fast right-hand passages, only after ~60 min of playing"
+      "when": "Age 27 (~10 years ago)",
+      "event": "Intensive guitar practice; ~3 months later, difficulty holding the pick with excessive right wrist extension and intermittent tremulous finger movements"
     },
     {
       "id": "tl_02",
-      "when": "~18 months ago",
-      "event": "Seen by hand surgeon; nerve conduction studies normal; referred to neurology"
+      "when": "Age 29",
+      "event": "Diagnosed with guitarist's cramp; clonazepam and trihexyphenidyl ineffective"
     },
     {
       "id": "tl_03",
-      "when": "~15 months ago",
-      "event": "General neurologist diagnoses musician's focal dystonia; recommends retraining and botulinum toxin"
+      "when": "After age 29 (timing not specified)",
+      "event": "Switching to piano transiently abolished the movements; they later recurred"
     },
     {
       "id": "tl_04",
-      "when": "~12 months ago",
-      "event": "Handwriting becomes effortful with cramping after ~half a page"
+      "when": "Following years (timing not specified)",
+      "event": "Loss of task specificity: dystonia also with opening screw-cap bottles and toothbrushing"
     },
     {
       "id": "tl_05",
-      "when": "~10 months ago",
-      "event": "Trihexyphenidyl started; partial benefit; stopped after 6 weeks due to dry mouth and 'foggy' concentration"
+      "when": "~Age 32",
+      "event": "Stopped performing because of difficulty playing"
     },
     {
       "id": "tl_06",
-      "when": "~8 months ago and ~5 months ago",
-      "event": "Two rounds of botulinum toxin to right flexor digitorum superficialis; modest benefit for ~6 weeks each time"
-    },
-    {
-      "id": "tl_07",
-      "when": "~5 months ago",
-      "event": "Roommate notices right foot inversion when walking home after evening rehearsals"
-    },
-    {
-      "id": "tl_08",
-      "when": "Now",
-      "event": "Referred to movement-disorder clinic for second opinion before final-year recital"
+      "when": "Age 37 (now)",
+      "event": "Referred for reassessment of upper limb dystonia"
     }
   ],
   "movement_findings": [
     {
       "id": "mf_01",
-      "observation": "Involuntary flexion of right digits 3 and 4 at the MCP and PIP joints during right-hand tremolo; appears after ~4 minutes of continuous playing in clinic and progressively worsens.",
-      "context": "task (guitar, right hand)",
+      "observation": "Opening a screw-cap bottle with the right hand provokes dystonic posturing of the right upper limb with excessive wrist extension and finger hyperextension (source Video S1).",
+      "context": "task (screw-cap bottle, right hand)",
       "reviewer": ""
     },
     {
       "id": "mf_02",
-      "observation": "Compensatory wrist extension and elevation of the right forearm during playing, consistent with an attempt to counteract finger flexion.",
-      "context": "task (guitar)",
+      "observation": "Dystonic posturing is action-induced, appearing mainly during skilled voluntary movements of the right arm; not present at rest.",
+      "context": "action vs. rest",
       "reviewer": ""
     },
     {
       "id": "mf_03",
-      "observation": "Writing: excessive grip on the pen, flexion of digits 3–4, and ulnar deviation of the wrist emerging after ~6 lines; letters become small and cramped.",
-      "context": "task (writing, right hand)",
+      "observation": "No sensory trick identified.",
+      "context": "task",
       "reviewer": ""
     },
     {
       "id": "mf_04",
-      "observation": "Mirror movements: mild flexion of right digits 3–4 when the left hand performs rapid finger sequences.",
-      "context": "contralateral task",
+      "observation": "No diurnal variation observed.",
+      "context": "time of day",
       "reviewer": ""
     },
     {
       "id": "mf_05",
-      "observation": "Gait: after ~15 minutes on a treadmill, intermittent right foot inversion with plantar flexion during swing phase; absent at the start of the walk. Running not tested.",
-      "context": "gait, prolonged",
-      "reviewer": ""
-    },
-    {
-      "id": "mf_06",
-      "observation": "At rest and with sustained posture of both arms: no tremor, no dystonic posturing.",
-      "context": "rest / posture",
-      "reviewer": ""
-    },
-    {
-      "id": "mf_07",
-      "observation": "Sensory trick: resting the right thumb lightly against the guitar soundboard partially reduces digit flexion.",
-      "context": "task (guitar)",
+      "observation": "No parkinsonism, pyramidal signs, or cerebellar ataxia.",
+      "context": "general motor examination",
       "reviewer": ""
     }
   ],
   "neurological_exam": {
-    "mental_status": "Alert, oriented, fluent speech, normal attention and recall on bedside testing",
-    "cranial_nerves": "Normal, including saccades and pursuit; no Kayser–Fleischer rings visible on bedside inspection (no slit lamp performed)",
-    "tone": "Normal at rest in all limbs; no rigidity with activation maneuvers",
-    "power": "5/5 throughout",
-    "reflexes": "Upper limbs 2+ symmetric. Knees 3+ bilaterally, ankles 2+, no sustained clonus. Right plantar response equivocal; left flexor.",
-    "coordination": "Finger–nose and heel–shin normal; no dysmetria",
-    "gait": "Normal at onset of walking with normal arm swing; see mf_05 for findings after prolonged walking",
-    "bradykinesia_screen": "Finger tapping, hand opening, and toe tapping: normal speed and amplitude, no decrement, both sides",
-    "other": "Sensation normal. No fasciculations. No postural instability on pull test. Examination performed in late morning."
+    "mental_status": "No cognitive dysfunction",
+    "cranial_nerves": "Unremarkable",
+    "tone": "No parkinsonian rigidity reported",
+    "power": "Motor examination unremarkable",
+    "reflexes": "No pyramidal signs (individual reflex grades not reported in source)",
+    "coordination": "Unremarkable; no cerebellar ataxia",
+    "gait": "Not specifically described in source; no lower-limb involvement reported",
+    "bradykinesia_screen": "No parkinsonism",
+    "other": "Sensory and autonomic examinations unremarkable. Action-induced right upper limb dystonia as in mf_01–mf_02."
   },
   "labs": [
     {
       "id": "lab_01",
-      "test": "CBC",
-      "result": "Normal",
+      "test": "Electrolytes, renal function, CBC, liver function, urinalysis",
+      "result": "Unremarkable",
       "reference_range": "",
       "note": ""
     },
     {
       "id": "lab_02",
-      "test": "Comprehensive metabolic panel incl. liver enzymes",
+      "test": "Serum copper",
       "result": "Normal",
       "reference_range": "",
-      "note": ""
+      "note": "Value not reported in source"
     },
     {
       "id": "lab_03",
-      "test": "TSH",
-      "result": "1.9 mIU/L",
-      "reference_range": "0.4–4.0",
-      "note": ""
-    },
-    {
-      "id": "lab_04",
       "test": "Serum ceruloplasmin",
-      "result": "27 mg/dL",
-      "reference_range": "20–40",
-      "note": "24-hour urine copper and slit-lamp exam not performed"
-    },
-    {
-      "id": "lab_05",
-      "test": "Creatine kinase",
       "result": "Normal",
       "reference_range": "",
-      "note": ""
-    },
-    {
-      "id": "lab_06",
-      "test": "Vitamin B12",
-      "result": "Normal",
-      "reference_range": "",
-      "note": ""
+      "note": "Value not reported in source. Slit-lamp examination and 24-hour urine copper not reported."
     }
   ],
   "imaging": [
     {
       "id": "img_01",
-      "modality": "MRI brain with and without contrast (3T)",
-      "date": "~14 months ago",
-      "report": "No structural abnormality. Basal ganglia normal in signal and volume. No abnormal susceptibility. No enhancement. Impression: normal MRI brain."
-    },
-    {
-      "id": "img_02",
-      "modality": "MRI cervical spine",
-      "date": "~17 months ago",
-      "report": "Normal. No cord signal change or foraminal stenosis."
-    }
-  ],
-  "neurophysiology": [
-    {
-      "id": "np_01",
-      "study": "Nerve conduction studies, right upper limb",
-      "date": "~18 months ago",
-      "report": "Normal median, ulnar, and radial motor and sensory conduction. No evidence of entrapment neuropathy."
+      "modality": "MRI brain (axial T1- and T2-weighted)",
+      "date": "At referral",
+      "report": "Normal."
     }
   ],
   "medications": {
     "current": [
-      "Combined oral contraceptive"
+      "None reported"
     ],
     "prior_trials": [
       {
-        "drug": "Trihexyphenidyl",
-        "dose": "titrated to 2 mg BID",
-        "duration": "6 weeks",
-        "response": "Partial improvement in playing; stopped for dry mouth and impaired concentration"
+        "drug": "Clonazepam",
+        "dose": "1.5 mg/day",
+        "duration": "From age 29 (duration not reported)",
+        "response": "Ineffective"
       },
       {
-        "drug": "Botulinum toxin A to right FDS (digits 3–4 fascicles)",
-        "dose": "2 sessions",
-        "duration": "~8 and ~5 months ago",
-        "response": "Modest benefit lasting ~6 weeks; mild weakness of finger flexion after the second session"
+        "drug": "Trihexyphenidyl",
+        "dose": "6 mg/day",
+        "duration": "From age 29 (duration not reported)",
+        "response": "Ineffective"
       }
     ]
   },
-  "family_history": "Father (52) healthy. Mother (50) healthy. One younger brother (19) healthy. Paternal aunt reportedly 'walked on her toes and tripped a lot' as a girl and was told she would 'grow out of it'; she is now in her 50s and walks normally, per the patient. Paternal grandmother had 'shaky hands' in her 70s. No known diagnoses of dystonia, Parkinson disease, or liver disease. No consanguinity.",
-  "social_history": "Non-smoker. Alcohol: occasional, does not notice effect on symptoms. No recreational drugs. No antipsychotic or antiemetic exposure.",
-  "prior_workup_and_opinions": "Hand surgeon: no peripheral nerve or tendon cause. General neurologist (~15 months ago): 'Task-specific focal dystonia of the right hand (musician's dystonia). Consider sensorimotor retraining.' The gait change had not yet occurred at that visit."
+  "family_history": "No family history of neurological disorders reported.",
+  "social_history": "Not reported in source, beyond occupation and intensive practice at onset. No regular medication before symptom onset.",
+  "prior_workup_and_opinions": "Age 29: diagnosed with guitarist's cramp (task-specific focal dystonia); treated with clonazepam and trihexyphenidyl without benefit. No other prior opinions reported."
 }

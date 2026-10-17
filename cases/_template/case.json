@@ -58,6 +58,14 @@
       "report": ""
     }
   ],
+  "neurophysiology": [
+    {
+      "id": "np_01",
+      "study": "EEG / NCS / EMG (optional; omit if none)",
+      "date": "",
+      "report": ""
+    }
+  ],
   "medications": {
     "current": [],
     "prior_trials": [
