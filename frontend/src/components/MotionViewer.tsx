@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { Hand } from 'lucide-react'
 import { api } from '../api'
 import type { Annotation, CaseView } from '../types'
 
@@ -212,7 +213,7 @@ export function MotionViewer({ view, highlighted }: { view: CaseView; highlighte
         <canvas ref={canvas} className="motion-canvas" />
         {lm && (
           <div className="hud">
-            <div className="hud-row"><b>MediaPipe Hands</b><span>21 landmarks · {lm.meta.fps.toFixed(0)} fps{tracked ? ' · tracked zoom' : ''}</span></div>
+            <div className="hud-row"><Hand size={12} /><b>MediaPipe Hands</b><span>21 landmarks · {lm.meta.fps.toFixed(0)} fps{tracked ? ' · tracked zoom' : ''}</span></div>
             {k && <div className="hud-row"><span>extension</span><b className={k.ext > 1.3 ? 'hot' : ''}>{k.ext.toFixed(2)}</b>
               <span>spread</span><b>{k.spread.toFixed(2)}</b>
               {focusFinger !== null && <><span>moving</span><b>{FINGER_NAME[focusFinger]}</b></>}</div>}
