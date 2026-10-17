@@ -9,6 +9,7 @@ reached, using results saved in its `artifact`; finished sibling nodes are never
 """
 
 import asyncio
+import re
 import uuid
 from dataclasses import dataclass, field
 
@@ -21,12 +22,16 @@ from .llm import LLMClient
 from .search import Searcher
 from .validator import MAX_CHILDREN_PER_DECISION, check_spawn
 
+# A held-out entry that records the absence of a result is not a result.
+_NO_RESULT = re.compile(r"\s*not (reported|performed|available|done)\b", re.I)
+
 CHECKPOINTS = {
     "lead": ["created", "analyzed", "children_spawned", "children_done", "reported"],
     "investigator": ["created", "planned", "research_done", "analyzed", "children_spawned", "children_done",
                      "finished"],
 }
 MAX_ATTEMPTS = 3
+RATE_LIMIT_BACKOFF_S = 15  # doubled per attempt; only for rate-limit errors
 VERDICTS = {"ACCEPT": "accepted", "REVISE": "revise", "INSUFFICIENT": "insufficient"}
 
 
@@ -80,6 +85,9 @@ class Orchestrator:
         nodes = self.db.get_nodes(run_id)
         lead = next(n for n in nodes if n["role"] == "lead")
         ctx = self._context(run_id, load_case(run["slot"], run["mode"]))
+        for n in nodes:  # failed nodes get another set of attempts, from their last checkpoint
+            if n["status"] == "failed":
+                self._set(ctx, n, status="retrying")
         self.db.update_run(run_id, status="running")
         ctx.task = asyncio.create_task(self._drive(ctx, lead["id"]))
 
@@ -179,6 +187,8 @@ class Orchestrator:
                 self.bus.emit(ctx.run_id, "node.retry", {"node_id": node_id, "attempt": attempt + 1,
                                                          "checkpoint": node["checkpoint"],
                                                          "reason": f"{type(e).__name__}: {e}"[:300]})
+                if "RateLimit" in type(e).__name__ and attempt < MAX_ATTEMPTS - 1:
+                    await asyncio.sleep(min(60, RATE_LIMIT_BACKOFF_S * 2 ** attempt))
         self._set(ctx, self.db.get_node(ctx.run_id, node_id), status="failed")
 
     # --- lead ---------------------------------------------------------------
@@ -218,16 +228,30 @@ class Orchestrator:
                 "findings": [{"evidence_id": f["evidence_id"], "claim": f["claim"], "stance": f.get("stance"),
                               "hypothesis": f.get("hypothesis")}
                              for f in c["artifact"].get("findings", []) if f["grounded"]]})
-        report = await self._ask(ctx, "lead_report", node["model"], {"case": case, "plan": a["plan"],
-                                                                     "branches": branches})
+        report = await self._ask(ctx, "lead_report", node["model"], {
+            "case": case, "plan": a["plan"], "branches": branches,
+            "investigation_results": self._resulted(ctx)})
         self._check_report_ids(ctx, report)
+        self._drop_resulted_suggestions(ctx, report)
         self.db.update_run(ctx.run_id, report=report)
         self.bus.emit(ctx.run_id, "report.ready", {"report": report})
         self._set(ctx, node, status="done", checkpoint="reported", artifact=a)
 
+    def _resulted(self, ctx: RunContext) -> list[dict]:
+        """Every held-out result released during the run, one per investigation, except entries
+        recording that the test was never done ("Not reported ..."). These are facts
+        from the patient's record, so they reach the report whatever the verifier said about the
+        branch that requested them. Read from the DB so a resumed run still has them."""
+        return [{"source_id": s["id"], "investigation": s["title"], "result": s["text"]}
+                for s in self.db.get_sources(ctx.run_id)
+                if s["id"].startswith("HELDOUT:") and not _NO_RESULT.match(s["text"] or "")]
+
     def _check_report_ids(self, ctx: RunContext, report: dict) -> None:
-        """Drop cited ids that are neither run evidence nor case findings; record what was dropped."""
-        valid = {e["id"] for e in self.db.get_evidence(ctx.run_id) if e["grounded"]} | ctx.bundle.finding_ids()
+        """Drop cited ids that are neither run evidence, released results nor case findings, and
+        entries that state a method's limits (they support nothing); record what was dropped."""
+        valid = ({e["id"] for e in self.db.get_evidence(ctx.run_id) if e["grounded"]}
+                 | {r["source_id"] for r in self._resulted(ctx)} | ctx.bundle.finding_ids())
+        valid -= {e["id"] for e in ctx.bundle.motion_analysis if e.get("role") == "limitation"}
         dropped = []
         for item in report.get("differential") or []:
             for key in ("supporting_evidence_ids", "contradicting_evidence_ids"):
@@ -235,6 +259,16 @@ class Orchestrator:
                 dropped += [i for i in ids if i not in valid]
                 item[key] = [i for i in ids if i in valid]
         report["dropped_invalid_ids"] = sorted(set(dropped))
+
+    def _drop_resulted_suggestions(self, ctx: RunContext, report: dict) -> None:
+        """A brief must not recommend a test whose result is already in hand."""
+        done = {r["source_id"].removeprefix("HELDOUT:") for r in self._resulted(ctx)}
+        keep, dropped = [], []
+        for s in report.get("suggested_investigations") or []:
+            gap = ctx.releaser.match(f"{s.get('investigation', '')}")
+            (dropped if gap in done else keep).append(s)
+        report["suggested_investigations"] = keep
+        report["dropped_already_resulted"] = [s.get("investigation", "") for s in dropped]
 
     # --- investigator -------------------------------------------------------
 

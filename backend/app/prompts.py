@@ -121,12 +121,19 @@ LEAD_REPORT = f"""You are the lead investigator writing the clinician-review bri
 
 Payload: {{"case": <case record>, "plan": <your earlier plan>,
   "branches": [{{"objective": str, "verification": str, "conclusion": str,
-                 "findings": [{{"evidence_id": str, "claim": str, "stance": str, "hypothesis": str}}]}}]}}
+                 "findings": [{{"evidence_id": str, "claim": str, "stance": str, "hypothesis": str}}]}}],
+  "investigation_results": [{{"source_id": "HELDOUT:...", "investigation": str, "result": str}}]}}
 
-Write the brief from verified branches. Evidence ids are the evidence_id values in branches or
-case finding ids (mf_*, tl_*, lab_*, img_*, np_*, ka_*) or case section keys (e.g. family_history,
-neurological_exam.reflexes); cite no other ids. Use "functional", not "psychogenic". Branches that are not ACCEPTED must be reported as
-unresolved, not as conclusions. Always state whether Wilson disease and dopa-responsive
+Write the brief from verified branches and the investigation results. Evidence ids are the
+evidence_id values in branches, investigation result source_ids (HELDOUT:...), case finding ids
+(mf_*, tl_*, lab_*, img_*, np_*, ka_*) or case section keys (e.g. family_history,
+neurological_exam.reflexes); cite no other ids. Use "functional", not "psychogenic".
+Investigation results are part of the patient's record, whatever the verdict on the branch that
+requested them: weigh each one in the summary, the differential and cant_miss, and cite it by its
+source_id. Never suggest an investigation that already has a result; say what it showed instead.
+Cite a ka_* entry only for the specific measurement you use, and say which number; an entry that
+states the limits of the analysis supports nothing. Branch conclusions that are not ACCEPTED must
+be reported as unresolved, not as conclusions. Always state whether Wilson disease and dopa-responsive
 dystonia were addressed, excluded by a named test, or remain open, when the presentation
 calls for them.
 

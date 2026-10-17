@@ -55,6 +55,7 @@ function Report({ state }: { state: RunState }) {
       </tbody></table>
       <h4>Potentially discriminating investigations</h4>
       <ul>{r.suggested_investigations.map((s, i) => <li key={i}><b>{s.investigation}</b> <span className="muted">{s.rationale}</span></li>)}</ul>
+      {!!r.dropped_already_resulted?.length && <p className="fineprint">Removed by code, result already obtained: {r.dropped_already_resulted.join('; ')}</p>}
       <h4>Unresolved questions</h4>
       <ul>{r.unresolved_questions.map((q, i) => <li key={i}>{q}</li>)}</ul>
     </div>

@@ -80,7 +80,10 @@ class CrusoeClient:
 
         if not settings.crusoe_api_key:
             raise RuntimeError("CRUSOE_API_KEY is not set")
-        self.client = AsyncOpenAI(base_url=settings.crusoe_base_url, api_key=settings.crusoe_api_key)
+        # The SDK backs off exponentially and honours Retry-After on 429s; the default of 2 retries
+        # gives up within seconds, which a shared inference endpoint can exceed.
+        self.client = AsyncOpenAI(base_url=settings.crusoe_base_url, api_key=settings.crusoe_api_key,
+                                  max_retries=5)
 
     async def complete_json(self, role: str, model: str, payload: dict) -> dict:
         messages = [

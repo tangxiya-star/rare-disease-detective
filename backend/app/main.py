@@ -13,6 +13,7 @@ from .cases import list_cases, load_case
 from .config import load_settings
 from .db import DB
 from .events import EventBus
+from .recordings import import_recordings
 from .llm import make_llm
 from .orchestrator import Orchestrator, public_node
 
@@ -24,7 +25,8 @@ state: dict = {}
 async def lifespan(app: FastAPI):
     db = DB(settings.db_path)
     bus = EventBus(db)
-    state.update(db=db, bus=bus, orch=Orchestrator(settings, db, bus, make_llm(settings)))
+    state.update(db=db, bus=bus, orch=Orchestrator(settings, db, bus, make_llm(settings)),
+                 recordings=import_recordings(db))
     yield
 
 
@@ -49,6 +51,12 @@ class Inject(BaseModel):
 def health():
     return {"ok": True, "llm_backend": state["orch"].llm.name, "search_backend": settings.search_backend,
             "lead_model": settings.lead_model, "child_model": settings.child_model}
+
+
+@app.get("/api/recordings")
+async def recordings():
+    """Real runs recorded for replay (recordings/*.json), newest first."""
+    return sorted(state["recordings"], key=lambda r: -r["recorded_at"])
 
 
 @app.get("/api/cases")

@@ -187,6 +187,11 @@ class HeldOutReleaser:
                 best, best_score = i, score
         return best, best_score
 
+    def match(self, text: str) -> str | None:
+        """gap_id of the held-out investigation this text names, if any (ignores release rules)."""
+        i, score = self._best(text)
+        return self.items[i]["gap_id"] if i >= 0 and score >= self.min_score else None
+
     def request(self, request: str, depth: int) -> Release:
         i, score = self._best(request)
         if i < 0 or score < self.min_score:

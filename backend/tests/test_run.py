@@ -89,3 +89,64 @@ async def test_second_run_in_same_database(orch):
     # node ids restart per run; the scripted verifier only revises once per client, so trees may differ
     assert orch.db.get_nodes(second)[0]["id"] == "node_00"
     assert all(n["run_id"] == second for n in orch.db.get_nodes(second))
+
+
+async def test_report_receives_released_results_and_never_suggests_them(orch):
+    seen = {}
+    real = orch.llm.lead_report
+
+    def spy(p):
+        seen.update(p)
+        out = real(p)
+        out["differential"][0]["supporting_evidence_ids"] += ["ka_05", "ka_02"]
+        out["suggested_investigations"].append({"investigation": "Slit-lamp examination and 24-hour urine copper",
+                                                "rationale": "complete the Wilson screen"})
+        return out
+
+    orch.llm.lead_report = spy
+    run_id = await orch.start_run("01", "demo")
+    await orch.wait(run_id)
+    report = orch.db.get_run(run_id)["report"]
+    released = {e["data"]["source_id"] for e in orch.db.events_since(run_id) if e["type"] == "heldout.released"}
+    # the Wilson screen is released as "Not reported in the source publication": no result, so it is
+    # not passed as one, and suggesting it stays legitimate
+    assert "HELDOUT:gap_06" in released
+    assert {r["source_id"] for r in seen["investigation_results"]} == released - {"HELDOUT:gap_06"}
+    assert any("Slit-lamp" in s["investigation"] for s in report["suggested_investigations"])
+    # the scripted model suggests a levodopa trial, whose result was released during the run
+    assert "Supervised levodopa trial" in report["dropped_already_resulted"]
+    assert not any("levodopa" in s["investigation"].lower() for s in report["suggested_investigations"])
+    # a limits statement supports nothing; a real measurement may be cited
+    ids = report["differential"][0]["supporting_evidence_ids"]
+    assert "ka_02" in ids and "ka_05" not in ids and "ka_05" in report["dropped_invalid_ids"]
+
+
+async def test_recording_round_trip_is_verbatim(orch, tmp_path):
+    import json
+    from app.recordings import export_run, import_recordings
+    run_id = await orch.start_run("01", "demo")
+    await orch.wait(run_id)
+    rec = export_run(orch.db, run_id, "test")
+    (tmp_path / "rec").mkdir()
+    (tmp_path / "rec" / "r.json").write_text(json.dumps(rec))
+    fresh = DB(tmp_path / "fresh.sqlite3")
+    index = import_recordings(fresh, tmp_path / "rec")
+    assert index[0]["run_id"] == run_id and index[0]["llm_backend"] == "mock"
+    assert fresh.events_since(run_id) == orch.db.events_since(run_id)
+    assert fresh.get_run(run_id) == orch.db.get_run(run_id)
+    import_recordings(fresh, tmp_path / "rec")  # idempotent
+    assert len(fresh.events_since(run_id)) == len(orch.db.events_since(run_id))
+
+
+async def test_failed_run_resumes_from_checkpoint(orch):
+    run_id = await orch.start_run("01", "demo")
+    await orch.wait(run_id)
+    lead = next(n for n in orch.db.get_nodes(run_id) if n["role"] == "lead")
+    orch.db.update_node(run_id, lead["id"], status="failed", checkpoint="children_done")
+    orch.db.update_run(run_id, status="failed", report=None)
+    before = {n["id"]: n["attempts"] for n in orch.db.get_nodes(run_id)}
+    await orch.resume_run(run_id)
+    await orch.wait(run_id)
+    assert orch.db.get_run(run_id)["status"] == "completed" and orch.db.get_run(run_id)["report"]
+    after = {n["id"]: n["attempts"] for n in orch.db.get_nodes(run_id)}
+    assert all(after[i] == before[i] for i in before if i != lead["id"]), "only the lead reruns"

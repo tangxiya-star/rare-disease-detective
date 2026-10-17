@@ -135,7 +135,7 @@ def analyse(landmarks: dict, task_side: str = "right") -> list[dict]:
                               f"{'more stable' if ratio > 1 else 'not more stable'} than the {task_side} hand's.",
                     "method": f"Mean frame-to-frame change of wrist-relative landmark positions, scaled by hand "
                               f"size; global hand movement removed. {src}"})
-    out.append({"id": "ka_05", "measure": "Limits of this analysis",
+    out.append({"id": "ka_05", "role": "limitation", "measure": "Limits of this analysis",
                 "result": "Wrist extension cannot be measured: hand landmarks include no forearm point. "
                           "The clip shows a single task with no rest segment, so action and rest cannot be "
                           f"compared. Tremor frequency not estimated (2D, {meta['fps']:.0f} fps, {dur:.0f} s). "
