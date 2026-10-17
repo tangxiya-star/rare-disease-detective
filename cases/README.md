@@ -1,6 +1,6 @@
 # Case fixtures
 
-Ten case specifications per the PRD (§3). Each case lives in `cases/<nn>_<slug>/`:
+Ten case specifications per the PRD (§3). Source cases (already collected by Holly) live in `sources/`; the structured fixtures below are converted from them. Each case lives in `cases/<nn>_<slug>/`:
 
 - `case.json` — agent-visible input: history, timeline, physician-reviewed movement findings, exam, labs, imaging reports, meds, family history
 - `annotations.json` — clinician-reviewed movement annotations (hero case)

@@ -6,19 +6,21 @@ This is your working document for the day. It pulls out everything the engineeri
 
 **The one thing to know about the system:** it is not a diagnosis generator. A Lead Agent reads the case, decides what it is uncertain about, and spawns child agents to investigate specific questions. A Verifier then accepts or rejects each claim based on evidence. Your job is to make sure the cases are clinically real, the agents are asking the right questions, and the verifier is rejecting the right things.
 
+**Case sourcing is done.** Holly has already collected the source cases for all ten slots and will put them in `cases/sources/`. You do not need to find cases. Your work on cases is to **review them clinically, convert them into the structured format, and write the held-out reference answer** for each.
+
 ---
 
 ## 1. What you own
 
 | Deliverable | Needed by (PT) | Blocks |
 |---|---|---|
-| **A. Hero case JSON** (Case 01, guitarist DRD) | **10:30 AM** | Everything. Holly cannot run the first real investigation without it. |
+| **A. Hero case JSON** (Case 01, guitarist DRD), converted from Holly's source case | **10:30 AM** | Everything. Holly cannot run the first real investigation without it. |
 | **B. Hero case reference answer** (held out) | 11:00 AM | Verifier calibration, evaluation |
 | **C. Movement-disorder reasoning rules** | 11:30 AM | Lead Agent prompt |
 | **D. Verifier acceptance checklist** | 12:30 PM | Verifier prompt |
 | **E. Review of first investigation traces** | 1–3 PM | Prompt corrections before UI work |
-| **F. Three validation cases** (02, 04, 08 recommended) | 5 PM | P1 demo cases |
-| **G. Remaining six case stubs** (03, 05, 06, 07, 09, 10) | 7 PM | Ten-fixture target; stubs are fine |
+| **F. Three validation cases** (02, 04, 08 recommended): review + convert | 5 PM | P1 demo cases |
+| **G. Remaining six cases** (03, 05, 06, 07, 09, 10): light review + stub conversion | 7 PM | Ten-fixture target; stubs are fine |
 | **H. Hero case movement annotations** | 5 PM | Motion Viewer |
 | **I. Clinical sign-off on demo report + safety language** | 9 PM | Submission |
 
@@ -30,7 +32,7 @@ Priority order if time runs short: **A → B → D → C → E → H → F → I
 
 **Case 01 — Guitarist with dopa-responsive dystonia.**
 
-File: `cases/01_guitarist_drd/case.json`. Copy `cases/_template/case.json` and fill it in.
+Start from Holly's source case in `cases/sources/`. Convert it into `cases/01_guitarist_drd/case.json` using `cases/_template/case.json`, and correct anything that isn't clinically right.
 
 What the agents will see. **Do not include the diagnosis, the levodopa response, or any finding that gives it away.** Those go in the reference file (Deliverable B).
 
@@ -50,7 +52,7 @@ Required sections:
 
 Clinical realism matters more than completeness. If a real patient wouldn't have had a DAT scan yet, leave it out and let the agent ask for it.
 
-**Source:** Use a published de-identified case report with a license that permits reuse, or write a synthetic case. If you adapt a published case, note the citation in `provenance` so we can credit it. If synthetic, say so. No real patient data of any kind.
+**Source check:** The case comes from Holly's collection. Please confirm it's either a published de-identified case report whose license permits reuse, or flag it so we can make a synthetic variant. Put the citation in `provenance`. No real patient data of any kind.
 
 ---
 
@@ -130,7 +132,7 @@ Give feedback as a short list: node ID → what's wrong → what it should have 
 
 ## 7. Deliverables F and G: Validation cases and stubs
 
-Same JSON format as the hero case, same reference-file split.
+Source cases for all of these are already in `cases/sources/`. Same JSON format as the hero case, same reference-file split. Your job is clinical review and conversion, not sourcing. If a source case is clinically weak or doesn't fit its slot, say so and suggest how to adjust it.
 
 **Recommended three for full review (F):**
 
@@ -140,7 +142,7 @@ Same JSON format as the hero case, same reference-file split.
 | **04 Episodic Ataxia Type 2** | Episodic symptoms force the agent to reason about triggers and interictal exam; EA1 vs. EA2 is a real discrimination problem |
 | **08 Functional Movement Disorder** | The anti-anchoring test. Must include positive functional signs (distractibility, entrainment, variability, suggestibility). If the system calls this DRD, we have a problem and want to know |
 
-**Stubs (G):** For 03, 05, 06, 07, 09, 10, a case JSON with the core sections filled at the level of a good exam vignette is enough. Reference file with just `reference_diagnosis` and `acceptable_top5`. Case 10 (synthetic contradictory) should contain one deliberate internal contradiction, e.g. history says symptoms are worse in the morning but the timeline says evening. The agent should notice and flag it rather than pick one silently.
+**Stubs (G):** For 03, 05, 06, 07, 09, 10, a quick review of Holly's source case and a case JSON with the core sections filled at the level of a good exam vignette is enough. Reference file with just `reference_diagnosis` and `acceptable_top5`. Case 10 (synthetic contradictory) needs one deliberate internal contradiction added if the source doesn't already have one, e.g. history says symptoms are worse in the morning but the timeline says evening. The agent should notice and flag it rather than pick one silently.
 
 ---
 
