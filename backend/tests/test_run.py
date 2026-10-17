@@ -99,6 +99,8 @@ async def test_report_receives_released_results_and_never_suggests_them(orch):
         seen.update(p)
         out = real(p)
         out["differential"][0]["supporting_evidence_ids"] += ["ka_05", "ka_02"]
+        out["suggested_investigations"].append({"investigation": "Slit-lamp examination and 24-hour urine copper",
+                                                "rationale": "complete the Wilson screen"})
         return out
 
     orch.llm.lead_report = spy
@@ -106,7 +108,11 @@ async def test_report_receives_released_results_and_never_suggests_them(orch):
     await orch.wait(run_id)
     report = orch.db.get_run(run_id)["report"]
     released = {e["data"]["source_id"] for e in orch.db.events_since(run_id) if e["type"] == "heldout.released"}
-    assert released and {r["source_id"] for r in seen["investigation_results"]} == released
+    # the Wilson screen is released as "Not reported in the source publication": no result, so it is
+    # not passed as one, and suggesting it stays legitimate
+    assert "HELDOUT:gap_06" in released
+    assert {r["source_id"] for r in seen["investigation_results"]} == released - {"HELDOUT:gap_06"}
+    assert any("Slit-lamp" in s["investigation"] for s in report["suggested_investigations"])
     # the scripted model suggests a levodopa trial, whose result was released during the run
     assert "Supervised levodopa trial" in report["dropped_already_resulted"]
     assert not any("levodopa" in s["investigation"].lower() for s in report["suggested_investigations"])

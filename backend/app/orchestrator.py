@@ -9,6 +9,7 @@ reached, using results saved in its `artifact`; finished sibling nodes are never
 """
 
 import asyncio
+import re
 import uuid
 from dataclasses import dataclass, field
 
@@ -20,6 +21,9 @@ from .grounding import check_finding
 from .llm import LLMClient
 from .search import Searcher
 from .validator import MAX_CHILDREN_PER_DECISION, check_spawn
+
+# A held-out entry that records the absence of a result is not a result.
+_NO_RESULT = re.compile(r"\s*not (reported|performed|available|done)\b", re.I)
 
 CHECKPOINTS = {
     "lead": ["created", "analyzed", "children_spawned", "children_done", "reported"],
@@ -228,11 +232,13 @@ class Orchestrator:
         self._set(ctx, node, status="done", checkpoint="reported", artifact=a)
 
     def _resulted(self, ctx: RunContext) -> list[dict]:
-        """Every held-out result released during the run, one per investigation. These are facts
+        """Every held-out result released during the run, one per investigation, except entries
+        recording that the test was never done ("Not reported ..."). These are facts
         from the patient's record, so they reach the report whatever the verifier said about the
         branch that requested them. Read from the DB so a resumed run still has them."""
         return [{"source_id": s["id"], "investigation": s["title"], "result": s["text"]}
-                for s in self.db.get_sources(ctx.run_id) if s["id"].startswith("HELDOUT:")]
+                for s in self.db.get_sources(ctx.run_id)
+                if s["id"].startswith("HELDOUT:") and not _NO_RESULT.match(s["text"] or "")]
 
     def _check_report_ids(self, ctx: RunContext, report: dict) -> None:
         """Drop cited ids that are neither run evidence, released results nor case findings, and
