@@ -79,6 +79,7 @@ button.primary:disabled { opacity: 0.45; cursor: default; }
 .error-bar { background: var(--bad-soft); color: var(--bad); padding: 8px 16px; border-bottom: 1px solid var(--line); cursor: pointer; }
 
 .workspace { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(340px, 27%) minmax(0, 1fr) minmax(360px, 28%); }
+.workspace.agents-view { grid-template-columns: minmax(0, 1fr) minmax(380px, 34%); }
 .panel { display: flex; flex-direction: column; min-height: 0; min-width: 0; overflow: hidden; background: var(--panel); }
 .panel.left { border-right: 1px solid var(--line); }
 .panel.right { border-left: 1px solid var(--line); }
