@@ -56,7 +56,7 @@ async def test_agent_crash_resumes_from_checkpoint_without_rerunning_siblings(or
     recovered = [e for e in events if e["type"] == "node.recovered" and e["data"]["node_id"] == "node_01"]
     assert retry and recovered
     assert recovered[0]["data"]["from_checkpoint"] != "created"
-    sibling = orch.db.get_node("node_02")
+    sibling = orch.db.get_node(run_id, "node_02")
     assert sibling["attempts"] == 1, "finished sibling must not be rerun"
     assert orch.db.get_run(run_id)["status"] == "completed"
 
@@ -78,3 +78,14 @@ async def test_resume_after_restart_skips_finished_work(orch):
     await orch.wait(run_id)
     after = {n["id"]: n["attempts"] for n in orch.db.get_nodes(run_id)}
     assert before == after
+
+
+async def test_second_run_in_same_database(orch):
+    first = await orch.start_run("01", "demo")
+    await orch.wait(first)
+    second = await orch.start_run("01", "demo")
+    await orch.wait(second)
+    assert orch.db.get_run(second)["status"] == "completed"
+    # node ids restart per run; the scripted verifier only revises once per client, so trees may differ
+    assert orch.db.get_nodes(second)[0]["id"] == "node_00"
+    assert all(n["run_id"] == second for n in orch.db.get_nodes(second))
