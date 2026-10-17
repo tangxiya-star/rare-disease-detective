@@ -1,12 +1,18 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { api } from './api'
+import { beats as toBeats } from './beats'
 import { AgentTree } from './components/AgentTree'
 import { BottomTabs } from './components/BottomTabs'
 import { EvidenceGraph } from './components/EvidenceGraph'
 import { Inspector } from './components/Inspector'
 import { PatientPanel } from './components/PatientPanel'
-import type { CaseView, Health, Mode } from './types'
-import { useRun } from './useRun'
+import { Stage } from './components/Stage'
+import { Timeline } from './components/Timeline'
+import type { CaseView, Health, Mode, Recording } from './types'
+import { stateAt, useRun } from './useRun'
+import { useDirector, usePlayback } from './useStage'
+
+type Layout = 'workbench' | 'stage'
 
 const STATUS_TEXT = { idle: 'Ready', running: 'Investigating', completed: 'Report ready', failed: 'Failed' }
 
@@ -26,7 +32,48 @@ export default function App() {
   }
   const [selected, setSelected] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const state = useRun(runId)
+  const [layout, setLayoutState] = useState<Layout>(params.get('view') === 'stage' ? 'stage' : 'workbench')
+  const setLayout = (l: Layout) => {
+    setLayoutState(l)
+    const u = new URL(location.href)
+    if (l === 'stage') u.searchParams.set('view', 'stage'); else u.searchParams.delete('view')
+    history.replaceState(null, '', u)
+  }
+  const [pinned, setPinned] = useState<number | null>(null)
+  const [recordings, setRecordings] = useState<Recording[]>([])
+  const rewind = useRef(false)
+  const live = useRun(runId)
+  const beats = useMemo(() => toBeats(live.events), [live.events])
+  const pb = usePlayback(live.events, beats, runId)
+  // Scrubbing or replaying shows the state as it was at the cursor; otherwise the live state.
+  const state = useMemo(() => (pb.cursor === null ? live : stateAt(live, pb.cursor)), [live, pb.cursor])
+  const directed = useDirector(beats, runId, pb.cursor === null)
+  const beat = pb.cursor === null ? directed : [...beats].reverse().find(b => b.seq <= pb.cursor!) ?? null
+
+  useEffect(() => { setPinned(null) }, [runId])
+  useEffect(() => { api.recordings().then(setRecordings).catch(() => setRecordings([])) }, [])
+  // A recording opens at its first event, ready to replay, instead of on the final report.
+  useEffect(() => {
+    if (rewind.current && live.events.length) { rewind.current = false; pb.scrub(live.events[0].seq) }
+  }, [live.events.length]) // eslint-disable-line react-hooks/exhaustive-deps
+  const recording = recordings.find(r => r.run_id === runId)
+  const openRecording = (id: string) => {
+    const r = recordings.find(x => x.run_id === id)
+    if (!r) return
+    setError(null); setSelected(null); setMode(r.mode); setSlot(r.slot); setRunId(r.run_id)
+    rewind.current = true
+  }
+  useEffect(() => {
+    if (layout !== 'stage') return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) return
+      if (e.key === ' ') { e.preventDefault(); if (pb.playing) pb.pause(); else pb.play() }
+      else if (/^[1-5]$/.test(e.key)) setPinned(Number(e.key))
+      else if (e.key === '0' || e.key === 'a') setPinned(null)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [layout, pb])
 
   useEffect(() => { api.health().then(setHealth).catch(e => setError(`Backend not reachable: ${e.message}`)) }, [])
   useEffect(() => {
@@ -39,7 +86,7 @@ export default function App() {
     setError(null); setSelected(null)
     try { setRunId((await api.startRun(slot, mode)).run_id) } catch (e: any) { setError(e.message) }
   }
-  const crash = () => runId && api.inject(runId, 'agent_crash', selected && state.nodes[selected]?.role !== 'lead' ? selected : undefined)
+  const crash = () => runId && api.inject(runId, 'agent_crash', selected && live.nodes[selected]?.role !== 'lead' ? selected : undefined)
   const searchFail = () => runId && api.inject(runId, 'search_failure')
 
   // Case findings cited by the selected node's evidence light up in the patient panel and video track.
@@ -53,8 +100,8 @@ export default function App() {
     return ids
   }, [state.evidence, selected])
 
-  const backend = state.llmBackend ?? health?.llm_backend
-  const running = state.status === 'running'
+  const backend = live.llmBackend ?? health?.llm_backend
+  const running = live.status === 'running'
 
   return (
     <div className="app">
@@ -70,7 +117,23 @@ export default function App() {
             {cases.map(c => <option key={c.slot} value={c.slot}>Case {c.slot} · {c.case_id}</option>)}
           </select>
         </div>
-        <div className={`run-status st-${state.status}`}><i />{STATUS_TEXT[state.status]}</div>
+        <div className={`run-status st-${live.status}`}><i />{STATUS_TEXT[live.status]}</div>
+        <div className="seg">
+          {(['workbench', 'stage'] as Layout[]).map(l => (
+            <button key={l} className={layout === l ? 'on' : ''} onClick={() => setLayout(l)}
+              title={l === 'stage' ? 'One main stage that cuts to each pivot; for projecting (keys: space, 1–5, 0)' : 'All panels at once'}>{l}</button>
+          ))}
+        </div>
+        {recordings.length > 0 && (
+          <select className="rec-picker" value={recording?.run_id ?? ''} onChange={e => openRecording(e.target.value)} disabled={running}
+            title="Replay a recorded real run from its own event log">
+            <option value="" disabled>Recorded runs…</option>
+            {recordings.map(r => (
+              <option key={r.run_id} value={r.run_id}>{r.label} · {r.duration_s < 90 ? `${Math.round(r.duration_s)} s` : `${Math.round(r.duration_s / 60)} min`} · {r.llm_backend}</option>
+            ))}
+          </select>
+        )}
+        {recording && <span className="badge replay" title={`Recorded ${new Date(recording.recorded_at * 1000).toLocaleString()}; replayed from its event log`}>REPLAY</span>}
         {backend === 'mock' && <span className="badge mock" title="Scripted answers; not clinical output">MOCK MODEL</span>}
         {backend === 'crusoe' && <span className="badge live" title={`${health?.lead_model} / ${health?.child_model}`}>Nemotron · Crusoe</span>}
         <div className="spacer" />
@@ -81,11 +144,19 @@ export default function App() {
           </div>
         )}
         <button className="primary" onClick={start} disabled={running || !view}>
-          {running ? 'Investigating…' : state.status === 'idle' ? 'Start investigation' : 'Run again'}
+          {running ? 'Investigating…' : live.status === 'idle' ? 'Start investigation' : 'Run again'}
         </button>
       </header>
       {error && <div className="error-bar" onClick={() => setError(null)}>{error}</div>}
+      {runId && (
+        <Timeline events={live.events} beats={beats} cursor={pb.cursor} playing={pb.playing} speed={pb.speed} live={running}
+          onScrub={pb.scrub} onPlay={pb.play} onPause={pb.pause} onSpeed={pb.setSpeed} />
+      )}
 
+      {layout === 'stage' ? (
+        <Stage state={state} view={view} slot={slot} mode={mode} beat={beat} pinned={pinned} setPinned={setPinned}
+          selected={selected} onSelect={setSelected} highlighted={highlighted} />
+      ) : (
       <main className="workspace">
         <aside className="panel left">
           <div className="panel-title"><span className="mod-dot amber" />Motion viewer <span className="muted">· MediaPipe hand landmarks</span></div>
@@ -111,6 +182,7 @@ export default function App() {
           </div>
         </aside>
       </main>
+      )}
     </div>
   )
 }

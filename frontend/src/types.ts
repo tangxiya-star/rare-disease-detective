@@ -93,4 +93,8 @@ export interface CaseView {
   has_landmarks?: boolean
 }
 
+export interface Recording {
+  run_id: string; label: string; llm_backend: string; slot: string; mode: Mode; recorded_at: number; duration_s: number
+}
+
 export interface Health { llm_backend: 'mock' | 'crusoe'; search_backend: string; lead_model: string; child_model: string }
