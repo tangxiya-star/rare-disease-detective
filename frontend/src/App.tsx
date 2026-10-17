@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { api } from './api'
-import { AgentCanvas } from './components/AgentCanvas'
+import { AgentTree } from './components/AgentTree'
 import { BottomTabs } from './components/BottomTabs'
 import { EvidenceGraph } from './components/EvidenceGraph'
 import { Inspector } from './components/Inspector'
@@ -92,18 +92,18 @@ export default function App() {
           <PatientPanel view={view} highlighted={highlighted} released={state.releasedMedia} runId={runId} />
         </aside>
         <section className="panel center">
-          <div className="panel-title"><span className="mod-dot cyan" />Recursive agent tree
-            <span className="muted"> · {state.order.length} nodes · every node created by a model decision at runtime</span></div>
-          <div className="canvas">
-            <AgentCanvas nodes={state.nodes} order={state.order} activity={state.activity} selected={selected} onSelect={setSelected} />
-          </div>
-          <BottomTabs state={state} onSelect={setSelected} />
-        </section>
-        <aside className="panel right">
           <div className="panel-title"><span className="mod-dot teal" />Clinical evidence graph
             <span className="muted"> · {state.evidence.filter(e => e.grounded).length} grounded findings</span></div>
           <div className="graph-pane">
             <EvidenceGraph state={state} onSelectAgent={setSelected} />
+          </div>
+          <BottomTabs state={state} onSelect={setSelected} />
+        </section>
+        <aside className="panel right">
+          <div className="panel-title"><span className="mod-dot cyan" />Agent orchestration
+            <span className="muted"> · {state.order.length} nodes · each created by a model decision at runtime</span></div>
+          <div className="tree-pane">
+            <AgentTree nodes={state.nodes} order={state.order} activity={state.activity} selected={selected} onSelect={setSelected} />
           </div>
           <div className="panel-title sub">Evidence inspector</div>
           <div className="inspector-pane">
