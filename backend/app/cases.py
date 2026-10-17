@@ -9,10 +9,12 @@ investigation and the reference's release rule allows it.
 import json
 import re
 from dataclasses import dataclass, field
+from functools import cached_property
 from pathlib import Path
 from typing import Literal
 
 from .config import REPO_ROOT
+from .kinematics import analyse as analyse_motion
 
 Mode = Literal["scored", "demo"]
 MANIFEST = REPO_ROOT / "cases" / "manifest.json"
@@ -26,7 +28,7 @@ _CASE_SECTIONS = ("chief_complaint", "history_of_present_illness", "family_histo
 class CaseBundle:
     slot: str
     mode: Mode
-    case: dict
+    raw_case: dict
     reference: dict
     annotations: dict | None = None
     video: Path | None = None
@@ -37,6 +39,18 @@ class CaseBundle:
     @property
     def case_id(self) -> str:
         return self.case["case_id"]
+
+    @cached_property
+    def motion_analysis(self) -> list[dict]:
+        """Kinematic measurements from the case video's hand landmarks (ka_* entries), if any."""
+        if not self.landmarks or not self.landmarks.exists():
+            return []
+        return analyse_motion(json.loads(self.landmarks.read_text()))
+
+    @property
+    def case(self) -> dict:
+        """case.json plus motion_analysis, so the measurements are citable like any finding."""
+        return {**self.raw_case, "motion_analysis": self.motion_analysis} if self.motion_analysis else self.raw_case
 
     def agent_view(self) -> dict:
         """The only case content any model may see. Provenance is dropped: it is curation
@@ -50,16 +64,16 @@ class CaseBundle:
         out = {k: str(self.case[k]) for k in _CASE_SECTIONS if self.case.get(k)}
         for k, v in (self.case.get("neurological_exam") or {}).items():
             out[f"neurological_exam.{k}"] = str(v)
-        for key in ("movement_findings", "symptom_timeline", "labs", "imaging", "neurophysiology"):
+        for key in ("movement_findings", "symptom_timeline", "labs", "imaging", "neurophysiology", "motion_analysis"):
             for entry in self.case.get(key, []):
                 if "id" in entry:
                     out[entry["id"]] = " ".join(str(v) for k, v in entry.items() if k != "id")
         return out
 
     def finding_ids(self) -> set[str]:
-        """Every id a claim may cite: entry ids (mf_, tl_, lab_, img_, np_) and case section keys."""
+        """Every id a claim may cite: entry ids (mf_, tl_, lab_, img_, np_, ka_) and case section keys."""
         ids = set(self.case_sources())
-        for key in ("movement_findings", "symptom_timeline", "labs", "imaging", "neurophysiology"):
+        for key in ("movement_findings", "symptom_timeline", "labs", "imaging", "neurophysiology", "motion_analysis"):
             for entry in self.case.get(key, []):
                 if "id" in entry:
                     ids.add(entry["id"])
@@ -88,7 +102,7 @@ def load_case(slot: str, mode: Mode) -> CaseBundle:
     return CaseBundle(
         slot=slot,
         mode=mode,
-        case=_load_json(e["case"]),
+        raw_case=_load_json(e["case"]),
         reference=_load_json(e["reference"]),
         annotations=_load_json(e["annotations"]) if e.get("annotations") else None,
         video=REPO_ROOT / e["video"] if e.get("video") else None,
