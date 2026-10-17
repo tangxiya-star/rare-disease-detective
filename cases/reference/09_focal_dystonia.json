@@ -22,6 +22,16 @@
       "hypothesis": "Early PD",
       "why_plausible": "Hand dystonia can precede PD",
       "what_argues_against": "No bradykinesia, stable 18 months"
+    },
+    {
+      "hypothesis": "Functional dystonia",
+      "why_plausible": "Adult-onset fixed-looking hand posture, work stress at onset",
+      "what_argues_against": "Task-specific, consistent across trials, no distractibility (mf_05), mirror dystonia (mf_04), sensory trick, partial botulinum toxin response"
+    },
+    {
+      "hypothesis": "Monogenic adult-onset focal dystonia (TOR1A, THAP1, GNAL)",
+      "why_plausible": "Patient requests genetics; partial Ashkenazi ancestry; father with tremor",
+      "what_argues_against": "TOR1A typically early-onset limb dystonia that generalizes; isolated adult-onset writer's cramp without family history of dystonia has very low genetic yield. Father's long-standing action tremor is non-specific"
     }
   ],
   "key_evidence_gaps": [
@@ -65,6 +75,8 @@
   "red_flags_for_wrong_reasoning": [
     "Forcing a rare diagnosis when evidence supports idiopathic focal dystonia",
     "Recommending extensive genetic or CSF testing without clinical justification",
+    "Treating Ashkenazi ancestry or the father's tremor as strong evidence for a monogenic dystonia",
+    "Labelling the presentation functional despite consistency, mirror dystonia, and no distractibility",
     "Failing to state clearly that no rare etiology was identified",
     "Stating any diagnosis as established rather than as a hypothesis for physician review",
     "Recommending treatment as an instruction rather than a consideration for the treating physician",

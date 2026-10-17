@@ -1,48 +1,44 @@
 {
   "case_id": "case_01",
   "video": {
-    "file": "movement.mp4",
-    "license": "NOT YET SOURCED. Options: (a) a published, reuse-licensed clinical video; (b) a clearly labelled reenactment by a consenting performer. A reenactment must be disclosed as such in the demo.",
-    "duration_s": 60,
-    "planned_shots": "Shot 1 (0–25s): right-hand tremolo on guitar, digit 3–4 flexion emerging. Shot 2 (25–40s): handwriting. Shot 3 (40–60s): gait, right foot inversion."
+    "file": "movement.mov",
+    "source": "Published dataset (CC0 1.0), file Suppl_Video_S1.mov, renamed. Full citation in the reference file.",
+    "license": "CC0 1.0. Accompanying article CC BY 4.0. Patient consent for video publication obtained by the original authors. Credit the authors on screen in the demo.",
+    "content": "Neurological assessment at referral: right upper limb dystonic posturing with excessive wrist extension and finger hyperextension while opening a screw-cap bottle.",
+    "duration_s": 11.2,
+    "format": "H.264, 738x592, 30 fps, no audio. Face out of frame; patient seated, right hand opening a screw-cap bottle held in the left hand."
   },
   "annotations": [
     {
       "t_start": 0.0,
+      "t_end": 2.5,
+      "label": "Right hand grips the cap with the wrist held in extension; index finger lifts off the cap",
+      "finding_id": "mf_01"
+    },
+    {
+      "t_start": 3.0,
+      "t_end": 3.6,
+      "label": "Right hand releases abruptly from the cap with wrist extension and all fingers hyperextended and splayed",
+      "finding_id": "mf_01"
+    },
+    {
+      "t_start": 4.0,
       "t_end": 6.0,
-      "label": "Normal right-hand tremolo at start of passage",
+      "label": "Re-grasps the cap; wrist extension persists",
       "finding_id": "mf_01"
     },
     {
-      "t_start": 6.0,
-      "t_end": 18.0,
-      "label": "Digits 3–4 progressively flex at MCP/PIP during tremolo",
+      "t_start": 6.5,
+      "t_end": 7.6,
+      "label": "Second abrupt release with finger hyperextension",
       "finding_id": "mf_01"
     },
     {
-      "t_start": 12.0,
-      "t_end": 20.0,
-      "label": "Compensatory wrist extension and forearm elevation",
+      "t_start": 8.0,
+      "t_end": 11.2,
+      "label": "Repeated attempts to grip and turn the cap; left hand holding the bottle shows no abnormal posture",
       "finding_id": "mf_02"
-    },
-    {
-      "t_start": 20.0,
-      "t_end": 25.0,
-      "label": "Sensory trick: thumb against soundboard reduces flexion",
-      "finding_id": "mf_07"
-    },
-    {
-      "t_start": 25.0,
-      "t_end": 40.0,
-      "label": "Writing: excessive grip, digit flexion, ulnar deviation",
-      "finding_id": "mf_03"
-    },
-    {
-      "t_start": 40.0,
-      "t_end": 60.0,
-      "label": "Gait: intermittent right foot inversion in swing phase",
-      "finding_id": "mf_05"
     }
   ],
-  "note": "Timestamps are placeholders matching the planned shots. Replace with real timestamps once the clip exists; annotations must match what is actually visible."
+  "note": "Agent-visible clip only. Any further media for this case is held out under cases/reference/media/ (see the reference file). Timestamps from frame review at 0.5 s resolution on 2026-10-17 (not physician-reviewed); Wiki to confirm labels."
 }

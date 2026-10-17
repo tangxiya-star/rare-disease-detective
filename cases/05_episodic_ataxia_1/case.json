@@ -14,59 +14,96 @@
     "occupation": "Student, plays soccer"
   },
   "chief_complaint": "\"When I suddenly start running or get startled, my legs and hands go wobbly for a minute.\"",
-  "history_of_present_illness": "Since age 9, brief attacks lasting 30 seconds to 3 minutes of limb incoordination, unsteadiness and slurred speech, several times per day on some days. Triggered by sudden movement (standing up quickly, starting a sprint), startle, and emotional upset. Sometimes she feels the muscles of her hands and around her eyes 'ripple' between attacks. No loss of consciousness. Normal between attacks except for occasional muscle stiffness.",
+  "history_of_present_illness": "Since age 9, brief attacks lasting 30 seconds to 3 minutes of limb incoordination, unsteadiness and slurred speech, up to 10–15 times on bad days and none on others. Triggered by sudden movement (standing up quickly, starting a sprint), startle, emotional upset, and occasionally by kicking a ball hard. Attacks are more frequent when she is ill or has had a poor night's sleep. During attacks she feels 'drunk': she cannot walk in a straight line, her hands miss what she reaches for, and friends say her words 'run together'. She does not describe twisting or jerking of the limbs, though she sometimes feels her hands 'stiffen' briefly afterwards. Sometimes she feels the muscles of her hands and around her eyes 'ripple' between attacks, like 'worms under the skin'. No loss of consciousness, no tongue biting, no incontinence, no post-attack confusion. No vertigo, headache, or double vision with attacks. Normal between attacks except for occasional calf and hand stiffness after exercise. Development and school performance are normal.",
   "symptom_timeline": [
     {
       "id": "tl_01",
       "when": "Age 9",
-      "event": "Attacks begin"
+      "event": "Attacks begin, initially 1–2 per week"
     },
     {
       "id": "tl_02",
-      "when": "Age 11",
-      "event": "EEG normal; seizures considered unlikely"
+      "when": "Age 10",
+      "event": "Pediatrician notes attacks provoked by sudden movement; raises a paroxysmal dyskinesia"
     },
     {
       "id": "tl_03",
+      "when": "Age 11",
+      "event": "EEG and MRI brain normal; seizures considered unlikely"
+    },
+    {
+      "id": "tl_04",
+      "when": "Age 12–13",
+      "event": "Frequency increases with puberty and competitive soccer"
+    },
+    {
+      "id": "tl_05",
       "when": "Age 14",
-      "event": "Attacks interfere with soccer; referred"
+      "event": "Attacks interfere with soccer and PE; referred to movement-disorder clinic"
     }
   ],
   "movement_findings": [
     {
       "id": "mf_01",
-      "observation": "Attack provoked in clinic by rising quickly: 90-second episode of limb ataxia and dysarthria; no dystonic or choreic postures.",
+      "observation": "Attack provoked in clinic by rising quickly from a squat: 90-second episode of bilateral limb ataxia with dysmetria on finger–nose, wide-based unsteady gait, and slurred dysarthric speech; no dystonic or choreic postures; fully responsive throughout.",
       "context": "provoked attack",
       "reviewer": ""
     },
     {
       "id": "mf_02",
-      "observation": "Interictal: fine continuous rippling of periorbital muscles and small hand muscles, consistent with myokymia.",
+      "observation": "Interictal: fine continuous rippling of periorbital muscles and small hand muscles (first dorsal interosseous), consistent with myokymia; more visible after the provoked attack.",
       "context": "rest",
       "reviewer": ""
     },
     {
       "id": "mf_03",
-      "observation": "Interictal: no nystagmus.",
+      "observation": "Interictal: no nystagmus in primary gaze, lateral gaze, or after head-shaking.",
       "context": "eye movements",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_04",
+      "observation": "Immediately after the provoked attack: brief stiffness of the hands with slightly slow finger opening, resolving within a minute.",
+      "context": "post-attack",
       "reviewer": ""
     }
   ],
   "neurological_exam": {
     "mental_status": "Normal",
-    "cranial_nerves": "Normal, no nystagmus; periorbital myokymia",
+    "cranial_nerves": "Normal; no nystagmus; periorbital myokymia",
     "tone": "Normal",
-    "power": "Normal",
-    "reflexes": "2+ symmetric",
-    "coordination": "Normal interictally",
+    "power": "5/5 throughout",
+    "reflexes": "2+ symmetric, flexor plantars",
+    "coordination": "Normal interictally; tandem gait normal",
     "gait": "Normal interictally",
     "bradykinesia_screen": "Normal",
-    "other": "Hand muscle myokymia visible"
+    "other": "Hand muscle myokymia visible. No percussion myotonia; grip release normal at rest. Sensation normal."
   },
   "labs": [
     {
       "id": "lab_01",
       "test": "CBC, CMP, magnesium, calcium",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    },
+    {
+      "id": "lab_02",
+      "test": "Glucose (random)",
+      "result": "5.2 mmol/L",
+      "reference_range": "3.9–7.8",
+      "note": ""
+    },
+    {
+      "id": "lab_03",
+      "test": "Creatine kinase",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    },
+    {
+      "id": "lab_04",
+      "test": "TSH",
       "result": "Normal",
       "reference_range": "",
       "note": ""
@@ -82,16 +119,17 @@
   ],
   "neurophysiology": [
     {
+      "id": "np_01",
       "study": "EEG",
       "date": "Age 11",
-      "report": "Normal awake and asleep."
+      "report": "Normal awake and asleep. No attack captured. Hyperventilation and photic stimulation unremarkable."
     }
   ],
   "medications": {
     "current": [],
     "prior_trials": []
   },
-  "family_history": "Father had similar 'wobbly spells' as a teenager that diminished in adulthood.",
-  "social_history": "",
-  "prior_workup_and_opinions": "Pediatrician raised paroxysmal kinesigenic dyskinesia because of movement triggering."
+  "family_history": "Father (44) had similar 'wobbly spells' as a teenager, triggered by running, that diminished in his 20s; never investigated. Paternal grandfather described as 'clumsy'. Mother and younger brother (10) healthy. No family history of epilepsy or migraine. No consanguinity.",
+  "social_history": "Year 9 student, good grades. Plays competitive soccer 3 times a week; has stopped playing as a striker because sprint starts trigger attacks. No alcohol, smoking, or drugs. No regular medications.",
+  "prior_workup_and_opinions": "Pediatrician (age 10): raised paroxysmal kinesigenic dyskinesia because attacks are triggered by sudden movement; no treatment trial undertaken. Pediatric neurology (age 11): EEG and MRI normal, 'not epileptic'."
 }

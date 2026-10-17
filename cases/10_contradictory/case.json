@@ -61,7 +61,7 @@
     "coordination": "Mild intention tremor",
     "gait": "See mf_01",
     "bradykinesia_screen": "Mild bilateral slowing",
-    "other": ""
+    "other": "Slit-lamp examination not documented in the referral. Abdomen not examined at this visit. Examined at 3 PM."
   },
   "labs": [
     {
@@ -92,6 +92,6 @@
     "prior_trials": []
   },
   "family_history": "Older sister had 'unexplained hepatitis' at age 14.",
-  "social_history": "",
+  "social_history": "Year 11 student; grades dropped from mostly A's to C's over the past year, teachers report he is 'distracted and silly in class'. Lives with parents and older sister. Denies alcohol, smoking, or drugs; parents agree. No medications.",
   "prior_workup_and_opinions": "Referral letter: 'Probable dopa-responsive dystonia; Wilson excluded; please start levodopa.'"
 }

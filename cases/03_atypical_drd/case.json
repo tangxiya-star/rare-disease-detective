@@ -14,46 +14,68 @@
     "occupation": "Software engineer"
   },
   "chief_complaint": "\"My right side has been slow and stiff for years, and my right foot cramps when I walk.\"",
-  "history_of_present_illness": "Seven years of slowly progressive right-sided slowness and stiffness, mild postural tremor of the right hand, and intermittent right foot cramping with inversion during long walks. No clear diurnal variation reported when asked. Sleep does not obviously help. No REM sleep behavior disorder symptoms, no anosmia, no constipation. Started on levodopa by a previous neurologist 4 years ago with good benefit; dose has remained 100 mg TID since, with no wearing-off and no dyskinesia. Seeking a second opinion because 'I was told it's young-onset Parkinson's but it hasn't progressed like they said it would.'",
+  "history_of_present_illness": "Seven years of slowly progressive right-sided slowness and stiffness, beginning with smaller, slower handwriting and difficulty with fine tasks such as buttoning and using a computer mouse. A mild right-hand tremor appears when holding a phone or a cup; he has never noticed it with the hand resting in his lap. About six years ago he began to get cramping of the right foot with inversion and toe curling during long walks, usually after 20–30 minutes. When asked about time-of-day effects he says he 'hasn't paid attention' because he has been on levodopa for four years; before treatment he recalls being 'clumsier after work' but attributed it to tiredness. Sleep does not obviously help. No REM sleep behavior disorder symptoms per his partner, no anosmia, no constipation, no urinary symptoms, no orthostatic light-headedness. Started on levodopa by a previous neurologist 4 years ago with marked benefit within the first week; the dose has remained 100 mg TID since, with no wearing-off and no dyskinesia. If a dose is delayed by several hours the right foot cramp returns during walking. Seeking a second opinion because 'I was told it's young-onset Parkinson's but it hasn't progressed like they said it would.'",
   "symptom_timeline": [
     {
       "id": "tl_01",
-      "when": "7 years ago",
-      "event": "Right hand slowness, small handwriting"
+      "when": "7 years ago (age 31)",
+      "event": "Right hand slowness, small handwriting, difficulty with buttons"
     },
     {
       "id": "tl_02",
       "when": "6 years ago",
-      "event": "Right foot cramping with long walks"
+      "event": "Right foot cramping with inversion after 20–30 min of walking"
     },
     {
       "id": "tl_03",
-      "when": "4 years ago",
-      "event": "Diagnosed young-onset PD; levodopa 100 mg TID started with good response"
+      "when": "5 years ago",
+      "event": "Mild right-hand tremor when holding objects"
     },
     {
       "id": "tl_04",
+      "when": "4 years ago",
+      "event": "Diagnosed young-onset PD; carbidopa/levodopa 25/100 TID started; marked improvement within one week"
+    },
+    {
+      "id": "tl_05",
+      "when": "2 years ago",
+      "event": "Follow-up with same neurologist: 'surprisingly stable'; no dose change"
+    },
+    {
+      "id": "tl_06",
       "when": "Now",
-      "event": "Stable on same dose; no motor fluctuations or dyskinesia"
+      "event": "Stable on same dose; no motor fluctuations or dyskinesia; requests second opinion"
     }
   ],
   "movement_findings": [
     {
       "id": "mf_01",
-      "observation": "On medication: mild right-hand bradykinesia on finger tapping without decrement.",
+      "observation": "On medication: mild right-hand bradykinesia on finger tapping and hand opening, reduced speed without progressive amplitude decrement over 10 taps.",
       "context": "bradykinesia testing",
       "reviewer": ""
     },
     {
       "id": "mf_02",
-      "observation": "Mild right-hand postural tremor, 6–7 Hz, low amplitude.",
-      "context": "posture",
+      "observation": "Mild right-hand postural tremor, 6–7 Hz, low amplitude; no rest tremor during distraction (serial sevens) or while walking.",
+      "context": "posture / rest",
       "reviewer": ""
     },
     {
       "id": "mf_03",
-      "observation": "On medication: normal gait; reports foot inversion only when doses are delayed.",
+      "observation": "On medication: normal gait with mildly reduced right arm swing; no foot posturing during a 10-minute corridor walk.",
       "context": "gait",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_04",
+      "observation": "Handwriting sample: mild micrographia on the right without progressive shrinking along the line; no dystonic posturing of the hand while writing.",
+      "context": "task (writing)",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_05",
+      "observation": "Facial expression and blink rate normal; speech normal in volume and articulation.",
+      "context": "face / speech",
       "reviewer": ""
     }
   ],
@@ -66,7 +88,7 @@
     "coordination": "Normal",
     "gait": "Normal on medication",
     "bradykinesia_screen": "Mild right-sided slowing, no decrement",
-    "other": "Examined on medication, 2 hours after a dose"
+    "other": "Examined on medication, 2 hours after the morning dose (around 10 AM). Smell subjectively normal; no formal olfactory testing. No orthostatic drop in blood pressure. Pull test normal."
   },
   "labs": [
     {
@@ -78,7 +100,21 @@
     },
     {
       "id": "lab_02",
+      "test": "Liver enzymes (ALT, AST, GGT)",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    },
+    {
+      "id": "lab_03",
       "test": "Ceruloplasmin",
+      "result": "29 mg/dL",
+      "reference_range": "20–40",
+      "note": "Slit lamp and urine copper not performed"
+    },
+    {
+      "id": "lab_04",
+      "test": "TSH",
       "result": "Normal",
       "reference_range": "",
       "note": ""
@@ -87,9 +123,9 @@
   "imaging": [
     {
       "id": "img_01",
-      "modality": "MRI brain",
+      "modality": "MRI brain (1.5T)",
       "date": "6 years ago",
-      "report": "Normal."
+      "report": "No structural abnormality. Basal ganglia normal in signal. No abnormal susceptibility. Impression: normal."
     }
   ],
   "medications": {
@@ -106,6 +142,6 @@
     ]
   },
   "family_history": "Negative for movement disorders as far as the patient knows. Parents alive and well in their 60s. Not adopted.",
-  "social_history": "No toxin or neuroleptic exposure.",
+  "social_history": "Software engineer, works full time. Married, one child (age 3), developing normally. Non-smoker, drinks 2–3 beers per week, no recreational drugs. No toxin, solvent, manganese, or neuroleptic/antiemetic exposure.",
   "prior_workup_and_opinions": "Previous neurologist: young-onset Parkinson disease. No DAT imaging was performed. No genetic testing."
 }

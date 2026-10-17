@@ -14,90 +14,127 @@
     "occupation": "Accountant"
   },
   "chief_complaint": "\"For three years my hand cramps and twists whenever I write. Typing is fine.\"",
-  "history_of_present_illness": "Three years of right-hand cramping, excessive grip, and wrist flexion that begins within a few words of handwriting and does not occur with typing, eating, or other tasks. Stable over the past 18 months. No diurnal variation, no benefit after sleep. No involvement of other body parts. Changing pen grip helps briefly.",
+  "history_of_present_illness": "Three years of right-hand cramping, excessive grip, and wrist flexion with pronation that begins within a few words of handwriting. Signing documents at work is the main problem; he now prints or uses an electronic signature. Typing, using a mouse, eating with cutlery, shaving, and playing tennis are unaffected. Onset was gradual over about 6 months during a busy tax season, after which it worsened for about a year and has been stable for the past 18 months. No diurnal variation, no benefit after sleep, no change with fatigue or exercise. No involvement of the left hand, neck, face, voice, or legs. Holding the pen between index and middle finger, or using a thick foam grip, helps briefly. Writing with the left hand is slow but has no cramping. No pain at rest, no numbness, no tremor. He is worried this could be 'the start of Parkinson's' or 'something genetic' and asks for comprehensive testing.",
   "symptom_timeline": [
     {
       "id": "tl_01",
-      "when": "3 years ago",
-      "event": "Onset of writing difficulty"
+      "when": "3 years ago (age 45)",
+      "event": "Gradual onset of right-hand cramping when writing during tax season"
     },
     {
       "id": "tl_02",
-      "when": "2 years ago",
-      "event": "Botulinum toxin with moderate benefit"
+      "when": "2.5 years ago",
+      "event": "GP suspects carpal tunnel syndrome; wrist splint without benefit; referred to neurology"
     },
     {
       "id": "tl_03",
+      "when": "2 years ago",
+      "event": "Neurology: nerve conduction normal, MRI brain normal; botulinum toxin started with moderate benefit"
+    },
+    {
+      "id": "tl_04",
       "when": "18 months ago",
-      "event": "Symptoms stable since"
+      "event": "Levodopa trial, no benefit; symptoms stable since"
+    },
+    {
+      "id": "tl_05",
+      "when": "Now",
+      "event": "Moved to a new city; referred to establish care and asks about genetic testing"
     }
   ],
   "movement_findings": [
     {
       "id": "mf_01",
-      "observation": "Writing: excessive pen grip, wrist flexion and pronation within first line.",
+      "observation": "Writing: excessive pen grip, wrist flexion and forearm pronation within the first line; letters become large and jagged; no tremor.",
       "context": "task (writing)",
       "reviewer": ""
     },
     {
       "id": "mf_02",
-      "observation": "Typing, buttoning, and using cutlery: normal.",
+      "observation": "Typing, buttoning, using cutlery, and drawing large spirals on a whiteboard: normal.",
       "context": "other tasks",
       "reviewer": ""
     },
     {
       "id": "mf_03",
-      "observation": "No tremor, no dystonia at rest or posture.",
-      "context": "rest/posture",
+      "observation": "No tremor, no dystonia at rest or with sustained posture of either arm.",
+      "context": "rest / posture",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_04",
+      "observation": "Mirror dystonia: mild right wrist flexion and finger curling when he writes with the left hand.",
+      "context": "contralateral task",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_05",
+      "observation": "Pattern is consistent across repeated trials and does not lessen with distraction (counting backwards while writing).",
+      "context": "task (writing), distraction",
       "reviewer": ""
     }
   ],
   "neurological_exam": {
     "mental_status": "Normal",
-    "cranial_nerves": "Normal",
-    "tone": "Normal",
-    "power": "Normal",
-    "reflexes": "2+ symmetric",
+    "cranial_nerves": "Normal, including saccades",
+    "tone": "Normal, including with activation maneuvers",
+    "power": "5/5 throughout",
+    "reflexes": "2+ symmetric, flexor plantars",
     "coordination": "Normal",
-    "gait": "Normal",
-    "bradykinesia_screen": "Normal",
-    "other": "Normal examination outside the writing task"
+    "gait": "Normal, with normal and symmetric arm swing",
+    "bradykinesia_screen": "Finger tapping, hand opening, toe tapping: normal speed and amplitude, no decrement",
+    "other": "Sensation normal. Tinel and Phalen signs negative. Examination otherwise normal outside the writing task. Examined in the afternoon."
   },
   "labs": [
     {
       "id": "lab_01",
-      "test": "CBC, CMP, TSH, ceruloplasmin",
+      "test": "CBC, CMP, TSH",
       "result": "Normal",
       "reference_range": "",
+      "note": ""
+    },
+    {
+      "id": "lab_02",
+      "test": "Ceruloplasmin",
+      "result": "31 mg/dL",
+      "reference_range": "20–40",
       "note": ""
     }
   ],
   "imaging": [
     {
       "id": "img_01",
-      "modality": "MRI brain",
+      "modality": "MRI brain (3T)",
       "date": "2 years ago",
-      "report": "Normal."
+      "report": "No structural abnormality. Basal ganglia normal. Impression: normal."
+    }
+  ],
+  "neurophysiology": [
+    {
+      "id": "np_01",
+      "study": "Nerve conduction studies, right upper limb",
+      "date": "2 years ago",
+      "report": "Normal median, ulnar, and radial conduction. No carpal tunnel syndrome."
     }
   ],
   "medications": {
     "current": [],
     "prior_trials": [
       {
-        "drug": "Botulinum toxin to forearm flexors",
-        "dose": "",
-        "duration": "3 cycles",
-        "response": "Moderate benefit"
+        "drug": "Botulinum toxin A to right flexor carpi radialis and pronator teres",
+        "dose": "~60 units total per session",
+        "duration": "3 cycles, last one 10 months ago",
+        "response": "Moderate benefit for ~10 weeks each time; stopped after moving cities"
       },
       {
-        "drug": "Carbidopa/levodopa trial",
-        "dose": "up to 100 mg TID",
+        "drug": "Carbidopa/levodopa",
+        "dose": "titrated to 25/100 mg TID",
         "duration": "6 weeks",
         "response": "No benefit"
       }
     ]
   },
-  "family_history": "Negative.",
-  "social_history": "",
-  "prior_workup_and_opinions": "Writer's cramp."
+  "family_history": "Father (76) has a mild bilateral hand tremor when holding a newspaper, present for decades, never treated. Mother (74) healthy. Two siblings healthy. No known dystonia, Parkinson disease, or neurological disease. Ashkenazi Jewish ancestry on mother's side.",
+  "social_history": "Accountant at a mid-size firm. Married, two children. Drinks 1–2 glasses of wine with dinner on weekends; notices no effect on writing. Non-smoker. No neuroleptic or antiemetic exposure.",
+  "prior_workup_and_opinions": "GP (2.5 years ago): 'probable carpal tunnel syndrome', splint without benefit, referred on. Previous neurologist (2 years ago): normal nerve conduction and MRI, started botulinum toxin and later a levodopa trial; full letter not available. Patient has read online about genetic causes of dystonia and asks for 'every test available'."
 }
