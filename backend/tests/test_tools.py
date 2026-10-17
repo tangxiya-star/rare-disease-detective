@@ -28,6 +28,5 @@ async def test_eval_run_writes_blind_pack_without_arm_leaks(tmp_path, monkeypatc
     assert sorted(key.values()) == ["b0", "b1", "full"]
     for label in key:
         blind = json.loads((tmp_path / "blind" / f"{label}.json").read_text())
-        text = json.dumps(blind)
-        assert "dropped_invalid_ids" not in text and "b0" not in text and "b1" not in text
+        assert set(blind["report"]) <= set(run_eval.BLIND_FIELDS), sorted(blind["report"])
     assert (tmp_path / "blind" / "grading_sheet.csv").read_text().count("case_10_") == 3

@@ -36,6 +36,7 @@ from app.orchestrator import Orchestrator  # noqa: E402
 from app.prompts import JSON_ONLY, SAFETY  # noqa: E402
 
 ARMS = ("b0", "b1", "full")
+BLIND_FIELDS = ("summary", "differential", "cant_miss", "unresolved_questions", "suggested_investigations", "error")
 
 BASELINE_PROMPT = f"""You are reviewing a rare neurological movement-disorder case for a physician.
 {SAFETY}
@@ -141,8 +142,8 @@ def write_blind_pack(records: list[dict], out: Path, seed: int) -> None:
         for letter, r in zip("ABCDEF", recs):
             label = f"case_{slot}_{letter}"
             key[label] = r["arm"]
-            # Drop fields only one arm produces, so the grader can't tell the arms apart by shape.
-            report = {k: v for k, v in r["report"].items() if k not in ("dropped_invalid_ids", "done_check", "not_done", "done_criteria_status", "record_contradictions")}
+            # Keep only the fields every arm produces, so the grader can't tell the arms apart by shape.
+            report = {k: v for k, v in r["report"].items() if k in BLIND_FIELDS}
             (blind / f"{label}.json").write_text(json.dumps(
                 {"case_id": r["case_id"], "output": label, "report": report}, indent=2, ensure_ascii=False))
             rows.append({
