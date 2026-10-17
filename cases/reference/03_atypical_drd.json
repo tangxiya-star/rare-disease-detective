@@ -21,7 +21,12 @@
     {
       "hypothesis": "Wilson disease",
       "why_plausible": "Must be excluded under 50",
-      "what_argues_against": "Normal ceruloplasmin; incomplete workup"
+      "what_argues_against": "Ceruloplasmin and liver tests normal, normal MRI, no psychiatric or eye features. Slit lamp and 24-hour urine copper not done, so formally incomplete."
+    },
+    {
+      "hypothesis": "Essential tremor plus",
+      "why_plausible": "Postural hand tremor",
+      "what_argues_against": "Does not explain bradykinesia, rigidity, foot dystonia or the sustained levodopa response"
     }
   ],
   "key_evidence_gaps": [
@@ -94,6 +99,32 @@
       "discriminates_between": "Treatable mimic"
     }
   ],
+  "cant_miss": [
+    {
+      "condition": "Dopa-responsive dystonia (GCH1)",
+      "why_required": "Treatable at low dose; changes prognosis versus Parkinson disease",
+      "addressed_by": "DaT-SPECT (normal in DRD), GCH1 genetics with deletion/duplication analysis",
+      "status_in_record": "open: never imaged or tested; sustained low-dose response without fluctuations after 4 years points to it"
+    },
+    {
+      "condition": "Wilson disease",
+      "why_required": "Treatable; considered in any unexplained movement disorder, most strongly under 50",
+      "addressed_by": "24-hour urine copper; slit lamp",
+      "status_in_record": "low risk: ceruloplasmin and liver tests normal; completion reasonable at 38"
+    },
+    {
+      "condition": "Drug-induced parkinsonism",
+      "why_required": "Reversible",
+      "addressed_by": "Medication and exposure history",
+      "status_in_record": "addressed: no neuroleptic, antiemetic, manganese or solvent exposure"
+    },
+    {
+      "condition": "Structural lesion",
+      "why_required": "May need specific treatment",
+      "addressed_by": "MRI brain",
+      "status_in_record": "addressed: normal"
+    }
+  ],
   "red_flags_for_wrong_reasoning": [
     "Accepting PD because of levodopa response alone",
     "Concluding 'no DRD' because classic clues (diurnal, family history, childhood onset) are absent",
@@ -101,8 +132,11 @@
     "Stating any diagnosis as established rather than as a hypothesis for physician review",
     "Recommending treatment as an instruction rather than a consideration for the treating physician",
     "Citing literature that does not exist or does not support the specific claim",
-    "Asserting case facts that are not in the case record"
+    "Asserting case facts that are not in the case record",
+    "Treating years of stable response without fluctuations or dyskinesia as typical of Parkinson disease",
+    "Recommending stopping levodopa for an off-medication exam as an instruction rather than a consideration for the treating neurologist"
   ],
-  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). Plausible adult parkinsonism phenotype of GCH1 DRD. Clarified the Wilson counter-argument, added ET-plus hypothesis, cant_miss, two red flags and expected behaviour.",
+  "expected_system_behavior": "DRD and young-onset PD should both appear, with DRD favoured. The system should not accept PD from levodopa response alone, should point out that a stable low-dose response without fluctuations or dyskinesia after 4 years is atypical for PD, should note that daily fluctuation may be masked by treatment, and should suggest DaT-SPECT and GCH1/PRKN/PINK1 genetics, plus completion of the Wilson screen. Genetic counselling is relevant once confirmed (autosomal dominant; he has a young child).",
   "agent_case_id": "case_03"
 }

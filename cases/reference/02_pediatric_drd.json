@@ -10,7 +10,8 @@
     "Tyrosine hydroxylase deficiency (mild)",
     "Spastic cerebral palsy / hereditary spastic paraplegia",
     "TOR1A (DYT1) early-onset dystonia",
-    "Juvenile parkinsonism (e.g. PRKN)"
+    "Juvenile parkinsonism (e.g. PRKN)",
+    "SPR deficiency (sepiapterin reductase)"
   ],
   "competing_hypotheses": [
     {
@@ -104,6 +105,32 @@
       "discriminates_between": "Biochemical confirmation"
     }
   ],
+  "cant_miss": [
+    {
+      "condition": "Dopa-responsive dystonia (GCH1, TH, SPR)",
+      "why_required": "Treatable with levodopa",
+      "addressed_by": "Levodopa trial; GCH1, TH, SPR genetics",
+      "status_in_record": "open: no levodopa trial, no genetics"
+    },
+    {
+      "condition": "Wilson disease",
+      "why_required": "Treatable; considered in any unexplained movement disorder, most strongly under 50",
+      "addressed_by": "24-hour urine copper; slit lamp",
+      "status_in_record": "low risk: age 8, ceruloplasmin and liver tests normal, no systemic features; neurological Wilson is rare at this age"
+    },
+    {
+      "condition": "Drug-induced movement disorder",
+      "why_required": "Reversible",
+      "addressed_by": "Medication history",
+      "status_in_record": "addressed: no medications"
+    },
+    {
+      "condition": "Structural lesion (brain or spinal cord)",
+      "why_required": "Cerebral palsy and cord lesions were queried",
+      "addressed_by": "MRI brain and spine",
+      "status_in_record": "addressed: normal, no periventricular leukomalacia"
+    }
+  ],
   "red_flags_for_wrong_reasoning": [
     "Accepting cerebral palsy despite normal MRI, normal early development and progression",
     "Ignoring diurnal fluctuation",
@@ -111,8 +138,10 @@
     "Stating any diagnosis as established rather than as a hypothesis for physician review",
     "Recommending treatment as an instruction rather than a consideration for the treating physician",
     "Citing literature that does not exist or does not support the specific claim",
-    "Asserting case facts that are not in the case record"
+    "Asserting case facts that are not in the case record",
+    "Ruling out DRD because the toes point up on walking"
   ],
-  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). Plausible textbook GCH1 DRD. Added SPR deficiency to the acceptable top 5, cant_miss, one red flag and expected behaviour.",
+  "expected_system_behavior": "DRD should rank first. The system should reject the cerebral palsy label (normal birth, normal development to 6, progression, normal MRI, daily pattern), interpret the gait-only extensor toe as a striatal toe, ask for a morning examination, and suggest a levodopa trial and GCH1/TH/SPR genetics, with the mother's evening foot symptoms noted for family assessment.",
   "agent_case_id": "case_02"
 }
