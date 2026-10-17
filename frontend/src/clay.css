@@ -168,3 +168,11 @@ button.primary:active:not(:disabled) { transform: scale(0.92); box-shadow: var(-
 
 /* the old graph background was translucent; over light clay it showed a grey haze, so make the screen opaque */
 .graph-pane { background: radial-gradient(ellipse at 50% 45%, #1e2a44 0%, #0b1120 70%); }
+
+/* inside the graph screen, look exactly like the dark version: same frame, background, toggle and font */
+.graph-pane { margin: 10px; border-radius: 14px; border: 1px solid rgba(148, 163, 196, 0.16); box-shadow: none;
+  background: radial-gradient(ellipse at 50% 45%, #222d45 0%, #0c1222 70%); font-family: Inter, -apple-system, sans-serif; }
+.graph-pane .seg { background: rgba(15, 22, 38, 0.8); border: 1px solid var(--line); border-radius: 12px; padding: 3px; box-shadow: none; }
+.graph-pane .seg button { border-radius: 9px; padding: 5px 14px; font-weight: 550; font-family: Inter, sans-serif; color: var(--ink-2); box-shadow: none; }
+.graph-pane .seg button.on { background: #8b8cf8; color: #0d1020; box-shadow: 0 4px 14px -4px rgba(139, 140, 248, 0.7); }
+.graph-pane .fid { background: rgba(255, 255, 255, 0.06); color: var(--ink-2); }
