@@ -63,3 +63,12 @@ def test_parse_json_prefers_outer_object_and_repairs_trailing_commas():
     txt = '<think>x</think>{"hypotheses": [{"name": "a", "ids": ["mf_01",],},], "decision": "spawn",}'
     obj = parse_json_object(txt)
     assert obj["decision"] == "spawn" and obj["hypotheses"][0]["name"] == "a"
+
+
+def test_europe_pmc_citation_fields():
+    from app.search import _citation
+    item = {"pubYear": "2022", "authorString": "Holla VV, Pal PK.", "pageInfo": "156-161",
+            "journalInfo": {"volume": "15", "issue": "2", "journal": {"isoabbreviation": "J Mov Disord"}}}
+    c = _citation(item, "35287262", "PMC9171311", "10.14802/jmd.21146")
+    assert c["journal"] == "J Mov Disord" and c["authors"].startswith("Holla") and c["pages"] == "156-161"
+    assert c["volume"] == "15" and c["pmid"] == "35287262"
