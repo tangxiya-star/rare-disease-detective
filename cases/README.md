@@ -47,7 +47,7 @@ Deliberate traps are documented in each reference file under `red_flags_for_wron
 
 ## Not yet done
 
-- **Hero video:** sourced but not yet downloaded. Hasegawa T (2021), Dryad [doi:10.5061/dryad.pzgmsbckd](https://doi.org/10.5061/dryad.pzgmsbckd), CC0; Dryad blocks scripted downloads, so fetch in a browser. `Suppl_Video_S1.mov` → `cases/01_guitarist_drd/movement.mov` (agent-visible). `Suppl_Video_S2.mov` → `cases/reference/media/01_S2_post_levodopa.mov` (held out, released with the levodopa trial). Annotation timestamps are null until reviewed. Credit the authors on screen.
+- **Hero video:** local only (`*.mov` is gitignored; S1 11.2 s, S2 8.6 s). Each teammate downloads it once. Source: Hasegawa T (2021), Dryad [doi:10.5061/dryad.pzgmsbckd](https://doi.org/10.5061/dryad.pzgmsbckd), CC0; Dryad blocks scripted downloads, so fetch in a browser. `Suppl_Video_S1.mov` → `cases/01_guitarist_drd/movement.mov` (agent-visible). `Suppl_Video_S2.mov` → `cases/reference/media/01_S2_post_levodopa.mov` (held out, released with the levodopa trial). Annotation timestamps set from frame review; Wiki to confirm labels. Credit the authors on screen.
 - **Case 01 and scoring:** published cases may be memorised, and retrieval can find the source article. Open decision: keep case 01 demo-only (not scored) and/or block its DOI from retrieval.
 - **Citations:** case 01 cites its source in its reference file (not in `case.json`, since the title names the diagnosis); the synthetic drafts cite no papers. Literature comes from the agents' retrieval at runtime, not from the case files.
 

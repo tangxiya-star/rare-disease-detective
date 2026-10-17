@@ -5,15 +5,40 @@
     "source": "Published dataset (CC0 1.0), file Suppl_Video_S1.mov, renamed. Full citation in the reference file.",
     "license": "CC0 1.0. Accompanying article CC BY 4.0. Patient consent for video publication obtained by the original authors. Credit the authors on screen in the demo.",
     "content": "Neurological assessment at referral: right upper limb dystonic posturing with excessive wrist extension and finger hyperextension while opening a screw-cap bottle.",
-    "duration_s": null
+    "duration_s": 11.2,
+    "format": "H.264, 738x592, 30 fps, no audio. Face out of frame; patient seated, right hand opening a screw-cap bottle held in the left hand."
   },
   "annotations": [
     {
-      "t_start": null,
-      "t_end": null,
-      "label": "Right wrist extension and finger hyperextension emerge while opening a screw-cap bottle",
+      "t_start": 0.0,
+      "t_end": 2.5,
+      "label": "Right hand grips the cap with the wrist held in extension; index finger lifts off the cap",
       "finding_id": "mf_01"
+    },
+    {
+      "t_start": 3.0,
+      "t_end": 3.6,
+      "label": "Right hand releases abruptly from the cap with wrist extension and all fingers hyperextended and splayed",
+      "finding_id": "mf_01"
+    },
+    {
+      "t_start": 4.0,
+      "t_end": 6.0,
+      "label": "Re-grasps the cap; wrist extension persists",
+      "finding_id": "mf_01"
+    },
+    {
+      "t_start": 6.5,
+      "t_end": 7.6,
+      "label": "Second abrupt release with finger hyperextension",
+      "finding_id": "mf_01"
+    },
+    {
+      "t_start": 8.0,
+      "t_end": 11.2,
+      "label": "Repeated attempts to grip and turn the cap; left hand holding the bottle shows no abnormal posture",
+      "finding_id": "mf_02"
     }
   ],
-  "note": "Agent-visible clip only. Any further media for this case is held out under cases/reference/media/ (see the reference file). Timestamps are null until the clip is downloaded and reviewed; annotations must match what is actually visible."
+  "note": "Agent-visible clip only. Any further media for this case is held out under cases/reference/media/ (see the reference file). Timestamps from frame review at 0.5 s resolution on 2026-10-17 (not physician-reviewed); Wiki to confirm labels."
 }
