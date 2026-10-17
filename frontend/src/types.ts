@@ -88,6 +88,7 @@ export interface CaseView {
   case: CaseRecord
   annotations: { annotations: Annotation[]; video: Record<string, any> } | null
   has_video: boolean
+  has_landmarks?: boolean
 }
 
 export interface Health { llm_backend: 'mock' | 'crusoe'; search_backend: string; lead_model: string; child_model: string }
