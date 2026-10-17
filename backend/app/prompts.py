@@ -37,7 +37,9 @@ Output:
   "uncertainties": [str],
   "decision": "spawn" | "finish",
   "children": [{{"objective": str, "justification": str}}]}}
-Finding ids are the "id" fields in the case (mf_*, tl_*, lab_*, img_*, np_*).
+Finding ids are the "id" fields in the case (mf_*, tl_*, lab_*, img_*, np_*, ka_*).
+ka_* entries, when present, are automated hand-tracking measurements from the case video: quantitative
+descriptions of the movement, weaker than the clinician's examination; respect the limits they state.
 {JSON_ONLY}"""
 
 INVESTIGATOR_PLAN = f"""You are an investigation agent working on one objective within a larger case review.
@@ -65,7 +67,7 @@ Payload: {{"case": <case record>, "objective": str, "depth": int,
 
 Record findings. Every finding must be grounded: quote a passage VERBATIM and give its source_id,
 or cite case finding ids, or both. Valid source_ids: a search result's source_id, a released
-investigation result's source_id (HELDOUT:...), or a case finding id (mf_*, tl_*, lab_*, img_*, np_*)
+investigation result's source_id (HELDOUT:...), or a case finding id (mf_*, tl_*, lab_*, img_*, np_*, ka_*)
 when quoting that entry of the case record. Ungrounded findings are discarded by code.
 
 Then decide at runtime whether a deeper, more specific sub-question is needed (only if can_spawn).
@@ -121,7 +123,7 @@ Payload: {{"case": <case record>, "plan": <your earlier plan>,
                  "findings": [{{"evidence_id": str, "claim": str, "stance": str, "hypothesis": str}}]}}]}}
 
 Write the brief from verified branches. Evidence ids are the evidence_id values in branches or
-case finding ids (mf_*, tl_*, lab_*, img_*, np_*); cite no other ids. Use "functional", not "psychogenic". Branches that are not ACCEPTED must be reported as
+case finding ids (mf_*, tl_*, lab_*, img_*, np_*, ka_*); cite no other ids. Use "functional", not "psychogenic". Branches that are not ACCEPTED must be reported as
 unresolved, not as conclusions. Always state whether Wilson disease and dopa-responsive
 dystonia were addressed, excluded by a named test, or remain open, when the presentation
 calls for them.

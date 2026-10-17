@@ -38,6 +38,17 @@ export function PatientPanel({ view, highlighted, released, runId, showMotion = 
         </section>
       ))}
 
+      {!!c.motion_analysis?.length && (
+        <Section title="Hand-tracking measurements · sent to agents" open>
+          <ul className="entries">
+            {c.motion_analysis.map(e => (
+              <li key={e.id} className={hl(e.id)}><span className="fid">{e.id}</span><b>{e.measure}</b> {e.result}</li>
+            ))}
+          </ul>
+          <p className="fineprint">The models are text-only. These numbers, computed from the MediaPipe landmarks
+            above, are how the video reaches them; agents cite them by id.</p>
+        </Section>
+      )}
       <Section title="Movement findings" open>
         <ul className="entries">
           {c.movement_findings.map(f => (

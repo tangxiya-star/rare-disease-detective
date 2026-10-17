@@ -70,3 +70,20 @@ def test_release_hyphenated_terms():
     r = HeldOutReleaser(load_case("01", "demo"))
     assert r.request("L-dopa challenge", depth=1).gap_id == "gap_01"
     assert r.request("123I-FP-CIT SPECT", depth=1).gap_id == "gap_02"
+
+
+def test_demo_hero_motion_analysis_is_citable():
+    from app.grounding import check_finding
+    b = load_case("01", "demo")
+    ka = b.agent_view()["motion_analysis"]
+    assert [e["id"] for e in ka] == ["ka_01", "ka_02", "ka_03", "ka_04", "ka_05"]
+    assert ka == load_case("01", "demo").agent_view()["motion_analysis"]  # deterministic
+    assert {"ka_02", "ka_03"} <= b.finding_ids()
+    quote = ka[2]["result"].split(":")[0]
+    assert check_finding({"quote": quote, "source_id": "ka_03"}, b.case_sources(), b.finding_ids()).grounded
+    assert "case_01_guitarist" not in json.dumps(ka) and "levodopa" not in json.dumps(ka).lower()
+
+
+def test_scored_cases_have_no_motion_analysis():
+    for c in list_cases("scored"):
+        assert "motion_analysis" not in load_case(c["slot"], "scored").agent_view()

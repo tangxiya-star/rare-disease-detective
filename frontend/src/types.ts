@@ -74,6 +74,7 @@ export interface CaseRecord {
   labs: CaseEntry[]
   imaging: CaseEntry[]
   neurophysiology?: CaseEntry[]
+  motion_analysis?: CaseEntry[]
   medications: { current: string[]; prior_trials: Record<string, string>[] }
   family_history: string
   social_history: string
