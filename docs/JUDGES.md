@@ -101,16 +101,16 @@ Status: ✅ we can answer now · ⚠️ partial · ❌ we can't yet. Each ❌ ha
 | How does the system define "done"? | ⚠️ | Today: every branch is verified or explicitly unresolved, and the can't-miss rules apply. Fix 3 makes this an explicit, code-checked checklist. |
 | The verifier is the same model family as the planner. What stops it rubber-stamping? | ⚠️ | It's a separate role and prompt, it sees only grounded findings and their source text, and it has explicit rejection rules (population mismatch, ruling out on a variable feature, penetrance). Grounding is checked in code before the verifier runs. Evidence: the challenge set of 10 true and 10 false claims. We need to run it and quote the score. |
 | Show a case where it said "I don't know" or escalated. | ⚠️ | Case 09 (nonspecific focal dystonia) should end with "no rare cause indicated". `unresolved` branches show up in the report. Fix 3 adds an explicit `help.requested`. |
-| What stops a hallucinated citation reaching the clinician? | ✅ | The code checks that each quote appears verbatim in the retrieved source text and that each finding id exists in `case.json`, or the finding is discarded. Invalid ids in the report are dropped and listed in `dropped_invalid_ids`. |
+| What stops a hallucinated citation reaching the clinician? | ✅ / ⚠️ | Two cases. **A fabricated quote** (✅): the code checks that each quote appears verbatim in the retrieved source text and that each finding id exists in `case.json`, or the finding is discarded. Invalid ids in the report are dropped and listed in `dropped_invalid_ids`. **A real quote used for the wrong claim** (⚠️): code can't catch this; it is the verifier's job (rule A2), measured with the challenge set. |
 
 ### Evaluation (Piyush, Pranay, Abhinav)
 
 | Question | Status | Answer / notes |
 |---|---|---|
-| What is the baseline? | ❌ | Planned: one Nemotron Super call per case with the same input and report structure, and no recursion or verifier. Fix 5. |
-| How did you keep reference answers from leaking? | ✅ | Agents only ever see `case.json`. References sit in `cases/reference/` and the loader never sends them. The hero case is demo-only (the model may have memorised the published case). Slot 01 is scored on a synthetic version, and a retrieval blocklist removes the source article. A `refs-frozen` tag fixes the references before prompt tuning. |
-| Ten synthetic cases is tiny. | ✅ | Agreed. It's a feasibility check, not an accuracy study, so we report counts ("3 of 4"), not percentages. Grading is blind: outputs are shuffled and labels stripped before Wiki grades them. |
-| Isn't the "held-out" result just mock data? | ✅ | No. It's a test harness. The result exists in the patient's record but is hidden until an agent explicitly asks for that investigation, the way a clinician orders a test. The release rules are in `cases.py`. |
+| What is the baseline? | ⚠️ | Three arms per case, same input and report structure, graded blind together. **B0:** one plain Nemotron Super call. **B1:** one plain call with `reasoning_rules.md`. **Full:** the whole system. B1 vs B0 shows what the clinical rules add; Full vs B1 shows what recursion plus the verifier add. Not run yet (fix 5). |
+| How did you keep reference answers from leaking? | ⚠️ | Agents only ever see `case.json`. References sit in `cases/reference/` and the loader never sends them. The hero case is demo-only (the model may have memorised the published case); slot 01 is scored on a synthetic version. **Limits:** the retrieval blocklist only blocks the source article's DOI, so other papers discussing the case could still be retrieved. The `refs-frozen` tag will be set before scored runs; it doesn't exist yet. The clinical rules were written after reading the cases, which is why B1 (plain call plus the same rules) is the fair comparison. |
+| Ten synthetic cases is tiny. | ✅ | Agreed. It's a feasibility check, not an accuracy study, so we report counts ("3 of 4"), not percentages. Grading is blind to the arm: outputs are shuffled and labels stripped before grading. **But there is a single grader:** Wiki wrote both the cases and the rules, and no second rater checks the grades. |
+| Isn't the "held-out" result just mock data? | ⚠️ | In synthetic cases the results are scenario data written by our clinical lead; in case 01 they are the published results. What we test is whether the agents ask for the right investigation: a result is released only when an agent requests it, the way a clinician orders a test. Requests are matched to results by fuzzy text matching. The release rules are in `cases.py`. |
 | Could the system improve from its own traces? | ⚠️ | Future work, not claimed. Verifier rejections are labelled training data, so we could fine-tune a Nano verifier with Crusoe Serverless Fine-Tuning and measure it on the challenge set. |
 
 ### Product and clinical (George G., Raj, Pranay, Christina, Piyush)
@@ -118,9 +118,14 @@ Status: ✅ we can answer now · ⚠️ partial · ❌ we can't yet. Each ❌ ha
 | Question | Status | Answer / notes |
 |---|---|---|
 | Who is the user, and where in their workflow? | ✅ | A neurologist or movement-disorder specialist reviewing a hard referral before ordering the next test. The output is a clinician-review brief, not a diagnosis. |
-| Where is the physician in the loop? | ⚠️ | The output is investigative advice, not a clinical report, so there's no sign-off step. The physician approves any real-world investigation before its result is used, and answers agents' questions when a branch is stuck. Both are proposed in issue #14 and pending Wiki's review. Suggested investigations are framed as considerations, never orders. Treatment is out of scope. |
+| Where is the physician in the loop? | ⚠️ | The output is a clinician-review brief of considerations. The clinician decides every real-world action; agents can only request (issue #14). The organisers cleared us on this human-in-the-loop basis. Suggested investigations are framed as considerations, never orders. Treatment is out of scope. |
 | Does it plug into an EHR? Who pays? | ⚠️ | Not in scope today. The input is structured case JSON, which could map from FHIR. The buyer would be academic movement-disorder or rare-disease centres and diagnostic-odyssey programmes. |
-| PHI / HIPAA? | ✅ | We use synthetic or de-identified cases only, with no PHI. For production: a dedicated or sovereign Crusoe deployment, and no third-party search over patient text (queries only contain clinical terms). |
+| PHI / HIPAA? | ⚠️ | We use synthetic or de-identified cases only, with no PHI. For production: a dedicated or sovereign Crusoe deployment, and search queries designed to contain only clinical terms, not patient text. This is not enforced in code yet. |
+| How accurate is it vs a neurologist? | ✅ | We don't claim accuracy. Ten cases is a feasibility check. The metrics we report are safety metrics: can't-miss conditions addressed, zero unsupported claims, zero unsafe outputs. |
+| What if it misses something? Who's liable? | ✅ | The clinician decides. The can't-miss floor forces a status for every treatable mimic, and gaps are shown as open, not hidden. |
+| Automation bias: won't doctors just trust it? | ✅ | Every hypothesis shows its contradicting evidence, unresolved branches are labelled, and nothing is stated as a diagnosis. |
+| Are the report's confidence labels calibrated? | ✅ | No. They are not validated; treat them as ordinal. |
+| Why movement disorders? | ✅ | Long diagnostic delays, and treatable mimics that are cheap to test for. The hero patient waited 10 years for a treatment that worked the next day. |
 
 ### Search (You.com: Christina, Sako)
 
@@ -145,5 +150,5 @@ Status: ✅ we can answer now · ⚠️ partial · ❌ we can't yet. Each ❌ ha
    - Merge `backend/youcom-search` and get an API key at the You.com table.
    - Use full text (livecrawl or Contents) and a domain allowlist.
    - Show the source domain in the report.
-5. **Numbers.** Run the verifier challenge set and the single-call baseline on the reviewed cases, and report counts.
+5. **Numbers.** Run the verifier challenge set and the B0 and B1 baselines on the reviewed cases, and report counts.
 6. **Nemotron reasoning settings.** Reasoning on for the verifier, low or off for Nano workers. Measure the difference with fix 2.
