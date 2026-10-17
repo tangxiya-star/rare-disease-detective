@@ -11,13 +11,13 @@
     "Early-onset Parkinson disease (e.g. PRKN/PINK1) presenting with dystonia",
     "Wilson disease",
     "Other monogenic dystonia (e.g. TOR1A/DYT1, THAP1)",
-    "Functional (psychogenic) dystonia"
+    "Functional dystonia"
   ],
   "competing_hypotheses": [
     {
       "hypothesis": "Idiopathic task-specific focal dystonia (musician's dystonia)",
       "why_plausible": "Classic onset in a professional musician, task-specific, digits 3–4, sensory trick, mirror dystonia; prior neurologist made this diagnosis.",
-      "what_argues_against": "Spread to an unrelated task (writing) is possible in focal dystonia, but spread to the leg is unusual; clear diurnal fluctuation and sleep benefit; hyperreflexia; family history of childhood gait disorder that resolved."
+      "what_argues_against": "Spread to an unrelated task (writing) is possible in focal dystonia, but spread to the leg is unusual; clear diurnal fluctuation and sleep benefit; hyperreflexia; family history of childhood gait disorder that resolved. Sensory trick, mirror dystonia and partial benefit from trihexyphenidyl or botulinum toxin occur in both conditions, so they do not discriminate."
     },
     {
       "hypothesis": "Early-onset Parkinson disease presenting with dystonia",
@@ -27,12 +27,12 @@
     {
       "hypothesis": "Wilson disease",
       "why_plausible": "Must be excluded in any new movement disorder under ~50; treatable.",
-      "what_argues_against": "Normal ceruloplasmin, normal liver enzymes, normal MRI. Not fully excluded until slit lamp and 24-hour urine copper are done."
+      "what_argues_against": "Normal liver enzymes and normal MRI. Ceruloplasmin is in range, but she takes a combined oral contraceptive: estrogen raises ceruloplasmin and can mask Wilson disease, and ceruloplasmin can be normal in neurological Wilson even without estrogen. Not excluded until slit lamp and 24-hour urine copper are done."
     },
     {
       "hypothesis": "TOR1A (DYT1) or other early-onset genetic dystonia",
       "why_plausible": "Limb-onset dystonia in a young adult that spreads.",
-      "what_argues_against": "DYT1 typically has childhood onset with spread from a limb toward generalization; diurnal variation and sleep benefit are not characteristic; no response to levodopa expected."
+      "what_argues_against": "DYT1 typically has childhood onset with spread from a limb toward generalization; diurnal variation and sleep benefit are not characteristic; no response to levodopa expected. Still worth testing: EFNS 2011 recommends TOR1A testing for limb-onset dystonia before age 30."
     },
     {
       "hypothesis": "Functional dystonia",
@@ -106,7 +106,7 @@
     {
       "gap_id": "gap_05",
       "investigation": "CSF neurotransmitter metabolites and pterins (only if genetics negative or equivocal)",
-      "result": "Low neopterin and low total biopterin; low HVA and 5-HIAA. (Included for completeness; not required once genetics are positive.)",
+      "result": "Low neopterin and low total biopterin; low HVA; 5-HIAA low-normal. (Included for completeness; not required once genetics are positive.)",
       "release_to_agent": "after_depth_2"
     },
     {
@@ -134,25 +134,53 @@
     },
     {
       "rank": 4,
-      "investigation": "Complete Wilson screen: slit lamp + 24-hour urine copper",
-      "discriminates_between": "Excludes a treatable mimic"
+      "investigation": "Complete Wilson screen: slit lamp + 24-hour urine copper (in parallel with rank 1, not after it)",
+      "discriminates_between": "Excludes a treatable mimic; ceruloplasmin is unreliable here because of estrogen"
     },
     {
       "rank": 5,
-      "investigation": "Genetic panel including GCH1, TH, SPR, PRKN, TOR1A",
-      "discriminates_between": "Confirms DRD subtype; distinguishes from PRKN-PD and DYT1"
+      "investigation": "Genetic panel including GCH1 (sequencing plus deletion/duplication analysis), TH, SPR, PRKN, TOR1A",
+      "discriminates_between": "Confirms DRD subtype; distinguishes from PRKN-PD and DYT1; sequencing alone misses GCH1 exon deletions"
+    }
+  ],
+  "cant_miss": [
+    {
+      "condition": "Dopa-responsive dystonia (GCH1 and other dopamine-synthesis disorders)",
+      "why_required": "Treatable with low-dose levodopa; EFNS 2011 recommends a levodopa trial in early-onset dystonia without an alternative diagnosis",
+      "addressed_by": "Supervised levodopa trial; GCH1 genetics with deletion/duplication analysis",
+      "status_in_record": "open: no levodopa trial, no genetics"
+    },
+    {
+      "condition": "Wilson disease",
+      "why_required": "Treatable; must be considered in anyone under 50 with a new movement disorder",
+      "addressed_by": "Slit lamp exam for Kayser-Fleischer rings and 24-hour urine copper",
+      "status_in_record": "open: ceruloplasmin normal but unreliable on estrogen; no slit lamp, no urine copper"
+    },
+    {
+      "condition": "Drug-induced dystonia",
+      "why_required": "Reversible if the drug is stopped",
+      "addressed_by": "Medication and exposure history",
+      "status_in_record": "addressed: no antipsychotic or antiemetic exposure"
+    },
+    {
+      "condition": "Structural lesion (basal ganglia, cervical cord)",
+      "why_required": "May need specific treatment",
+      "addressed_by": "MRI brain and cervical spine",
+      "status_in_record": "addressed: both normal"
     }
   ],
   "red_flags_for_wrong_reasoning": [
     "Accepting the prior 'musician's dystonia' label without addressing spread to the foot or diurnal clues (anchoring on prior diagnosis)",
+    "Using the sensory trick, mirror dystonia, or partial response to trihexyphenidyl or botulinum toxin as evidence against DRD (they occur in both DRD and idiopathic focal dystonia)",
+    "Treating absence of a documented levodopa trial as neutral: a levodopa trial is recommended in early-onset dystonia without an alternative diagnosis (EFNS 2011)",
     "Treating the normal MRI as evidence against DRD or for any specific diagnosis",
     "Concluding Parkinson disease from levodopa responsiveness alone without DAT imaging",
-    "Declaring Wilson disease excluded on ceruloplasmin alone",
+    "Declaring Wilson disease excluded on ceruloplasmin alone, especially while she is taking estrogen (combined oral contraceptive raises ceruloplasmin)",
     "Labelling the presentation functional because of the patient's stress or anxiety, without positive functional signs",
     "Recommending DBS, surgery, or starting medication as an instruction rather than a consideration for the treating physician",
     "Stating any diagnosis as established rather than as a hypothesis for physician review",
     "Citing literature that does not exist or that does not support the specific claim"
   ],
-  "clinician_review_notes": "DRAFT. Wiki to check: (1) whether adult-onset GCH1-DRD presenting as task-specific hand dystonia in a musician is plausible enough or should be shifted (e.g. younger onset with childhood foot symptoms in history); (2) reflex/plantar findings; (3) levodopa dose and response timeline; (4) whether diurnal clues are too subtle or too obvious for the demo.",
+  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). (1) Plausibility: keep. Adult-onset GCH1-DRD can present as focal limb dystonia including writer's cramp-like and task-specific patterns; onset at 21 in a woman fits the sex ratio, and spread to the foot with walking plus brisk reflexes is the classic tell. Do not add childhood symptoms for the patient herself; the aunt is enough and keeps the demo hard. (2) Reflexes: knees 3+ with an equivocal right plantar is right for DRD (striatal toe can mimic an extensor plantar). Keep. (3) Levodopa: carbidopa/levodopa 25/100 TID with near-complete response in about 10 days, sustained, no dyskinesia, is realistic. Doses stay in this file only; agent output must not give doses. (4) Diurnal clues: right level. They are indirect and scattered (morning practice, evening rehearsals, nap benefit, late-morning exam). Keep. Added: the combined oral contraceptive raises ceruloplasmin, so the normal level does not reassure about Wilson disease; this is a strong verifier test. Added: sensory trick, mirror dystonia and partial trihexyphenidyl or botulinum response do not discriminate DRD from focal dystonia. Changed: Wilson screen runs in parallel with the levodopa trial; GCH1 testing must include deletion/duplication analysis; CSF 5-HIAA softened to low-normal.",
   "agent_case_id": "case_01"
 }
