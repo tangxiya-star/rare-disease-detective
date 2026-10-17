@@ -32,6 +32,11 @@
       "hypothesis": "Monogenic adult-onset focal dystonia (TOR1A, THAP1, GNAL)",
       "why_plausible": "Patient requests genetics; partial Ashkenazi ancestry; father with tremor",
       "what_argues_against": "TOR1A typically early-onset limb dystonia that generalizes; isolated adult-onset writer's cramp without family history of dystonia has very low genetic yield. Father's long-standing action tremor is non-specific"
+    },
+    {
+      "hypothesis": "Wilson disease",
+      "why_plausible": "Age under 50 with a movement disorder; late-onset Wilson can present as isolated writer's cramp",
+      "what_argues_against": "Ceruloplasmin normal (31 mg/dL) with no oestrogen exposure; normal liver tests (CMP); no psychiatric, hepatic or eye features; normal MRI; three-year stable isolated task-specific course. Low risk, not formally excluded (no urine copper or slit lamp)."
     }
   ],
   "key_evidence_gaps": [
@@ -44,6 +49,11 @@
       "id": "gap_02",
       "question": "Genetic testing?",
       "why_it_matters": "Low yield; typically not indicated for isolated adult-onset focal dystonia"
+    },
+    {
+      "id": "gap_03",
+      "question": "24-hour urine copper",
+      "why_it_matters": "Optional completion of the Wilson screen in a patient under 50; low prior probability"
     }
   ],
   "held_out_evidence": [
@@ -58,6 +68,12 @@
       "investigation": "Gene panel (if requested)",
       "result": "No pathogenic variants.",
       "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_03",
+      "investigation": "24-hour urine copper",
+      "result": "Normal.",
+      "release_to_agent": "on_request"
     }
   ],
   "discriminating_investigations": [
@@ -70,6 +86,37 @@
       "rank": 2,
       "investigation": "No further invasive testing unless new features",
       "discriminates_between": "Avoid over-investigation"
+    },
+    {
+      "rank": 3,
+      "investigation": "Optional: 24-hour urine copper",
+      "discriminates_between": "Completes the Wilson screen; low yield, non-invasive"
+    }
+  ],
+  "cant_miss": [
+    {
+      "condition": "Dopa-responsive dystonia",
+      "why_required": "Treatable",
+      "addressed_by": "Levodopa trial",
+      "status_in_record": "addressed: carbidopa/levodopa 25/100 mg TID for 6 weeks, no benefit; with adult onset and no daily pattern, DRD is unlikely"
+    },
+    {
+      "condition": "Wilson disease",
+      "why_required": "Treatable; age 48 with a movement disorder; late-onset cases can present as writer's cramp",
+      "addressed_by": "24-hour urine copper and slit lamp",
+      "status_in_record": "low risk: ceruloplasmin normal without oestrogen, normal liver tests, no systemic features; urine copper optional"
+    },
+    {
+      "condition": "Drug-induced dystonia",
+      "why_required": "Reversible",
+      "addressed_by": "Medication history",
+      "status_in_record": "addressed: no neuroleptic or antiemetic exposure"
+    },
+    {
+      "condition": "Structural lesion",
+      "why_required": "May need specific treatment",
+      "addressed_by": "MRI brain",
+      "status_in_record": "addressed: normal"
     }
   ],
   "red_flags_for_wrong_reasoning": [
@@ -81,9 +128,11 @@
     "Stating any diagnosis as established rather than as a hypothesis for physician review",
     "Recommending treatment as an instruction rather than a consideration for the treating physician",
     "Citing literature that does not exist or does not support the specific claim",
-    "Asserting case facts that are not in the case record"
+    "Asserting case facts that are not in the case record",
+    "Omitting Wilson status from the report (it must be stated as low risk, with urine copper optional)",
+    "Spawning a rare-disease investigation of Wilson disease or ordering slit lamp, ATP7B genetics or CSF studies without new features"
   ],
-  "expected_system_behavior": "Report should conclude that the most likely explanation is idiopathic task-specific focal dystonia, that rare causes were considered and are not supported, and list what would change that conclusion. This is an 'unresolved / no rare disease' outcome test.",
+  "expected_system_behavior": "Report should conclude that the most likely explanation is idiopathic task-specific focal dystonia, that rare causes were considered and are not supported, and list what would change that conclusion. It must state the status of each can't-miss condition: DRD addressed by the levodopa trial; Wilson disease low risk (normal ceruloplasmin, no oestrogen, no systemic features), with 24-hour urine copper as an optional, non-invasive completion. It should finish with few or no child investigations: no rare-disease search is warranted. This is an 'unresolved / no rare disease' outcome test.",
   "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
   "agent_case_id": "case_09"
 }

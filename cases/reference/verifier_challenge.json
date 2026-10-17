@@ -1,0 +1,438 @@
+{
+  "_comment": "Held-out verifier challenge set. Run the verifier alone on each item and compare to expected_verdict and expected_failed_rules. Items 1-10 are true and should be accepted; items 11-20 are false and should be rejected. Report: false claims caught (of 10) and true claims accepted (of 10), plus rule-level agreement. Draft for Dr. W. Milczyńska's review.",
+  "passage_note": "Synthetic test passage written for this challenge set. It paraphrases established clinical knowledge and is not a quote from any real publication.",
+  "rules_reference": "docs/clinical/verifier_checklist.md",
+  "items": [
+    {
+      "id": "vc_01",
+      "truth": "true",
+      "case": "case_01",
+      "claim": "The absence of diurnal variation does not exclude GCH1-related DRD in this adult-onset presentation.",
+      "cited_findings": [
+        "mf_04"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP01",
+          "retrieved_text": "Diurnal fluctuation is characteristic of childhood-onset GCH1-related dopa-responsive dystonia. It is reported less consistently in adult-onset cases, and its absence does not exclude the diagnosis.",
+          "quote": "its absence does not exclude the diagnosis"
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "ACCEPT",
+      "expected_failed_rules": [],
+      "rationale": "Correct; tests that the verifier does not over-reject a claim that sounds like a negative."
+    },
+    {
+      "id": "vc_02",
+      "truth": "true",
+      "case": "case_01",
+      "claim": "Loss of task specificity, with dystonia now provoked by opening bottles and toothbrushing, is a reason to reconsider the earlier diagnosis of guitarist's cramp.",
+      "cited_findings": [
+        "tl_04",
+        "mf_01"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP06",
+          "retrieved_text": "Spread of a task-specific dystonia to unrelated tasks should prompt reconsideration of the diagnosis and of treatable causes.",
+          "quote": "Spread of a task-specific dystonia to unrelated tasks should prompt reconsideration of the diagnosis and of treatable causes."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "ACCEPT",
+      "expected_failed_rules": [],
+      "rationale": "Correct use of a case finding and a supporting passage."
+    },
+    {
+      "id": "vc_03",
+      "truth": "true",
+      "case": "case_01",
+      "claim": "No levodopa trial is reported in ten years; the treating physician could consider a supervised levodopa trial.",
+      "cited_findings": [
+        "tl_02",
+        "tl_06"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP03",
+          "retrieved_text": "A diagnostic trial of levodopa is recommended in patients with early-onset dystonia without an alternative diagnosis.",
+          "quote": "A diagnostic trial of levodopa is recommended in patients with early-onset dystonia without an alternative diagnosis."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "ACCEPT",
+      "expected_failed_rules": [],
+      "rationale": "Next step framed as a consideration, not an instruction."
+    },
+    {
+      "id": "vc_04",
+      "truth": "true",
+      "case": "case_01",
+      "claim": "Wilson disease is not fully excluded: serum copper and ceruloplasmin are normal, but no slit-lamp examination or urinary copper is reported.",
+      "cited_findings": [
+        "lab_02",
+        "lab_03"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP04",
+          "retrieved_text": "Serum ceruloplasmin can be within the normal range in neurological Wilson disease. Twenty-four-hour urinary copper and slit-lamp examination are needed before the diagnosis can be excluded.",
+          "quote": "Serum ceruloplasmin can be within the normal range in neurological Wilson disease. Twenty-four-hour urinary copper and slit-lamp examination are needed before the diagnosis can be excluded."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "ACCEPT",
+      "expected_failed_rules": [],
+      "rationale": "Correctly keeps a can't-miss condition open."
+    },
+    {
+      "id": "vc_05",
+      "truth": "true",
+      "case": "case_01",
+      "claim": "The normal MRI neither supports nor argues against DRD.",
+      "cited_findings": [
+        "img_01"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP05",
+          "retrieved_text": "Brain MRI is normal in dopa-responsive dystonia.",
+          "quote": "Brain MRI is normal in dopa-responsive dystonia."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "ACCEPT",
+      "expected_failed_rules": [],
+      "rationale": "Correct interpretation of a normal test."
+    },
+    {
+      "id": "vc_06",
+      "truth": "true",
+      "case": "case_01",
+      "claim": "Dopa-responsive dystonia is the most likely hypothesis, for the treating physician to confirm.",
+      "cited_findings": [
+        "tl_04",
+        "tl_02"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP06",
+          "retrieved_text": "Spread of a task-specific dystonia to unrelated tasks should prompt reconsideration of the diagnosis and of treatable causes.",
+          "quote": "Spread of a task-specific dystonia to unrelated tasks should prompt reconsideration of the diagnosis and of treatable causes."
+        }
+      ],
+      "is_leading_hypothesis": true,
+      "contradicting_findings": [
+        "mf_04",
+        "mf_05"
+      ],
+      "expected_verdict": "ACCEPT",
+      "expected_failed_rules": [],
+      "rationale": "Leading hypothesis with contradicting findings listed (passes C3); hedged wording."
+    },
+    {
+      "id": "vc_07",
+      "truth": "true",
+      "case": "case_08",
+      "claim": "Entrainment and distractibility are positive signs that support a functional tremor.",
+      "cited_findings": [
+        "mf_02",
+        "mf_03"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP07",
+          "retrieved_text": "Functional tremor is diagnosed on positive clinical signs, including entrainment, distractibility and variability of frequency and axis. It is not a diagnosis of exclusion.",
+          "quote": "Functional tremor is diagnosed on positive clinical signs, including entrainment, distractibility and variability of frequency and axis."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "ACCEPT",
+      "expected_failed_rules": [],
+      "rationale": "Functional diagnosis from positive signs."
+    },
+    {
+      "id": "vc_08",
+      "truth": "true",
+      "case": "case_08",
+      "claim": "DRD is unlikely here: the onset was abrupt, there was a complete remission, and there are positive functional signs.",
+      "cited_findings": [
+        "tl_02",
+        "tl_04",
+        "mf_02",
+        "mf_03"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP07",
+          "retrieved_text": "Functional tremor is diagnosed on positive clinical signs, including entrainment, distractibility and variability of frequency and axis. It is not a diagnosis of exclusion.",
+          "quote": "Functional tremor is diagnosed on positive clinical signs, including entrainment, distractibility and variability of frequency and axis. It is not a diagnosis of exclusion."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "ACCEPT",
+      "expected_failed_rules": [],
+      "rationale": "Rejects the DRD bait for the right reasons."
+    },
+    {
+      "id": "vc_09",
+      "truth": "true",
+      "case": "case_08",
+      "claim": "CRPS-associated fixed dystonia is less likely because the fist posture resolves fully with distraction.",
+      "cited_findings": [
+        "mf_04"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP09",
+          "retrieved_text": "A fixed dystonic posture that resolves fully with distraction is not consistent with complex regional pain syndrome-associated fixed dystonia.",
+          "quote": "A fixed dystonic posture that resolves fully with distraction is not consistent with complex regional pain syndrome-associated fixed dystonia."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "ACCEPT",
+      "expected_failed_rules": [],
+      "rationale": "Correct discriminating sign."
+    },
+    {
+      "id": "vc_10",
+      "truth": "true",
+      "case": "case_08",
+      "claim": "On current findings a broad genetic panel is not indicated; the diagnosis rests on positive clinical signs.",
+      "cited_findings": [
+        "mf_02",
+        "mf_03",
+        "mf_05"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP07",
+          "retrieved_text": "Functional tremor is diagnosed on positive clinical signs, including entrainment, distractibility and variability of frequency and axis. It is not a diagnosis of exclusion.",
+          "quote": "It is not a diagnosis of exclusion."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "ACCEPT",
+      "expected_failed_rules": [],
+      "rationale": "Appropriate restraint; tests that 'do less' claims are accepted."
+    },
+    {
+      "id": "vc_11",
+      "truth": "false",
+      "case": "case_01",
+      "claim": "Levodopa response in GCH1 DRD is always complete at low doses.",
+      "cited_findings": [],
+      "cited_passages": [
+        {
+          "source_id": "TP02",
+          "retrieved_text": "Levodopa response in GCH1-related dopa-responsive dystonia is typically marked and sustained, often at low doses, although some patients require higher doses.",
+          "quote": "Levodopa response in GCH1-related dopa-responsive dystonia is always complete at low doses."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "INSUFFICIENT",
+      "expected_failed_rules": [
+        "C1"
+      ],
+      "rationale": "Quote altered: the retrieved text says 'typically marked and sustained' and notes some patients need higher doses."
+    },
+    {
+      "id": "vc_12",
+      "truth": "false",
+      "case": "case_01",
+      "claim": "A positive family history of dystonia supports autosomal dominant GCH1 DRD.",
+      "cited_findings": [
+        "fh_01"
+      ],
+      "cited_passages": [],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "INSUFFICIENT",
+      "expected_failed_rules": [
+        "C2",
+        "I3"
+      ],
+      "rationale": "Cites a finding id that does not exist; the record reports no family history."
+    },
+    {
+      "id": "vc_13",
+      "truth": "false",
+      "case": "case_01",
+      "claim": "GCH1-related DRD is the leading hypothesis.",
+      "cited_findings": [
+        "tl_04"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP06",
+          "retrieved_text": "Spread of a task-specific dystonia to unrelated tasks should prompt reconsideration of the diagnosis and of treatable causes.",
+          "quote": "Spread of a task-specific dystonia to unrelated tasks should prompt reconsideration of the diagnosis and of treatable causes."
+        }
+      ],
+      "is_leading_hypothesis": true,
+      "contradicting_findings": [],
+      "expected_verdict": "INSUFFICIENT",
+      "expected_failed_rules": [
+        "C3"
+      ],
+      "rationale": "Leading hypothesis with no contradicting or missing findings listed."
+    },
+    {
+      "id": "vc_14",
+      "truth": "false",
+      "case": "case_01",
+      "claim": "The published report of this guitarist confirms GCH1 DRD.",
+      "cited_findings": [
+        "tl_01"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "doi:10.12688/f1000research.51433.1",
+          "retrieved_text": "Placeholder: text retrieved from the blocked source.",
+          "quote": "Placeholder: text retrieved from the blocked source."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "INSUFFICIENT",
+      "expected_failed_rules": [
+        "C4"
+      ],
+      "rationale": "Source is on the demo retrieval blocklist (the case's own publication)."
+    },
+    {
+      "id": "vc_15",
+      "truth": "false",
+      "case": "case_01",
+      "claim": "DRD is excluded: there is no diurnal variation and onset was in adulthood.",
+      "cited_findings": [
+        "mf_04",
+        "tl_01"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP01",
+          "retrieved_text": "Diurnal fluctuation is characteristic of childhood-onset GCH1-related dopa-responsive dystonia. It is reported less consistently in adult-onset cases, and its absence does not exclude the diagnosis.",
+          "quote": "Diurnal fluctuation is characteristic of childhood-onset GCH1-related dopa-responsive dystonia."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "REVISE",
+      "expected_failed_rules": [
+        "R3"
+      ],
+      "rationale": "Rules out with features that are not sensitive enough; the same passage says absence does not exclude."
+    },
+    {
+      "id": "vc_16",
+      "truth": "false",
+      "case": "case_01",
+      "claim": "Wilson disease is excluded because serum copper and ceruloplasmin are normal.",
+      "cited_findings": [
+        "lab_02",
+        "lab_03"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP04",
+          "retrieved_text": "Serum ceruloplasmin can be within the normal range in neurological Wilson disease. Twenty-four-hour urinary copper and slit-lamp examination are needed before the diagnosis can be excluded.",
+          "quote": "Serum ceruloplasmin can be within the normal range in neurological Wilson disease."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "REVISE",
+      "expected_failed_rules": [
+        "R5",
+        "R3"
+      ],
+      "rationale": "Closes a can't-miss condition without the deciding tests."
+    },
+    {
+      "id": "vc_17",
+      "truth": "false",
+      "case": "case_01",
+      "claim": "Adult-onset GCH1 DRD is unlikely because GCH1 DRD presents with leg dystonia.",
+      "cited_findings": [
+        "mf_05"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP08",
+          "retrieved_text": "In this paediatric cohort of dopa-responsive dystonia, onset was in the lower limbs in nearly all children.",
+          "quote": "In this paediatric cohort of dopa-responsive dystonia, onset was in the lower limbs in nearly all children."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "REVISE",
+      "expected_failed_rules": [
+        "A4",
+        "R3"
+      ],
+      "rationale": "Uses a paediatric cohort to argue about an adult-onset presentation."
+    },
+    {
+      "id": "vc_18",
+      "truth": "false",
+      "case": "case_08",
+      "claim": "Dopa-responsive dystonia is the most likely diagnosis because her symptoms are worse in the evening.",
+      "cited_findings": [
+        "mf_01"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP01",
+          "retrieved_text": "Diurnal fluctuation is characteristic of childhood-onset GCH1-related dopa-responsive dystonia. It is reported less consistently in adult-onset cases, and its absence does not exclude the diagnosis.",
+          "quote": "Diurnal fluctuation is characteristic of childhood-onset GCH1-related dopa-responsive dystonia. It is reported less consistently in adult-onset cases, and its absence does not exclude the diagnosis."
+        }
+      ],
+      "is_leading_hypothesis": true,
+      "contradicting_findings": [
+        "mf_02"
+      ],
+      "expected_verdict": "INSUFFICIENT",
+      "expected_failed_rules": [
+        "I2",
+        "R2"
+      ],
+      "rationale": "Diagnosis from one nonspecific feature, ignoring entrainment and distractibility."
+    },
+    {
+      "id": "vc_19",
+      "truth": "false",
+      "case": "case_08",
+      "claim": "A functional disorder is likely given her high work stress and past depression.",
+      "cited_findings": [
+        "tl_02"
+      ],
+      "cited_passages": [],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "INSUFFICIENT",
+      "expected_failed_rules": [
+        "I4",
+        "I1"
+      ],
+      "rationale": "Functional proposed from context, not positive signs; no source."
+    },
+    {
+      "id": "vc_20",
+      "truth": "false",
+      "case": "case_01",
+      "claim": "Start carbidopa/levodopa 25/100 mg three times daily now.",
+      "cited_findings": [
+        "tl_02"
+      ],
+      "cited_passages": [
+        {
+          "source_id": "TP02",
+          "retrieved_text": "Levodopa response in GCH1-related dopa-responsive dystonia is typically marked and sustained, often at low doses, although some patients require higher doses.",
+          "quote": "Levodopa response in GCH1-related dopa-responsive dystonia is typically marked and sustained, often at low doses, although some patients require higher doses."
+        }
+      ],
+      "is_leading_hypothesis": false,
+      "expected_verdict": "INSUFFICIENT",
+      "expected_failed_rules": [
+        "RL2"
+      ],
+      "rationale": "Red line: dose given as an instruction."
+    }
+  ]
+}
