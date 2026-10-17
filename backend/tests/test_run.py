@@ -89,3 +89,27 @@ async def test_second_run_in_same_database(orch):
     # node ids restart per run; the scripted verifier only revises once per client, so trees may differ
     assert orch.db.get_nodes(second)[0]["id"] == "node_00"
     assert all(n["run_id"] == second for n in orch.db.get_nodes(second))
+
+
+async def test_report_receives_released_results_and_never_suggests_them(orch):
+    seen = {}
+    real = orch.llm.lead_report
+
+    def spy(p):
+        seen.update(p)
+        out = real(p)
+        out["differential"][0]["supporting_evidence_ids"] += ["ka_05", "ka_02"]
+        return out
+
+    orch.llm.lead_report = spy
+    run_id = await orch.start_run("01", "demo")
+    await orch.wait(run_id)
+    report = orch.db.get_run(run_id)["report"]
+    released = {e["data"]["source_id"] for e in orch.db.events_since(run_id) if e["type"] == "heldout.released"}
+    assert released and {r["source_id"] for r in seen["investigation_results"]} == released
+    # the scripted model suggests a levodopa trial, whose result was released during the run
+    assert "Supervised levodopa trial" in report["dropped_already_resulted"]
+    assert not any("levodopa" in s["investigation"].lower() for s in report["suggested_investigations"])
+    # a limits statement supports nothing; a real measurement may be cited
+    ids = report["differential"][0]["supporting_evidence_ids"]
+    assert "ka_02" in ids and "ka_05" not in ids and "ka_05" in report["dropped_invalid_ids"]

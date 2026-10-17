@@ -218,16 +218,28 @@ class Orchestrator:
                 "findings": [{"evidence_id": f["evidence_id"], "claim": f["claim"], "stance": f.get("stance"),
                               "hypothesis": f.get("hypothesis")}
                              for f in c["artifact"].get("findings", []) if f["grounded"]]})
-        report = await self._ask(ctx, "lead_report", node["model"], {"case": case, "plan": a["plan"],
-                                                                     "branches": branches})
+        report = await self._ask(ctx, "lead_report", node["model"], {
+            "case": case, "plan": a["plan"], "branches": branches,
+            "investigation_results": self._resulted(ctx)})
         self._check_report_ids(ctx, report)
+        self._drop_resulted_suggestions(ctx, report)
         self.db.update_run(ctx.run_id, report=report)
         self.bus.emit(ctx.run_id, "report.ready", {"report": report})
         self._set(ctx, node, status="done", checkpoint="reported", artifact=a)
 
+    def _resulted(self, ctx: RunContext) -> list[dict]:
+        """Every held-out result released during the run, one per investigation. These are facts
+        from the patient's record, so they reach the report whatever the verifier said about the
+        branch that requested them. Read from the DB so a resumed run still has them."""
+        return [{"source_id": s["id"], "investigation": s["title"], "result": s["text"]}
+                for s in self.db.get_sources(ctx.run_id) if s["id"].startswith("HELDOUT:")]
+
     def _check_report_ids(self, ctx: RunContext, report: dict) -> None:
-        """Drop cited ids that are neither run evidence nor case findings; record what was dropped."""
-        valid = {e["id"] for e in self.db.get_evidence(ctx.run_id) if e["grounded"]} | ctx.bundle.finding_ids()
+        """Drop cited ids that are neither run evidence, released results nor case findings, and
+        entries that state a method's limits (they support nothing); record what was dropped."""
+        valid = ({e["id"] for e in self.db.get_evidence(ctx.run_id) if e["grounded"]}
+                 | {r["source_id"] for r in self._resulted(ctx)} | ctx.bundle.finding_ids())
+        valid -= {e["id"] for e in ctx.bundle.motion_analysis if e.get("role") == "limitation"}
         dropped = []
         for item in report.get("differential") or []:
             for key in ("supporting_evidence_ids", "contradicting_evidence_ids"):
@@ -235,6 +247,16 @@ class Orchestrator:
                 dropped += [i for i in ids if i not in valid]
                 item[key] = [i for i in ids if i in valid]
         report["dropped_invalid_ids"] = sorted(set(dropped))
+
+    def _drop_resulted_suggestions(self, ctx: RunContext, report: dict) -> None:
+        """A brief must not recommend a test whose result is already in hand."""
+        done = {r["source_id"].removeprefix("HELDOUT:") for r in self._resulted(ctx)}
+        keep, dropped = [], []
+        for s in report.get("suggested_investigations") or []:
+            gap = ctx.releaser.match(f"{s.get('investigation', '')}")
+            (dropped if gap in done else keep).append(s)
+        report["suggested_investigations"] = keep
+        report["dropped_already_resulted"] = [s.get("investigation", "") for s in dropped]
 
     # --- investigator -------------------------------------------------------
 

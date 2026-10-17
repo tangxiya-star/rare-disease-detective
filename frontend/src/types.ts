@@ -50,6 +50,7 @@ export interface Report {
   suggested_investigations: { investigation: string; rationale: string }[]
   disclaimer: string
   dropped_invalid_ids?: string[]
+  dropped_already_resulted?: string[]
 }
 
 export interface RunEvent<T = Record<string, any>> {
