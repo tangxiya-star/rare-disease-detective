@@ -1,10 +1,35 @@
-# Rare Disease Detective — PRD v4.0
+# Rare Disease Detective — PRD v4.1
 
 **Recursive Agents Hackathon · Cerebral Valley × Crusoe · October 17, 2026**
 
+## 0. Hackathon fit (read first, updated 12:50 PT)
+
+**Deadline: submissions are due at 5:00 PM PT, not 10 PM.** First-round judging is 5:00 to 6:45 PM (about 3 min live demo plus 1 to 2 min Q&A). Final round 7:00 to 8:00 PM for the top six.
+
+**Track: "Done Means Done."** The organisers ask for an agent team that writes its own definition of done, checks its work with tests or independent verifier agents, catches itself drifting or looping, and decides whether to continue, re-plan, stop, or (rarely) ping a human. That is our product. **The clinical cases are the test bed, not the product.**
+
+| Track asks for | We provide |
+|---|---|
+| Agents write their own definition of done | **New P0:** the lead turns the one-line goal into a done-checklist at run start; code checks it before the report (§6) |
+| Checks via tests or independent verifiers | Code-level grounding (C1 to C4) plus the verifier agent with rule ids |
+| Catches drifting or looping | Duplicate-task validator, node budget, **new** loop guard (§6) |
+| Continue, re-plan, stop, or ping a human | Replanning on REVISE; INSUFFICIENT recorded as unresolved; **new** "needs clinician input" stop (case 10's contradictory records) |
+| Walk away | Unattended evaluation runs across cases and arms (§7) |
+
+**Rules that bind us**
+- **Repository must be public** at submission. Make it public before 4:30 PM. Reference answers become visible; that is acceptable, since agents never load them.
+- **1-minute demo video** is required in the submission form, showing only what we built today.
+- **New work only, clearly identified.** Case 01 and its videos come from Hasegawa et al. 2021 (CC BY 4.0 / CC0): credit them on screen and in the README. Everything else was written today.
+- **Banned: "any project using AI to generate and give medical advice." Cleared with the organisers (17 Oct):** the rule targets ungrounded "AI doctor" projects from non-clinical teams; ours is led by a doctor and is fine. **Condition: present it as human-in-the-loop.** The agents investigate and verify; the clinician decides. It gives no advice to patients and no diagnosis or treatment decision, and every output is "for physician review". Say this in the first 20 seconds of every demo and show the "needs clinician input" stop.
+- **Banned: a dashboard as the main feature.** The agent tree is the product; the scorecard is one slide.
+
+**Judging weights (round one):** Technicality 40%, Creativity 25%, Live demo 20%, Future potential 15%. Lead with the hard engineering.
+
+**Prize to target:** Best Use of Nemotron (Super plans and verifies, Nano investigates).
+
 ## One-liner
 
-An autonomous clinical investigation system that recursively investigates rare neurological movement disorders, verifies medical evidence, and helps physicians explore complex diagnoses through interactive motion and agent visualizations.
+An agent team that knows when it is done: given a one-line goal, it writes its own definition of done, recursively investigates, verifies every claim in code and with an independent verifier, and stops, re-plans, or asks a human instead of confidently reporting success. Test bed: hard rare neurological movement-disorder cases, for physician review.
 
 | | |
 |---|---|
@@ -243,6 +268,30 @@ The system defines reusable agent capabilities and execution constraints, not a 
 
 **Important:** Recursion is not guaranteed to produce a depth-3 tree for every case. The architecture must permit genuine depth-3 investigation when justified, and the demonstration should include one actual example.
 
+### Definition of done (new P0, Done Means Done)
+
+At run start the lead turns the one-line goal (e.g. "Investigate case_01 for clinician review") into a **done-checklist** of runnable checks, stored with the run and shown in the UI.
+
+- **Floor from the clinical lead (always present; agents may add, never remove):**
+  - D1: every accepted claim is grounded (C1, C2 pass).
+  - D2: every can't-miss condition the lead flagged has a status: addressed, excluded by a named test, or open.
+  - D3: every branch is verified or explicitly unresolved.
+  - D4: every contradiction found in the record is listed, not silently resolved.
+  - D5: the top hypothesis lists contradicting or missing findings (C3).
+- **Agent-written criteria:** case-specific checks the lead adds, e.g. "DRD vs early-onset PD separated by a named discriminator".
+- **Code runs the checklist before the report.** Any failure means continue or re-plan (spawn a targeted child) within budget. If it still fails, stop and report "not done" with the failing checks.
+
+### Drift and loop guard (new P0)
+
+- Stop re-spawning an objective that has been rejected twice; record it as unresolved.
+- Stop a branch if two consecutive nodes add no new grounded findings.
+- Node budget and depth limit as before.
+
+### Ping a human (rare, by design)
+
+- The lead may end with **"needs clinician input"** only when the record contradicts itself or a done-check cannot pass without information no investigation can release. Case 10 is the demo of this.
+- Shown as a distinct event and at the top of the report, listing the exact questions for the clinician.
+
 ### Recovery
 
 Every task saves checkpoints after meaningful completed stages.
@@ -316,23 +365,25 @@ Every task saves checkpoints after meaningful completed stages.
 
 **Required early handoff from Wiki:** Hero case JSON, reference answer stored separately, reasonable competing hypotheses, key evidence gaps, and verification checklist.
 
-## 9. Thirteen-Hour Build Plan
+## 9. Build Plan (revised for the 5:00 PM deadline)
 
 | Time (PT) | Holly | Wiki |
 |---|---|---|
-| 9–11 AM | API smoke test, backend/UI scaffold | Hero case + clinical framework |
-| 11 AM–1 PM | Runtime spawning, task state | Prompts + gold-standard answers |
-| 1–3 PM | Search, evidence, verifier | Review early investigation traces |
-| 3–5 PM | React Flow + WebSocket | Validation case preparation |
-| 5–7 PM | Recovery + Motion Viewer | Clinical testing and corrections |
-| 7–9 PM | Integration + UI polish | Report review + demo rehearsal |
-| 9–10 PM | Freeze, present, submit | Clinical sign-off + Q&A |
+| Now to 2:30 | Done-checklist, done-check before report, loop guard, "needs clinician input" stop. First real Crusoe runs on case 01 (demo) and case 10 | Ask @CV about the medical-advice rule. Merge PRs #9 to #11. Review the first traces |
+| 2:30 to 3:30 | Tag `refs-frozen`. Start unattended runs: B0, B1, Full on cases 01s, 08, 09, 10 (more if time) | Download the case 01 videos. Confirm annotation labels. Rehearse the clinical lines |
+| 3:30 to 4:15 | UI polish for the demo path only | Blind grading of finished runs; scorecard counts |
+| 4:15 to 4:40 | Record the 1-minute video. Make the repo public. README credits | Check credits and safety wording |
+| 4:40 to 5:00 | **Submit.** Buffer | Submit check: repo public, video link works, both team members added |
+| 5:00 to 6:45 | Live 3-minute demo (round one) | Clinical Q&A |
 
-Freeze changes before the actual organizer submission deadline.
+Freeze changes at 4:15 PM. Anything not working by then is cut, not fixed.
 
 ## 10. MVP Cut Line
 
 **P0 — Must ship**
+- Self-written done-checklist with the clinical floor (D1 to D5), checked in code before the report
+- Loop guard and "needs clinician input" stop
+- Public repository and 1-minute video by 5:00 PM
 - Crusoe-hosted Nemotron inference
 - One complete hero case
 - Actual model-driven spawning and at least one recursive child delegation
@@ -361,19 +412,25 @@ Freeze changes before the actual organizer submission deadline.
 - Advanced evaluation dashboard
 - Authentication and EHR integrations
 
-## 11. Three-Minute Demo
+## 11. Three-Minute Demo (Done Means Done framing)
 
-- **0:00–0:25 — Problem:** Holly introduces the experience of complex medical investigations and why clinicians need evidence-driven autonomous research.
-- **0:25–0:50 — Motion:** Show the guitarist's documented hand movement and the physician-reviewed observations.
-- **0:50–1:25 — Recursion:** Start the investigation. The Lead Agent creates tasks dynamically; a child discovers an evidence gap and requests further research.
-- **1:25–1:55 — Verification:** Show supporting and conflicting evidence. The verifier rejects an unsupported claim or requests clarification.
-- **1:55–2:20 — Recovery:** Inject a simulated research failure; watch the task restore its checkpoint and continue.
-- **2:20–2:45 — Result:** Open the clinician-review report and show source-backed hypotheses and unresolved questions.
-- **2:45–3:00 — Closing:**
+- **0:00–0:20: Hook and scope:** case 01 video S1 (credited). "Ten years, one label, and nobody asked whether the work was done. We built an agent team that refuses to say 'done' until it can prove it. It's human-in-the-loop: the agents investigate and verify, a doctor decides. Synthetic and published cases, never advice to patients."
+- **0:20–0:40: Definition of done:** one-line goal in; the lead writes its own done-checklist (clinical floor plus case-specific checks) on screen.
+- **0:40–1:20: Recursion:** the lead spawns children at runtime; a child spawns a deeper question. Nemotron Super plans, Nano investigates.
+- **1:20–1:45: Verification:** a red rejection with its rule id, e.g. "R3: absence of diurnal variation does not exclude DRD". The agent re-plans.
+- **1:45–2:05: Done-check and human ping:** the done-check catches a failing criterion and forces a re-plan; then case 10 stops with "needs clinician input" because its records contradict.
+- **2:05–2:20: Recovery:** inject a search failure; the task resumes from its checkpoint.
+- **2:20–2:40: Result:** the clinician-review report, then the reveal: levodopa result and videos S1 and S2 side by side.
+- **2:40–2:55: Walk away:** scorecard from unattended runs, B0 vs B1 vs Full (counts, not percentages).
+- **2:55–3:00: Closing:**
 
-> "We're not building another AI that guesses diagnoses. We're building an autonomous clinical investigation system that knows what to question next, verifies its evidence, and shows physicians how it reached every conclusion."
+> "Most agents fill in the gaps and report success. Ours writes down what done means, proves it, and asks a human when it can't."
+
+**1-minute submission video:** 0:00 to 0:10 hook and scope; 0:10 to 0:25 done-checklist; 0:25 to 0:40 tree plus one rejection; 0:40 to 0:50 human ping or recovery; 0:50 to 1:00 report reveal and credits.
 
 ## 12. Safety
+
+**Not medical advice.** The system is a research prototype for clinicians. It never addresses patients, never states a diagnosis as established, and never gives doses or treatment instructions (verifier red lines RL1 to RL5). This is how we stay within the hackathon's ban on AI that gives medical advice.
 
 Research prototype only — not a diagnostic medical device. Use synthetic or appropriately reusable de-identified cases. Do not process identifiable PHI. No autonomous clinical test ordering or treatment decisions. All conclusions and suggested next steps require physician review.
 
