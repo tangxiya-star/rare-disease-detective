@@ -27,6 +27,11 @@
       "hypothesis": "EA1",
       "why_plausible": "Kinesigenic triggers",
       "what_argues_against": "Attacks are dystonic/choreic, not ataxic; no myokymia"
+    },
+    {
+      "hypothesis": "Tic disorder",
+      "why_plausible": "A paediatrician suggested tics",
+      "what_argues_against": "No premonitory urge to move, no suppressibility, strict trigger by sudden movement after rest, dystonic and choreic phenomenology"
     }
   ],
   "key_evidence_gaps": [
@@ -83,14 +88,42 @@
       "discriminates_between": "Diagnostic support"
     }
   ],
+  "cant_miss": [
+    {
+      "condition": "Paroxysmal kinesigenic dyskinesia",
+      "why_required": "Very treatable: low-dose carbamazepine often stops attacks",
+      "addressed_by": "PRRT2 genetics; carbamazepine response",
+      "status_in_record": "open: not tested or trialled"
+    },
+    {
+      "condition": "Epilepsy",
+      "why_required": "Needs specific treatment",
+      "addressed_by": "EEG; ideally an attack captured",
+      "status_in_record": "partly addressed: awareness preserved, strict kinesigenic trigger, interictal EEG normal; no attack recorded (frontal seizures can have a normal interictal EEG)"
+    },
+    {
+      "condition": "Secondary paroxysmal dyskinesia (hypocalcaemia, hypoparathyroidism, thyroid, glucose, MS)",
+      "why_required": "Reversible causes",
+      "addressed_by": "Calcium, PTH, TSH, glucose, MRI",
+      "status_in_record": "addressed: all normal"
+    },
+    {
+      "condition": "Structural lesion",
+      "why_required": "May need specific treatment",
+      "addressed_by": "MRI brain",
+      "status_in_record": "addressed: normal"
+    }
+  ],
   "red_flags_for_wrong_reasoning": [
     "Labelling as anxiety or functional without positive functional signs",
     "Diagnosing epilepsy despite preserved awareness and strict kinesigenic triggering",
     "Stating any diagnosis as established rather than as a hypothesis for physician review",
     "Recommending treatment as an instruction rather than a consideration for the treating physician",
     "Citing literature that does not exist or does not support the specific claim",
-    "Asserting case facts that are not in the case record"
+    "Asserting case facts that are not in the case record",
+    "Ignoring the infantile seizures and the cousin's infantile seizures as a PRRT2 link"
   ],
-  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). Classic PRRT2 PKD. Added the tic hypothesis, cant_miss (including secondary causes, already well excluded), one red flag and expected behaviour.",
+  "expected_system_behavior": "PKD should rank first. The system should reject the anxiety and tic labels for want of positive signs, recognise the strict kinesigenic trigger, aura, refractory period and family history, link infantile seizures to PRRT2, and suggest PRRT2 testing with low-dose carbamazepine response as a consideration for the treating physician.",
   "agent_case_id": "case_06"
 }

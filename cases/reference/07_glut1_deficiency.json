@@ -10,7 +10,8 @@
     "Paroxysmal exercise-induced dyskinesia, other cause",
     "Mitochondrial disorder",
     "Paroxysmal kinesigenic dyskinesia",
-    "Episodic ataxia type 2"
+    "Episodic ataxia type 2",
+    "Dopa-responsive dystonia"
   ],
   "competing_hypotheses": [
     {
@@ -27,6 +28,11 @@
       "hypothesis": "Mitochondrial disease",
       "why_plausible": "Exercise intolerance, epilepsy",
       "what_argues_against": "Normal lactate, normal MRI; less specific"
+    },
+    {
+      "hypothesis": "Dopa-responsive dystonia",
+      "why_plausible": "Childhood leg dystonia worse with exertion",
+      "what_argues_against": "Episodes are discrete with full recovery after rest, linked to fasting and helped by sugar; early absence epilepsy, ataxia and learning difficulty are not explained by DRD"
     }
   ],
   "key_evidence_gaps": [
@@ -83,6 +89,38 @@
       "discriminates_between": "PED vs. PKD"
     }
   ],
+  "cant_miss": [
+    {
+      "condition": "GLUT1 deficiency syndrome",
+      "why_required": "Treatable: ketogenic diet; early-onset absence epilepsy (before 4) plus exercise-induced dyskinesia should prompt testing",
+      "addressed_by": "Fasting lumbar puncture with paired blood glucose; SLC2A1 genetics",
+      "status_in_record": "open: not tested"
+    },
+    {
+      "condition": "Dopa-responsive dystonia",
+      "why_required": "Treatable; any childhood-onset dystonia",
+      "addressed_by": "Clinical pattern; levodopa trial if GLUT1 is excluded",
+      "status_in_record": "considered, unlikely: paroxysmal with fasting link and seizures"
+    },
+    {
+      "condition": "Hypoglycaemia",
+      "why_required": "Reversible",
+      "addressed_by": "Fasting blood glucose",
+      "status_in_record": "addressed: normal"
+    },
+    {
+      "condition": "Wilson disease",
+      "why_required": "Treatable; considered in any unexplained movement disorder, most strongly under 50",
+      "addressed_by": "24-hour urine copper",
+      "status_in_record": "low risk: age 10, liver tests normal, paroxysmal pattern"
+    },
+    {
+      "condition": "Structural lesion",
+      "why_required": "May need specific treatment",
+      "addressed_by": "MRI brain",
+      "status_in_record": "addressed: normal"
+    }
+  ],
   "red_flags_for_wrong_reasoning": [
     "Treating the epilepsy and movement episodes as unrelated without considering a unifying diagnosis",
     "Interpreting CSF glucose without a paired blood glucose",
@@ -90,8 +128,10 @@
     "Stating any diagnosis as established rather than as a hypothesis for physician review",
     "Recommending treatment as an instruction rather than a consideration for the treating physician",
     "Citing literature that does not exist or does not support the specific claim",
-    "Asserting case facts that are not in the case record"
+    "Asserting case facts that are not in the case record",
+    "Overlooking that valproate, previously used, can worsen GLUT1 deficiency (relevant history, not a treatment instruction)"
   ],
-  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). Classic GLUT1 deficiency. Added DRD as a hypothesis and to the acceptable top 5 (childhood exercise-induced leg dystonia must prompt it under the reasoning rules), cant_miss, one red flag and expected behaviour.",
+  "expected_system_behavior": "GLUT1 deficiency should rank first as a unifying diagnosis for early-onset absence epilepsy, exercise-induced leg dyskinesia worse when fasting, mild ataxia and learning difficulty. The system should reject 'two unrelated conditions', separate PED from PKD by trigger, consider DRD and downgrade it, and suggest a fasting lumbar puncture with paired blood glucose and SLC2A1 testing.",
   "agent_case_id": "case_07"
 }

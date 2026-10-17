@@ -27,6 +27,16 @@
       "hypothesis": "SCA6",
       "why_plausible": "Same gene family, downbeat nystagmus",
       "what_argues_against": "Late-onset progressive ataxia rather than discrete attacks at 12; allelic with EA2"
+    },
+    {
+      "hypothesis": "Multiple sclerosis",
+      "why_plausible": "Episodic neurological symptoms in a young adult",
+      "what_argues_against": "Stereotyped attacks since age 12, interictal downbeat nystagmus, no demyelination on MRI"
+    },
+    {
+      "hypothesis": "Alcohol-related cerebellar damage",
+      "why_plausible": "Weekend heavy drinking; superior vermian atrophy is typical of alcohol damage",
+      "what_argues_against": "Attacks began at 12, before drinking; discrete hours-long attacks with downbeat nystagmus and a family history fit EA2; alcohol here is a trigger"
     }
   ],
   "key_evidence_gaps": [
@@ -83,14 +93,42 @@
       "discriminates_between": "Supports EA2"
     }
   ],
+  "cant_miss": [
+    {
+      "condition": "Episodic ataxia type 2",
+      "why_required": "Treatable: acetazolamide often reduces attacks",
+      "addressed_by": "CACNA1A genetics; acetazolamide response",
+      "status_in_record": "open: never tested"
+    },
+    {
+      "condition": "Structural or demyelinating lesion",
+      "why_required": "Posterior fossa lesions need specific treatment",
+      "addressed_by": "MRI brain",
+      "status_in_record": "addressed: vermian atrophy only, no demyelination or mass"
+    },
+    {
+      "condition": "Treatable acquired ataxia (vitamin E, B12, coeliac, anti-GAD)",
+      "why_required": "Reversible causes of ataxia",
+      "addressed_by": "Blood tests",
+      "status_in_record": "addressed: all normal or negative"
+    },
+    {
+      "condition": "Wilson disease",
+      "why_required": "Treatable; considered in any unexplained movement disorder, most strongly under 50",
+      "addressed_by": "Ceruloplasmin, 24-hour urine copper, slit lamp",
+      "status_in_record": "low risk: discrete episodic attacks are not a Wilson pattern; not tested, optional"
+    }
+  ],
   "red_flags_for_wrong_reasoning": [
     "Accepting vestibular migraine without explaining interictal nystagmus and vermian atrophy",
     "Confusing EA1 and EA2 attack duration and triggers",
     "Stating any diagnosis as established rather than as a hypothesis for physician review",
     "Recommending treatment as an instruction rather than a consideration for the treating physician",
     "Citing literature that does not exist or does not support the specific claim",
-    "Asserting case facts that are not in the case record"
+    "Asserting case facts that are not in the case record",
+    "Attributing the vermian atrophy to alcohol without addressing that attacks began at age 12"
   ],
-  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). Classic EA2. Added MS and alcohol-related cerebellar damage as hypotheses (superior vermian atrophy is also typical of alcohol), cant_miss, one red flag and expected behaviour.",
+  "expected_system_behavior": "EA2 should rank first. The system should explain why vestibular migraine does not account for interictal downbeat nystagmus and vermian atrophy, separate EA2 from EA1 by attack length and interictal signs, link the mother's episodes and the grandfather's late gait problem to a CACNA1A family spectrum, and suggest CACNA1A testing with acetazolamide response as supportive.",
   "agent_case_id": "case_04"
 }

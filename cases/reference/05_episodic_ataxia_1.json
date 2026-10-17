@@ -22,6 +22,16 @@
       "hypothesis": "EA2",
       "why_plausible": "Episodic ataxia",
       "what_argues_against": "Attacks last hours; interictal nystagmus; not provoked by sudden movement"
+    },
+    {
+      "hypothesis": "Focal epilepsy",
+      "why_plausible": "Brief stereotyped paroxysms",
+      "what_argues_against": "Fully responsive throughout, consistent movement trigger, normal EEG and MRI; interictal myokymia is not explained"
+    },
+    {
+      "hypothesis": "Functional paroxysmal movement disorder",
+      "why_plausible": "Attacks with emotional upset in a teenager",
+      "what_argues_against": "Stereotyped kinesigenic trigger reproduced in clinic, interictal myokymia, and a father with the same history"
     }
   ],
   "key_evidence_gaps": [
@@ -78,14 +88,48 @@
       "discriminates_between": "Confirms"
     }
   ],
+  "cant_miss": [
+    {
+      "condition": "Episodic ataxia type 1",
+      "why_required": "Treatable: carbamazepine or acetazolamide may help",
+      "addressed_by": "EMG for myokymia; KCNA1 genetics",
+      "status_in_record": "open: not tested"
+    },
+    {
+      "condition": "Paroxysmal kinesigenic dyskinesia",
+      "why_required": "Treatable with low-dose carbamazepine; the paediatrician raised it",
+      "addressed_by": "Attack phenomenology; PRRT2 genetics",
+      "status_in_record": "open but less likely: provoked attack is ataxic, not dystonic or choreic"
+    },
+    {
+      "condition": "Epilepsy",
+      "why_required": "Needs specific treatment",
+      "addressed_by": "EEG; ideally an attack captured",
+      "status_in_record": "partly addressed: interictal EEG normal and awareness preserved; no attack recorded"
+    },
+    {
+      "condition": "Metabolic paroxysmal disorder (calcium, magnesium, glucose, thyroid)",
+      "why_required": "Reversible",
+      "addressed_by": "Blood tests",
+      "status_in_record": "addressed: all normal"
+    },
+    {
+      "condition": "Structural lesion",
+      "why_required": "May need specific treatment",
+      "addressed_by": "MRI brain",
+      "status_in_record": "addressed: normal"
+    }
+  ],
   "red_flags_for_wrong_reasoning": [
     "Accepting PKD solely because attacks are movement-triggered",
     "Ignoring interictal myokymia",
     "Stating any diagnosis as established rather than as a hypothesis for physician review",
     "Recommending treatment as an instruction rather than a consideration for the treating physician",
     "Citing literature that does not exist or does not support the specific claim",
-    "Asserting case facts that are not in the case record"
+    "Asserting case facts that are not in the case record",
+    "Treating the brief post-attack hand stiffness as dystonia that proves PKD"
   ],
-  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). Well built EA1 case with a clear discriminating attack in clinic. Added epilepsy and functional hypotheses, cant_miss, one red flag and expected behaviour.",
+  "expected_system_behavior": "EA1 should rank first. The system should describe the provoked attack as ataxic rather than dystonic, highlight interictal myokymia, separate EA1 from PKD and EA2, and suggest EMG and KCNA1/PRRT2 genetics. The father's similar spells support autosomal dominant inheritance.",
   "agent_case_id": "case_05"
 }
