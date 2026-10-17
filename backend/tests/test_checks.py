@@ -40,3 +40,19 @@ def test_blocklist_by_doi_and_title():
     assert _blocked(p, ["PMC8356262"], [])
     assert _blocked(p, [], ["Guitarist's cramp as the initial manifestation"])
     assert not _blocked(Passage("PMID:2", "Other", "x", meta={"doi": "10.1/abc"}), ["10.12688/x"], [])
+
+
+def test_grounding_accepts_case_quotes_and_ignores_style():
+    texts = {"mf_01": "Opening a screw-cap bottle provokes dystonic posturing"}
+    assert check_finding({"quote": "opening a screw‑cap bottle provokes", "source_id": "mf_01"}, texts, {"mf_01"}).grounded
+    assert check_finding({"quote": "", "finding_ids": ["mf_01", "case_01"]}, texts, {"mf_01"}).grounded
+
+
+def test_clinical_rules_loaded_when_present(tmp_path, monkeypatch):
+    from app import prompts
+    monkeypatch.setattr(prompts, "REPO_ROOT", tmp_path)
+    assert prompts.get_prompt("verifier") == prompts.PROMPTS["verifier"]
+    (tmp_path / "docs" / "clinical").mkdir(parents=True)
+    (tmp_path / "docs" / "clinical" / "verifier_checklist.md").write_text("R3 rule")
+    assert "R3 rule" in prompts.get_prompt("verifier")
+    assert "R3 rule" not in prompts.get_prompt("lead_plan")

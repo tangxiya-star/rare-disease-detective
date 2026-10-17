@@ -9,7 +9,7 @@ import re
 from typing import Protocol
 
 from .config import Settings
-from .prompts import PROMPTS
+from .prompts import get_prompt
 
 
 class ModelOutputError(RuntimeError):
@@ -66,13 +66,13 @@ class CrusoeClient:
 
     async def complete_json(self, role: str, model: str, payload: dict) -> dict:
         messages = [
-            {"role": "system", "content": PROMPTS[role]},
+            {"role": "system", "content": get_prompt(role)},
             {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
         ]
         last_err: Exception | None = None
         for _ in range(2):
             resp = await self.client.chat.completions.create(
-                model=model, messages=messages, temperature=0.2, max_tokens=4096,
+                model=model, messages=messages, temperature=0.2, max_tokens=8192,
             )
             text = resp.choices[0].message.content or ""
             try:

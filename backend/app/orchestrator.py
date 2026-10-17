@@ -220,9 +220,21 @@ class Orchestrator:
                              for f in c["artifact"].get("findings", []) if f["grounded"]]})
         report = await self._ask(ctx, "lead_report", node["model"], {"case": case, "plan": a["plan"],
                                                                      "branches": branches})
+        self._check_report_ids(ctx, report)
         self.db.update_run(ctx.run_id, report=report)
         self.bus.emit(ctx.run_id, "report.ready", {"report": report})
         self._set(ctx, node, status="done", checkpoint="reported", artifact=a)
+
+    def _check_report_ids(self, ctx: RunContext, report: dict) -> None:
+        """Drop cited ids that are neither run evidence nor case findings; record what was dropped."""
+        valid = {e["id"] for e in self.db.get_evidence(ctx.run_id) if e["grounded"]} | ctx.bundle.finding_ids()
+        dropped = []
+        for item in report.get("differential") or []:
+            for key in ("supporting_evidence_ids", "contradicting_evidence_ids"):
+                ids = item.get(key) or []
+                dropped += [i for i in ids if i not in valid]
+                item[key] = [i for i in ids if i in valid]
+        report["dropped_invalid_ids"] = sorted(set(dropped))
 
     # --- investigator -------------------------------------------------------
 
@@ -281,7 +293,7 @@ class Orchestrator:
                                    for s in a["sources"] if not s["meta"].get("held_out")],
                 "investigation_results": a["investigation_results"],
                 "can_spawn": can_spawn, "remaining_nodes": self._remaining(ctx)})
-            texts = {s["id"]: s["text"] for s in a["sources"]}
+            texts = ctx.bundle.case_sources() | {s["id"]: s["text"] for s in a["sources"]}
             ids = ctx.bundle.finding_ids()
             a["findings"] = []
             for f in analysis.get("findings") or []:
@@ -388,7 +400,9 @@ class Orchestrator:
         a = child["artifact"]
         grounded = [f for f in a.get("findings", []) if f["grounded"]]
         cited = {f.get("source_id") for f in grounded}
+        case_src = ctx.bundle.case_sources()
         sources = [{"source_id": s["id"], "text": s["text"]} for s in a.get("sources", []) if s["id"] in cited]
+        sources += [{"source_id": i, "text": case_src[i]} for i in sorted(cited) if i in case_src]
         child_conclusions = []
         for cid in a.get("child_ids", []):
             c = self.db.get_node(cid)

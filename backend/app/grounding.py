@@ -7,9 +7,13 @@ import re
 from dataclasses import dataclass
 
 
+_STYLE = {ord(c): "-" for c in "‐‑‒–—−"} | {
+    ord("‘"): "'", ord("’"): "'", ord("“"): '"', ord("”"): '"'}
+
+
 def _norm(text: str) -> str:
-    text = text.replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
-    return re.sub(r"\s+", " ", text).strip()
+    """Ignore whitespace, case, and quote or dash style (verifier checklist C1)."""
+    return re.sub(r"\s+", " ", text.translate(_STYLE)).strip().lower()
 
 
 @dataclass
@@ -22,7 +26,7 @@ def check_finding(finding: dict, source_texts: dict[str, str], case_finding_ids:
                   min_quote_chars: int = 20) -> GroundingResult:
     quote = _norm(finding.get("quote") or "")
     source_id = (finding.get("source_id") or "").strip()
-    ids = [i for i in finding.get("finding_ids") or [] if i]
+    ids = [i for i in finding.get("finding_ids") or [] if i and not str(i).startswith("case_")]
 
     bad_ids = [i for i in ids if i not in case_finding_ids]
     if bad_ids:

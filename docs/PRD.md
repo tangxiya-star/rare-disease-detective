@@ -37,8 +37,8 @@ The system supports clinical investigation. It does not replace physician judgme
 **Inference endpoint:** `https://api.inference.crusoecloud.com/v1`
 
 **Models:**
-- Lead / Verifier: `nvidia/Nemotron-3-Super-120B-A12B`
-- Child agents: `nvidia/Nemotron-3-Nano-30B-A3B`
+- Lead / Verifier: `nvidia/NVIDIA-Nemotron-3-Super-120B-A12B`
+- Child agents: `nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B`
 
 The OpenAI Python SDK is used solely as an API client pointed at Crusoe. No Claude or OpenAI-hosted models at application runtime.
 

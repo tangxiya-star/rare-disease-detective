@@ -40,6 +40,15 @@ class CaseBundle:
         view.pop("provenance", None)
         return view
 
+    def case_sources(self) -> dict[str, str]:
+        """Case record entries as quotable sources, keyed by finding id."""
+        out = {}
+        for key in ("movement_findings", "symptom_timeline", "labs", "imaging", "neurophysiology"):
+            for entry in self.case.get(key, []):
+                if "id" in entry:
+                    out[entry["id"]] = " ".join(str(v) for k, v in entry.items() if k != "id")
+        return out
+
     def finding_ids(self) -> set[str]:
         """Every id a claim may cite: movement findings, timeline, labs, imaging, neurophysiology."""
         ids = set()
