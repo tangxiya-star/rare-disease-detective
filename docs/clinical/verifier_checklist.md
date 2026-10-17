@@ -11,7 +11,7 @@ A claim that fails any of these never reaches the verifier model. It is returned
 
 | Id | Check |
 |---|---|
-| **C1** | Every quoted passage appears verbatim (ignoring whitespace and case) in the retrieved source text. |
+| **C1** | Every quoted passage appears verbatim in the retrieved source text (ignoring whitespace, case, and quote or dash style). |
 | **C2** | Every cited case finding id (for example `mf_02`, `lab_03`, `tl_04`) exists in the case record. |
 | **C3** | A claim marked as the leading hypothesis lists at least one contradicting or missing finding. |
 | **C4** | The source is not on the run's retrieval blocklist (for example, the published source of case 01 during the demo). |
@@ -26,7 +26,7 @@ A claim that fails any of these never reaches the verifier model. It is returned
 | **A2** | The cited passage actually supports this specific claim, not just the topic. |
 | **A3** | The claim does not contradict any finding in the case record. |
 | **A4** | The source population fits the patient (age group, onset, phenotype). A paediatric series cannot rule out an adult-onset presentation. |
-| **A5** | The wording matches the strength of the evidence. "Confirms" needs a reference-standard test (for example genetics, or a sustained levodopa response with a normal DaT-SPECT). A single case report supports "has been reported", not "is typical". |
+| **A5** | The wording matches the strength of the evidence. "Confirms" needs a reference-standard test. A sustained levodopa response with a normal DaT-SPECT supports dopa-responsive dystonia as a syndrome, but the cause (GCH1, TH, SPR) is confirmed only by genetics or CSF pterins. A single case report supports "has been reported", not "is typical". |
 
 ### REVISE when
 
@@ -34,7 +34,7 @@ A claim that fails any of these never reaches the verifier model. It is returned
 |---|---|
 | **R1** | Right direction, but overclaimed, or the source is only tangential. |
 | **R2** | It ignores a contradicting finding that is in the case record. |
-| **R3** | It rules a condition out with a test or feature that is not sensitive enough. Examples: no diurnal variation does not exclude DRD; no family history does not exclude GCH1 DRD (incomplete penetrance); a normal MRI excludes none of the paroxysmal or dopa-responsive disorders; normal ceruloplasmin does not exclude Wilson disease. |
+| **R3** | It rules a condition out with a test or feature that is not sensitive enough. Examples: no diurnal variation, adult onset, or no leg involvement does not exclude DRD; no family history does not exclude GCH1 DRD (incomplete penetrance); no benefit from anticholinergics, benzodiazepines or botulinum toxin does not exclude DRD; a normal MRI does not exclude DRD, Wilson disease or the paroxysmal disorders; normal ceruloplasmin or serum copper does not exclude Wilson disease. |
 | **R4** | The proposed next step is not discriminating, is invasive before a cheaper discriminating step, or is a broad genetic panel without a clinical reason. |
 | **R5** | It closes a can't-miss condition (see reasoning rules, section 3) without the test that settles it. |
 

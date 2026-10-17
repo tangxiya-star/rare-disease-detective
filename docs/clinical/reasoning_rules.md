@@ -38,7 +38,7 @@ For each, the triggers that require you to consider it and the test that settles
 
 | Condition | Consider when | Settled by |
 |---|---|---|
-| **Dopa-responsive dystonia** (GCH1, TH, SPR) | Any dystonia starting in childhood or young adulthood with no confirmed alternative cause. Classic clues (daily pattern, leg onset, family history) support it, but their **absence does not exclude it**, especially in adult onset. | Supervised levodopa trial. GCH1 genetics including deletion/duplication analysis. CSF pterins if genetics are negative. DaT-SPECT is normal. |
+| **Dopa-responsive dystonia** (GCH1, TH, SPR) | Any dystonia starting in childhood or young adulthood with no confirmed alternative cause. Classic clues (daily pattern, leg onset, family history) support it, but their **absence does not exclude it**, especially in adult onset. | Supervised levodopa trial. GCH1 genetics including deletion/duplication analysis. CSF pterins if genetics are negative. A normal DaT-SPECT separates it from early-onset Parkinson disease but does not confirm it. |
 | **Wilson disease** | Any new movement disorder under 50, especially with liver, psychiatric or eye features. | Slit lamp for Kayser-Fleischer rings and 24-hour urine copper. Ceruloplasmin alone is not enough: it can be normal in neurological Wilson and is raised by oestrogen. |
 | **GLUT1 deficiency** | Paroxysmal dyskinesia after prolonged exercise, worse when fasting, especially with seizures. | Fasting CSF-to-blood glucose ratio. SLC2A1 genetics. |
 | **Episodic ataxia type 2** | Attacks of ataxia lasting hours, triggered by stress or exertion, with nystagmus between attacks. | CACNA1A genetics. Response to acetazolamide. |
