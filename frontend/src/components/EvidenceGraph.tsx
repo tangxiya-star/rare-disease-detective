@@ -37,8 +37,12 @@ function sameHypothesis(a: string, b: string) {
   return n / Math.min(ta.size, tb.size) >= 0.5
 }
 
-/** Agents, every retrieved source, grounded findings, case findings, hypotheses and clinical-concept hubs. */
-function buildGraph(state: RunState, born: Map<string, number>) {
+/**
+ * Agents, every retrieved source, grounded findings, case findings, hypotheses and clinical-concept hubs.
+ * `groundedOnly` drops the keyword-association layer (concept hubs, retrieved-but-uncited sources),
+ * leaving only links backed by a code-checked quote or a case finding id.
+ */
+function buildGraph(state: RunState, born: Map<string, number>, groundedOnly: boolean) {
   const nodes = new Map<string, GNode>()
   const links = new Map<string, GLink>()
   const now = performance.now()
@@ -54,6 +58,7 @@ function buildGraph(state: RunState, born: Map<string, number>) {
     if (!links.has(id)) { links.set(id, { id, source: s, target: t, kind }); nodes.get(s)!.deg++; nodes.get(t)!.deg++ }
   }
   const concepts = (text: string, from: string) => {
+    if (groundedOnly) return
     for (const [name, re] of CONCEPTS) if (re.test(text)) { add({ id: `c:${name}`, kind: 'concept', label: name }); link(from, `c:${name}`, 'concept') }
   }
 
@@ -68,7 +73,7 @@ function buildGraph(state: RunState, born: Map<string, number>) {
   }
   const hypId = (h: string) => `h:${hyps.findIndex(x => sameHypothesis(x, h))}`
   hyps.forEach((h, i) => { add({ id: `h:${i}`, kind: 'hyp', label: h }); concepts(h, `h:${i}`) })
-  for (const id of state.order) {
+  for (const id of groundedOnly ? [] : state.order) {
     for (const s of state.activity[id]?.searches ?? []) {
       for (const r of s.results) {
         add({ id: `s:${r.source_id}`, kind: 'src', label: r.title || r.source_id, detail: r.source_id })
@@ -108,10 +113,24 @@ const radius = (n: GNode) =>
     : n.kind === 'concept' ? 3 + Math.min(9, Math.sqrt(n.deg) * 1.3)
     : n.kind === 'agent' ? 2.6 : n.kind === 'heldout' ? 3.4 : n.kind === 'ev' ? 1.9 : 1.7
 
-export function EvidenceGraph({ state, onSelectAgent }: { state: RunState; onSelectAgent: (id: string) => void }) {
+/** Graph id of an agent node, for `spotlight`. */
+export const agentKey = (nodeId: string) => `a:${nodeId}`
+/** Graph id of a held-out result or retrieved source, for `spotlight`. */
+export const sourceKey = (sourceId: string) => `s:${sourceId}`
+
+export function EvidenceGraph({ state, onSelectAgent, spotlight, rejected, padRight = 0 }: {
+  state: RunState; onSelectAgent: (id: string) => void
+  /** Graph ids to light up and frame (with their neighbours) while nothing is hovered or clicked. */
+  spotlight?: string[]
+  /** Evidence ids the verifier rejected: drawn with a red ring. */
+  rejected?: Set<string>
+  /** Pixels on the right covered by an overlay; the camera frames the remaining area. */
+  padRight?: number
+}) {
   const born = useRef(new Map<string, number>())
-  const graph = useMemo(() => buildGraph(state, born.current),
-    [state.evidence, state.report, state.hypotheses, state.sources, state.order, state.activity]) // eslint-disable-line react-hooks/exhaustive-deps
+  const [groundedOnly, setGroundedOnly] = useState(false)
+  const graph = useMemo(() => buildGraph(state, born.current, groundedOnly),
+    [state.evidence, state.report, state.hypotheses, state.sources, state.order, state.activity, groundedOnly]) // eslint-disable-line react-hooks/exhaustive-deps
   const wrap = useRef<HTMLDivElement>(null)
   const canvas = useRef<HTMLCanvasElement>(null)
   const positions = useRef(new Map<string, { x: number; y: number }>())
@@ -123,6 +142,12 @@ export function EvidenceGraph({ state, onSelectAgent }: { state: RunState; onSel
   const linksRef = useRef<GLink[]>([])
   const activeRef = useRef<string | null>(null)
   activeRef.current = hover ?? focus
+  const spotRef = useRef<string[]>([])
+  spotRef.current = spotlight ?? []
+  const rejectedRef = useRef<Set<string>>(new Set())
+  rejectedRef.current = rejected ?? new Set()
+  const padRef = useRef(0)
+  padRef.current = padRight
 
   const neighbors = useMemo(() => {
     const m = new Map<string, Set<string>>()
@@ -172,23 +197,33 @@ export function EvidenceGraph({ state, onSelectAgent }: { state: RunState; onSel
         }
         const g = c.getContext('2d')!
         const nodes = nodesRef.current, links = linksRef.current
+        const active = activeRef.current
+        const spot = active ? [] : spotRef.current.filter(id => neighborsRef.current.has(id) || nodes.some(n => n.id === id))
+        const lit = active ? new Set([active, ...(neighborsRef.current.get(active) ?? [])])
+          : spot.length ? new Set(spot.flatMap(id => [id, ...(neighborsRef.current.get(id) ?? [])])) : null
         if (!view.current.manual && nodes.length) {
+          // frame the spotlight (camera pushes in), otherwise the whole network
+          const framed = spot.length && lit ? nodes.filter(n => lit.has(n.id)) : nodes
           let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity
-          for (const n of nodes) { if (n.x == null) continue; x0 = Math.min(x0, n.x); y0 = Math.min(y0, n.y!); x1 = Math.max(x1, n.x); y1 = Math.max(y1, n.y!) }
+          for (const n of framed) { if (n.x == null) continue; x0 = Math.min(x0, n.x); y0 = Math.min(y0, n.y!); x1 = Math.max(x1, n.x); y1 = Math.max(y1, n.y!) }
+          const pad = spot.length ? 60 : 0
+          x0 -= pad; x1 += pad; y0 -= pad; y1 += pad
           // leave room for labels left and right, and for the legend at the bottom
-          const k = Math.min(2.2, (w - 220) / Math.max(1, x1 - x0), (h - 130) / Math.max(1, y1 - y0))
+          const fw = w - padRef.current
+          const k = Math.min(spot.length ? 3 : 2.2, (fw - 220) / Math.max(1, x1 - x0), (h - 130) / Math.max(1, y1 - y0))
           const v = view.current
-          v.k += (k - v.k) * 0.08
-          v.x += (w / 2 - v.k * (x0 + x1) / 2 - v.x) * 0.08
-          v.y += ((h - 50) / 2 - v.k * (y0 + y1) / 2 - v.y) * 0.08
+          const ease = spot.length ? 0.05 : 0.08
+          v.k += (k - v.k) * ease
+          v.x += (fw / 2 - v.k * (x0 + x1) / 2 - v.x) * ease
+          v.y += ((h - 50) / 2 - v.k * (y0 + y1) / 2 - v.y) * ease
         }
         const { x: tx, y: ty, k } = view.current
         g.setTransform(dpr, 0, 0, dpr, 0, 0)
         g.fillStyle = '#030507'
         g.fillRect(0, 0, w, h)
-        const active = activeRef.current
-        const lit = active ? new Set([active, ...(neighborsRef.current.get(active) ?? [])]) : null
         const now = performance.now()
+        const spotSet = new Set(spot)
+        const rej = rejectedRef.current
 
         g.save()
         g.translate(tx, ty)
@@ -224,6 +259,16 @@ export function EvidenceGraph({ state, onSelectAgent }: { state: RunState; onSel
           if (n.kind === 'hyp' || n.kind === 'concept') {
             g.fillStyle = `rgba(255,255,255,${0.9 * alpha})`
             g.beginPath(); g.arc(n.x, n.y!, r * 0.35, 0, Math.PI * 2); g.fill()
+          }
+          if (rej.has(n.id)) {
+            g.strokeStyle = `rgba(255,110,110,${0.95 * alpha})`; g.lineWidth = 1.2 / Math.sqrt(k)
+            g.beginPath(); g.arc(n.x, n.y!, r + 3.5, 0, Math.PI * 2); g.stroke()
+          }
+          if (spotSet.has(n.id)) {
+            // sonar ring on the node the stage is talking about
+            const p = (now % 1600) / 1600
+            g.strokeStyle = `rgba(${col},${0.8 * (1 - p)})`; g.lineWidth = 1.4 / Math.sqrt(k)
+            g.beginPath(); g.arc(n.x, n.y!, r + 3 + p * 22, 0, Math.PI * 2); g.stroke()
           }
         }
         g.globalCompositeOperation = 'source-over'
@@ -293,7 +338,13 @@ export function EvidenceGraph({ state, onSelectAgent }: { state: RunState; onSel
         findings: hypotheses and clinical concepts become hubs; literature, results and case findings connect to them.</div>}
       <div className="graph-stats">
         <span><b>{graph.nodes.length}</b> nodes</span><span><b>{graph.links.length}</b> links</span>
-        <span><b>{counts.src ?? 0}</b> sources</span><span><b>{counts.concept ?? 0}</b> concepts</span>
+        <span><b>{counts.src ?? 0}</b> sources</span>{!groundedOnly && <span><b>{counts.concept ?? 0}</b> concepts</span>}
+      </div>
+      <div className="graph-layer seg" onMouseDown={e => e.stopPropagation()} onMouseUp={e => e.stopPropagation()}>
+        <button className={groundedOnly ? '' : 'on'} onClick={() => setGroundedOnly(false)}
+          title="Everything retrieved, plus keyword-matched clinical concept hubs">All associations</button>
+        <button className={groundedOnly ? 'on' : ''} onClick={() => setGroundedOnly(true)}
+          title="Only links backed by a verbatim quote or a case finding id">Grounded only</button>
       </div>
       <div className="graph-legend">
         {(['hyp', 'concept', 'ev', 'src', 'heldout', 'finding', 'agent'] as Kind[]).map(k => (
