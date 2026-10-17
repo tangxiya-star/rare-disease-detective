@@ -1,0 +1,97 @@
+{
+  "case_id": "case_10",
+  "title": "16-year-old with leg dystonia: internally inconsistent records",
+  "provenance": {
+    "type": "synthetic",
+    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "",
+    "review_status": "draft — pending W. Milczyńska review"
+  },
+  "demographics": {
+    "age": 16,
+    "sex": "male",
+    "handedness": "right",
+    "occupation": "Student"
+  },
+  "chief_complaint": "\"My left foot has been twisting for a year and it's getting worse.\"",
+  "history_of_present_illness": "One year of progressive left foot inversion while walking. Per the referral letter, symptoms are 'markedly worse in the mornings and improve as the day goes on.' Recently some slurring of speech noticed by friends and a decline in school grades. Occasional hand tremor when holding a cup.",
+  "symptom_timeline": [
+    {
+      "id": "tl_01",
+      "when": "12 months ago",
+      "event": "Left foot inversion, worst late in the afternoon per mother's account"
+    },
+    {
+      "id": "tl_02",
+      "when": "6 months ago",
+      "event": "Hand tremor when holding a cup"
+    },
+    {
+      "id": "tl_03",
+      "when": "3 months ago",
+      "event": "Speech slurring; school grades declining"
+    }
+  ],
+  "movement_findings": [
+    {
+      "id": "mf_01",
+      "observation": "Left foot dystonic inversion on walking.",
+      "context": "gait",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_02",
+      "observation": "Bilateral postural and action tremor of the hands with a proximal, coarse 'wing-beating' quality on arm abduction.",
+      "context": "posture",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_03",
+      "observation": "Mild dysarthria.",
+      "context": "speech",
+      "reviewer": ""
+    }
+  ],
+  "neurological_exam": {
+    "mental_status": "Mildly slowed processing; inappropriate jocularity noted",
+    "cranial_nerves": "Normal eye movements; dysarthria",
+    "tone": "Normal",
+    "power": "Normal",
+    "reflexes": "Referral letter: 'normal'. Clinic exam: 3+ at knees bilaterally",
+    "coordination": "Mild intention tremor",
+    "gait": "See mf_01",
+    "bradykinesia_screen": "Mild bilateral slowing",
+    "other": ""
+  },
+  "labs": [
+    {
+      "id": "lab_01",
+      "test": "Liver enzymes",
+      "result": "ALT 68 U/L",
+      "reference_range": "<40",
+      "note": "Mildly elevated"
+    },
+    {
+      "id": "lab_02",
+      "test": "Serum ceruloplasmin",
+      "result": "18 mg/dL",
+      "reference_range": "20–40",
+      "note": "Referral letter states 'Wilson disease excluded'"
+    }
+  ],
+  "imaging": [
+    {
+      "id": "img_01",
+      "modality": "MRI brain",
+      "date": "2 months ago",
+      "report": "Summary line: 'Normal study.' Findings section: 'Symmetric T2 hyperintensity in the bilateral putamina and thalami.'"
+    }
+  ],
+  "medications": {
+    "current": [],
+    "prior_trials": []
+  },
+  "family_history": "Older sister had 'unexplained hepatitis' at age 14.",
+  "social_history": "",
+  "prior_workup_and_opinions": "Referral letter: 'Probable dopa-responsive dystonia; Wilson excluded; please start levodopa.'"
+}

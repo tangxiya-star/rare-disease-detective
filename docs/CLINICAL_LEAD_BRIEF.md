@@ -6,7 +6,7 @@ This is your working document for the day. It pulls out everything the engineeri
 
 **The one thing to know about the system:** it is not a diagnosis generator. A Lead Agent reads the case, decides what it is uncertain about, and spawns child agents to investigate specific questions. A Verifier then accepts or rejects each claim based on evidence. Your job is to make sure the cases are clinically real, the agents are asking the right questions, and the verifier is rejecting the right things.
 
-**The case list is already decided.** The ten slots and what each one tests are fixed in [PRD §3](PRD.md#3-clinical-scope--10-case-dataset). You don't need to choose cases. What's still needed is the **clinical content** for each slot (history, exam, labs, imaging, movement findings) in the structured format, plus the held-out reference answer. Write each one as a synthetic case, or base it on a published de-identified case report if you know a good one. **For scored cases, prefer synthetic:** older published case reports are likely in the models' training data, so the model may recognise the case instead of reasoning about it. If a case is adapted from a publication, mark it in `provenance` so we can report it separately.
+**The case list is already decided.** The ten slots and what each one tests are fixed in [PRD §3](PRD.md#3-clinical-scope--10-case-dataset). You don't need to choose cases. **Synthetic first drafts of all ten cases and their reference answers are already written** (see [cases/README.md](../cases/README.md)). Your job is to **review and correct them**, not write from scratch. Edit the JSON directly, or leave notes in each reference file's `clinician_review_notes` field and Holly will apply them. **For scored cases, prefer synthetic:** older published case reports are likely in the models' training data, so the model may recognise the case instead of reasoning about it. If a case is adapted from a publication, mark it in `provenance` so we can report it separately.
 
 ---
 
@@ -14,16 +14,16 @@ This is your working document for the day. It pulls out everything the engineeri
 
 | Deliverable | Needed by (PT) | Blocks |
 |---|---|---|
-| **A. Hero case JSON** (Case 01, guitarist DRD) | **10:30 AM** | Everything. Holly cannot run the first real investigation without it. |
-| **B. Hero case reference answer** (held out) | 11:00 AM | Verifier calibration, evaluation |
+| **A. Review hero case JSON** (Case 01, guitarist DRD) | **10:30 AM** | First real investigation runs on this. |
+| **B. Review hero reference answer** (`cases/reference/01_guitarist_drd.json`) | 11:00 AM | Verifier calibration, evaluation |
 | **C. Movement-disorder reasoning rules** | 11:30 AM | Lead Agent prompt |
 | **D. Verifier acceptance checklist** | 12:30 PM | Verifier prompt |
 | **E. Review of first investigation traces** | 1–3 PM | Prompt corrections before UI work |
-| **F. Three validation cases** (02, 04, 08 recommended) | 5 PM | P1 demo cases |
-| **G0. Case 09 stub** (nonspecific focal dystonia) | 1 PM | PRD "no-spawn behavior" test needs a case where the right answer is to stop early |
-| **G. Remaining five case stubs** (03, 05, 06, 07, 10) | 7 PM | Ten-fixture target; stubs are fine |
+| **F. Review three validation cases** (02, 04, 08) | 5 PM | P1 demo cases |
+| **G0. Review case 09 draft** (writer's cramp) | 1 PM | PRD "no-spawn behavior" test needs a case where the right answer is to stop early |
+| **G. Skim remaining five drafts** (03, 05, 06, 07, 10) | 7 PM | Ten-fixture target; stubs are fine |
 | **J. Verifier challenge set** (10 true + 10 false claims, each with its passage) | 1 PM | Verifier testing without depending on what the agents happen to say |
-| **H. Hero case movement annotations** | 5 PM | Motion Viewer |
+| **H. Review hero movement annotations + video source** | 5 PM | Motion Viewer |
 | **I. Clinical sign-off on demo report + safety language** | 9 PM | Submission |
 
 Priority order if time runs short: **A → B → D → C → J → G0 → E → H → F → I → G.** Item A is the only hard blocker. Everything else can be rough and iterated.
@@ -34,7 +34,7 @@ Priority order if time runs short: **A → B → D → C → J → G0 → E → 
 
 **Case 01 — Guitarist with dopa-responsive dystonia.**
 
-File: `cases/01_guitarist_drd/case.json`. Copy `cases/_template/case.json` and fill it in.
+File: `cases/01_guitarist_drd/case.json` (draft written). Check it against the points below and correct anything that isn't clinically right. Specific questions are in `clinician_review_notes` in the reference file.
 
 What the agents will see. **Do not include the diagnosis, the levodopa response, or any finding that gives it away.** Those go in the reference file (Deliverable B).
 
@@ -60,9 +60,7 @@ Clinical realism matters more than completeness. If a real patient wouldn't have
 
 ## 3. Deliverable B: Reference answer (held out)
 
-File: `cases/reference/01_guitarist_drd.json`. This directory is gitignored and will never be visible to agents.
-
-Copy `cases/_template/reference.example.json`. Contents:
+File: `cases/reference/01_guitarist_drd.json` (draft written). It's in the repo so you can review it; the code never passes it to agents. Contents:
 
 - **reference_diagnosis**: the answer, with confidence (confirmed / probable / working)
 - **acceptable_top5**: other diagnoses that would be reasonable in a Top 5 for this presentation (e.g. young-onset PD, focal task-specific dystonia / musician's dystonia, Wilson disease, functional movement disorder). We score "reference in Top 5" so this list defines what counts as a miss.
@@ -156,7 +154,7 @@ The slots are fixed by the PRD. Same JSON format as the hero case, same referenc
 | **04 Episodic Ataxia Type 2** | Episodic symptoms force the agent to reason about triggers and interictal exam; EA1 vs. EA2 is a real discrimination problem |
 | **08 Functional Movement Disorder** | The anti-anchoring test. Must include positive functional signs (distractibility, entrainment, variability, suggestibility). If the system calls this DRD, we have a problem and want to know |
 
-**Case 09 early (G0):** a short vignette of adult-onset focal dystonia with a normal exam and no red flags. The correct behaviour is to finish with "no rare cause indicated" and few or no children. Needed by 1 PM because it is the PRD's no-spawn test.
+**Case 09 early (G0):** check the writer's cramp draft has no red flags and a normal exam. The correct behaviour is to finish with "no rare cause indicated" and few or no children. Needed by 1 PM because it is the PRD's no-spawn test.
 
 **Stubs (G):** For 03, 05, 06, 07, 10, a case JSON with the core sections filled at the level of a good exam vignette is enough. Reference file with just `reference_diagnosis` and `acceptable_top5`. Case 10 (synthetic contradictory) needs one deliberate internal contradiction added if the source doesn't already have one, e.g. history says symptoms are worse in the morning but the timeline says evening. The agent should notice and flag it rather than pick one silently.
 
@@ -195,7 +193,7 @@ Then be ready for Q&A. Likely judge questions: "How do you know the agent isn't 
 
 ## 10. Sealing and grading
 
-- Before the first scored run, Holly hashes each reference file and commits only the hashes to `cases/REFERENCE_HASHES.txt`. Do not edit a reference file after that; if you must, note the change and re-run every case.
+- Before the first scored run, Holly tags the commit `refs-frozen` (see [cases/README.md](../cases/README.md)). Do not edit a reference file after that; if you must, note the change and re-run every case.
 - You grade outputs from the baseline and the full system with labels removed and order shuffled, so you cannot tell which is which.
 - Grade only against the reference file. If you disagree with your own reference after seeing an output, note it separately rather than changing the score.
 
@@ -223,4 +221,4 @@ git commit -m "Add hero case"
 git push
 ```
 
-If git is friction, just send the JSON files to Holly directly and she'll commit them. The `cases/reference/` folder won't be pushed by git; send those files separately via a private channel, not Slack/Discord public channels.
+If git is friction, just send the JSON files to Holly directly and she'll commit them. The repo is private, and `cases/reference/` is committed so you can review it. Don't paste reference answers into public channels.

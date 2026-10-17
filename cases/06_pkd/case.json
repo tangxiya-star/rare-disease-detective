@@ -1,0 +1,96 @@
+{
+  "case_id": "case_06",
+  "title": "13-year-old with brief twisting attacks when starting to move",
+  "provenance": {
+    "type": "synthetic",
+    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "",
+    "review_status": "draft — pending W. Milczyńska review"
+  },
+  "demographics": {
+    "age": 13,
+    "sex": "male",
+    "handedness": "right",
+    "occupation": "Student"
+  },
+  "chief_complaint": "\"When I stand up from my desk or start to run, my arm and leg twist for a few seconds.\"",
+  "history_of_present_illness": "Since age 11, sudden attacks of twisting of the right arm and leg, sometimes both sides, lasting 5–30 seconds, up to 20 times per day. Triggered by sudden voluntary movement after rest (standing up, starting to run when the bell rings). He often feels a tingling 'warning' in the limb just before. Consciousness preserved; he can talk during attacks. Normal between attacks. Avoids sudden starts and has been teased at school.",
+  "symptom_timeline": [
+    {
+      "id": "tl_01",
+      "when": "Infancy (5 months)",
+      "event": "Cluster of afebrile seizures, resolved by 12 months without treatment, labelled 'benign infantile seizures'"
+    },
+    {
+      "id": "tl_02",
+      "when": "Age 11",
+      "event": "Attacks begin"
+    },
+    {
+      "id": "tl_03",
+      "when": "Age 12",
+      "event": "Labelled anxiety-related by school counsellor"
+    },
+    {
+      "id": "tl_04",
+      "when": "Age 13",
+      "event": "Neurology referral"
+    }
+  ],
+  "movement_findings": [
+    {
+      "id": "mf_01",
+      "observation": "Attack provoked by rising from a chair: right arm dystonic posturing with choreic movements, right leg inversion, 10 seconds, speech preserved.",
+      "context": "provoked attack",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_02",
+      "observation": "Between attacks: no abnormal movements.",
+      "context": "rest",
+      "reviewer": ""
+    }
+  ],
+  "neurological_exam": {
+    "mental_status": "Normal",
+    "cranial_nerves": "Normal",
+    "tone": "Normal",
+    "power": "Normal",
+    "reflexes": "2+",
+    "coordination": "Normal",
+    "gait": "Normal",
+    "bradykinesia_screen": "Normal",
+    "other": "No myokymia, no nystagmus"
+  },
+  "labs": [
+    {
+      "id": "lab_01",
+      "test": "CBC, CMP, calcium, glucose, TSH",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    }
+  ],
+  "imaging": [
+    {
+      "id": "img_01",
+      "modality": "MRI brain",
+      "date": "Age 12",
+      "report": "Normal."
+    }
+  ],
+  "neurophysiology": [
+    {
+      "study": "Routine EEG",
+      "date": "Age 12",
+      "report": "Normal interictal recording; no attack captured."
+    }
+  ],
+  "medications": {
+    "current": [],
+    "prior_trials": []
+  },
+  "family_history": "Father had 'jerky starts' as a teenager that stopped in his 20s. Paternal cousin with infantile seizures.",
+  "social_history": "",
+  "prior_workup_and_opinions": "School counsellor: anxiety. Pediatrician: possible tics."
+}

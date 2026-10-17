@@ -1,0 +1,91 @@
+{
+  "case_id": "05_episodic_ataxia_1",
+  "reference_diagnosis": {
+    "name": "Episodic ataxia type 1 (KCNA1)",
+    "confidence": "confirmed (within scenario)",
+    "basis": "Brief, frequent kinesigenic/startle-triggered ataxic attacks with interictal myokymia; EMG myokymic discharges; KCNA1 variant."
+  },
+  "acceptable_top5": [
+    "Episodic ataxia type 1",
+    "Paroxysmal kinesigenic dyskinesia",
+    "Episodic ataxia type 2",
+    "Epilepsy (focal)",
+    "Functional paroxysmal movement disorder"
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis": "Paroxysmal kinesigenic dyskinesia (PRRT2)",
+      "why_plausible": "Brief attacks triggered by sudden movement",
+      "what_argues_against": "PKD attacks are dystonic/choreic, not ataxic with dysarthria; no myokymia"
+    },
+    {
+      "hypothesis": "EA2",
+      "why_plausible": "Episodic ataxia",
+      "what_argues_against": "Attacks last hours; interictal nystagmus; not provoked by sudden movement"
+    }
+  ],
+  "key_evidence_gaps": [
+    {
+      "id": "gap_01",
+      "question": "EMG for myokymic discharges",
+      "why_it_matters": "Supports EA1"
+    },
+    {
+      "id": "gap_02",
+      "question": "KCNA1 and PRRT2 testing",
+      "why_it_matters": "Distinguishes EA1 from PKD"
+    },
+    {
+      "id": "gap_03",
+      "question": "Response to carbamazepine or acetazolamide",
+      "why_it_matters": "Both may help EA1; PKD responds very well to low-dose carbamazepine"
+    }
+  ],
+  "held_out_evidence": [
+    {
+      "gap_id": "gap_01",
+      "investigation": "Needle EMG",
+      "result": "Myokymic discharges in hand muscles.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_02",
+      "investigation": "Genetic testing",
+      "result": "Heterozygous pathogenic KCNA1 variant; PRRT2 negative.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_03",
+      "investigation": "Carbamazepine trial",
+      "result": "Partial reduction in attack frequency.",
+      "release_to_agent": "on_request"
+    }
+  ],
+  "discriminating_investigations": [
+    {
+      "rank": 1,
+      "investigation": "Careful phenomenology of a provoked attack",
+      "discriminates_between": "Ataxia (EA1) vs. dystonia/chorea (PKD)"
+    },
+    {
+      "rank": 2,
+      "investigation": "EMG",
+      "discriminates_between": "Myokymia supports EA1"
+    },
+    {
+      "rank": 3,
+      "investigation": "KCNA1/PRRT2 genetics",
+      "discriminates_between": "Confirms"
+    }
+  ],
+  "red_flags_for_wrong_reasoning": [
+    "Accepting PKD solely because attacks are movement-triggered",
+    "Ignoring interictal myokymia",
+    "Stating any diagnosis as established rather than as a hypothesis for physician review",
+    "Recommending treatment as an instruction rather than a consideration for the treating physician",
+    "Citing literature that does not exist or does not support the specific claim",
+    "Asserting case facts that are not in the case record"
+  ],
+  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "agent_case_id": "case_05"
+}

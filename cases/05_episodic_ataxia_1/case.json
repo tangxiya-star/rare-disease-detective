@@ -1,0 +1,97 @@
+{
+  "case_id": "case_05",
+  "title": "14-year-old with brief, frequent attacks of incoordination triggered by sudden movement",
+  "provenance": {
+    "type": "synthetic",
+    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "",
+    "review_status": "draft — pending W. Milczyńska review"
+  },
+  "demographics": {
+    "age": 14,
+    "sex": "female",
+    "handedness": "left",
+    "occupation": "Student, plays soccer"
+  },
+  "chief_complaint": "\"When I suddenly start running or get startled, my legs and hands go wobbly for a minute.\"",
+  "history_of_present_illness": "Since age 9, brief attacks lasting 30 seconds to 3 minutes of limb incoordination, unsteadiness and slurred speech, several times per day on some days. Triggered by sudden movement (standing up quickly, starting a sprint), startle, and emotional upset. Sometimes she feels the muscles of her hands and around her eyes 'ripple' between attacks. No loss of consciousness. Normal between attacks except for occasional muscle stiffness.",
+  "symptom_timeline": [
+    {
+      "id": "tl_01",
+      "when": "Age 9",
+      "event": "Attacks begin"
+    },
+    {
+      "id": "tl_02",
+      "when": "Age 11",
+      "event": "EEG normal; seizures considered unlikely"
+    },
+    {
+      "id": "tl_03",
+      "when": "Age 14",
+      "event": "Attacks interfere with soccer; referred"
+    }
+  ],
+  "movement_findings": [
+    {
+      "id": "mf_01",
+      "observation": "Attack provoked in clinic by rising quickly: 90-second episode of limb ataxia and dysarthria; no dystonic or choreic postures.",
+      "context": "provoked attack",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_02",
+      "observation": "Interictal: fine continuous rippling of periorbital muscles and small hand muscles, consistent with myokymia.",
+      "context": "rest",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_03",
+      "observation": "Interictal: no nystagmus.",
+      "context": "eye movements",
+      "reviewer": ""
+    }
+  ],
+  "neurological_exam": {
+    "mental_status": "Normal",
+    "cranial_nerves": "Normal, no nystagmus; periorbital myokymia",
+    "tone": "Normal",
+    "power": "Normal",
+    "reflexes": "2+ symmetric",
+    "coordination": "Normal interictally",
+    "gait": "Normal interictally",
+    "bradykinesia_screen": "Normal",
+    "other": "Hand muscle myokymia visible"
+  },
+  "labs": [
+    {
+      "id": "lab_01",
+      "test": "CBC, CMP, magnesium, calcium",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    }
+  ],
+  "imaging": [
+    {
+      "id": "img_01",
+      "modality": "MRI brain",
+      "date": "Age 11",
+      "report": "Normal. No cerebellar atrophy."
+    }
+  ],
+  "neurophysiology": [
+    {
+      "study": "EEG",
+      "date": "Age 11",
+      "report": "Normal awake and asleep."
+    }
+  ],
+  "medications": {
+    "current": [],
+    "prior_trials": []
+  },
+  "family_history": "Father had similar 'wobbly spells' as a teenager that diminished in adulthood.",
+  "social_history": "",
+  "prior_workup_and_opinions": "Pediatrician raised paroxysmal kinesigenic dyskinesia because of movement triggering."
+}

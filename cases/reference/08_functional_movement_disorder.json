@@ -1,0 +1,98 @@
+{
+  "case_id": "08_functional_movement_disorder",
+  "reference_diagnosis": {
+    "name": "Functional movement disorder (functional tremor with functional dystonia)",
+    "confidence": "probable / clinically established",
+    "basis": "Positive clinical signs: abrupt onset after minor injury, entrainment, distractibility, variability, co-activation, give-way weakness, spontaneous remissions; normal DaT-SPECT."
+  },
+  "acceptable_top5": [
+    "Functional movement disorder",
+    "Dopa-responsive dystonia",
+    "Idiopathic focal dystonia",
+    "Essential tremor",
+    "Post-traumatic (peripheral) movement disorder / CRPS-associated dystonia"
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis": "Dopa-responsive dystonia",
+      "why_plausible": "Evening worsening; patient requests testing",
+      "what_argues_against": "Evening worsening here is fatigue-linked and inconsistent; abrupt onset; positive functional signs; spontaneous remission"
+    },
+    {
+      "hypothesis": "CRPS-associated fixed dystonia",
+      "why_plausible": "Onset after wrist injury with fist posture",
+      "what_argues_against": "No pain, swelling, colour or temperature change; posture resolves with distraction"
+    },
+    {
+      "hypothesis": "Essential tremor",
+      "why_plausible": "Tremor",
+      "what_argues_against": "Variable frequency, entrainment, abrupt onset"
+    }
+  ],
+  "key_evidence_gaps": [
+    {
+      "id": "gap_01",
+      "question": "Tremor analysis/accelerometry",
+      "why_it_matters": "Objective support for entrainment and frequency variability"
+    },
+    {
+      "id": "gap_02",
+      "question": "DaT-SPECT if parkinsonism remains a concern",
+      "why_it_matters": "Normal supports non-degenerative cause"
+    },
+    {
+      "id": "gap_03",
+      "question": "CRPS features",
+      "why_it_matters": "Exclude peripheral cause"
+    }
+  ],
+  "held_out_evidence": [
+    {
+      "gap_id": "gap_01",
+      "investigation": "Accelerometry with tapping tasks",
+      "result": "Frequency entrainment and pause during ballistic movements of the other hand.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_02",
+      "investigation": "DaT-SPECT",
+      "result": "Normal.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_03",
+      "investigation": "Examination for CRPS (Budapest criteria)",
+      "result": "Criteria not met.",
+      "release_to_agent": "on_request"
+    }
+  ],
+  "discriminating_investigations": [
+    {
+      "rank": 1,
+      "investigation": "Structured examination for positive functional signs",
+      "discriminates_between": "FMD as a positive diagnosis"
+    },
+    {
+      "rank": 2,
+      "investigation": "Accelerometry",
+      "discriminates_between": "Laboratory-supported functional tremor"
+    },
+    {
+      "rank": 3,
+      "investigation": "Levodopa trial only if diurnal pattern is consistent and functional signs absent",
+      "discriminates_between": "Avoid anchoring"
+    }
+  ],
+  "red_flags_for_wrong_reasoning": [
+    "Anchoring on DRD because of evening worsening and the patient's request",
+    "Diagnosing FMD as exclusion, or because of stress/depression, instead of from positive signs",
+    "Dismissing symptoms as not real; language must remain respectful",
+    "Ordering extensive genetic testing without clinical justification",
+    "Stating any diagnosis as established rather than as a hypothesis for physician review",
+    "Recommending treatment as an instruction rather than a consideration for the treating physician",
+    "Citing literature that does not exist or does not support the specific claim",
+    "Asserting case facts that are not in the case record"
+  ],
+  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "agent_case_id": "case_08"
+}

@@ -1,0 +1,128 @@
+{
+  "case_id": "case_08",
+  "title": "34-year-old with sudden right arm tremor and posturing after a minor wrist injury, worse in the evenings",
+  "provenance": {
+    "type": "synthetic",
+    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "",
+    "review_status": "draft — pending W. Milczyńska review"
+  },
+  "demographics": {
+    "age": 34,
+    "sex": "female",
+    "handedness": "right",
+    "occupation": "Pharmacist"
+  },
+  "chief_complaint": "\"My right hand started shaking and clenching after I sprained my wrist, and it's worse by the evening.\"",
+  "history_of_present_illness": "Eight months ago she sprained her right wrist in a fall. Within a week, abrupt onset of right-hand tremor that reached its maximum severity within days. Over the following months, intermittent clenched-fist posturing of the right hand developed. Symptoms vary considerably day to day, with some completely symptom-free hours, and are worse by evening and when tired; better on holiday. She has read about dopa-responsive dystonia online and asks whether she should be tested. Comorbid migraine and a past episode of depression, currently well. High work stress after a recent promotion.",
+  "symptom_timeline": [
+    {
+      "id": "tl_01",
+      "when": "8 months ago",
+      "event": "Right wrist sprain"
+    },
+    {
+      "id": "tl_02",
+      "when": "~7.5 months ago",
+      "event": "Abrupt-onset right-hand tremor, maximal within days"
+    },
+    {
+      "id": "tl_03",
+      "when": "~5 months ago",
+      "event": "Intermittent fist clenching"
+    },
+    {
+      "id": "tl_04",
+      "when": "~2 months ago",
+      "event": "Two weeks of complete remission during holiday, then recurrence"
+    },
+    {
+      "id": "tl_05",
+      "when": "Now",
+      "event": "Neurology review"
+    }
+  ],
+  "movement_findings": [
+    {
+      "id": "mf_01",
+      "observation": "Right-hand tremor 5–7 Hz with marked variability in frequency and axis across examination.",
+      "context": "rest / posture",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_02",
+      "observation": "Entrainment: when tapping a 3 Hz rhythm with the left hand, right tremor shifts to 3 Hz; when asked to stop tapping, tremor resumes at original frequency.",
+      "context": "entrainment test",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_03",
+      "observation": "Distractibility: tremor stops during serial-7 subtraction and fine left-hand tasks.",
+      "context": "distraction",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_04",
+      "observation": "Clenched-fist posture of the right hand, which can be passively opened with resistance that varies, and resolves fully when she is distracted.",
+      "context": "posture",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_05",
+      "observation": "Co-activation sign present at the wrist at tremor onset.",
+      "context": "palpation",
+      "reviewer": ""
+    }
+  ],
+  "neurological_exam": {
+    "mental_status": "Normal",
+    "cranial_nerves": "Normal",
+    "tone": "Normal with distraction",
+    "power": "Collapsing 'give-way' weakness of right grip; Hoover-type sign not applicable (upper limb)",
+    "reflexes": "2+ symmetric, flexor plantars",
+    "coordination": "Normal",
+    "gait": "Normal",
+    "bradykinesia_screen": "Slow right finger tapping without decrement, improves with encouragement",
+    "other": "Right wrist fully healed"
+  },
+  "labs": [
+    {
+      "id": "lab_01",
+      "test": "CBC, CMP, TSH",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    },
+    {
+      "id": "lab_02",
+      "test": "Ceruloplasmin",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    }
+  ],
+  "imaging": [
+    {
+      "id": "img_01",
+      "modality": "MRI brain",
+      "date": "3 months ago",
+      "report": "Normal."
+    }
+  ],
+  "medications": {
+    "current": [
+      "Sumatriptan PRN"
+    ],
+    "prior_trials": [
+      {
+        "drug": "Propranolol",
+        "dose": "40 mg BID",
+        "duration": "6 weeks",
+        "response": "No effect"
+      }
+    ]
+  },
+  "family_history": "Cousin with 'dystonia' (type unknown, cervical, onset in 50s). Otherwise negative.",
+  "social_history": "Non-smoker, minimal alcohol.",
+  "prior_workup_and_opinions": "GP: 'possible early Parkinson's or dystonia, refer.'"
+}

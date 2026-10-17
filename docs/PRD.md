@@ -273,7 +273,7 @@ Every task saves checkpoints after meaningful completed stages.
 
 **Evaluation metrics:** Reference diagnosis in Top 5, key findings covered, citation validity, verifier rejection quality, latency, retry success, and node execution counts.
 
-**Sealed references:** before the first scored run, compute a sha256 hash of each file in `cases/reference/` and commit only the hashes (`cases/REFERENCE_HASHES.txt`). Reveal the files at the demo. This shows the answers were fixed before any tuning.
+**Frozen references:** before the first scored run, tag the commit `refs-frozen`. Git history then shows the reference answers were fixed before any prompt tuning; any later change is visible with `git diff refs-frozen -- cases/reference/` and means re-running every case.
 
 **Baseline (P1, not stretch):** one Nemotron Super call per case, same input, asked for the same report structure, no recursion and no verifier. Without it there is no evidence that recursion or verification adds anything, which is the first question judges will ask. It costs one API call per case.
 

@@ -1,0 +1,77 @@
+{
+  "case_id": "09_focal_dystonia",
+  "reference_diagnosis": {
+    "name": "Idiopathic task-specific focal hand dystonia (writer's cramp); no rare etiology identified",
+    "confidence": "working",
+    "basis": "Isolated task-specific adult-onset dystonia, normal exam otherwise, normal workup, no levodopa response, stable course."
+  },
+  "acceptable_top5": [
+    "Idiopathic writer's cramp",
+    "Dopa-responsive dystonia",
+    "Functional dystonia",
+    "Early Parkinson disease",
+    "Monogenic adult-onset focal dystonia (e.g. THAP1, GNAL)"
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis": "DRD",
+      "why_plausible": "Limb dystonia",
+      "what_argues_against": "Adult onset, no diurnal pattern, no levodopa response after adequate trial"
+    },
+    {
+      "hypothesis": "Early PD",
+      "why_plausible": "Hand dystonia can precede PD",
+      "what_argues_against": "No bradykinesia, stable 18 months"
+    }
+  ],
+  "key_evidence_gaps": [
+    {
+      "id": "gap_01",
+      "question": "Any spread or new features on follow-up",
+      "why_it_matters": "Determines whether further workup is warranted"
+    },
+    {
+      "id": "gap_02",
+      "question": "Genetic testing?",
+      "why_it_matters": "Low yield; typically not indicated for isolated adult-onset focal dystonia"
+    }
+  ],
+  "held_out_evidence": [
+    {
+      "gap_id": "gap_01",
+      "investigation": "12-month follow-up",
+      "result": "No spread; stable.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_02",
+      "investigation": "Gene panel (if requested)",
+      "result": "No pathogenic variants.",
+      "release_to_agent": "on_request"
+    }
+  ],
+  "discriminating_investigations": [
+    {
+      "rank": 1,
+      "investigation": "Clinical follow-up for spread",
+      "discriminates_between": "Idiopathic vs. evolving disorder"
+    },
+    {
+      "rank": 2,
+      "investigation": "No further invasive testing unless new features",
+      "discriminates_between": "Avoid over-investigation"
+    }
+  ],
+  "red_flags_for_wrong_reasoning": [
+    "Forcing a rare diagnosis when evidence supports idiopathic focal dystonia",
+    "Recommending extensive genetic or CSF testing without clinical justification",
+    "Failing to state clearly that no rare etiology was identified",
+    "Stating any diagnosis as established rather than as a hypothesis for physician review",
+    "Recommending treatment as an instruction rather than a consideration for the treating physician",
+    "Citing literature that does not exist or does not support the specific claim",
+    "Asserting case facts that are not in the case record"
+  ],
+  "expected_system_behavior": "Report should conclude that the most likely explanation is idiopathic task-specific focal dystonia, that rare causes were considered and are not supported, and list what would change that conclusion. This is an 'unresolved / no rare disease' outcome test.",
+  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "agent_case_id": "case_09"
+}

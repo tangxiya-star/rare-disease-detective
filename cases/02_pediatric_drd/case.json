@@ -1,0 +1,118 @@
+{
+  "case_id": "case_02",
+  "title": "8-year-old with progressive toe-walking and leg posturing, worse in the afternoon",
+  "provenance": {
+    "type": "synthetic",
+    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "",
+    "review_status": "draft — pending W. Milczyńska review"
+  },
+  "demographics": {
+    "age": 8,
+    "sex": "female",
+    "handedness": "right",
+    "occupation": "Year 3 student"
+  },
+  "chief_complaint": "Parents: \"She started walking on her toes and her right foot twists in. By the end of the school day she can barely walk, but she's fine in the morning.\"",
+  "history_of_present_illness": "Normal development until age 6. Over 18 months, progressive toe-walking and inward turning of the right foot, later the left. Parents describe her as nearly normal on waking and on weekend mornings; by mid-afternoon she trips frequently and was moved out of PE. Recently stiff, slow handwriting late in the day. No seizures, no regression in learning, no episodes of sudden attacks. Pregnancy and birth uncomplicated, term, no NICU stay.",
+  "symptom_timeline": [
+    {
+      "id": "tl_01",
+      "when": "Age 6.5",
+      "event": "Intermittent right toe-walking noticed by teacher"
+    },
+    {
+      "id": "tl_02",
+      "when": "Age 7",
+      "event": "Right foot inversion; orthopedic review, given ankle-foot orthoses"
+    },
+    {
+      "id": "tl_03",
+      "when": "Age 7.5",
+      "event": "Left leg involved; falls in afternoons"
+    },
+    {
+      "id": "tl_04",
+      "when": "Age 8",
+      "event": "Pediatric review queries spastic diplegia; referred to neurology"
+    }
+  ],
+  "movement_findings": [
+    {
+      "id": "mf_01",
+      "observation": "Bilateral foot plantar flexion and inversion during walking, right worse than left, increasing over a 10-minute walk.",
+      "context": "gait",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_02",
+      "observation": "Mild dystonic posturing of the right hand during writing in afternoon clinic.",
+      "context": "task (writing)",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_03",
+      "observation": "No involuntary movements at rest lying supine.",
+      "context": "rest",
+      "reviewer": ""
+    }
+  ],
+  "neurological_exam": {
+    "mental_status": "Age-appropriate, engaged",
+    "cranial_nerves": "Normal",
+    "tone": "Mildly increased in the legs, variable, without a clear spastic catch",
+    "power": "Normal",
+    "reflexes": "3+ at knees and ankles bilaterally; plantar responses extensor-appearing bilaterally during gait, flexor when tested at rest lying down",
+    "coordination": "Normal",
+    "gait": "See mf_01",
+    "bradykinesia_screen": "Mild slowing of toe tapping, no decrement",
+    "other": "Examined at 3:30 PM after school"
+  },
+  "labs": [
+    {
+      "id": "lab_01",
+      "test": "CBC, CMP",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    },
+    {
+      "id": "lab_02",
+      "test": "CK",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    },
+    {
+      "id": "lab_03",
+      "test": "Serum ceruloplasmin",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    },
+    {
+      "id": "lab_04",
+      "test": "Plasma amino acids",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    }
+  ],
+  "imaging": [
+    {
+      "id": "img_01",
+      "modality": "MRI brain and spine",
+      "date": "3 months ago",
+      "report": "Normal. No periventricular leukomalacia. Normal spinal cord."
+    }
+  ],
+  "medications": {
+    "current": [
+      "Ankle-foot orthoses"
+    ],
+    "prior_trials": []
+  },
+  "family_history": "Mother (36) has had 'restless, stiff feet in the evenings' since adolescence, never evaluated. Father healthy. No consanguinity.",
+  "social_history": "Lives with parents and younger sibling.",
+  "prior_workup_and_opinions": "Orthopedics: no structural foot abnormality. Pediatrician: 'possible mild spastic diplegia' despite normal MRI and no perinatal history."
+}

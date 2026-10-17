@@ -1,0 +1,118 @@
+{
+  "case_id": "02_pediatric_drd",
+  "reference_diagnosis": {
+    "name": "Dopa-responsive dystonia, GCH1-related (classic childhood-onset Segawa disease)",
+    "confidence": "confirmed (within scenario)",
+    "basis": "Lower-limb-onset childhood dystonia with marked diurnal fluctuation, hyperreflexia, normal MRI, dramatic levodopa response, GCH1 variant."
+  },
+  "acceptable_top5": [
+    "Dopa-responsive dystonia (GCH1)",
+    "Tyrosine hydroxylase deficiency (mild)",
+    "Spastic cerebral palsy / hereditary spastic paraplegia",
+    "TOR1A (DYT1) early-onset dystonia",
+    "Juvenile parkinsonism (e.g. PRKN)"
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis": "Spastic diplegic cerebral palsy",
+      "why_plausible": "Toe-walking, brisk reflexes, extensor plantars",
+      "what_argues_against": "No perinatal risk, normal development to 6, normal MRI, progressive course, diurnal fluctuation"
+    },
+    {
+      "hypothesis": "Hereditary spastic paraplegia",
+      "why_plausible": "Progressive leg stiffness, hyperreflexia",
+      "what_argues_against": "Diurnal fluctuation and dystonic posturing are not features; plantar responses flexor at rest (striatal toe)"
+    },
+    {
+      "hypothesis": "DYT1 dystonia",
+      "why_plausible": "Childhood limb-onset dystonia spreading",
+      "what_argues_against": "No diurnal fluctuation expected; no levodopa response"
+    },
+    {
+      "hypothesis": "TH deficiency",
+      "why_plausible": "Also a dopa-responsive disorder",
+      "what_argues_against": "Usually earlier onset and more severe; autosomal recessive; response at low dose but complications more likely"
+    }
+  ],
+  "key_evidence_gaps": [
+    {
+      "id": "gap_01",
+      "question": "Levodopa trial performed?",
+      "why_it_matters": "Diagnostic and therapeutic"
+    },
+    {
+      "id": "gap_02",
+      "question": "Formal documentation of morning vs. afternoon examination",
+      "why_it_matters": "Confirms diurnal pattern"
+    },
+    {
+      "id": "gap_03",
+      "question": "Genetic testing GCH1/TH/SPR",
+      "why_it_matters": "Confirms subtype and counselling for mother"
+    },
+    {
+      "id": "gap_04",
+      "question": "Mother's symptoms",
+      "why_it_matters": "Possible incompletely penetrant AD inheritance"
+    }
+  ],
+  "held_out_evidence": [
+    {
+      "gap_id": "gap_01",
+      "investigation": "Carbidopa/levodopa low-dose trial",
+      "result": "Near-complete resolution within 1 week, sustained.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_02",
+      "investigation": "Morning clinic visit",
+      "result": "Normal gait and reflexes 2+ in the morning.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_03",
+      "investigation": "Gene panel",
+      "result": "Heterozygous pathogenic GCH1 variant.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_04",
+      "investigation": "Maternal exam and testing",
+      "result": "Mother: mild evening foot dystonia; carries the same GCH1 variant.",
+      "release_to_agent": "on_request"
+    }
+  ],
+  "discriminating_investigations": [
+    {
+      "rank": 1,
+      "investigation": "Levodopa trial",
+      "discriminates_between": "DRD vs. CP/HSP/DYT1"
+    },
+    {
+      "rank": 2,
+      "investigation": "Morning vs. afternoon examination",
+      "discriminates_between": "DRD vs. static or steadily progressive disorders"
+    },
+    {
+      "rank": 3,
+      "investigation": "Genetic panel incl. GCH1, TH, SPR",
+      "discriminates_between": "Subtype"
+    },
+    {
+      "rank": 4,
+      "investigation": "CSF pterins and neurotransmitters if genetics negative",
+      "discriminates_between": "Biochemical confirmation"
+    }
+  ],
+  "red_flags_for_wrong_reasoning": [
+    "Accepting cerebral palsy despite normal MRI, normal early development and progression",
+    "Ignoring diurnal fluctuation",
+    "Interpreting gait-related extensor toe as proof of pyramidal disease without considering striatal toe",
+    "Stating any diagnosis as established rather than as a hypothesis for physician review",
+    "Recommending treatment as an instruction rather than a consideration for the treating physician",
+    "Citing literature that does not exist or does not support the specific claim",
+    "Asserting case facts that are not in the case record"
+  ],
+  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "agent_case_id": "case_02"
+}
