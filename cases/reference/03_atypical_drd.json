@@ -136,7 +136,7 @@
     "Treating years of stable response without fluctuations or dyskinesia as typical of Parkinson disease",
     "Recommending stopping levodopa for an off-medication exam as an instruction rather than a consideration for the treating neurologist"
   ],
-  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). Plausible adult parkinsonism phenotype of GCH1 DRD. Clarified the Wilson counter-argument, added ET-plus hypothesis, cant_miss, two red flags and expected behaviour.",
+  "clinician_review_notes": "Clinical review 2026-10-17 (signed off by W. Milczyńska). Plausible adult parkinsonism phenotype of GCH1 DRD. Clarified the Wilson counter-argument, added ET-plus hypothesis, cant_miss, two red flags and expected behaviour.",
   "expected_system_behavior": "DRD and young-onset PD should both appear, with DRD favoured. The system should not accept PD from levodopa response alone, should point out that a stable low-dose response without fluctuations or dyskinesia after 4 years is atypical for PD, should note that daily fluctuation may be masked by treatment, and should suggest DaT-SPECT and GCH1/PRKN/PINK1 genetics, plus completion of the Wilson screen. Genetic counselling is relevant once confirmed (autosomal dominant; he has a young child).",
   "agent_case_id": "case_03"
 }

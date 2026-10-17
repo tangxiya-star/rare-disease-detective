@@ -59,6 +59,29 @@ async def recordings():
     return sorted(state["recordings"], key=lambda r: -r["recorded_at"])
 
 
+@app.get("/api/runs/{run_id}/sources")
+def run_sources(run_id: str):
+    """Citation metadata of every source the run retrieved, for the evidence cards (no abstracts)."""
+    if state["db"].get_run(run_id) is None:
+        raise HTTPException(404, "run not found")
+    return {s["id"]: {"title": s["title"], "url": s["url"], "meta": s["meta"]}
+            for s in state["db"].get_sources(run_id) if not s["id"].startswith("HELDOUT:")}
+
+
+@app.get("/api/runs/{run_id}/credits")
+def credits(run_id: str):
+    """Source citation of an adapted published case, for the evidence cards. Its title can name
+    the diagnosis, so it is served only once the run has a report (replays must also wait for
+    report.ready on their own clock). Never part of any agent payload."""
+    run = state["db"].get_run(run_id)
+    if run is None:
+        raise HTTPException(404, "run not found")
+    if not run.get("report"):
+        raise HTTPException(409, "available after the report")
+    ref = load_case(run["slot"], run["mode"]).reference
+    return {"source_citation": ref.get("source_citation")}
+
+
 @app.get("/api/cases")
 def cases(mode: Mode = "demo"):
     return list_cases(mode)

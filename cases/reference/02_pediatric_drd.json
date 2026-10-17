@@ -141,7 +141,7 @@
     "Asserting case facts that are not in the case record",
     "Ruling out DRD because the toes point up on walking"
   ],
-  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). Plausible textbook GCH1 DRD. Added SPR deficiency to the acceptable top 5, cant_miss, one red flag and expected behaviour.",
+  "clinician_review_notes": "Clinical review 2026-10-17 (signed off by W. Milczyńska). Plausible textbook GCH1 DRD. Added SPR deficiency to the acceptable top 5, cant_miss, one red flag and expected behaviour.",
   "expected_system_behavior": "DRD should rank first. The system should reject the cerebral palsy label (normal birth, normal development to 6, progression, normal MRI, daily pattern), interpret the gait-only extensor toe as a striatal toe, ask for a morning examination, and suggest a levodopa trial and GCH1/TH/SPR genetics, with the mother's evening foot symptoms noted for family assessment.",
   "agent_case_id": "case_02"
 }

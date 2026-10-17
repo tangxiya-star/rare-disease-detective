@@ -28,7 +28,7 @@ export interface RunState {
   lastSeq: number
 }
 
-const empty: RunState = {
+export const empty: RunState = {
   runId: null, status: 'idle', llmBackend: null, nodes: {}, order: [], activity: {}, evidence: [],
   sources: {}, report: null, hypotheses: [], releasedMedia: [], events: [], lastSeq: 0,
 }
@@ -43,7 +43,7 @@ function act(s: RunState, id: string, f: (a: NodeActivity) => NodeActivity): Rec
   return { ...s.activity, [id]: f(s.activity[id] ?? blankActivity()) }
 }
 
-function reduce(s: RunState, a: Action): RunState {
+export function reduce(s: RunState, a: Action): RunState {
   if (a.type === 'reset') return { ...empty, runId: a.runId, status: a.runId ? 'running' : 'idle' }
   const e = a.event
   if (e.seq <= s.lastSeq) return s
@@ -59,7 +59,9 @@ function reduce(s: RunState, a: Action): RunState {
     case 'node.status': {
       const n = s.nodes[d.node_id]
       if (!n) return next
-      return { ...next, nodes: { ...s.nodes, [n.id]: { ...n, status: d.status, checkpoint: d.checkpoint, verification: d.verification } } }
+      // a node moving again after run.finished(failed) means the run was resumed from its checkpoints
+      return { ...next, status: s.status === 'failed' ? 'running' : s.status,
+        nodes: { ...s.nodes, [n.id]: { ...n, status: d.status, checkpoint: d.checkpoint, verification: d.verification } } }
     }
     case 'node.decision':
       return { ...next, hypotheses: d.hypotheses?.length ? d.hypotheses : s.hypotheses, activity: act(s, d.node_id, x => ({ ...x, decisions: [...x.decisions, {
@@ -98,6 +100,16 @@ function reduce(s: RunState, a: Action): RunState {
     default:
       return next
   }
+}
+
+/** The state as it was right after event `seq`: the reducer is pure, so history is a fold over the log. */
+export function stateAt(live: RunState, seq: number): RunState {
+  let s = reduce(empty, { type: 'reset', runId: live.runId })
+  for (const e of live.events) {
+    if (e.seq > seq) break
+    s = reduce(s, { type: 'event', event: e })
+  }
+  return s
 }
 
 /** Subscribes to a run's event stream; replays from the start and reconnects from the last seq. */

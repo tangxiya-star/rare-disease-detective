@@ -39,6 +39,12 @@ export interface Evidence {
 
 export interface SourceRef { source_id: string; title: string; url: string }
 
+export interface SourceCitation {
+  title: string; url: string
+  meta: { pmid?: string | null; pmcid?: string | null; doi?: string | null; year?: string | null; authors?: string | null
+          journal?: string | null; volume?: string | null; issue?: string | null; pages?: string | null }
+}
+
 export interface Report {
   summary: string
   differential: {
@@ -91,6 +97,10 @@ export interface CaseView {
   annotations: { annotations: Annotation[]; video: Record<string, any> } | null
   has_video: boolean
   has_landmarks?: boolean
+}
+
+export interface Recording {
+  run_id: string; label: string; llm_backend: string; slot: string; mode: Mode; recorded_at: number; duration_s: number
 }
 
 export interface Health { llm_backend: 'mock' | 'crusoe'; search_backend: string; lead_model: string; child_model: string }

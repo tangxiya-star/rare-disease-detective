@@ -3,9 +3,9 @@
   "title": "13-year-old with brief twisting attacks when starting to move",
   "provenance": {
     "type": "synthetic",
-    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
-    "reviewed_by": "",
-    "review_status": "draft — pending W. Milczyńska review"
+    "citation": "Synthetic case written 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "W. Milczyńska (clinical lead)",
+    "review_status": "reviewed 2026-10-17"
   },
   "demographics": {
     "age": 13,
@@ -47,25 +47,25 @@
       "id": "mf_01",
       "observation": "Attack provoked by rising quickly from a chair after 10 minutes seated: right arm dystonic posturing (elbow flexion, wrist flexion, finger extension) with superimposed choreic movements, right leg inversion, lasting 10 seconds; speech preserved and he describes the attack as it happens.",
       "context": "provoked attack",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_02",
       "observation": "Between attacks: no abnormal movements, no tics, no myokymia.",
       "context": "rest",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_03",
       "observation": "Second attempt to provoke immediately after the first attack: no attack (brief refractory period); a third attempt 15 minutes later provoked a shorter left-sided attack of similar character.",
       "context": "provoked attack",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_04",
       "observation": "Attacks not provoked by 3 minutes of hyperventilation, by startle (unexpected loud clap), or by 10 minutes of brisk walking.",
       "context": "provocation testing",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     }
   ],
   "neurological_exam": {
