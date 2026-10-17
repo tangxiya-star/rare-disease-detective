@@ -1,0 +1,108 @@
+{
+  "case_id": "case_04",
+  "title": "19-year-old with hours-long attacks of imbalance, vertigo and nausea",
+  "provenance": {
+    "type": "synthetic",
+    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "",
+    "review_status": "draft — pending W. Milczyńska review"
+  },
+  "demographics": {
+    "age": 19,
+    "sex": "male",
+    "handedness": "right",
+    "occupation": "University student"
+  },
+  "chief_complaint": "\"A few times a month I suddenly can't walk straight, the room spins and I throw up. It lasts most of the day.\"",
+  "history_of_present_illness": "Since age 12, recurrent episodes of unsteadiness, slurred speech, vertigo and nausea lasting 2–12 hours, 2–4 times per month. Triggers he has noticed: emotional stress (exams), heavy exercise, and alcohol. Some episodes are followed by a throbbing headache. Between attacks he feels 'mostly fine' but admits to being 'a bit clumsy' on stairs in the dark for the past two years. No loss of consciousness, no hearing loss, no tinnitus. Caffeine seems to worsen attacks.",
+  "symptom_timeline": [
+    {
+      "when": "Age 12",
+      "event": "First episodes, labelled as 'migraine variant'"
+    },
+    {
+      "when": "Age 15",
+      "event": "Attacks increase during exams; trialed propranolol without clear benefit"
+    },
+    {
+      "when": "Age 17",
+      "event": "Persistent mild imbalance between attacks begins"
+    },
+    {
+      "when": "Age 19",
+      "event": "ED visit during an attack; neurology referral"
+    }
+  ],
+  "movement_findings": [
+    {
+      "id": "mf_01",
+      "observation": "Interictal: downbeat nystagmus in primary gaze, more evident on lateral and downgaze; gaze-evoked nystagmus bilaterally.",
+      "context": "eye movements, interictal",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_02",
+      "observation": "Interictal: mild truncal ataxia on tandem gait; normal limb coordination.",
+      "context": "gait",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_03",
+      "observation": "During attack (ED note, physician-documented): marked gait and limb ataxia, dysarthria, vomiting; no limb weakness.",
+      "context": "ictal, ED record",
+      "reviewer": ""
+    }
+  ],
+  "neurological_exam": {
+    "mental_status": "Normal",
+    "cranial_nerves": "See mf_01; hearing normal",
+    "tone": "Normal",
+    "power": "Normal",
+    "reflexes": "2+ symmetric, flexor plantars",
+    "coordination": "Finger–nose normal; heel–shin mildly irregular",
+    "gait": "Mild difficulty with tandem",
+    "bradykinesia_screen": "Normal",
+    "other": "No myokymia"
+  },
+  "labs": [
+    {
+      "test": "CBC, CMP, glucose",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    },
+    {
+      "test": "Vitamin E, B12",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    },
+    {
+      "test": "Anti-GAD, celiac serology",
+      "result": "Negative",
+      "reference_range": "",
+      "note": ""
+    }
+  ],
+  "imaging": [
+    {
+      "modality": "MRI brain",
+      "date": "During ED visit",
+      "report": "Mild atrophy of the superior cerebellar vermis. Otherwise normal. No demyelination."
+    }
+  ],
+  "medications": {
+    "current": [],
+    "prior_trials": [
+      {
+        "drug": "Propranolol",
+        "dose": "40 mg BID",
+        "duration": "4 months",
+        "response": "No clear benefit"
+      }
+    ]
+  },
+  "family_history": "Mother has 'migraines with dizziness' since her teens. Maternal grandfather 'walked like he was drunk' in his 60s. No consanguinity.",
+  "social_history": "Drinks 4–6 drinks on weekend nights; notes attacks often follow.",
+  "prior_workup_and_opinions": "Previous diagnosis: vestibular migraine."
+}

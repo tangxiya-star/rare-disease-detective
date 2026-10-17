@@ -1,0 +1,96 @@
+{
+  "case_id": "06_pkd",
+  "reference_diagnosis": {
+    "name": "Paroxysmal kinesigenic dyskinesia (PRRT2-related)",
+    "confidence": "confirmed (within scenario)",
+    "basis": "Brief kinesigenic dystonic/choreic attacks, preserved consciousness, history of benign infantile seizures, AD family history, dramatic low-dose carbamazepine response, PRRT2 variant."
+  },
+  "acceptable_top5": [
+    "Paroxysmal kinesigenic dyskinesia",
+    "Episodic ataxia type 1",
+    "Focal (frontal lobe) epilepsy",
+    "Functional paroxysmal movement disorder",
+    "Tic disorder"
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis": "Focal epilepsy",
+      "why_plausible": "Paroxysmal stereotyped events, infantile seizures",
+      "what_argues_against": "Consistently triggered by sudden movement, preserved awareness, normal EEG"
+    },
+    {
+      "hypothesis": "Functional paroxysmal disorder",
+      "why_plausible": "Teen with school stress",
+      "what_argues_against": "Stereotyped kinesigenic trigger, aura, family history and infantile seizures argue for PRRT2"
+    },
+    {
+      "hypothesis": "EA1",
+      "why_plausible": "Kinesigenic triggers",
+      "what_argues_against": "Attacks are dystonic/choreic, not ataxic; no myokymia"
+    }
+  ],
+  "key_evidence_gaps": [
+    {
+      "id": "gap_01",
+      "question": "Response to low-dose carbamazepine",
+      "why_it_matters": "Very characteristic of PKD"
+    },
+    {
+      "id": "gap_02",
+      "question": "PRRT2 testing",
+      "why_it_matters": "Confirms; links infantile seizures"
+    },
+    {
+      "id": "gap_03",
+      "question": "Video of attacks at home",
+      "why_it_matters": "Phenomenology"
+    }
+  ],
+  "held_out_evidence": [
+    {
+      "gap_id": "gap_01",
+      "investigation": "Carbamazepine 50 mg BID",
+      "result": "Attacks stopped completely within 3 days.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_02",
+      "investigation": "PRRT2 testing",
+      "result": "Heterozygous pathogenic PRRT2 variant.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_03",
+      "investigation": "Home video",
+      "result": "Consistent with mf_01.",
+      "release_to_agent": "on_request"
+    }
+  ],
+  "discriminating_investigations": [
+    {
+      "rank": 1,
+      "investigation": "Detailed trigger history and attack phenomenology",
+      "discriminates_between": "PKD vs. EA1 vs. epilepsy"
+    },
+    {
+      "rank": 2,
+      "investigation": "PRRT2 genetic testing",
+      "discriminates_between": "Confirms"
+    },
+    {
+      "rank": 3,
+      "investigation": "Low-dose carbamazepine trial (physician decision)",
+      "discriminates_between": "Diagnostic support"
+    }
+  ],
+  "red_flags_for_wrong_reasoning": [
+    "Labelling as anxiety or functional without positive functional signs",
+    "Diagnosing epilepsy despite preserved awareness and strict kinesigenic triggering",
+    "Stating any diagnosis as established rather than as a hypothesis for physician review",
+    "Recommending treatment as an instruction rather than a consideration for the treating physician",
+    "Citing literature that does not exist or does not support the specific claim",
+    "Asserting case facts that are not in the case record"
+  ],
+  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "agent_case_id": "case_06"
+}

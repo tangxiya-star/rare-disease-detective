@@ -1,0 +1,104 @@
+{
+  "case_id": "case_03",
+  "title": "38-year-old with slowly progressive asymmetric parkinsonism and mild leg posturing",
+  "provenance": {
+    "type": "synthetic",
+    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "",
+    "review_status": "draft — pending W. Milczyńska review"
+  },
+  "demographics": {
+    "age": 38,
+    "sex": "male",
+    "handedness": "right",
+    "occupation": "Software engineer"
+  },
+  "chief_complaint": "\"My right side has been slow and stiff for years, and my right foot cramps when I walk.\"",
+  "history_of_present_illness": "Seven years of slowly progressive right-sided slowness and stiffness, mild postural tremor of the right hand, and intermittent right foot cramping with inversion during long walks. No clear diurnal variation reported when asked. Sleep does not obviously help. No REM sleep behavior disorder symptoms, no anosmia, no constipation. Started on levodopa by a previous neurologist 4 years ago with good benefit; dose has remained 100 mg TID since, with no wearing-off and no dyskinesia. Seeking a second opinion because 'I was told it's young-onset Parkinson's but it hasn't progressed like they said it would.'",
+  "symptom_timeline": [
+    {
+      "when": "7 years ago",
+      "event": "Right hand slowness, small handwriting"
+    },
+    {
+      "when": "6 years ago",
+      "event": "Right foot cramping with long walks"
+    },
+    {
+      "when": "4 years ago",
+      "event": "Diagnosed young-onset PD; levodopa 100 mg TID started with good response"
+    },
+    {
+      "when": "Now",
+      "event": "Stable on same dose; no motor fluctuations or dyskinesia"
+    }
+  ],
+  "movement_findings": [
+    {
+      "id": "mf_01",
+      "observation": "On medication: mild right-hand bradykinesia on finger tapping without decrement.",
+      "context": "bradykinesia testing",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_02",
+      "observation": "Mild right-hand postural tremor, 6–7 Hz, low amplitude.",
+      "context": "posture",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_03",
+      "observation": "On medication: normal gait; reports foot inversion only when doses are delayed.",
+      "context": "gait",
+      "reviewer": ""
+    }
+  ],
+  "neurological_exam": {
+    "mental_status": "Normal",
+    "cranial_nerves": "Normal; normal saccades",
+    "tone": "Mild right upper limb rigidity with activation, on medication",
+    "power": "Normal",
+    "reflexes": "2+ and symmetric, flexor plantars",
+    "coordination": "Normal",
+    "gait": "Normal on medication",
+    "bradykinesia_screen": "Mild right-sided slowing, no decrement",
+    "other": "Examined on medication, 2 hours after a dose"
+  },
+  "labs": [
+    {
+      "test": "CBC, CMP",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    },
+    {
+      "test": "Ceruloplasmin",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    }
+  ],
+  "imaging": [
+    {
+      "modality": "MRI brain",
+      "date": "6 years ago",
+      "report": "Normal."
+    }
+  ],
+  "medications": {
+    "current": [
+      "Carbidopa/levodopa 25/100 mg TID"
+    ],
+    "prior_trials": [
+      {
+        "drug": "Carbidopa/levodopa",
+        "dose": "100 mg TID",
+        "duration": "4 years",
+        "response": "Marked improvement, sustained, no fluctuations or dyskinesia"
+      }
+    ]
+  },
+  "family_history": "Negative for movement disorders as far as the patient knows. Parents alive and well in their 60s. Not adopted.",
+  "social_history": "No toxin or neuroleptic exposure.",
+  "prior_workup_and_opinions": "Previous neurologist: young-onset Parkinson disease. No DAT imaging was performed. No genetic testing."
+}

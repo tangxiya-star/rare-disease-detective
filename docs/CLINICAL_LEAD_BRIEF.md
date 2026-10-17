@@ -6,7 +6,7 @@ This is your working document for the day. It pulls out everything the engineeri
 
 **The one thing to know about the system:** it is not a diagnosis generator. A Lead Agent reads the case, decides what it is uncertain about, and spawns child agents to investigate specific questions. A Verifier then accepts or rejects each claim based on evidence. Your job is to make sure the cases are clinically real, the agents are asking the right questions, and the verifier is rejecting the right things.
 
-**The case list is already decided.** The ten slots and what each one tests are fixed in [PRD §3](PRD.md#3-clinical-scope--10-case-dataset). You don't need to choose cases. What's still needed is the **clinical content** for each slot (history, exam, labs, imaging, movement findings) in the structured format, plus the held-out reference answer. Write each one as a synthetic case, or base it on a published de-identified case report if you know a good one.
+**The case list is already decided.** The ten slots and what each one tests are fixed in [PRD §3](PRD.md#3-clinical-scope--10-case-dataset). You don't need to choose cases. **Synthetic first drafts of all ten cases and their reference answers are already written** (see [cases/README.md](../cases/README.md)). Your job is to **review and correct them**, not write from scratch. Edit the JSON directly, or leave notes in each reference file's `clinician_review_notes` field and Holly will apply them.
 
 ---
 
@@ -14,14 +14,14 @@ This is your working document for the day. It pulls out everything the engineeri
 
 | Deliverable | Needed by (PT) | Blocks |
 |---|---|---|
-| **A. Hero case JSON** (Case 01, guitarist DRD) | **10:30 AM** | Everything. Holly cannot run the first real investigation without it. |
-| **B. Hero case reference answer** (held out) | 11:00 AM | Verifier calibration, evaluation |
+| **A. Review hero case JSON** (Case 01, guitarist DRD) | **10:30 AM** | First real investigation runs on this. |
+| **B. Review hero reference answer** (`cases/reference/01_guitarist_drd.json`) | 11:00 AM | Verifier calibration, evaluation |
 | **C. Movement-disorder reasoning rules** | 11:30 AM | Lead Agent prompt |
 | **D. Verifier acceptance checklist** | 12:30 PM | Verifier prompt |
 | **E. Review of first investigation traces** | 1–3 PM | Prompt corrections before UI work |
-| **F. Three validation cases** (02, 04, 08 recommended) | 5 PM | P1 demo cases |
-| **G. Remaining six case stubs** (03, 05, 06, 07, 09, 10) | 7 PM | Ten-fixture target; stubs are fine |
-| **H. Hero case movement annotations** | 5 PM | Motion Viewer |
+| **F. Review three validation cases** (02, 04, 08) | 5 PM | P1 demo cases |
+| **G. Skim remaining six drafts** (03, 05, 06, 07, 09, 10) | 7 PM | Ten-fixture target; stubs are fine |
+| **H. Review hero movement annotations + video source** | 5 PM | Motion Viewer |
 | **I. Clinical sign-off on demo report + safety language** | 9 PM | Submission |
 
 Priority order if time runs short: **A → B → D → C → E → H → F → I → G.** Item A is the only hard blocker. Everything else can be rough and iterated.
@@ -32,7 +32,7 @@ Priority order if time runs short: **A → B → D → C → E → H → F → I
 
 **Case 01 — Guitarist with dopa-responsive dystonia.**
 
-File: `cases/01_guitarist_drd/case.json`. Copy `cases/_template/case.json` and fill it in.
+File: `cases/01_guitarist_drd/case.json` (draft written). Check it against the points below and correct anything that isn't clinically right. Specific questions are in `clinician_review_notes` in the reference file.
 
 What the agents will see. **Do not include the diagnosis, the levodopa response, or any finding that gives it away.** Those go in the reference file (Deliverable B).
 
@@ -58,9 +58,7 @@ Clinical realism matters more than completeness. If a real patient wouldn't have
 
 ## 3. Deliverable B: Reference answer (held out)
 
-File: `cases/reference/01_guitarist_drd.json`. This directory is gitignored and will never be visible to agents.
-
-Copy `cases/_template/reference.example.json`. Contents:
+File: `cases/reference/01_guitarist_drd.json` (draft written). It's in the repo so you can review it; the code never passes it to agents. Contents:
 
 - **reference_diagnosis**: the answer, with confidence (confirmed / probable / working)
 - **acceptable_top5**: other diagnoses that would be reasonable in a Top 5 for this presentation (e.g. young-onset PD, focal task-specific dystonia / musician's dystonia, Wilson disease, psychogenic/functional). We score "reference in Top 5" so this list defines what counts as a miss.
@@ -201,4 +199,4 @@ git commit -m "Add hero case"
 git push
 ```
 
-If git is friction, just send the JSON files to Holly directly and she'll commit them. The `cases/reference/` folder won't be pushed by git; send those files separately via a private channel, not Slack/Discord public channels.
+If git is friction, just send the JSON files to Holly directly and she'll commit them. The repo is private, and `cases/reference/` is committed so you can review it. Don't paste reference answers into public channels.

@@ -1,0 +1,98 @@
+{
+  "case_id": "case_09",
+  "title": "48-year-old accountant with isolated writing difficulty",
+  "provenance": {
+    "type": "synthetic",
+    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "",
+    "review_status": "draft — pending W. Milczyńska review"
+  },
+  "demographics": {
+    "age": 48,
+    "sex": "male",
+    "handedness": "right",
+    "occupation": "Accountant"
+  },
+  "chief_complaint": "\"For three years my hand cramps and twists whenever I write. Typing is fine.\"",
+  "history_of_present_illness": "Three years of right-hand cramping, excessive grip, and wrist flexion that begins within a few words of handwriting and does not occur with typing, eating, or other tasks. Stable over the past 18 months. No diurnal variation, no benefit after sleep. No involvement of other body parts. Changing pen grip helps briefly.",
+  "symptom_timeline": [
+    {
+      "when": "3 years ago",
+      "event": "Onset of writing difficulty"
+    },
+    {
+      "when": "2 years ago",
+      "event": "Botulinum toxin with moderate benefit"
+    },
+    {
+      "when": "18 months ago",
+      "event": "Symptoms stable since"
+    }
+  ],
+  "movement_findings": [
+    {
+      "id": "mf_01",
+      "observation": "Writing: excessive pen grip, wrist flexion and pronation within first line.",
+      "context": "task (writing)",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_02",
+      "observation": "Typing, buttoning, and using cutlery: normal.",
+      "context": "other tasks",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_03",
+      "observation": "No tremor, no dystonia at rest or posture.",
+      "context": "rest/posture",
+      "reviewer": ""
+    }
+  ],
+  "neurological_exam": {
+    "mental_status": "Normal",
+    "cranial_nerves": "Normal",
+    "tone": "Normal",
+    "power": "Normal",
+    "reflexes": "2+ symmetric",
+    "coordination": "Normal",
+    "gait": "Normal",
+    "bradykinesia_screen": "Normal",
+    "other": "Normal examination outside the writing task"
+  },
+  "labs": [
+    {
+      "test": "CBC, CMP, TSH, ceruloplasmin",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    }
+  ],
+  "imaging": [
+    {
+      "modality": "MRI brain",
+      "date": "2 years ago",
+      "report": "Normal."
+    }
+  ],
+  "medications": {
+    "current": [],
+    "prior_trials": [
+      {
+        "drug": "Botulinum toxin to forearm flexors",
+        "dose": "",
+        "duration": "3 cycles",
+        "response": "Moderate benefit"
+      },
+      {
+        "drug": "Carbidopa/levodopa trial",
+        "dose": "up to 100 mg TID",
+        "duration": "6 weeks",
+        "response": "No benefit"
+      }
+    ]
+  },
+  "family_history": "Negative.",
+  "social_history": "",
+  "prior_workup_and_opinions": "Writer's cramp."
+}

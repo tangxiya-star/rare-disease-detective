@@ -1,0 +1,111 @@
+{
+  "case_id": "case_07",
+  "title": "10-year-old with leg stiffness after long walks and a history of early absence seizures",
+  "provenance": {
+    "type": "synthetic",
+    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "",
+    "review_status": "draft — pending W. Milczyńska review"
+  },
+  "demographics": {
+    "age": 10,
+    "sex": "female",
+    "handedness": "right",
+    "occupation": "Student, receives learning support"
+  },
+  "chief_complaint": "Parents: \"After long walks or sports, especially before lunch, her legs twist and she has to sit down for half an hour.\"",
+  "history_of_present_illness": "Since age 7, episodes of dystonic stiffening and twisting of both legs, sometimes with choreic movements, lasting 10–40 minutes, occurring after 15+ minutes of continuous exercise. More likely when she has skipped breakfast or before meals; parents noticed a sugary snack seems to help her recover. Absence seizures began at age 2.5, partially responsive to valproate; currently on levetiracetam with occasional breakthrough absences. Mild learning difficulties in mathematics and reading. Occasional unsteadiness in the morning before breakfast.",
+  "symptom_timeline": [
+    {
+      "when": "Age 2.5",
+      "event": "Absence seizures begin"
+    },
+    {
+      "when": "Age 4",
+      "event": "Valproate, partial response; switched later to levetiracetam"
+    },
+    {
+      "when": "Age 7",
+      "event": "Exercise-induced leg episodes begin"
+    },
+    {
+      "when": "Age 10",
+      "event": "Episodes increase with school sports; referral"
+    }
+  ],
+  "movement_findings": [
+    {
+      "id": "mf_01",
+      "observation": "Parent video (physician-reviewed): after a 25-minute walk, bilateral foot inversion and dystonic leg posturing with intermittent chorea, lasting ~20 minutes, improving with rest.",
+      "context": "exercise-induced episode",
+      "reviewer": ""
+    },
+    {
+      "id": "mf_02",
+      "observation": "Interictal: mild gait ataxia on tandem; no dystonia at rest.",
+      "context": "interictal gait",
+      "reviewer": ""
+    }
+  ],
+  "neurological_exam": {
+    "mental_status": "Mild difficulties with attention and arithmetic",
+    "cranial_nerves": "Normal",
+    "tone": "Normal",
+    "power": "Normal",
+    "reflexes": "2+",
+    "coordination": "Mild dysmetria on heel–shin",
+    "gait": "Mild difficulty with tandem",
+    "bradykinesia_screen": "Normal",
+    "other": "Head circumference 25th percentile; examined at 11 AM, had breakfast"
+  },
+  "labs": [
+    {
+      "test": "CBC, CMP",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    },
+    {
+      "test": "Fasting blood glucose",
+      "result": "4.8 mmol/L",
+      "reference_range": "3.9–5.5",
+      "note": ""
+    },
+    {
+      "test": "Lactate",
+      "result": "Normal",
+      "reference_range": "",
+      "note": ""
+    }
+  ],
+  "imaging": [
+    {
+      "modality": "MRI brain",
+      "date": "Age 8",
+      "report": "Normal."
+    }
+  ],
+  "neurophysiology": [
+    {
+      "study": "EEG",
+      "date": "Age 9",
+      "report": "Generalized 3–4 Hz spike-wave discharges, more frequent in fasting state per note."
+    }
+  ],
+  "medications": {
+    "current": [
+      "Levetiracetam"
+    ],
+    "prior_trials": [
+      {
+        "drug": "Valproate",
+        "dose": "",
+        "duration": "2 years",
+        "response": "Partial seizure control"
+      }
+    ]
+  },
+  "family_history": "Negative.",
+  "social_history": "",
+  "prior_workup_and_opinions": "Previous view: early-onset absence epilepsy plus unrelated exercise-induced cramps."
+}

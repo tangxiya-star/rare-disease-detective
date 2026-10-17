@@ -1,0 +1,97 @@
+{
+  "case_id": "07_glut1_deficiency",
+  "reference_diagnosis": {
+    "name": "GLUT1 deficiency syndrome (SLC2A1) with paroxysmal exercise-induced dyskinesia",
+    "confidence": "confirmed (within scenario)",
+    "basis": "Early-onset absence epilepsy (<4 years), paroxysmal exertion-induced dyskinesia worse with fasting, mild cognitive impairment and ataxia, low CSF glucose with low CSF:blood ratio, SLC2A1 variant, response to ketogenic diet."
+  },
+  "acceptable_top5": [
+    "GLUT1 deficiency syndrome",
+    "Paroxysmal exercise-induced dyskinesia, other cause",
+    "Mitochondrial disorder",
+    "Paroxysmal kinesigenic dyskinesia",
+    "Episodic ataxia type 2"
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis": "Unrelated absence epilepsy + muscle cramps",
+      "why_plausible": "Common conditions",
+      "what_argues_against": "Early onset <4 y and exertion-induced dystonia/chorea are a recognized combination; fasting link"
+    },
+    {
+      "hypothesis": "PKD",
+      "why_plausible": "Paroxysmal dyskinesia",
+      "what_argues_against": "PKD attacks are seconds long, triggered by sudden movement, not prolonged exertion"
+    },
+    {
+      "hypothesis": "Mitochondrial disease",
+      "why_plausible": "Exercise intolerance, epilepsy",
+      "what_argues_against": "Normal lactate, normal MRI; less specific"
+    }
+  ],
+  "key_evidence_gaps": [
+    {
+      "id": "gap_01",
+      "question": "Paired fasting CSF and blood glucose",
+      "why_it_matters": "CSF:blood ratio is the key test"
+    },
+    {
+      "id": "gap_02",
+      "question": "SLC2A1 testing",
+      "why_it_matters": "Confirms"
+    },
+    {
+      "id": "gap_03",
+      "question": "Response to ketogenic diet",
+      "why_it_matters": "Supports and treats"
+    }
+  ],
+  "held_out_evidence": [
+    {
+      "gap_id": "gap_01",
+      "investigation": "Lumbar puncture after 4–6 h fast with paired blood glucose",
+      "result": "CSF glucose 1.9 mmol/L, blood 4.6 mmol/L, ratio 0.41; CSF lactate low-normal.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_02",
+      "investigation": "SLC2A1 sequencing",
+      "result": "Heterozygous de novo pathogenic SLC2A1 variant.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_03",
+      "investigation": "Ketogenic diet",
+      "result": "Marked reduction of exercise-induced episodes and absences at 3 months.",
+      "release_to_agent": "on_request"
+    }
+  ],
+  "discriminating_investigations": [
+    {
+      "rank": 1,
+      "investigation": "Fasting LP with paired blood glucose",
+      "discriminates_between": "GLUT1DS vs. others"
+    },
+    {
+      "rank": 2,
+      "investigation": "SLC2A1 genetics",
+      "discriminates_between": "Confirms"
+    },
+    {
+      "rank": 3,
+      "investigation": "Attack phenomenology and trigger (prolonged exertion vs. sudden movement)",
+      "discriminates_between": "PED vs. PKD"
+    }
+  ],
+  "red_flags_for_wrong_reasoning": [
+    "Treating the epilepsy and movement episodes as unrelated without considering a unifying diagnosis",
+    "Interpreting CSF glucose without a paired blood glucose",
+    "Calling a normal fasting blood glucose evidence against GLUT1DS",
+    "Stating any diagnosis as established rather than as a hypothesis for physician review",
+    "Recommending treatment as an instruction rather than a consideration for the treating physician",
+    "Citing literature that does not exist or does not support the specific claim",
+    "Asserting case facts that are not in the case record"
+  ],
+  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "agent_case_id": "case_07"
+}

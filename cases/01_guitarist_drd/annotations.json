@@ -1,0 +1,48 @@
+{
+  "case_id": "case_01",
+  "video": {
+    "file": "movement.mp4",
+    "license": "NOT YET SOURCED. Options: (a) a published, reuse-licensed clinical video; (b) a clearly labelled reenactment by a consenting performer. A reenactment must be disclosed as such in the demo.",
+    "duration_s": 60,
+    "planned_shots": "Shot 1 (0–25s): right-hand tremolo on guitar, digit 3–4 flexion emerging. Shot 2 (25–40s): handwriting. Shot 3 (40–60s): gait, right foot inversion."
+  },
+  "annotations": [
+    {
+      "t_start": 0.0,
+      "t_end": 6.0,
+      "label": "Normal right-hand tremolo at start of passage",
+      "finding_id": "mf_01"
+    },
+    {
+      "t_start": 6.0,
+      "t_end": 18.0,
+      "label": "Digits 3–4 progressively flex at MCP/PIP during tremolo",
+      "finding_id": "mf_01"
+    },
+    {
+      "t_start": 12.0,
+      "t_end": 20.0,
+      "label": "Compensatory wrist extension and forearm elevation",
+      "finding_id": "mf_02"
+    },
+    {
+      "t_start": 20.0,
+      "t_end": 25.0,
+      "label": "Sensory trick: thumb against soundboard reduces flexion",
+      "finding_id": "mf_07"
+    },
+    {
+      "t_start": 25.0,
+      "t_end": 40.0,
+      "label": "Writing: excessive grip, digit flexion, ulnar deviation",
+      "finding_id": "mf_03"
+    },
+    {
+      "t_start": 40.0,
+      "t_end": 60.0,
+      "label": "Gait: intermittent right foot inversion in swing phase",
+      "finding_id": "mf_05"
+    }
+  ],
+  "note": "Timestamps are placeholders matching the planned shots. Replace with real timestamps once the clip exists; annotations must match what is actually visible."
+}

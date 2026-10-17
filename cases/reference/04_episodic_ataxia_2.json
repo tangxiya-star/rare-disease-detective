@@ -1,0 +1,96 @@
+{
+  "case_id": "04_episodic_ataxia_2",
+  "reference_diagnosis": {
+    "name": "Episodic ataxia type 2 (CACNA1A)",
+    "confidence": "confirmed (within scenario)",
+    "basis": "Hours-long attacks triggered by stress/exercise/alcohol, interictal downbeat nystagmus, vermian atrophy, AD family history, acetazolamide response, CACNA1A variant."
+  },
+  "acceptable_top5": [
+    "Episodic ataxia type 2 (CACNA1A)",
+    "Vestibular migraine",
+    "Episodic ataxia type 1 (KCNA1)",
+    "Spinocerebellar ataxia type 6",
+    "Multiple sclerosis"
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis": "Vestibular migraine",
+      "why_plausible": "Episodic vertigo with headache; mother with migraine",
+      "what_argues_against": "Interictal downbeat nystagmus and vermian atrophy are not explained"
+    },
+    {
+      "hypothesis": "EA1",
+      "why_plausible": "Episodic ataxia, AD",
+      "what_argues_against": "EA1 attacks last seconds–minutes, triggered by sudden movement, with interictal myokymia, not nystagmus"
+    },
+    {
+      "hypothesis": "SCA6",
+      "why_plausible": "Same gene family, downbeat nystagmus",
+      "what_argues_against": "Late-onset progressive ataxia rather than discrete attacks at 12; allelic with EA2"
+    }
+  ],
+  "key_evidence_gaps": [
+    {
+      "id": "gap_01",
+      "question": "Response to acetazolamide?",
+      "why_it_matters": "Characteristic response supports EA2"
+    },
+    {
+      "id": "gap_02",
+      "question": "CACNA1A testing",
+      "why_it_matters": "Confirms diagnosis; allelic disorders"
+    },
+    {
+      "id": "gap_03",
+      "question": "Characterization of mother's episodes",
+      "why_it_matters": "AD inheritance"
+    }
+  ],
+  "held_out_evidence": [
+    {
+      "gap_id": "gap_01",
+      "investigation": "Acetazolamide trial",
+      "result": "Attack frequency fell from ~3/month to <1/month.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_02",
+      "investigation": "CACNA1A sequencing",
+      "result": "Heterozygous truncating pathogenic CACNA1A variant.",
+      "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_03",
+      "investigation": "Maternal history",
+      "result": "Mother's 'migraines' include episodes of ataxia lasting hours; she carries the same variant.",
+      "release_to_agent": "on_request"
+    }
+  ],
+  "discriminating_investigations": [
+    {
+      "rank": 1,
+      "investigation": "Interictal eye-movement exam",
+      "discriminates_between": "EA2 vs. vestibular migraine"
+    },
+    {
+      "rank": 2,
+      "investigation": "CACNA1A genetic testing",
+      "discriminates_between": "EA2 vs. other"
+    },
+    {
+      "rank": 3,
+      "investigation": "Acetazolamide trial",
+      "discriminates_between": "Supports EA2"
+    }
+  ],
+  "red_flags_for_wrong_reasoning": [
+    "Accepting vestibular migraine without explaining interictal nystagmus and vermian atrophy",
+    "Confusing EA1 and EA2 attack duration and triggers",
+    "Stating any diagnosis as established rather than as a hypothesis for physician review",
+    "Recommending treatment as an instruction rather than a consideration for the treating physician",
+    "Citing literature that does not exist or does not support the specific claim",
+    "Asserting case facts that are not in the case record"
+  ],
+  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "agent_case_id": "case_04"
+}
