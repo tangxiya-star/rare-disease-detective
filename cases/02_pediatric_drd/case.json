@@ -17,18 +17,22 @@
   "history_of_present_illness": "Normal development until age 6. Over 18 months, progressive toe-walking and inward turning of the right foot, later the left. Parents describe her as nearly normal on waking and on weekend mornings; by mid-afternoon she trips frequently and was moved out of PE. Recently stiff, slow handwriting late in the day. No seizures, no regression in learning, no episodes of sudden attacks. Pregnancy and birth uncomplicated, term, no NICU stay.",
   "symptom_timeline": [
     {
+      "id": "tl_01",
       "when": "Age 6.5",
       "event": "Intermittent right toe-walking noticed by teacher"
     },
     {
+      "id": "tl_02",
       "when": "Age 7",
       "event": "Right foot inversion; orthopedic review, given ankle-foot orthoses"
     },
     {
+      "id": "tl_03",
       "when": "Age 7.5",
       "event": "Left leg involved; falls in afternoons"
     },
     {
+      "id": "tl_04",
       "when": "Age 8",
       "event": "Pediatric review queries spastic diplegia; referred to neurology"
     }
@@ -66,24 +70,28 @@
   },
   "labs": [
     {
+      "id": "lab_01",
       "test": "CBC, CMP",
       "result": "Normal",
       "reference_range": "",
       "note": ""
     },
     {
+      "id": "lab_02",
       "test": "CK",
       "result": "Normal",
       "reference_range": "",
       "note": ""
     },
     {
+      "id": "lab_03",
       "test": "Serum ceruloplasmin",
       "result": "Normal",
       "reference_range": "",
       "note": ""
     },
     {
+      "id": "lab_04",
       "test": "Plasma amino acids",
       "result": "Normal",
       "reference_range": "",
@@ -92,6 +100,7 @@
   ],
   "imaging": [
     {
+      "id": "img_01",
       "modality": "MRI brain and spine",
       "date": "3 months ago",
       "report": "Normal. No periventricular leukomalacia. Normal spinal cord."

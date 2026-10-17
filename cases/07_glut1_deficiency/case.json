@@ -17,18 +17,22 @@
   "history_of_present_illness": "Since age 7, episodes of dystonic stiffening and twisting of both legs, sometimes with choreic movements, lasting 10–40 minutes, occurring after 15+ minutes of continuous exercise. More likely when she has skipped breakfast or before meals; parents noticed a sugary snack seems to help her recover. Absence seizures began at age 2.5, partially responsive to valproate; currently on levetiracetam with occasional breakthrough absences. Mild learning difficulties in mathematics and reading. Occasional unsteadiness in the morning before breakfast.",
   "symptom_timeline": [
     {
+      "id": "tl_01",
       "when": "Age 2.5",
       "event": "Absence seizures begin"
     },
     {
+      "id": "tl_02",
       "when": "Age 4",
       "event": "Valproate, partial response; switched later to levetiracetam"
     },
     {
+      "id": "tl_03",
       "when": "Age 7",
       "event": "Exercise-induced leg episodes begin"
     },
     {
+      "id": "tl_04",
       "when": "Age 10",
       "event": "Episodes increase with school sports; referral"
     }
@@ -60,18 +64,21 @@
   },
   "labs": [
     {
+      "id": "lab_01",
       "test": "CBC, CMP",
       "result": "Normal",
       "reference_range": "",
       "note": ""
     },
     {
+      "id": "lab_02",
       "test": "Fasting blood glucose",
       "result": "4.8 mmol/L",
       "reference_range": "3.9–5.5",
       "note": ""
     },
     {
+      "id": "lab_03",
       "test": "Lactate",
       "result": "Normal",
       "reference_range": "",
@@ -80,6 +87,7 @@
   ],
   "imaging": [
     {
+      "id": "img_01",
       "modality": "MRI brain",
       "date": "Age 8",
       "report": "Normal."

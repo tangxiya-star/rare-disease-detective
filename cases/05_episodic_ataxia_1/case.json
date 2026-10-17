@@ -17,14 +17,17 @@
   "history_of_present_illness": "Since age 9, brief attacks lasting 30 seconds to 3 minutes of limb incoordination, unsteadiness and slurred speech, several times per day on some days. Triggered by sudden movement (standing up quickly, starting a sprint), startle, and emotional upset. Sometimes she feels the muscles of her hands and around her eyes 'ripple' between attacks. No loss of consciousness. Normal between attacks except for occasional muscle stiffness.",
   "symptom_timeline": [
     {
+      "id": "tl_01",
       "when": "Age 9",
       "event": "Attacks begin"
     },
     {
+      "id": "tl_02",
       "when": "Age 11",
       "event": "EEG normal; seizures considered unlikely"
     },
     {
+      "id": "tl_03",
       "when": "Age 14",
       "event": "Attacks interfere with soccer; referred"
     }
@@ -62,6 +65,7 @@
   },
   "labs": [
     {
+      "id": "lab_01",
       "test": "CBC, CMP, magnesium, calcium",
       "result": "Normal",
       "reference_range": "",
@@ -70,6 +74,7 @@
   ],
   "imaging": [
     {
+      "id": "img_01",
       "modality": "MRI brain",
       "date": "Age 11",
       "report": "Normal. No cerebellar atrophy."

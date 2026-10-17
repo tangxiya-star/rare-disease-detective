@@ -17,14 +17,17 @@
   "history_of_present_illness": "Three years of right-hand cramping, excessive grip, and wrist flexion that begins within a few words of handwriting and does not occur with typing, eating, or other tasks. Stable over the past 18 months. No diurnal variation, no benefit after sleep. No involvement of other body parts. Changing pen grip helps briefly.",
   "symptom_timeline": [
     {
+      "id": "tl_01",
       "when": "3 years ago",
       "event": "Onset of writing difficulty"
     },
     {
+      "id": "tl_02",
       "when": "2 years ago",
       "event": "Botulinum toxin with moderate benefit"
     },
     {
+      "id": "tl_03",
       "when": "18 months ago",
       "event": "Symptoms stable since"
     }
@@ -62,6 +65,7 @@
   },
   "labs": [
     {
+      "id": "lab_01",
       "test": "CBC, CMP, TSH, ceruloplasmin",
       "result": "Normal",
       "reference_range": "",
@@ -70,6 +74,7 @@
   ],
   "imaging": [
     {
+      "id": "img_01",
       "modality": "MRI brain",
       "date": "2 years ago",
       "report": "Normal."

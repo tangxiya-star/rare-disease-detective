@@ -17,22 +17,27 @@
   "history_of_present_illness": "Eight months ago she sprained her right wrist in a fall. Within a week, abrupt onset of right-hand tremor that reached its maximum severity within days. Over the following months, intermittent clenched-fist posturing of the right hand developed. Symptoms vary considerably day to day, with some completely symptom-free hours, and are worse by evening and when tired; better on holiday. She has read about dopa-responsive dystonia online and asks whether she should be tested. Comorbid migraine and a past episode of depression, currently well. High work stress after a recent promotion.",
   "symptom_timeline": [
     {
+      "id": "tl_01",
       "when": "8 months ago",
       "event": "Right wrist sprain"
     },
     {
+      "id": "tl_02",
       "when": "~7.5 months ago",
       "event": "Abrupt-onset right-hand tremor, maximal within days"
     },
     {
+      "id": "tl_03",
       "when": "~5 months ago",
       "event": "Intermittent fist clenching"
     },
     {
+      "id": "tl_04",
       "when": "~2 months ago",
       "event": "Two weeks of complete remission during holiday, then recurrence"
     },
     {
+      "id": "tl_05",
       "when": "Now",
       "event": "Neurology review"
     }
@@ -82,12 +87,14 @@
   },
   "labs": [
     {
+      "id": "lab_01",
       "test": "CBC, CMP, TSH",
       "result": "Normal",
       "reference_range": "",
       "note": ""
     },
     {
+      "id": "lab_02",
       "test": "Ceruloplasmin",
       "result": "Normal",
       "reference_range": "",
@@ -96,6 +103,7 @@
   ],
   "imaging": [
     {
+      "id": "img_01",
       "modality": "MRI brain",
       "date": "3 months ago",
       "report": "Normal."

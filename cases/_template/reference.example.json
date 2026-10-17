@@ -31,7 +31,18 @@
     }
   ],
   "discriminating_investigations": [
-    { "rank": 1, "investigation": "", "discriminates_between": "" }
+    {
+      "rank": 1,
+      "investigation": "",
+      "discriminates_between": ""
+    }
+  ],
+  "cant_miss": [
+    {
+      "condition": "e.g. Wilson disease",
+      "why_required": "Treatable; must be considered in anyone under 50 with a movement disorder",
+      "addressed_by": "e.g. ceruloplasmin, 24-hour urinary copper, slit lamp exam"
+    }
   ],
   "red_flags_for_wrong_reasoning": [
     "Statements that, if an agent makes them, the Verifier should reject"

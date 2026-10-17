@@ -17,18 +17,22 @@
   "history_of_present_illness": "Seven years of slowly progressive right-sided slowness and stiffness, mild postural tremor of the right hand, and intermittent right foot cramping with inversion during long walks. No clear diurnal variation reported when asked. Sleep does not obviously help. No REM sleep behavior disorder symptoms, no anosmia, no constipation. Started on levodopa by a previous neurologist 4 years ago with good benefit; dose has remained 100 mg TID since, with no wearing-off and no dyskinesia. Seeking a second opinion because 'I was told it's young-onset Parkinson's but it hasn't progressed like they said it would.'",
   "symptom_timeline": [
     {
+      "id": "tl_01",
       "when": "7 years ago",
       "event": "Right hand slowness, small handwriting"
     },
     {
+      "id": "tl_02",
       "when": "6 years ago",
       "event": "Right foot cramping with long walks"
     },
     {
+      "id": "tl_03",
       "when": "4 years ago",
       "event": "Diagnosed young-onset PD; levodopa 100 mg TID started with good response"
     },
     {
+      "id": "tl_04",
       "when": "Now",
       "event": "Stable on same dose; no motor fluctuations or dyskinesia"
     }
@@ -66,12 +70,14 @@
   },
   "labs": [
     {
+      "id": "lab_01",
       "test": "CBC, CMP",
       "result": "Normal",
       "reference_range": "",
       "note": ""
     },
     {
+      "id": "lab_02",
       "test": "Ceruloplasmin",
       "result": "Normal",
       "reference_range": "",
@@ -80,6 +86,7 @@
   ],
   "imaging": [
     {
+      "id": "img_01",
       "modality": "MRI brain",
       "date": "6 years ago",
       "report": "Normal."

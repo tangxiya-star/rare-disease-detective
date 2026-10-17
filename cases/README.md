@@ -47,4 +47,14 @@ Deliberate traps are documented in each reference file under `red_flags_for_wron
 - **Hero video:** no clip sourced. `annotations.json` has planned shots with placeholder timestamps. Any reenactment must be disclosed as one in the demo.
 - **Citations:** drafts are synthetic and cite no papers. Literature comes from the agents' retrieval at runtime, not from the case files.
 
+## Freezing references before scoring
+
+References are committed, so git history is the seal. Before the first scored run, tag the commit:
+
+```bash
+git tag refs-frozen && git push origin refs-frozen
+```
+
+Any later edit to `reference/` shows up in `git diff refs-frozen -- cases/reference/`. If a reference must change after that, note why and re-run every case.
+
 Synthetic only. No PHI.

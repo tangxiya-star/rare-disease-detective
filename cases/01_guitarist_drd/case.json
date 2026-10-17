@@ -17,34 +17,42 @@
   "history_of_present_illness": "Two years ago the patient noticed that the right middle and ring fingers would curl toward the palm during fast right-hand passages (tremolo and arpeggio), but only after about an hour of practice. Early in a session, playing was normal. Over the following year the curling began earlier in practice sessions and became harder to suppress. She reorganized her schedule to do technical work in the morning because \"my hands are just better before lunch\"; evening ensemble rehearsals are now the most difficult. About 12 months ago handwriting became effortful, with cramping and excessive grip after roughly half a page. About 5 months ago her roommate noticed her right foot turning inward when they walked home after evening rehearsals; the patient had not noticed it herself. She reports that a nap in the afternoon \"sometimes resets\" her hand for a short while, which she attributes to reduced fatigue. No pain at rest. No sudden onset, no precipitating injury, no episodes of complete normality interrupted by attacks. No tremor at rest noticed. No speech, swallowing, or cognitive complaints. Mood: frustrated and anxious about her career; no prior psychiatric history.",
   "symptom_timeline": [
     {
+      "id": "tl_01",
       "when": "~24 months ago (age 21)",
       "event": "Right digits 3–4 curl during fast right-hand passages, only after ~60 min of playing"
     },
     {
+      "id": "tl_02",
       "when": "~18 months ago",
       "event": "Seen by hand surgeon; nerve conduction studies normal; referred to neurology"
     },
     {
+      "id": "tl_03",
       "when": "~15 months ago",
       "event": "General neurologist diagnoses musician's focal dystonia; recommends retraining and botulinum toxin"
     },
     {
+      "id": "tl_04",
       "when": "~12 months ago",
       "event": "Handwriting becomes effortful with cramping after ~half a page"
     },
     {
+      "id": "tl_05",
       "when": "~10 months ago",
       "event": "Trihexyphenidyl started; partial benefit; stopped after 6 weeks due to dry mouth and 'foggy' concentration"
     },
     {
+      "id": "tl_06",
       "when": "~8 months ago and ~5 months ago",
       "event": "Two rounds of botulinum toxin to right flexor digitorum superficialis; modest benefit for ~6 weeks each time"
     },
     {
+      "id": "tl_07",
       "when": "~5 months ago",
       "event": "Roommate notices right foot inversion when walking home after evening rehearsals"
     },
     {
+      "id": "tl_08",
       "when": "Now",
       "event": "Referred to movement-disorder clinic for second opinion before final-year recital"
     }
@@ -106,36 +114,42 @@
   },
   "labs": [
     {
+      "id": "lab_01",
       "test": "CBC",
       "result": "Normal",
       "reference_range": "",
       "note": ""
     },
     {
+      "id": "lab_02",
       "test": "Comprehensive metabolic panel incl. liver enzymes",
       "result": "Normal",
       "reference_range": "",
       "note": ""
     },
     {
+      "id": "lab_03",
       "test": "TSH",
       "result": "1.9 mIU/L",
       "reference_range": "0.4–4.0",
       "note": ""
     },
     {
+      "id": "lab_04",
       "test": "Serum ceruloplasmin",
       "result": "27 mg/dL",
       "reference_range": "20–40",
       "note": "24-hour urine copper and slit-lamp exam not performed"
     },
     {
+      "id": "lab_05",
       "test": "Creatine kinase",
       "result": "Normal",
       "reference_range": "",
       "note": ""
     },
     {
+      "id": "lab_06",
       "test": "Vitamin B12",
       "result": "Normal",
       "reference_range": "",
@@ -144,11 +158,13 @@
   ],
   "imaging": [
     {
+      "id": "img_01",
       "modality": "MRI brain with and without contrast (3T)",
       "date": "~14 months ago",
       "report": "No structural abnormality. Basal ganglia normal in signal and volume. No abnormal susceptibility. No enhancement. Impression: normal MRI brain."
     },
     {
+      "id": "img_02",
       "modality": "MRI cervical spine",
       "date": "~17 months ago",
       "report": "Normal. No cord signal change or foraminal stenosis."
@@ -156,6 +172,7 @@
   ],
   "neurophysiology": [
     {
+      "id": "np_01",
       "study": "Nerve conduction studies, right upper limb",
       "date": "~18 months ago",
       "report": "Normal median, ulnar, and radial motor and sensory conduction. No evidence of entrapment neuropathy."

@@ -17,14 +17,17 @@
   "history_of_present_illness": "One year of progressive left foot inversion while walking. Per the referral letter, symptoms are 'markedly worse in the mornings and improve as the day goes on.' Recently some slurring of speech noticed by friends and a decline in school grades. Occasional hand tremor when holding a cup.",
   "symptom_timeline": [
     {
+      "id": "tl_01",
       "when": "12 months ago",
       "event": "Left foot inversion, worst late in the afternoon per mother's account"
     },
     {
+      "id": "tl_02",
       "when": "6 months ago",
       "event": "Hand tremor when holding a cup"
     },
     {
+      "id": "tl_03",
       "when": "3 months ago",
       "event": "Speech slurring; school grades declining"
     }
@@ -62,12 +65,14 @@
   },
   "labs": [
     {
+      "id": "lab_01",
       "test": "Liver enzymes",
       "result": "ALT 68 U/L",
       "reference_range": "<40",
       "note": "Mildly elevated"
     },
     {
+      "id": "lab_02",
       "test": "Serum ceruloplasmin",
       "result": "18 mg/dL",
       "reference_range": "20–40",
@@ -76,6 +81,7 @@
   ],
   "imaging": [
     {
+      "id": "img_01",
       "modality": "MRI brain",
       "date": "2 months ago",
       "report": "Summary line: 'Normal study.' Findings section: 'Symmetric T2 hyperintensity in the bilateral putamina and thalami.'"

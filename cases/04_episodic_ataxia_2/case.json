@@ -17,18 +17,22 @@
   "history_of_present_illness": "Since age 12, recurrent episodes of unsteadiness, slurred speech, vertigo and nausea lasting 2–12 hours, 2–4 times per month. Triggers he has noticed: emotional stress (exams), heavy exercise, and alcohol. Some episodes are followed by a throbbing headache. Between attacks he feels 'mostly fine' but admits to being 'a bit clumsy' on stairs in the dark for the past two years. No loss of consciousness, no hearing loss, no tinnitus. Caffeine seems to worsen attacks.",
   "symptom_timeline": [
     {
+      "id": "tl_01",
       "when": "Age 12",
       "event": "First episodes, labelled as 'migraine variant'"
     },
     {
+      "id": "tl_02",
       "when": "Age 15",
       "event": "Attacks increase during exams; trialed propranolol without clear benefit"
     },
     {
+      "id": "tl_03",
       "when": "Age 17",
       "event": "Persistent mild imbalance between attacks begins"
     },
     {
+      "id": "tl_04",
       "when": "Age 19",
       "event": "ED visit during an attack; neurology referral"
     }
@@ -66,18 +70,21 @@
   },
   "labs": [
     {
+      "id": "lab_01",
       "test": "CBC, CMP, glucose",
       "result": "Normal",
       "reference_range": "",
       "note": ""
     },
     {
+      "id": "lab_02",
       "test": "Vitamin E, B12",
       "result": "Normal",
       "reference_range": "",
       "note": ""
     },
     {
+      "id": "lab_03",
       "test": "Anti-GAD, celiac serology",
       "result": "Negative",
       "reference_range": "",
@@ -86,6 +93,7 @@
   ],
   "imaging": [
     {
+      "id": "img_01",
       "modality": "MRI brain",
       "date": "During ED visit",
       "report": "Mild atrophy of the superior cerebellar vermis. Otherwise normal. No demyelination."
