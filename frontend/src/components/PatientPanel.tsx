@@ -60,7 +60,7 @@ export function PatientPanel({ view, highlighted, released, runId, showMotion = 
           ))}
         </ul>
       </Section>
-      <Section title="History" icon={FileText} open>
+      <Section title="History" icon={FileText}>
         <p className="lede">{c.chief_complaint}</p>
         <p>{c.history_of_present_illness}</p>
       </Section>

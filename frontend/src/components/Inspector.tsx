@@ -1,4 +1,4 @@
-import { BookOpen, FlaskConical, Gauge, GitBranch, RotateCcw, ShieldCheck, Sparkles } from 'lucide-react'
+import { BookOpen, FlaskConical, GitBranch, RotateCcw, ShieldCheck, Sparkles } from 'lucide-react'
 import type { Evidence } from '../types'
 import type { RunState } from '../useRun'
 import { STATUS_LABEL } from './AgentTree'
@@ -33,24 +33,9 @@ export function EvidenceItem({ ev, state, rejected }: { ev: Evidence; state: Run
 export function Inspector({ state, selected }: { state: RunState; selected: string | null }) {
   const node = selected ? state.nodes[selected] : null
   if (!node) {
-    const n = Object.values(state.nodes)
-    const grounded = state.evidence.filter(e => e.grounded).length
     return (
       <div className="panel-body">
         <DiagnosisResult state={state} />
-        <section className="panel-section">
-          <h3><span className="sec-icon"><Gauge size={13} strokeWidth={2} /></span>Run</h3>
-          {state.runId ? (
-            <dl className="kv">
-              <dt>Nodes</dt><dd>{n.length} (max depth {Math.max(0, ...n.map(x => x.depth))})</dd>
-              <dt>Accepted</dt><dd>{n.filter(x => x.verification === 'accepted').length}</dd>
-              <dt>Revise / insufficient</dt><dd>{n.filter(x => ['revise', 'insufficient'].includes(x.verification)).length}</dd>
-              <dt>Evidence</dt><dd>{grounded} grounded · {state.evidence.length - grounded} discarded</dd>
-              <dt>Retries</dt><dd>{n.reduce((s, x) => s + x.retry_count, 0)}</dd>
-            </dl>
-          ) : <p className="muted">No run yet.</p>}
-          <p className="muted">Select a node to inspect its decision, evidence and verification.</p>
-        </section>
       </div>
     )
   }
