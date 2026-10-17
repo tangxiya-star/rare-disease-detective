@@ -18,6 +18,11 @@ Mode = Literal["scored", "demo"]
 MANIFEST = REPO_ROOT / "cases" / "manifest.json"
 
 
+# Narrative sections of case.json that have no per-entry ids, cited by these fixed ids.
+NARRATIVE_IDS = {"cc": "chief_complaint", "hpi": "history_of_present_illness", "fh": "family_history",
+                 "sh": "social_history", "meds": "medications", "prior": "prior_workup_and_opinions"}
+
+
 @dataclass
 class CaseBundle:
     slot: str
@@ -41,22 +46,26 @@ class CaseBundle:
         return view
 
     def case_sources(self) -> dict[str, str]:
-        """Case record entries as quotable sources, keyed by finding id."""
+        """Case record entries as quotable sources, keyed by finding id. Narrative sections and
+        exam fields get fixed ids (hpi, fh, ex_power, ...) so facts recorded there, such as a
+        negative family history or give-way weakness, can be cited too."""
         out = {}
         for key in ("movement_findings", "symptom_timeline", "labs", "imaging", "neurophysiology"):
             for entry in self.case.get(key, []):
                 if "id" in entry:
                     out[entry["id"]] = " ".join(str(v) for k, v in entry.items() if k != "id")
+        for fid, key in NARRATIVE_IDS.items():
+            value = self.case.get(key)
+            if value:
+                out[fid] = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
+        for field_name, value in (self.case.get("neurological_exam") or {}).items():
+            if value:
+                out[f"ex_{field_name}"] = str(value)
         return out
 
     def finding_ids(self) -> set[str]:
-        """Every id a claim may cite: movement findings, timeline, labs, imaging, neurophysiology."""
-        ids = set()
-        for key in ("movement_findings", "symptom_timeline", "labs", "imaging", "neurophysiology"):
-            for entry in self.case.get(key, []):
-                if "id" in entry:
-                    ids.add(entry["id"])
-        return ids
+        """Every id a claim may cite: entry ids, narrative section ids and exam field ids."""
+        return set(self.case_sources())
 
 
 def _load_json(rel: str) -> dict:

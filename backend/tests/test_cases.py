@@ -49,3 +49,15 @@ def test_release_after_depth_2_rule():
     r = HeldOutReleaser(load_case("01", "scored"))  # synthetic hero: CSF is after_depth_2
     assert r.request("CSF neurotransmitter metabolites and pterins", depth=1).status == "withheld"
     assert r.request("CSF neurotransmitter metabolites and pterins", depth=2).status == "released"
+
+
+def test_narrative_and_exam_facts_are_citable():
+    """Facts that only live in narrative sections or exam fields must be groundable."""
+    from app.grounding import check_finding
+    b = load_case("08", "scored")
+    ids, src = b.finding_ids(), b.case_sources()
+    assert {"hpi", "fh", "meds", "ex_power", "ex_other"} <= ids
+    give_way = {"quote": "Collapsing 'give-way' weakness of right grip", "source_id": "ex_power", "finding_ids": ["ex_power"]}
+    assert check_finding(give_way, src, ids).grounded
+    no_fh = {"quote": "", "source_id": "", "finding_ids": ["fh"]}
+    assert check_finding(no_fh, load_case("01", "demo").case_sources(), load_case("01", "demo").finding_ids()).grounded

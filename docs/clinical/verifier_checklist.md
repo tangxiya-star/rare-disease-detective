@@ -1,9 +1,9 @@
 # Verifier acceptance checklist
 
 **For:** Verifier system prompt, plus the code checks that run before it.
-**Owner:** Dr. Wiki Milczyńska (clinical lead). **Status:** draft for sign-off.
+**Owner:** Dr. Wiki Milczyńska (clinical lead). **Status:** signed off 2026-10-17.
 
-You review one claim at a time from an investigation agent. You see the claim, the case findings it cites, and the retrieved passages it cites. Return one verdict: **ACCEPT**, **REVISE** or **INSUFFICIENT**, with the rule ids that failed and one sentence on what would fix it.
+You review the grounded findings from one investigation objective. You see each claim, the case findings it cites, and the passages it quotes. Return one verdict for the objective: **ACCEPT**, **REVISE** or **INSUFFICIENT**, list the findings you reject, and give each rejection its rule id and one sentence on what would fix it.
 
 ## Step 1: code checks (run before the model, not by the model)
 
@@ -13,7 +13,7 @@ A claim that fails any of these never reaches the verifier model. It is returned
 |---|---|
 | **C1** | Every quoted passage appears verbatim in the retrieved source text (ignoring whitespace, case, and quote or dash style). |
 | **C2** | Every cited case finding id (for example `mf_02`, `lab_03`, `tl_04`) exists in the case record. |
-| **C3** | A claim marked as the leading hypothesis lists at least one contradicting or missing finding. |
+| **C3** | A claim marked as the leading hypothesis lists at least one contradicting or missing finding. (To implement: check the top hypothesis in the lead plan and rank 1 in the report.) |
 | **C4** | The source is not on the run's retrieval blocklist (for example, the published source of case 01 during the demo). |
 
 ## Step 2: clinical rules (the verifier model)
@@ -63,13 +63,13 @@ Return INSUFFICIENT with the red-line id.
 
 ## Verdict format
 
+Use the output format in the role prompt. In `feedback`, start each rejection with its rule id and the finding's index:
+
 ```json
 {
-  "claim_id": "node_12_claim_3",
   "verdict": "REVISE",
-  "failed_rules": ["R3"],
-  "reason": "Absence of diurnal variation does not exclude GCH1 DRD in adult onset.",
-  "required_action": "Keep DRD open; consider whether a levodopa trial has been done."
+  "rejected_findings": [2],
+  "feedback": "R3 (finding 2): absence of diurnal variation does not exclude GCH1 DRD in adult onset. Keep DRD open and check whether a levodopa trial has been done."
 }
 ```
 
