@@ -72,3 +72,15 @@ def test_europe_pmc_citation_fields():
     c = _citation(item, "35287262", "PMC9171311", "10.14802/jmd.21146")
     assert c["journal"] == "J Mov Disord" and c["authors"].startswith("Holla") and c["pages"] == "156-161"
     assert c["volume"] == "15" and c["pmid"] == "35287262"
+
+
+def test_source_ids_repeated_in_finding_ids_do_not_fail_grounding():
+    from app.grounding import check_finding
+    src = {"HELDOUT:gap_01": "Marked improvement of the dystonia on the following day, sustained."}
+    f = {"quote": "Marked improvement of the dystonia on the following day", "source_id": "HELDOUT:gap_01",
+         "finding_ids": ["HELDOUT:gap_01", "mf_01", "PMID:123"]}
+    assert check_finding(f, src, {"mf_01"}).grounded
+    # the quote is still what grounds it: a source id alone, with no quote, is not enough
+    assert not check_finding({"quote": "", "source_id": "", "finding_ids": ["HELDOUT:gap_01"]}, src, {"mf_01"}).grounded
+    # an invented case id still fails
+    assert not check_finding({**f, "finding_ids": ["mf_99"]}, src, {"mf_01"}).grounded

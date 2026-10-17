@@ -11,6 +11,9 @@ _STYLE = {ord(c): "-" for c in "‐‑‒–—−"} | {
     ord("‘"): "'", ord("’"): "'", ord("“"): '"', ord("”"): '"'}
 
 
+_SOURCE_ID = re.compile(r"^(HELDOUT:|PMID:|PMC\d|DOI:)", re.I)
+
+
 def _norm(text: str) -> str:
     """Ignore whitespace, case, and quote or dash style (verifier checklist C1)."""
     return re.sub(r"\s+", " ", text.translate(_STYLE)).strip().lower()
@@ -26,7 +29,10 @@ def check_finding(finding: dict, source_texts: dict[str, str], case_finding_ids:
                   min_quote_chars: int = 20) -> GroundingResult:
     quote = _norm(finding.get("quote") or "")
     source_id = (finding.get("source_id") or "").strip()
-    ids = [i for i in finding.get("finding_ids") or [] if i and not str(i).startswith("case_")]
+    # Models often repeat the source id (HELDOUT:..., PMID:...) among the case finding ids. That is not
+    # a claim about the case record; the source is checked through the quote below.
+    ids = [i for i in finding.get("finding_ids") or []
+           if i and not str(i).startswith("case_") and i != source_id and not _SOURCE_ID.match(str(i))]
 
     bad_ids = [i for i in ids if i not in case_finding_ids]
     if bad_ids:

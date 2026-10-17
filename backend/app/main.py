@@ -59,6 +59,15 @@ async def recordings():
     return sorted(state["recordings"], key=lambda r: -r["recorded_at"])
 
 
+@app.get("/api/runs/{run_id}/sources")
+def run_sources(run_id: str):
+    """Citation metadata of every source the run retrieved, for the evidence cards (no abstracts)."""
+    if state["db"].get_run(run_id) is None:
+        raise HTTPException(404, "run not found")
+    return {s["id"]: {"title": s["title"], "url": s["url"], "meta": s["meta"]}
+            for s in state["db"].get_sources(run_id) if not s["id"].startswith("HELDOUT:")}
+
+
 @app.get("/api/runs/{run_id}/credits")
 def credits(run_id: str):
     """Source citation of an adapted published case, for the evidence cards. Its title can name
