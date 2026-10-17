@@ -1,0 +1,74 @@
+{
+  "_comment": "Which cases the harness loads for each run type. Agents only ever receive the 'case' file. Decided 2026-10-17: the published hero case is demo-only because the model may have memorised it and retrieval can find the source article; slot 01 is scored with the synthetic version.",
+  "scored": [
+    {
+      "slot": "01",
+      "case": "cases/_alt/01_guitarist_drd_synthetic/case.json",
+      "reference": "cases/_alt/01_guitarist_drd_synthetic/reference.json"
+    },
+    {
+      "slot": "02",
+      "case": "cases/02_pediatric_drd/case.json",
+      "reference": "cases/reference/02_pediatric_drd.json"
+    },
+    {
+      "slot": "03",
+      "case": "cases/03_atypical_drd/case.json",
+      "reference": "cases/reference/03_atypical_drd.json"
+    },
+    {
+      "slot": "04",
+      "case": "cases/04_episodic_ataxia_2/case.json",
+      "reference": "cases/reference/04_episodic_ataxia_2.json"
+    },
+    {
+      "slot": "05",
+      "case": "cases/05_episodic_ataxia_1/case.json",
+      "reference": "cases/reference/05_episodic_ataxia_1.json"
+    },
+    {
+      "slot": "06",
+      "case": "cases/06_pkd/case.json",
+      "reference": "cases/reference/06_pkd.json"
+    },
+    {
+      "slot": "07",
+      "case": "cases/07_glut1_deficiency/case.json",
+      "reference": "cases/reference/07_glut1_deficiency.json"
+    },
+    {
+      "slot": "08",
+      "case": "cases/08_functional_movement_disorder/case.json",
+      "reference": "cases/reference/08_functional_movement_disorder.json"
+    },
+    {
+      "slot": "09",
+      "case": "cases/09_focal_dystonia/case.json",
+      "reference": "cases/reference/09_focal_dystonia.json"
+    },
+    {
+      "slot": "10",
+      "case": "cases/10_contradictory/case.json",
+      "reference": "cases/reference/10_contradictory.json"
+    }
+  ],
+  "demo": [
+    {
+      "slot": "01",
+      "case": "cases/01_guitarist_drd/case.json",
+      "reference": "cases/reference/01_guitarist_drd.json",
+      "annotations": "cases/01_guitarist_drd/annotations.json",
+      "video": "cases/01_guitarist_drd/movement.mov",
+      "held_out_media": [
+        "cases/reference/media/01_S2_post_levodopa.mov"
+      ],
+      "retrieval_blocklist": [
+        "10.12688/f1000research.51433.1",
+        "10.12688/f1000research.51433",
+        "10.5061/dryad.pzgmsbckd",
+        "PMC8356262"
+      ],
+      "retrieval_blocklist_note": "Block the source article and dataset from literature retrieval during the demo run so the system cannot look up the answer. Also drop any retrieved passage whose title contains 'Guitarist's cramp as the initial manifestation'."
+    }
+  ]
+}

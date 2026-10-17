@@ -9,16 +9,26 @@ cases/
   01_guitarist_drd/
     case.json          agent-visible input
     annotations.json   movement-video annotations (hero case only)
-    movement.mov       agent-visible clip, not yet downloaded
+    movement.mov       agent-visible clip (local only, gitignored)
   02_pediatric_drd/case.json
   ...
   reference/
     01_guitarist_drd.json   HELD OUT: answer, competing hypotheses, gaps, held-out results, red flags
     ...
     media/                  HELD OUT media (e.g. case 01 post-levodopa clip)
-  _alt/                     backup cases, not loaded (original synthetic hero, with clinical review)
+  _alt/01_guitarist_drd_synthetic/   scored version of slot 01 (synthetic, with clinical review)
+  manifest.json             which files are loaded for scored runs vs. the demo
   _template/                blank templates
 ```
+
+## Scored vs. demo
+
+Two run types, listed in [`manifest.json`](manifest.json):
+
+- **Scored runs** (evaluation, baseline comparison) use ten synthetic cases. Slot 01 is the synthetic guitarist in `_alt/01_guitarist_drd_synthetic/`.
+- **The demo** uses the published guitarist case in `01_guitarist_drd/`, with the real clinical video. It is **not scored**: the model may have memorised the 2021 article, and retrieval could find it and read the diagnosis from its title. Block the DOIs in `manifest.json` → `retrieval_blocklist` during the demo run.
+
+Folder names do not decide what is loaded; the manifest does.
 
 ## Held-out rule (enforced in code, not by git)
 
@@ -32,7 +42,8 @@ The repo is private and both team members need to read the references, so `refer
 
 | # | Case | Purpose | Draft depth | Wiki review |
 |---|---|---|---|---|
-| 01 | Guitarist, adult-onset DRD (adapted from Hasegawa et al. 2021) | **Hero demo** | Full + annotations | ☐ |
+| 01 | Guitarist, adult-onset DRD (adapted from Hasegawa et al. 2021) | **Hero demo, not scored** | Full + annotations | ☐ |
+| 01s | Guitarist, adult-onset DRD (synthetic, `_alt/`) | **Scored slot 01** | Full | partly (reference reviewed in #1) |
 | 02 | Classic pediatric DRD | Typical phenotype | Full | ☐ |
 | 03 | Atypical DRD (parkinsonism phenotype) | Missing classical clues | Full | ☐ |
 | 04 | Episodic ataxia type 2 | Episodic symptoms | Full | ☐ |

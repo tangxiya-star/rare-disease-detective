@@ -1,5 +1,7 @@
 {
   "case_id": "01_guitarist_drd",
+  "scored": true,
+  "scoring_note": "Scored version of slot 01 (synthetic). The published-case version in cases/01_guitarist_drd/ is demo-only. See cases/manifest.json.",
   "reference_diagnosis": {
     "name": "Dopa-responsive dystonia, GCH1-related (autosomal dominant GTP cyclohydrolase 1 deficiency, Segawa disease), adult-onset presentation mimicking musician's focal dystonia",
     "confidence": "confirmed (within the synthetic scenario, via held-out evidence)",
