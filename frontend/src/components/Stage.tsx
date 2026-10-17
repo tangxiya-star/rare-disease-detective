@@ -6,6 +6,7 @@ import type { RunState } from '../useRun'
 import { AgentTree } from './AgentTree'
 import { EvidenceGraph, agentKey, sourceKey } from './EvidenceGraph'
 import { MotionViewer } from './MotionViewer'
+import { FIXED_DISCLAIMER } from './BottomTabs'
 
 const FINDING_ID = /^(mf|tl|lab|img|np|ma)_\d+$/
 const CHECKPOINTS = {
@@ -361,7 +362,7 @@ function ReportShot({ state }: { state: RunState }) {
   return (
     <div className="report-shot">
       <div className="rs-main">
-        <p className="disclaimer">{r.disclaimer}</p>
+        <p className="disclaimer">{FIXED_DISCLAIMER}</p>
         <h2>Differential for clinician review</h2>
         <ol className="rs-diff">
           {r.differential.map(d => (

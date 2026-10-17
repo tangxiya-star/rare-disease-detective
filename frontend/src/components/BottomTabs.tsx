@@ -5,6 +5,9 @@ import { EvidenceItem } from './Inspector'
 
 const QUIET = new Set(['node.status'])
 
+// Fixed text, never model-written: the disclaimer must not go missing or be reworded.
+export const FIXED_DISCLAIMER = 'Human-in-the-loop research prototype. Considerations for physician review; not a diagnosis, not advice to patients. The treating clinician decides every next step.'
+
 function Report({ state }: { state: RunState }) {
   const r = state.report
   if (!r) return <p className="muted pad">The report appears when the lead has verified or explicitly left open every branch.</p>
@@ -13,7 +16,7 @@ function Report({ state }: { state: RunState }) {
     <span key={id} className={evIndex[id] ? 'src' : 'fid'} title={evIndex[id]?.claim}>{id}</span>))
   return (
     <div className="report pad">
-      <p className="disclaimer">{r.disclaimer}</p>
+      <p className="disclaimer">{FIXED_DISCLAIMER}</p>
       <p>{r.summary}</p>
       <h4>Differential for clinician review</h4>
       <ol className="differential">

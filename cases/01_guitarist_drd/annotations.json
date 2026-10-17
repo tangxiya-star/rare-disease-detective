@@ -6,7 +6,8 @@
     "license": "CC0 1.0. Accompanying article CC BY 4.0. Patient consent for video publication obtained by the original authors. Credit the authors on screen in the demo.",
     "content": "Neurological assessment at referral: right upper limb dystonic posturing with excessive wrist extension and finger hyperextension while opening a screw-cap bottle.",
     "duration_s": 11.2,
-    "format": "H.264, 738x592, 30 fps, no audio. Face out of frame; patient seated, right hand opening a screw-cap bottle held in the left hand."
+    "format": "H.264, 738x592, 30 fps, no audio. Face out of frame; patient seated, right hand opening a screw-cap bottle held in the left hand.",
+    "credit": "Case 01 video and case details: Hasegawa T, Hosaka T, Harada R, et al. Guitarist's cramp as the initial manifestation of dopa-responsive dystonia with a novel heterozygous GCH1 mutation. F1000Research 2021;10:361 (CC BY 4.0). Videos: Dryad doi:10.5061/dryad.pzgmsbckd (CC0). Patient consent obtained by the original authors. Not created by our team."
   },
   "annotations": [
     {
