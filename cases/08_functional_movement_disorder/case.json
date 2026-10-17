@@ -3,9 +3,9 @@
   "title": "34-year-old with sudden right arm tremor and posturing after a minor wrist injury, worse in the evenings",
   "provenance": {
     "type": "synthetic",
-    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
-    "reviewed_by": "",
-    "review_status": "draft — pending W. Milczyńska review"
+    "citation": "Synthetic case written 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "W. Milczyńska (clinical lead)",
+    "review_status": "reviewed 2026-10-17"
   },
   "demographics": {
     "age": 34,
@@ -47,31 +47,31 @@
       "id": "mf_01",
       "observation": "Right-hand tremor 5–7 Hz with marked variability in frequency and axis across examination.",
       "context": "rest / posture",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_02",
       "observation": "Entrainment: when tapping a 3 Hz rhythm with the left hand, right tremor shifts to 3 Hz; when asked to stop tapping, tremor resumes at original frequency.",
       "context": "entrainment test",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_03",
       "observation": "Distractibility: tremor stops during serial-7 subtraction and fine left-hand tasks.",
       "context": "distraction",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_04",
       "observation": "Clenched-fist posture of the right hand, which can be passively opened with resistance that varies, and resolves fully when she is distracted.",
       "context": "posture",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_05",
       "observation": "Co-activation sign present at the wrist at tremor onset.",
       "context": "palpation",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     }
   ],
   "neurological_exam": {

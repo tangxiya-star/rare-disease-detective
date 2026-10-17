@@ -13,6 +13,7 @@ from .cases import list_cases, load_case
 from .config import load_settings
 from .db import DB
 from .events import EventBus
+from .recordings import import_recordings
 from .llm import make_llm
 from .orchestrator import Orchestrator, public_node
 
@@ -24,7 +25,8 @@ state: dict = {}
 async def lifespan(app: FastAPI):
     db = DB(settings.db_path)
     bus = EventBus(db)
-    state.update(db=db, bus=bus, orch=Orchestrator(settings, db, bus, make_llm(settings)))
+    state.update(db=db, bus=bus, orch=Orchestrator(settings, db, bus, make_llm(settings)),
+                 recordings=import_recordings(db))
     yield
 
 
@@ -49,6 +51,35 @@ class Inject(BaseModel):
 def health():
     return {"ok": True, "llm_backend": state["orch"].llm.name, "search_backend": settings.search_backend,
             "lead_model": settings.lead_model, "child_model": settings.child_model}
+
+
+@app.get("/api/recordings")
+async def recordings():
+    """Real runs recorded for replay (recordings/*.json), newest first."""
+    return sorted(state["recordings"], key=lambda r: -r["recorded_at"])
+
+
+@app.get("/api/runs/{run_id}/sources")
+def run_sources(run_id: str):
+    """Citation metadata of every source the run retrieved, for the evidence cards (no abstracts)."""
+    if state["db"].get_run(run_id) is None:
+        raise HTTPException(404, "run not found")
+    return {s["id"]: {"title": s["title"], "url": s["url"], "meta": s["meta"]}
+            for s in state["db"].get_sources(run_id) if not s["id"].startswith("HELDOUT:")}
+
+
+@app.get("/api/runs/{run_id}/credits")
+def credits(run_id: str):
+    """Source citation of an adapted published case, for the evidence cards. Its title can name
+    the diagnosis, so it is served only once the run has a report (replays must also wait for
+    report.ready on their own clock). Never part of any agent payload."""
+    run = state["db"].get_run(run_id)
+    if run is None:
+        raise HTTPException(404, "run not found")
+    if not run.get("report"):
+        raise HTTPException(409, "available after the report")
+    ref = load_case(run["slot"], run["mode"]).reference
+    return {"source_citation": ref.get("source_citation")}
 
 
 @app.get("/api/cases")

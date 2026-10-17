@@ -33,12 +33,22 @@ class SearchOutcome:
 
 
 def _blocked(p: Passage, blocklist: list[str], title_blocks: list[str]) -> bool:
-    ids = {str(v).lower() for v in p.meta.values() if v} | {p.source_id.lower()}
+    ids = {str(p.meta[k]).lower() for k in ("pmid", "pmcid", "doi") if p.meta.get(k)} | {p.source_id.lower()}
     for b in blocklist:
         b = b.lower()
         if any(b == i or b in i for i in ids):
             return True
     return any(t.lower() in p.title.lower() for t in title_blocks)
+
+
+def _citation(item: dict, pmid, pmcid, doi) -> dict:
+    """Citation fields for the evidence card. In resultType=core the journal sits under journalInfo."""
+    ji = item.get("journalInfo") or {}
+    j = ji.get("journal") or {}
+    return {"pmid": pmid, "pmcid": pmcid, "doi": doi, "year": item.get("pubYear"),
+            "authors": item.get("authorString"),
+            "journal": j.get("isoabbreviation") or j.get("title") or item.get("journalTitle"),
+            "volume": ji.get("volume"), "issue": ji.get("issue"), "pages": item.get("pageInfo")}
 
 
 async def europe_pmc(query: str, limit: int = 5, timeout: float = 15.0) -> list[Passage]:
@@ -57,8 +67,7 @@ async def europe_pmc(query: str, limit: int = 5, timeout: float = 15.0) -> list[
         out.append(Passage(
             source_id=sid, title=item.get("title", ""), text=abstract,
             url=f"https://europepmc.org/article/MED/{pmid}" if pmid else (f"https://doi.org/{doi}" if doi else ""),
-            meta={"pmid": pmid, "pmcid": pmcid, "doi": doi, "journal": item.get("journalTitle"),
-                  "year": item.get("pubYear")},
+            meta=_citation(item, pmid, pmcid, doi),
         ))
     return out
 

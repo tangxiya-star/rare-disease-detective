@@ -128,7 +128,7 @@
     "Asserting case facts that are not in the case record",
     "Attributing the vermian atrophy to alcohol without addressing that attacks began at age 12"
   ],
-  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). Classic EA2. Added MS and alcohol-related cerebellar damage as hypotheses (superior vermian atrophy is also typical of alcohol), cant_miss, one red flag and expected behaviour.",
+  "clinician_review_notes": "Clinical review 2026-10-17 (signed off by W. Milczyńska). Classic EA2. Added MS and alcohol-related cerebellar damage as hypotheses (superior vermian atrophy is also typical of alcohol), cant_miss, one red flag and expected behaviour.",
   "expected_system_behavior": "EA2 should rank first. The system should explain why vestibular migraine does not account for interictal downbeat nystagmus and vermian atrophy, separate EA2 from EA1 by attack length and interictal signs, link the mother's episodes and the grandfather's late gait problem to a CACNA1A family spectrum, and suggest CACNA1A testing with acetazolamide response as supportive.",
   "agent_case_id": "case_04"
 }

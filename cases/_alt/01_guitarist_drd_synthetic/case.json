@@ -3,9 +3,9 @@
   "title": "Young classical guitarist with progressive right-hand dystonia and new gait change",
   "provenance": {
     "type": "synthetic",
-    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective. Modeled on typical adult-onset presentations described in the movement-disorder literature; not derived from any individual patient.",
-    "reviewed_by": "",
-    "review_status": "draft — pending W. Milczyńska review"
+    "citation": "Synthetic case written 2026-10-17 for Rare Disease Detective. Modeled on typical adult-onset presentations described in the movement-disorder literature; not derived from any individual patient.",
+    "reviewed_by": "W. Milczyńska (clinical lead)",
+    "review_status": "reviewed 2026-10-17"
   },
   "demographics": {
     "age": 23,
@@ -62,43 +62,43 @@
       "id": "mf_01",
       "observation": "Involuntary flexion of right digits 3 and 4 at the MCP and PIP joints during right-hand tremolo; appears after ~4 minutes of continuous playing in clinic and progressively worsens.",
       "context": "task (guitar, right hand)",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_02",
       "observation": "Compensatory wrist extension and elevation of the right forearm during playing, consistent with an attempt to counteract finger flexion.",
       "context": "task (guitar)",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_03",
       "observation": "Writing: excessive grip on the pen, flexion of digits 3–4, and ulnar deviation of the wrist emerging after ~6 lines; letters become small and cramped.",
       "context": "task (writing, right hand)",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_04",
       "observation": "Mirror movements: mild flexion of right digits 3–4 when the left hand performs rapid finger sequences.",
       "context": "contralateral task",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_05",
       "observation": "Gait: after ~15 minutes on a treadmill, intermittent right foot inversion with plantar flexion during swing phase; absent at the start of the walk. Running not tested.",
       "context": "gait, prolonged",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_06",
       "observation": "At rest and with sustained posture of both arms: no tremor, no dystonic posturing.",
       "context": "rest / posture",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_07",
       "observation": "Sensory trick: resting the right thumb lightly against the guitar soundboard partially reduces digit flexion.",
       "context": "task (guitar)",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     }
   ],
   "neurological_exam": {

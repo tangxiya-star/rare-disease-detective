@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react'
+import { Bot, BrainCircuit, CircleCheck, CircleX, FlaskConical, RotateCcw, Search, TriangleAlert } from 'lucide-react'
 import type { AgentNode } from '../types'
 import type { NodeActivity } from '../useRun'
 
@@ -78,18 +79,21 @@ export function AgentTree({ nodes, order, activity, selected, onSelect }: {
               onClick={() => onSelect(id === selected ? null : id)}>
               {guides.map((g, k) => <span key={k} className={`g ${g ? 'line' : ''}`} />)}
               {n.parent_id && <span className={`g elbow ${isLast ? 'last' : ''}`} />}
-              <span className="dot" />
+              <span className="tree-icon">
+                {n.role === 'lead' ? <BrainCircuit size={15} strokeWidth={1.8} /> : <Bot size={14} strokeWidth={1.8} />}
+                <span className="dot" />
+              </span>
               <div className="tree-body">
                 <div className="tree-head">
                   <b>{n.role === 'lead' ? 'Lead' : `D${n.depth}`}</b>
                   <span className="model">{model}</span>
                   <span className="status">{STATUS_LABEL[n.status] ?? n.status}</span>
                   <span className="spacer" />
-                  {searches > 0 && <span className="meta" title="Literature searches">⌕ {searches}</span>}
-                  {results > 0 && <span className="meta res" title="Held-out results obtained">◆ {results}</span>}
-                  {n.retry_count > 0 && <span className="badge-sm warn" title="Recovered from checkpoint">↻{n.retry_count}</span>}
-                  {n.verification !== 'pending' && <span className={`badge-sm v-${n.verification}`} title={`Verifier: ${n.verification}`}>
-                    {n.verification === 'accepted' ? '✓' : n.verification === 'revise' ? '!' : '×'}</span>}
+                  {searches > 0 && <span className="meta" title="Literature searches"><Search size={11} /> {searches}</span>}
+                  {results > 0 && <span className="meta res" title="Held-out results obtained"><FlaskConical size={11} /> {results}</span>}
+                  {n.retry_count > 0 && <span className="badge-sm warn" title="Recovered from checkpoint"><RotateCcw size={10} />{n.retry_count}</span>}
+                  {n.verification !== 'pending' && <span className={`verdict v-${n.verification}`} title={`Verifier: ${n.verification}`}>
+                    {n.verification === 'accepted' ? <CircleCheck size={15} /> : n.verification === 'revise' ? <TriangleAlert size={15} /> : <CircleX size={15} />}</span>}
                 </div>
                 <div className="tree-obj" title={n.objective}>{n.objective}</div>
               </div>

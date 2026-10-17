@@ -1,34 +1,12 @@
 import { useState } from 'react'
-import type { RunEvent } from '../types'
+import { describe } from '../beats'
 import type { RunState } from '../useRun'
 import { EvidenceItem } from './Inspector'
-
-function describe(e: RunEvent): string {
-  const d = e.data
-  switch (e.type) {
-    case 'run.started': return `Run started on ${d.case_id} (${d.llm_backend})`
-    case 'node.created': return `${d.node.id} created at depth ${d.node.depth}: ${d.node.objective}`
-    case 'node.decision': return `${d.node_id} decided ${d.action}${d.requested_children ? ` (${d.requested_children} children)` : ''}${d.trigger ? ' after verifier feedback' : ''}`
-    case 'spawn.rejected': return `${d.node_id} spawn blocked: ${d.reason}`
-    case 'search.performed': return `${d.node_id} searched “${d.query_used}”: ${d.results.length} results`
-    case 'search.failed': return `${d.node_id} search unresolved: “${d.query}”`
-    case 'heldout.released': return `${d.node_id} obtained ${d.investigation}`
-    case 'heldout.unavailable': return `${d.node_id} requested “${d.request}”: ${d.status.replace('_', ' ')}`
-    case 'evidence.added': return `${d.evidence.node_id} ${d.evidence.grounded ? 'recorded' : 'discarded'} finding: ${d.evidence.claim}`
-    case 'verification': return `Verifier ${d.verdict} on ${d.node_id}${d.feedback ? `: ${d.feedback}` : ''}`
-    case 'node.retry': return `${d.node_id} failed at ${d.checkpoint}, retrying: ${d.reason}`
-    case 'node.recovered': return `${d.node_id} restored from checkpoint ${d.from_checkpoint}`
-    case 'failure.injected': return `Failure injected: ${d.kind}${d.node_id ? ` on ${d.node_id}` : ''}`
-    case 'report.ready': return 'Clinician-review report ready'
-    case 'run.finished': return `Run ${d.status} with ${d.nodes} nodes`
-    default: return e.type
-  }
-}
 
 const QUIET = new Set(['node.status'])
 
 // Fixed text, never model-written: the disclaimer must not go missing or be reworded.
-const FIXED_DISCLAIMER = 'Human-in-the-loop research prototype. Considerations for physician review; not a diagnosis, not advice to patients. The treating clinician decides every next step.'
+export const FIXED_DISCLAIMER = 'Human-in-the-loop research prototype. Considerations for physician review; not a diagnosis, not advice to patients. The treating clinician decides every next step.'
 
 function Report({ state }: { state: RunState }) {
   const r = state.report
@@ -58,6 +36,7 @@ function Report({ state }: { state: RunState }) {
       </tbody></table>
       <h4>Potentially discriminating investigations</h4>
       <ul>{r.suggested_investigations.map((s, i) => <li key={i}><b>{s.investigation}</b> <span className="muted">{s.rationale}</span></li>)}</ul>
+      {!!r.dropped_already_resulted?.length && <p className="fineprint">Removed by code, result already obtained: {r.dropped_already_resulted.join('; ')}</p>}
       <h4>Unresolved questions</h4>
       <ul>{r.unresolved_questions.map((q, i) => <li key={i}>{q}</li>)}</ul>
     </div>
