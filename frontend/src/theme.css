@@ -140,7 +140,7 @@ details.panel-section[open] > summary h3::after { transform: rotate(90deg); }
 .kpi-icon { width: 34px; height: 34px; flex: none; border-radius: 10px; display: grid; place-items: center; color: var(--k);
   background: rgba(8, 12, 22, 0.75); border: 1px solid color-mix(in srgb, var(--k) 30%, transparent); }
 .kpi-value { font-size: 20px; font-weight: 650; color: var(--k); line-height: 1.1; font-variant-numeric: tabular-nums; }
-.kpi-sub { font-size: 10.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kpi-sub { font-size: 10.5px; color: var(--muted); line-height: 1.25; }
 .kpi-spark { display: block; width: calc(100% + 24px); height: 34px; margin: 6px -12px 0; }
 .kpi-spark .line { fill: none; stroke: var(--k); stroke-width: 1.6; vector-effect: non-scaling-stroke;
   filter: drop-shadow(0 0 4px var(--k)); }
