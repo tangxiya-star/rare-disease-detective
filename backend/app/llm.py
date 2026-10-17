@@ -23,6 +23,24 @@ class LLMClient(Protocol):
 
 
 _THINK = re.compile(r"<think>.*?</think>", re.S)
+_TRAILING_COMMA = re.compile(r",(\s*[}\]])")
+
+# Keys each role must return; a reply missing any of them is re-requested.
+REQUIRED_KEYS = {
+    "lead_plan": {"hypotheses", "decision"},
+    "investigator_plan": {"search_queries", "investigation_requests"},
+    "investigator_analyze": {"findings", "decision"},
+    "verifier": {"verdict"},
+    "replan": {"decision"},
+    "lead_report": {"differential", "cant_miss"},
+}
+
+
+def _loads(s: str):
+    try:
+        return json.loads(s)
+    except json.JSONDecodeError:
+        return json.loads(_TRAILING_COMMA.sub(r"\1", s))
 
 
 def parse_json_object(text: str) -> dict:
@@ -30,7 +48,7 @@ def parse_json_object(text: str) -> dict:
     text = _THINK.sub("", text or "").strip()
     text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
     try:
-        obj = json.loads(text)
+        obj = _loads(text)
         if isinstance(obj, dict):
             return obj
     except json.JSONDecodeError:
@@ -45,7 +63,7 @@ def parse_json_object(text: str) -> dict:
                 depth -= 1
                 if depth == 0:
                     try:
-                        obj = json.loads(text[start:i + 1])
+                        obj = _loads(text[start:i + 1])
                         if isinstance(obj, dict):
                             return obj
                     except json.JSONDecodeError:
@@ -76,12 +94,17 @@ class CrusoeClient:
             )
             text = resp.choices[0].message.content or ""
             try:
-                return parse_json_object(text)
+                obj = parse_json_object(text)
+                missing = REQUIRED_KEYS.get(role, set()) - set(obj)
+                if missing:
+                    raise ModelOutputError(f"Missing keys {sorted(missing)}; got {sorted(obj)}")
+                return obj
             except ModelOutputError as e:
                 last_err = e
                 messages = messages + [
                     {"role": "assistant", "content": text},
-                    {"role": "user", "content": "That was not a valid JSON object. Return only the JSON object."},
+                    {"role": "user", "content": f"Invalid reply ({e}). Return only the complete JSON object "
+                                                "with every required key, valid JSON, no trailing commas."},
                 ]
         raise ModelOutputError(str(last_err))
 

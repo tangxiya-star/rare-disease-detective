@@ -56,3 +56,10 @@ def test_clinical_rules_loaded_when_present(tmp_path, monkeypatch):
     (tmp_path / "docs" / "clinical" / "verifier_checklist.md").write_text("R3 rule")
     assert "R3 rule" in prompts.get_prompt("verifier")
     assert "R3 rule" not in prompts.get_prompt("lead_plan")
+
+
+def test_parse_json_prefers_outer_object_and_repairs_trailing_commas():
+    from app.llm import parse_json_object
+    txt = '<think>x</think>{"hypotheses": [{"name": "a", "ids": ["mf_01",],},], "decision": "spawn",}'
+    obj = parse_json_object(txt)
+    assert obj["decision"] == "spawn" and obj["hypotheses"][0]["name"] == "a"
