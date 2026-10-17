@@ -1,0 +1,32 @@
+# secrets
+.env
+*.key
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+*.db
+*.sqlite
+*.sqlite3
+
+# node
+node_modules/
+dist/
+.vite/
+
+# held-out clinical reference answers must never be committed alongside fixtures
+cases/reference/
+cases/held_out/
+
+# media (large clinical video; add via LFS or local only)
+*.mp4
+*.mov
+
+# os / editor
+.DS_Store
+.idea/
+.vscode/
