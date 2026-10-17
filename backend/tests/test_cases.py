@@ -87,3 +87,9 @@ def test_demo_hero_motion_analysis_is_citable():
 def test_scored_cases_have_no_motion_analysis():
     for c in list_cases("scored"):
         assert "motion_analysis" not in load_case(c["slot"], "scored").agent_view()
+
+
+def test_release_matches_radiology_report_request():
+    r = HeldOutReleaser(load_case("10", "scored"))
+    assert r.match("Obtain full neuroradiology report of brain MRI confirming T2 hyperintensity in the putamina") == "gap_02"
+    assert r.match("ATP7B gene sequencing") is None
