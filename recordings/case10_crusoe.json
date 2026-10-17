@@ -1,0 +1,629 @@
+{
+ "run_id": "run_608d27f0de",
+ "label": "Case 10 · contradictory records · real Crusoe run",
+ "llm_backend": "crusoe",
+ "slot": "10",
+ "mode": "scored",
+ "recorded_at": 1792276106.989166,
+ "duration_s": 296.2,
+ "rows": {
+  "runs": [
+   {
+    "id": "run_608d27f0de",
+    "slot": "10",
+    "mode": "scored",
+    "status": "completed",
+    "llm_backend": "crusoe",
+    "report": "{\"summary\": \"A 16\\u2011year\\u2011old male has a year of progressive left foot dystonic inversion that is worse in the morning and improves through the day, bilateral postural/action hand tremor with a wing\\u2011beating quality, mild dysarthria, mild bradykinesia, hyperreflexia, mildly slowed processing with inappropriate jocularity, mildly elevated ALT, low serum ceruloplasmin, and MRI showing symmetric T2 hyperintensity in the putamina and thalami. Slit\\u2011lamp examination reveals Kayser\\u2013Fleischer rings and 24\\u2011hour urine copper is markedly elevated (210 \\u00b5g/24h). These findings together satisfy diagnostic criteria for Wilson disease, while features that might suggest dopa\\u2011responsive dystonia (age <40, morning\\u2011worsening foot dystonia, mild bradykinesia) are outweighed by the abnormal MRI, tremor type, dysarthria, hyperreflexia, neuropsychiatric changes, and liver abnormalities.\", \"differential\": [{\"rank\": 1, \"hypothesis\": \"Wilson disease\", \"confidence\": \"high\", \"supporting_evidence_ids\": [\"lab_01\", \"lab_02\", \"img_01\", \"neurological_exam.mental_status\", \"neurological_exam.coordination\", \"mf_02\", \"mf_03\", \"family_history\", \"HELDOUT:gap_04\"], \"contradicting_evidence_ids\": [\"prior_workup_and_opinions\"]}, {\"rank\": 2, \"hypothesis\": \"Dopa\\u2011responsive dystonia (DRD)\", \"confidence\": \"low\", \"supporting_evidence_ids\": [\"neurological_exam.bradykinesia_screen\", \"mf_01\", \"prior_workup_and_opinions\"], \"contradicting_evidence_ids\": [\"img_01\", \"mf_02\", \"mf_03\", \"neurological_exam.reflexes\", \"neurological_exam.mental_status\", \"lab_01\", \"lab_02\", \"HELDOUT:gap_04\"]}], \"cant_miss\": [{\"condition\": \"Wilson disease\", \"status\": \"addressed\", \"basis\": \"Kayser\\u2013Fleischer rings present on slit\\u2011lamp exam and 24\\u2011hour urine copper elevated (HELDOUT:gap_04), establishing the diagnosis.\"}, {\"condition\": \"Dopa\\u2011responsive dystonia\", \"status\": \"open\", \"basis\": \"No supervised levodopa trial performed; clinical features atypical for DRD, so the possibility remains unresolved.\"}], \"unresolved_questions\": [\"Need for ATP7B genetic testing (including deletion/duplication analysis) to confirm Wilson disease diagnosis.\", \"Need to evaluate and manage neuropsychiatric symptoms (slowed processing, inappropriate jocularity).\", \"Need to screen at\\u2011risk family members (older sister) for Wilson disease.\"], \"suggested_investigations\": [{\"investigation\": \"ATP7B gene sequencing (including deletion/duplication analysis)\", \"rationale\": \"To confirm Wilson disease diagnosis given positive slit\\u2011lamp and urine copper results.\"}], \"disclaimer\": \"Hypotheses for physician review; not a diagnosis.\", \"dropped_invalid_ids\": [], \"dropped_already_resulted\": [\"Screening of asymptomatic older sister for Wilson disease (serum ceruloplasmin, 24\\u2011hour urine copper, slit\\u2011lamp examination)\"]}",
+    "created_at": 1792276106.988109,
+    "updated_at": 1792276403.181843
+   }
+  ],
+  "nodes": [
+   {
+    "id": "node_00",
+    "run_id": "run_608d27f0de",
+    "parent_id": null,
+    "depth": 0,
+    "role": "lead",
+    "model": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+    "objective": "Investigate case_10: 16-year-old with a year of progressive left foot twisting, hand tremor and slurred speech",
+    "justification": null,
+    "status": "done",
+    "checkpoint": "reported",
+    "verification": "pending",
+    "retry_count": 1,
+    "attempts": 2,
+    "artifact": "{\"plan\": {\"summary\": \"A 16\\u2011year\\u2011old male presents with a year of progressive left foot dystonic inversion that is worse in the morning and improves through the day, bilateral postural/action hand tremor with a wing\\u2011beating quality, mild dysarthria, mild bradykinesia, hyperreflexia, mildly slowed processing with inappropriate jocularity, mildly elevated ALT, low serum ceruloplasmin, and MRI showing symmetric T2 hyperintensity in the putamina and thalami. The referral letter suggests dopa\\u2011responsive dystonia and excludes Wilson disease, but no slit\\u2011lamp exam or 24\\u2011hour urine copper has been performed. The key diagnostic uncertainty is whether Wilson disease is present, which would explain the liver abnormality, low ceruloplasmin, basal ganglia MRI changes, neuropsychiatric features, and movement disorder, versus a dopa\\u2011responsive dystonia, which would be supported by the age of onset, diurnal fluctuation of foot dystonia, and mild bradykinesia but is contradicted by the abnormal MRI, tremor type, dysarthria, hyperreflexia, and liver findings.\", \"hypotheses\": [{\"name\": \"Wilson disease\", \"rationale\": \"Age <50, elevated ALT, low ceruloplasmin, symmetric T2 hyperintensity in putamina/thalami, neuropsychiatric changes (slowed processing, jocularity), dysarthria, wing\\u2011beating tremor, dystonia, and family history of unexplained hepatitis collectively suggest Wilson disease.\", \"supporting_finding_ids\": [\"lab_01\", \"lab_02\", \"img_01\", \"neurological_exam.mental_status\", \"neurological_exam.coordination\", \"mf_02\", \"mf_03\", \"family_history\"], \"contradicting_finding_ids\": [\"prior_workup_and_opinions\"]}, {\"name\": \"Dopa\\u2011responsive dystonia (DRD)\", \"rationale\": \"Onset at 16 years (<40), progressive left foot dystonia with morning worsening and daytime improvement, mild bilateral bradykinesia, and the referral letter\\u2019s impression of probable DRD support this hypothesis.\", \"supporting_finding_ids\": [\"tl_01\", \"mf_01\", \"neurological_exam.bradykinesia_screen\", \"prior_workup_and_opinions\"], \"contradicting_finding_ids\": [\"img_01\", \"mf_02\", \"mf_03\", \"neurological_exam.reflexes\", \"neurological_exam.mental_status\", \"lab_01\", \"lab_02\"]}], \"uncertainties\": [\"Whether Kayser\\u2011Fleischer rings are present on slit\\u2011lamp examination.\", \"Whether 24\\u2011hour urine copper excretion is elevated.\", \"Whether ATP7B genetic testing is needed if initial Wilson studies are indeterminate.\", \"Whether a supervised levodopa trial would show a meaningful response, which would support DRD but is less specific if Wilson disease is present.\"], \"decision\": \"spawn\", \"children\": [{\"objective\": \"Obtain slit\\u2011lamp examination to assess for Kayser\\u2011Fleischer rings.\", \"justification\": \"Slit\\u2011lamp exam is a required component of the Wilson disease workup; it has not been documented and its result would directly address the leading can't\\u2011miss hypothesis.\"}, {\"option\": \"Obtain 24\\u2011hour urine copper quantification.\", \"justification\": \"Elevated urine copper is a key diagnostic test for Wilson disease; low ceruloplasmin and elevated ALT increase suspicion, making this test necessary to confirm or exclude the condition.\"}]}, \"child_ids\": [\"node_01\"], \"replans\": {\"node_01\": 1}}",
+    "created_at": 1792276106.989654,
+    "updated_at": 1792276403.177969
+   },
+   {
+    "id": "node_01",
+    "run_id": "run_608d27f0de",
+    "parent_id": "node_00",
+    "depth": 1,
+    "role": "investigator",
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "objective": "Obtain slit‑lamp examination to assess for Kayser‑Fleischer rings.",
+    "justification": "Slit‑lamp exam is a required component of the Wilson disease workup; it has not been documented and its result would directly address the leading can't‑miss hypothesis.",
+    "status": "unresolved",
+    "checkpoint": "finished",
+    "verification": "insufficient",
+    "retry_count": 0,
+    "attempts": 1,
+    "artifact": "{\"plan\": {\"search_queries\": [\"dopa-responsive dystonia pediatric presentation\", \"Wilson disease movement disorder pediatric\", \"slit lamp Kayser-Fleischer rings clinical utility\"], \"investigation_requests\": [\"Arrange slit-lamp examination to evaluate for Kayser-Fleischer rings\", \"Consider 24-hour urinary copper testing if slit-lamp inconclusive\", \"Re\\u2011review MRI brain report for putaminal changes (currently reported as normal) to confirm absence of typical Wilson findings\"], \"plan\": \"The key uncertainty is whether a treatable metabolic cause such as Wilson disease persists despite normal ceruloplasmin and a normal MRI. The referral notes Wilson disease was excluded but a slit\\u2011lamp exam was never performed. The immediate step is to obtain a slit\\u2011lamp examination to look for Kayser\\u2011Fleischer rings; a positive result would trigger further copper studies and genetic testing, while a negative result would shift focus toward dopa\\u2011responsive dystonia or other focal dystonia etiologies, supporting a supervised levodopa trial as suggested by the referral. Document the slit\\u2011lamp findings and, if negative, proceed with a levodopa trial while monitoring for adverse effects. The accompanying literature searches will clarify typical age of onset, response patterns, and diagnostic thresholds for DRD versus Wilson disease in adolescents, informing the interpretation of the upcoming examination.\"}, \"sources\": [{\"id\": \"PMID:41965601\", \"title\": \"Genetic analysis reveals phenotypic variability in three Colombian families with dopa-responsive dystonia: novel genotype-phenotype correlations.\", \"url\": \"https://europepmc.org/article/MED/41965601\", \"text\": \"BACKGROUND: Dopa-responsive Dystonia (DRD) due to GTP cyclohydrolase 1 (GTPCH1) deficiency is a neurogenetic disorder caused by pathogenic GCH1 variants. Tetrahydrobiopterin (BH4) deficiency impairs dopamine synthesis in the basal ganglia, leading to childhood-onset dystonia with excellent response to levodopa. CASE PRESENTATION: We report eight patients from three unrelated families with GCH1 (NM_000161.3) variants: c.142\\u00a0C\\u2009>\\u2009T; p.(Gln48*), c.241T\\u2009>\\u2009C; p.(Ser81Pro), and c.607G\\u2009>\\u2009A; p.(Gly203Arg). Two individuals homozygous for c.142\\u00a0C\\u2009>\\u2009T showed phenotypic discordance. Mean age at onset was 7.3 years (range: 6\\u201312), with an average diagnostic delay of 13.4 years. All symptomatic individuals responded well to low-dose levodopa. DISCUSSION: This is the first report to describe variable expressivity among individuals homozygous for p.(Gln48*). Previous literature has focused on heterozygous carriers with incomplete penetrance, and homozygous variability remains scarcely documented. CONCLUSIONS: Our findings expand the clinical and molecular spectrum of DRD and challenge the assumption that autosomal recessive GCH1 variants invariably cause a severe phenotype. This report underscores the importance of family-based genetic studies, detailed pedigrees, and careful clinical surveillance of asymptomatic carriers. A low threshold for levodopa trials is warranted, even when inheritance patterns or symptom severity deviate from classical expectations. These insights are critical to improving early recognition and timely treatment.\", \"meta\": {\"pmid\": \"41965601\", \"pmcid\": \"PMC13251127\", \"doi\": \"10.1186/s12920-025-02287-1\", \"year\": \"2026\", \"authors\": \"Lince-Rivera I, Martinez-C\\u00f3rdoba N, Ram\\u00f3n-G\\u00f3mez JL, Cabarcas L, Zarante-Baham\\u00f3n AM.\", \"journal\": \"BMC Med Genomics\", \"volume\": \"19\", \"issue\": \"1\", \"pages\": \"98\"}}, {\"id\": \"PMID:42483444\", \"title\": \"Pediatric parkinsonism: clinical review and a proposed clinical algorithm.\", \"url\": \"https://europepmc.org/article/MED/42483444\", \"text\": \"Pediatric parkinsonism (PP) is a rare but disabling movement disorder characterized by bradykinesia and rigidity, with tremor being less frequent. Additional features include gait disturbances and impaired postural reflexes. In younger children, hypotonia is often a predominant sign. Clinical expression evolves with neurodevelopment and is frequently associated with other movement abnormalities, such as dystonia. The condition may arise from a variety of pathophysiological mechanisms and multiple etiologies, with genetic causes being particularly prominent. A classification system has been proposed based on age of onset, clinical features, prognosis and etiology, comprising: Developmental parkinsonism, Infantile degenerative parkinsonism, Parkinsonism in the setting of postnatal neurodevelopmental disorders, Parkinsonism associated with multisystemic brain diseases, Juvenile parkinsonism and dystonia-parkinsonism and Acquired parkinsonism. A specific assessment tool-the Infantile Parkinsonism-Dystonia Rating Scale-has recently been developed and primarily validated to quantify severity, monitor disease progression and assess treatment response. This review aims to provide a comprehensive overview of the clinical features, pathophysiology, etiologies and treatment approaches of pediatric parkinsonism. In addition, we propose a diagnostic algorithm to support clinical decision-making.\", \"meta\": {\"pmid\": \"42483444\", \"pmcid\": \"PMC13387017\", \"doi\": \"10.3389/fneur.2026.1788936\", \"year\": \"2026\", \"authors\": \"Naranjo-Lobo V, Hidalgo-Bravo MJ, Munoz-Chesta D, Troncoso-Schifferli M.\", \"journal\": \"Front Neurol\", \"volume\": \"17\", \"issue\": null, \"pages\": \"1788936\"}}, {\"id\": \"PMID:42534655\", \"title\": \"Follow-up and outcome of patients with primary BH4 deficiencies.\", \"url\": \"https://europepmc.org/article/MED/42534655\", \"text\": \"BH4 deficiencies may occur with or without hyperphenylalaninemia (HPA). If identified early through neonatal screening for PKU, the clinical follow-up aims to prevent the onset of typical disease symptoms. In contrast, for the conditions not associated with HPA, diagnosis usually occurs once symptoms manifest, and follow-up focuses on monitoring the treatment's effectiveness in restoring normal neurological function. Except for pterin-4-alpha-carbinolamine dehydratase defect (PCCDd), the core symptoms and natural course of these diseases involve neurodevelopmental impairment and movement disorders. Current information on clinical follow-up and outcome comes from retrospective observational studies, with standardized measures used in only a few of them. Serial clinical observations focusing on the two most consistent areas of neurological impairment are the best predictors of outcome and the main follow-up targets. Available clinical data, often aggregating early- and late-treated patients, show that the best clinical outcome occurs in autosomal dominant guanosine triphosphate cyclohydrolase I deficiency (AD-GTPCHd). In contrast, for recessive conditions, prognosis is variably associated with both the timing of treatment (autosomal recessive [AR]-GTPCHd, 6-pyruvoyltetrahydropterin synthase [PTPS]d, sepiapterin [SR]d, q-dihydropyridine reductase [DHPR]d) and the severity of metabolic derangement (AR-GTPCHd, PTPSd). Neurocognitive, psychiatric, and sleep disorders are currently underestimated and can occur in children and adults, affecting social adaptation and quality of life. Among metabolic alterations, blood Phe levels, when altered, warrant regular monitoring. CSF evaluation can be considered in subjects unresponsive to treatment or with an unexpected clinical course. CSF 5-MTHF monitoring should be reserved for patients with DHPRd experiencing neurological deterioration and seizures. Monitoring prolactin levels, when altered, may assist in personalizing pharmacological treatment. Serum magnesium and glucose are metabolic markers that should be assessed in PDCCd. Brain MRI monitoring is recommended for patients experiencing unusual courses, epilepsy, and neurological deterioration (particularly in PTPSd and DHPRd). A DAT scan is advised for those with AD-GTPCH who present or develop Parkinsonism, and EEG monitoring should be conducted for every patient with epilepsy or suspected seizures. For future clinical studies, it is mandatory that the clinical assessment adopt standardized tools that score impairment across neurological and behavioral domains, taking the patient's age into account.Systematic review registrationhttps://www.crd.york.ac.uk/PROSPERO/display_record.php?RecordID=1144143, identifier (CRD420251144143).\", \"meta\": {\"pmid\": \"42534655\", \"pmcid\": \"PMC13422167\", \"doi\": \"10.3389/fneur.2026.1793300\", \"year\": \"2026\", \"authors\": \"Nardecchia F, Manti F, De Giorgi A, Galosi S, Friedman J, Leuzzi V.\", \"journal\": \"Front Neurol\", \"volume\": \"17\", \"issue\": null, \"pages\": \"1793300\"}}, {\"id\": \"PMID:41896882\", \"title\": \"Burden and severity of inherited monoamine neurotransmitter rare genetic disorders in India.\", \"url\": \"https://europepmc.org/article/MED/41896882\", \"text\": \"Monoamine neurotransmitter metabolic disorders (mNMDs) are a diverse group of rare genetic conditions caused by disruptions in the metabolism of catecholamines (dopamine, epinephrine, and norepinephrine) and serotonin. These disorders predominantly affect children, often manifesting as neurodevelopmental and mental health challenges. Despite their clinical significance, there is a conspicuous lack of comprehensive reviews focused on the Indian population. The prevalence and distribution of mNMDs within India remain largely unexplored, underlining an urgent need for systematic data collection and analysis. This review aims to address this knowledge gap by compiling individual case reports of mNMDs documented in India, identifying genetic factors contributing to these conditions, and describing their manifestations. It provides an overview of diagnosed cases of mNMDs from various hospitals across the country, emphasizing the current limitations of diagnostic tools and the need for specialized testing. By illuminating mNMDs occurrence and clinical characteristics in India, this review seeks to encourage greater awareness about these disorders in India and the need to develop effective diagnostic and therapeutic strategies.\", \"meta\": {\"pmid\": \"41896882\", \"pmcid\": \"PMC13147586\", \"doi\": \"10.1186/s13023-026-04309-2\", \"year\": \"2026\", \"authors\": \"Hamid R, Gowda VK, Tauro L, Mishra R.\", \"journal\": \"Orphanet J Rare Dis\", \"volume\": \"21\", \"issue\": \"1\", \"pages\": \"179\"}}, {\"id\": \"PMID:41450729\", \"title\": \"DNAJC12 Disease: Clinical Spectrum and Long-Term Outcomes.\", \"url\": \"https://europepmc.org/article/MED/41450729\", \"text\": \"Background and objectivesAutosomal recessive DNAJC12 disease, the most recently identified disorder of biogenic amine synthesis, presents with a broad clinical spectrum and variable outcomes, ranging from asymptomatic patients to early-onset parkinsonism. This study aimed to better outline the clinical phenotype and outcomes of DNAJC12 disease, the prognostic value of the metabolic and genetic biomarkers, and the treatment response.MethodsWe systematically collected clinical, biochemical, and genetic data from 56 patients with DNAJC12 disease in accordance with Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) guidelines: 51 from the literature since the disease was first described and 5 unpublished personal cases.ResultsThree prevalent clinical patterns of presentation and outcome were identified: (1) asymptomatic condition, (2) neurodevelopmental disorders (NDD) leading to intellectual disability with psychiatric issues and dystonia-parkinsonism (D-P) during the second decade of life in some patients, and (3) early-onset static l-dopa-responsive parkinsonism in previously asymptomatic adult patients. Hyperphenylalaninemia was the most consistent metabolic alteration. CSF depletion of homovanillic acid (HVA) and 5-HIAA was detected in 18 and 20 of 29 symptomatic patients, respectively. Three stepwise regression analyses identified significant predictors of clinical outcomes in patients with phenylketonuria (PKU). CSF HVA levels and phenylalanine levels at diagnosis predicted the occurrence of D-P, while 26% of intellectual disability variability was explained by CSF HVA at diagnosis, and 31% of psychiatric disorder variability by later age at diagnosis. The phenotype was consistently associated with only a few DNAJC12 pathogenic variants, primarily for phenotypes A and C.Movement disorders responded positively to the various therapies in all symptomatic patients. The preventive effects on NDD and psychiatric problems were less clear.DiscussionDNAJC12 disease is a new metabolic neurodevelopmental disorder linked to parkinsonism. The combined effects of neurotransmitter depletion and disrupted enzyme proteostasis in dopaminergic and serotoninergic neurons may underlie the early neurodevelopmental presentation and subsequent neurologic and psychiatric disorders.\", \"meta\": {\"pmid\": \"41450729\", \"pmcid\": \"PMC12737867\", \"doi\": \"10.1212/nxg.0000000000200335\", \"year\": \"2026\", \"authors\": \"Manti F, Ricciardi G, Nardecchia F, Tolve M, Artiola C, Carbone MT, Carducci C, Mei D, Porta F, Ortolano R, Candela E, Burlina A, Guerrini R, Pisani F, Angeloni A, Leuzzi V.\", \"journal\": \"Neurol Genet\", \"volume\": \"12\", \"issue\": \"1\", \"pages\": \"e200335\"}}, {\"id\": \"PMID:42764666\", \"title\": \"Phenotypic Spectrum and Clinical Approach to Early-Onset Hereditary Spastic Paraplegia.\", \"url\": \"https://europepmc.org/article/MED/42764666\", \"text\": \"BackgroundEarly-onset hereditary spastic paraplegias (HSPs) are an underrecognized cause of progressive spasticity, gait impairment, and movement disorders in children and young adults. HSPs frequently mimic cerebral palsy or genetic, metabolic, and acquired disorders, resulting in diagnostic delay. Their broad phenotypic spectrum, encompassing dystonia, parkinsonism, and neurodevelopmental features, makes them highly relevant to movement disorder practitioners across the lifespan.ObjectivesThis review summarizes the phenotypic spectrum of early-onset HSP, outlines a practical diagnostic approach for clinicians, and discusses therapeutic strategies.MethodsWe conducted a narrative review of PubMed-indexed literature through February 2026, supplemented by expert consensus. HSPs typically presenting in childhood and adolescence, inclusive of forms presenting across a broader age spectrum, with attention to subtypes presenting with movement disorders, were considered.ResultsEarly-onset HSPs encompass both pure and complex forms, with SPG4 (SPAST) and SPG11 (SPG11/KIAA1840) among the most prevalent etiologies. Diagnostic challenges include distinction from cerebral palsy and other movement disorders including dopa-responsive dystonia, and identification of neuroimaging signatures in specific subtypes. A multidisciplinary management approach remains central, with spasticity, movement disorder, and neurological comorbidities each requiring targeted consideration. Disease-modifying therapies are emerging, including gene replacement strategies and antisense oligonucleotide approaches for select subtypes.ConclusionsEarly-onset HSPs represent a clinically and genetically heterogeneous group with substantial overlap with movement disorder practice. Awareness of characteristic phenotypes, early genetic testing, and an individualized multidisciplinary approach are essential. Recent advances in natural history characterization and mechanism-targeted therapeutics signal a transition toward disease-modifying treatment strategies and offer cautious optimism for affected individuals.\", \"meta\": {\"pmid\": \"42764666\", \"pmcid\": null, \"doi\": \"10.1002/mdc3.70827\", \"year\": \"2026\", \"authors\": \"Wilson JL, Blackstone C, Ebrahimi-Fakhari D, Fran\\u00e7a Junior MC.\", \"journal\": \"Mov Disord Clin Pract\", \"volume\": null, \"issue\": null, \"pages\": null}}, {\"id\": \"PMID:42648177\", \"title\": \"Salivary copper as a screening tool for pediatric Wilson's disease: A pilot study.\", \"url\": \"https://europepmc.org/article/MED/42648177\", \"text\": \"BackgroundWilson's disease (WD) is a treatable disorder of copper metabolism in which early diagnosis remains challenging, particularly during the asymptomatic pediatric phase, limiting the feasibility of population-level screening strategies.ObjectivesTo assess the feasibility of salivary copper as a screening biomarker for pediatric WD and establish preliminary reference values in asymptomatic children.MethodsIn this cross-sectional pilot study, healthy children aged 5-15 years were recruited from pediatric outpatient clinics at a tertiary academic center. Salivary copper concentrations were quantified by ICP-MS, and percentile-based reference values were estimated. Associations with age and sex were assessed using multivariable linear regression with log10-transformed copper values. An exploratory post-hoc analysis integrating pediatric controls with patients with confirmed WD was performed using receiver operating characteristic (ROC) curve analysis.ResultsA total of 114 children were included. Salivary copper concentrations showed a right-skewed distribution, with a median of 12.19\\u202f\\u03bcg/L (IQR: 8.67-19.73\\u202f\\u03bcg/L). The preliminary upper reference threshold was 30.73\\u202f\\u03bcg/L after exclusion of extreme outliers. Salivary copper levels were not significantly associated with age or sex. In exploratory ROC analysis, salivary copper showed promising discriminative performance for WD (AUC 0.822, 95% CI 0.701-0.942). The Youden-derived cutoff (14.94\\u202f\\u03bcg/L) showed higher sensitivity and moderate specificity, whereas higher thresholds demonstrated high specificity but lower sensitivity.ConclusionsSalivary copper measurement is a feasible, non-invasive biomarker with potential application in pediatric WD screening. These findings support a dual-threshold strategy for screening and confirmatory assessment, although larger multicenter validation studies are required.\", \"meta\": {\"pmid\": \"42648177\", \"pmcid\": null, \"doi\": \"10.1016/j.parkreldis.2026.108948\", \"year\": \"2026\", \"authors\": \"Morais GF, Kalinowski FCM, Coutinho L, Bonilha PAAM, de Souza VC, Brand\\u00e3o I, Costa FS, Amaral CDB, Betini BG, Barbosa ER, Teive HAG.\", \"journal\": \"Parkinsonism Relat Disord\", \"volume\": \"151\", \"issue\": null, \"pages\": \"108948\"}}, {\"id\": \"PMID:42483444\", \"title\": \"Pediatric parkinsonism: clinical review and a proposed clinical algorithm.\", \"url\": \"https://europepmc.org/article/MED/42483444\", \"text\": \"Pediatric parkinsonism (PP) is a rare but disabling movement disorder characterized by bradykinesia and rigidity, with tremor being less frequent. Additional features include gait disturbances and impaired postural reflexes. In younger children, hypotonia is often a predominant sign. Clinical expression evolves with neurodevelopment and is frequently associated with other movement abnormalities, such as dystonia. The condition may arise from a variety of pathophysiological mechanisms and multiple etiologies, with genetic causes being particularly prominent. A classification system has been proposed based on age of onset, clinical features, prognosis and etiology, comprising: Developmental parkinsonism, Infantile degenerative parkinsonism, Parkinsonism in the setting of postnatal neurodevelopmental disorders, Parkinsonism associated with multisystemic brain diseases, Juvenile parkinsonism and dystonia-parkinsonism and Acquired parkinsonism. A specific assessment tool-the Infantile Parkinsonism-Dystonia Rating Scale-has recently been developed and primarily validated to quantify severity, monitor disease progression and assess treatment response. This review aims to provide a comprehensive overview of the clinical features, pathophysiology, etiologies and treatment approaches of pediatric parkinsonism. In addition, we propose a diagnostic algorithm to support clinical decision-making.\", \"meta\": {\"pmid\": \"42483444\", \"pmcid\": \"PMC13387017\", \"doi\": \"10.3389/fneur.2026.1788936\", \"year\": \"2026\", \"authors\": \"Naranjo-Lobo V, Hidalgo-Bravo MJ, Munoz-Chesta D, Troncoso-Schifferli M.\", \"journal\": \"Front Neurol\", \"volume\": \"17\", \"issue\": null, \"pages\": \"1788936\"}}, {\"id\": \"PMID:42196589\", \"title\": \"PANDAS Syndrome: A Narrative Review of the Diagnostic Conundrum in Children with Acute Neuropsychiatric Symptoms.\", \"url\": \"https://europepmc.org/article/MED/42196589\", \"text\": \"The hypothesis that Group A beta-haemolytic Streptococcus (GAS) triggers an autoimmune cascade targeting basal ganglia dopaminergic circuits-producing obsessive-compulsive disorder (OCD), tic disorders, or chorea depending on the receptor subtype involved-is biologically compelling and supported by emerging molecular evidence. Yet PANDAS has remained a diagnostic conundrum since its original description in 1998, with ongoing uncertainty surrounding diagnostic criteria, the interpretation of streptococcal serology, and the distinction from primary neurodevelopmental disorders. This study aimed to review the diagnostic challenges of PANDAS, with focus on streptococcal serology interpretation, advances in dopamine receptor autoantibody biology, the genetic epidemiology of primary tic disorders, and the differential diagnosis of acute neuropsychiatric presentations in children. A structured narrative review was conducted using PubMed, MEDLINE, EMBASE, and the Cochrane Library for publications from 1998 to early 2025 addressing PANDAS, PANS, streptococcal antibodies, childhood movement disorders, autoimmune encephalitis, and the genetics of tic disorders. No currently available biomarker-including ASO, anti-DNase B, anti-basal-ganglia antibodies, or the Cunningham Panel-has demonstrated adequate individual-level diagnostic accuracy for PANDAS. Emerging molecular evidence identifies anti-D1R autoantibodies, acting via G protein-and beta-arrestin-mediated signalling, as candidate biomarkers for PANDAS/PANS neuropsychiatric phenotypes, and anti-D2R autoantibodies for Sydenham chorea movement phenotypes; independent replication in unselected populations is required. Primary tic disorders carry heritability estimates of 50-80% and first-degree familial risk ratios of approximately 18-fold in large population-based cohorts. Prospective blinded studies have not demonstrated a consistent population-level association between GAS infections and tic or OCD exacerbations: PANDAS and PANS remain diagnoses of exclusion. The high background prevalence of both GAS exposure and primary neurodevelopmental disorders in overlapping paediatric age ranges creates conditions for incidental temporal co-occurrence. In the absence of validated molecular biomarkers, diagnostic imprecision carries direct clinical consequences: children may be exposed to treatments with significant risk profiles-including IVIG, plasma exchange, and prolonged antibiotic prophylaxis-while evidence-based therapies are delayed. A stepwise diagnostic approach incorporating the full differential diagnosis is both an epistemological and a patient safety imperative.\", \"meta\": {\"pmid\": \"42196589\", \"pmcid\": \"PMC13208071\", \"doi\": \"10.3390/ijms27104612\", \"year\": \"2026\", \"authors\": \"Cesaroni CA, Pisan\\u00f2 G, Rizzi S, Pantani A, Frattini D, Fusco C.\", \"journal\": \"Int J Mol Sci\", \"volume\": \"27\", \"issue\": \"10\", \"pages\": \"4612\"}}, {\"id\": \"PMID:41694794\", \"title\": \"Generalized Dystonia in a Patient With Wilson Disease 5 Years After Liver Transplant: A Case Report.\", \"url\": \"https://europepmc.org/article/MED/41694794\", \"text\": \"BackgroundLiver transplant (LT) is considered curative for Wilson disease (WD) with hepatic failure refractory to medical therapy, particularly when neurologic symptoms are absent.Case reportA 29-year-old man with WD developed progressive generalized dystonia five years after LT. He presented with acute-on-chronic neck pain, dysphagia, and dystonic posturing of the neck, trunk, and upper and lower extremities. MRI brain and copper studies were normal. Genetic testing confirmed two heterozygous pathogenic ATP7B variants. Symptoms improved with botulinum toxin injections.DiscussionPost-LT neurologic complications may arise from copper dysregulation, immunosuppressant neurotoxicity, or unrelated primary dystonia. Early recognition enables effective symptomatic management.\", \"meta\": {\"pmid\": \"41694794\", \"pmcid\": \"PMC12904119\", \"doi\": \"10.5334/tohm.1120\", \"year\": \"2026\", \"authors\": \"Edwards E, Coleman B, Feldman M, Charles JH, Shpiner DS.\", \"journal\": \"Tremor Other Hyperkinet Mov (N Y)\", \"volume\": \"16\", \"issue\": null, \"pages\": \"13\"}}, {\"id\": \"PMID:42187864\", \"title\": \"Ocular Clues to Liver Disease: A Strategic Diagnostic Lens.\", \"url\": \"https://europepmc.org/article/MED/42187864\", \"text\": \"Background/objectivesHepatic diseases frequently present with ocular manifestations that aid diagnosis, provide prognostic data, and guide therapy. Despite the clear utility of the liver-eye axis, the literature lacks reviews that categorize these manifestations by etiology. This review evaluates current evidence to identify ocular findings that serve as clinical tools for diagnosis, prognosis, and therapeutic monitoring of hepatic pathologies.MethodsA narrative review was conducted using PubMed and Google Scholar to identify English-language articles addressing ocular manifestations associated with liver disease. The primary search encompassed publications from 2000 to 2025, with inclusion of select foundational works published prior to 2000 when they represented seminal studies establishing diagnostic criteria, pathophysiological mechanisms, or natural history data not superseded by subsequent research. Search terms included combinations of liver, hepatic, hepatitis, cirrhosis, cholestasis, eye, ocular, retina, cornea, sclera, conjunctiva, ophthalmic manifestations, and specific disease names. All study designs were eligible. Society guidelines, systematic reviews, and studies from high-impact journals were prioritized. The final selection comprised 59 references representing the most authoritative sources across the spectrum of hepatic conditions.ResultsA spectrum of ocular findings linked to distinct hepatic conditions was identified. Manifestations with established clinicopathologic associations were categorized into congenital and acquired etiologies. Congenital liver pathologies included metabolic disorders (Wilson disease, galactosemia, lysosomal storage disorders) and syndromic/genetic causes (Alagille syndrome, hereditary hemochromatosis). Acquired liver diseases encompassed infectious (hepatitis B/C), drug-induced and iatrogenic (interferon, immune checkpoint inhibitors), nutritional (vitamin A deficiency), neoplastic (metastatic hepatocellular carcinoma), and cirrhotic causes.ConclusionsSpecific ocular signs raise clinical suspicion for underlying liver disease and warrant targeted hepatic evaluation. Recognizing these associations facilitates earlier diagnosis and improves outcomes. Systematic screening for these signs is supported in at-risk populations, and prospective validation studies should establish their sensitivity and specificity.\", \"meta\": {\"pmid\": \"42187864\", \"pmcid\": \"PMC13205696\", \"doi\": \"10.3390/diseases14050152\", \"year\": \"2026\", \"authors\": \"Dahshan M, Dahshan H, Basoglu A, Kadikoy H.\", \"journal\": \"Diseases\", \"volume\": \"14\", \"issue\": \"5\", \"pages\": \"152\"}}, {\"id\": \"PMID:42279596\", \"title\": \"LGMD R18 Mimicking Wilson Disease: 6-Year Longitudinal Muscle MRI Evolution and Clinical Insights into &lt;i&gt;TRAPPC11&lt;/i&gt; Mutation.\", \"url\": \"https://europepmc.org/article/MED/42279596\", \"text\": \"Background and Clinical Significance: Limb-girdle muscular dystrophy R18 is a rare autosomal recessive disorder that may present with both muscular and hepatic involvement, potentially leading to diagnostic confusion. Longitudinal MRI data documenting this disease from childhood remain scarce. Case Presentation: We report a female patient with disease onset that occurred at 8 years of age, initially presenting with elevated liver enzymes and decreased ceruloplasmin levels, which raised suspicion of Wilson's disease. Genetic testing confirmed TRAPPC11 mutation. Serial MRI scans of the thigh muscles over a six-year period demonstrated progressive fatty infiltration, predominantly affecting the adductor magnus and posterior thigh muscles, with relative sparing of the gracilis and anterior compartment muscles. Conclusions: This case highlights that limb-girdle muscular dystrophy R18 can clinically mimic Wilson disease. Longitudinal muscle MRI offers valuable diagnostic insights and reveals a characteristic pattern of muscle involvement.\", \"meta\": {\"pmid\": \"42279596\", \"pmcid\": \"PMC13257075\", \"doi\": \"10.3390/diagnostics16111729\", \"year\": \"2026\", \"authors\": \"Chou YT, Chou HP, Chen YW.\", \"journal\": \"Diagnostics (Basel)\", \"volume\": \"16\", \"issue\": \"11\", \"pages\": \"1729\"}}, {\"id\": \"PMID:41541975\", \"title\": \"Re-examining the Diagnostic Criteria for Wilson's Disease: A Case Report and Literature Review.\", \"url\": \"https://europepmc.org/article/MED/41541975\", \"text\": \"Wilson's disease (WD) is a heterogeneous genetic disorder for which diagnosis is challenging. We present the case of a 54-year-old woman with a complicated medical history, including hepatitis C, cirrhosis, hepatic encephalopathy, and extensive psychiatric disease, who was transferred to our hospital for management of a spinal epidural abscess. Further findings suggested undiagnosed WD, including bilateral rings around Descemet's membrane and modestly low ceruloplasmin but normal urinary copper excretion. Many algorithms have been proposed for Wilson disease diagnosis, including clinical, laboratory, imaging, and genetic findings; however, no single test is diagnostic. The European Association for the Study of the Liver (EASL) guidelines are the most commonly employed algorithm. Updated 2022 guidelines by both the American Association for the Study of Liver Diseases (AASLD) and the British Association for the Study of the Liver (BASL) build upon this algorithm. Our patient scored 5 points on the EASL scale, which is sufficient for diagnosis. Nevertheless, we believe that she met the diagnostic criteria without having the actual disease. Newer guidelines by AASLD and BASL do not provide additional conclusivity. Our case demonstrates the need for re-evaluation of the diagnostic criteria of WD, where uncertainty can mean permanent hepatic and brain damage. Diagnostic guidelines should incorporate new biomarkers, ophthalmological techniques, and advanced technologies such as next-generation sequencing or CRISPR-Cas-based tools.\", \"meta\": {\"pmid\": \"41541975\", \"pmcid\": \"PMC12802368\", \"doi\": \"10.7759/cureus.99271\", \"year\": \"2025\", \"authors\": \"Hummel L, Carr C, Biow S, Asher K, Sauer T, Maylin M.\", \"journal\": \"Cureus\", \"volume\": \"17\", \"issue\": \"12\", \"pages\": \"e99271\"}}, {\"id\": \"PMID:41635375\", \"title\": \"Clinical and Demographic Profile of Wilson Disease in Young Adults: A Retrospective Study at a Tertiary Care Center in Peshawar, Pakistan.\", \"url\": \"https://europepmc.org/article/MED/41635375\", \"text\": \"Background Wilson disease (WD) is a rare autosomal recessive disorder of copper metabolism and an important treatable cause of hepatic dysfunction in young adults. Data from South Asian populations remains limited. Hence, the current study aimed to assess the demographic characteristics, clinical features, and diagnostic profile of patients with WD presenting at a tertiary care hospital in Peshawar, Pakistan. Methods This retrospective descriptive study was conducted in the Department of Medicine, Hayatabad Medical Complex, Peshawar, between January 2023 and December 2024. Medical records were systematically reviewed to identify all patients diagnosed with WD during this period. 21 patients with a confirmed WD diagnosis based on the modified Leipzig scoring system (score \\u2265 4) and complete diagnostic workup were included. Complete diagnostic data was defined as documented serum ceruloplasmin, 24-hour urinary copper excretion, liver function tests, slit-lamp examination for Kayser-Fleischer (KF) rings, and negative screening for viral and autoimmune hepatitis. Demographic, clinical, and biochemical data were extracted from hospital records and analyzed using SPSS version 25. Post-hoc ethical approval was obtained from the institutional review board. Results The mean age at presentation was 23.2 \\u00b1 4.8 years (range 18-35), with a male-to-female ratio of 2:1. 15 patients (71.4%) were between 18 and 25 years of age. Jaundice was the predominant symptom, observed in 21 (100%) patients, while hepatomegaly and KF rings were observed in 18 (85.7%) and 12 (57.1%) of patients, respectively. The mean 24-hour urinary copper excretion was 1,450.3 \\u00b1 420.7 \\u00b5g/day, and the mean serum ceruloplasmin level was 8.4 \\u00b1 3.2 mg/dL. Four patients (19%) were from two consanguineous families. A positive correlation between urinary copper and total bilirubin levels was observed (r = 0.74, p < 0.001). Conclusion WD in this internal medicine cohort primarily affected young adults presenting with hepatic manifestations, most commonly jaundice. Elevated urinary copper excretion and reduced serum ceruloplasmin levels were consistent diagnostic findings. Familial clustering, particularly in consanguineous families, was also observed, indicating a pattern consistent with autosomal recessive inheritance within this population.\", \"meta\": {\"pmid\": \"41635375\", \"pmcid\": \"PMC12862504\", \"doi\": \"10.7759/cureus.100661\", \"year\": \"2026\", \"authors\": \"Khan I, Iftikhar M, Khan SJ.\", \"journal\": \"Cureus\", \"volume\": \"18\", \"issue\": \"1\", \"pages\": \"e100661\"}}, {\"id\": \"PMID:41824837\", \"title\": \"A cross-sectional assessment of the diagnostic value of serum ceruloplasmin for Wilson's disease in children.\", \"url\": \"https://europepmc.org/article/MED/41824837\", \"text\": \"Wilson's disease (WD) is a rare autosomal recessive disorder of copper metabolism requiring early diagnosis to prevent severe hepatic and neurological damage, particularly in children, where diagnostic challenges are pronounced. Serum ceruloplasmin (CPN) is a critical biochemical marker, yet its diagnostic accuracy and optimal cutoff value in pediatric populations need further evaluation in specific regional contexts. This study evaluates the diagnostic performance of serum CPN in diagnosing WD among children at Damascus University Children's Hospital and determines an optimal diagnostic cutoff value for this population. A bidirectional cross-sectional study was conducted from January 2019 to December 2022 at Damascus University Children's Hospital, including 80 children diagnosed with WD (case group) and 80 children with hepatic symptoms but without WD (control group), all under 13 years. Serum CPN was measured using immunoturbidimetry. Data on demographics, clinical presentations, Kayser-Fleischer rings, CPN levels, and 24-hour urinary copper were collected. Statistical analyses included t-tests, receiver operating characteristic analysis, and multiple linear regression (Statistical Package for Social Sciences). Ethical approval and informed consent were obtained. Mean age in the WD group was 119.15\\u2005\\u00b1\\u200530.47 months (57.5% female). Serum CPN was significantly lower in WD (9.8\\u2005\\u00b1\\u20053.2\\u2009mg/dL) versus controls (27.6\\u2005\\u00b1\\u200510.4\\u2009mg/dL, P\\u2005<\\u2005.001). Receiver operating characteristic analysis showed high diagnostic accuracy (AUC\\u2005=\\u20050.967, 95% CI: 0.945-0.988), with an optimal CPN cutoff of 15\\u2009mg/dL (sensitivity 93.8%, specificity 85.0%). Regression identified age, female sex, neurological symptoms, Kayser-Fleischer rings, and urinary copper as predictors of lower CPN. Serum CPN is a highly accurate diagnostic marker for pediatric WD, with a 15\\u2009mg/dL cutoff optimizing sensitivity and specificity. Interpretation should consider age, sex, and clinical features.\", \"meta\": {\"pmid\": \"41824837\", \"pmcid\": \"PMC12991615\", \"doi\": \"10.1097/md.0000000000048082\", \"year\": \"2026\", \"authors\": \"Yaldany M, Abboud F, Haddad S, Madanieh S, Mahmod J, Alhazaimeh M, Atoom G.\", \"journal\": \"Medicine (Baltimore)\", \"volume\": \"105\", \"issue\": \"11\", \"pages\": \"e48082\"}}, {\"id\": \"HELDOUT:gap_04\", \"title\": \"Slit lamp and 24-hour urine copper\", \"url\": \"\", \"text\": \"Kayser\\u2013Fleischer rings present; urine copper 210 \\u00b5g/24h.\", \"meta\": {\"held_out\": true, \"media\": null}}, {\"id\": \"HELDOUT:gap_04\", \"title\": \"Slit lamp and 24-hour urine copper\", \"url\": \"\", \"text\": \"Kayser\\u2013Fleischer rings present; urine copper 210 \\u00b5g/24h.\", \"meta\": {\"held_out\": true, \"media\": null}}, {\"id\": \"HELDOUT:gap_02\", \"title\": \"Radiology addendum\", \"url\": \"\", \"text\": \"Findings section is correct; summary line was a template error.\", \"meta\": {\"held_out\": true, \"media\": null}}], \"investigation_results\": [{\"request\": \"Arrange slit-lamp examination to evaluate for Kayser-Fleischer rings\", \"status\": \"released\", \"source_id\": \"HELDOUT:gap_04\", \"result\": \"Kayser\\u2013Fleischer rings present; urine copper 210 \\u00b5g/24h.\"}, {\"request\": \"Consider 24-hour urinary copper testing if slit-lamp inconclusive\", \"status\": \"released\", \"source_id\": \"HELDOUT:gap_04\", \"result\": \"Kayser\\u2013Fleischer rings present; urine copper 210 \\u00b5g/24h.\"}, {\"request\": \"Re\\u2011review MRI brain report for putaminal changes (currently reported as normal) to confirm absence of typical Wilson findings\", \"status\": \"released\", \"source_id\": \"HELDOUT:gap_02\", \"result\": \"Findings section is correct; summary line was a template error.\"}], \"findings\": [{\"claim\": \"Patient has left foot dystonic inversion on gait.\", \"quote\": \"Left foot dystonic inversion on walking.\", \"source_id\": \"mf_01\", \"finding_ids\": [\"mf_01\"], \"stance\": \"supports\", \"hypothesis\": \"focal lower limb dystonia\", \"evidence_id\": \"ev_bcf7e7a6\", \"grounded\": true, \"note\": \"Quote verified in mf_01\"}, {\"claim\": \"Patient exhibits bilateral postural and action tremor with coarse wing-beating quality.\", \"quote\": \"Bilateral postural and action tremor of the hands with a proximal, coarse 'wing-beating' quality on arm abduction.\", \"source_id\": \"mf_02\", \"finding_ids\": [\"mf_02\"], \"stance\": \"supports\", \"hypothesis\": \"action tremor\", \"evidence_id\": \"ev_22eab33c\", \"grounded\": true, \"note\": \"Quote verified in mf_02\"}, {\"claim\": \"Patient has mild dysarthria.\", \"quote\": \"Mild dysarthria.\", \"source_id\": \"mf_03\", \"finding_ids\": [\"mf_03\"], \"stance\": \"supports\", \"hypothesis\": \"speech involvement\", \"evidence_id\": \"ev_17848d25\", \"grounded\": true, \"note\": \"Quote verified in mf_03\"}, {\"claim\": \"Serum ceruloplasmin is low at 18 mg/dL.\", \"quote\": \"Serum ceruloplasmin, result: 18 mg/dL, reference range: 20\\u201340, note: Wilson disease excluded.\", \"source_id\": \"lab_02\", \"finding_ids\": [\"lab_02\"], \"stance\": \"supports\", \"hypothesis\": \"possible Wilson disease\", \"evidence_id\": \"ev_a2b440d1\", \"grounded\": true, \"note\": \"Quote verified in lab_02\"}, {\"claim\": \"MRI brain shows symmetric T2 hyperintensity in the bilateral putamina and thalami.\", \"quote\": \"Symmetric T2 hyperintensity in the bilateral putamina and thalami.\", \"source_id\": \"img_01\", \"finding_ids\": [\"img_01\"], \"stance\": \"supports\", \"hypothesis\": \"Wilson disease\", \"evidence_id\": \"ev_bcf9867c\", \"grounded\": true, \"note\": \"Quote verified in img_01\"}, {\"claim\": \"Kayser\\u2013Fleischer rings are present.\", \"quote\": \"Kayser\\u2013Fleischer rings present; urine copper 210 \\u00b5g/24h.\", \"source_id\": \"HELDOUT:gap_04\", \"finding_ids\": [], \"stance\": \"supports\", \"hypothesis\": \"Wilson disease\", \"evidence_id\": \"ev_6fa6c6d8\", \"grounded\": true, \"note\": \"Quote verified in HELDOUT:gap_04\"}, {\"claim\": \"Referral considered the condition probable dopa\\u2011responsive dystonia and excluded Wilson disease.\", \"quote\": \"Referral letter: 'Probable dopa\\u2011responsive dystonia; Wilson excluded; please start levodopa.'\", \"source_id\": \"prior_workup_and_opinions\", \"finding_ids\": [], \"stance\": \"contradicts\", \"hypothesis\": \"initial impression of DRD may be incorrect\", \"evidence_id\": \"ev_c09f42c4\", \"grounded\": true, \"note\": \"Quote verified in prior_workup_and_opinions\"}], \"analysis\": {\"conclusion\": \"Wilson disease is the most likely etiology given low ceruloplasmin, putaminal hyperintensity, positive Kayser\\u2013Fleischer rings, and elevated urinary copper; the prior impression of dopa\\u2011responsive dystonia is contradicted.\", \"decision\": \"finish\", \"children\": []}, \"child_ids\": [], \"verifier\": {\"verdict\": \"INSUFFICIENT\", \"rejected_findings\": [3], \"feedback\": \"C1 (finding 3): quoted passage does not appear verbatim in source text; need to match exact punctuation or adjust quote.\"}}",
+    "created_at": 1792276178.25316,
+    "updated_at": 1792276290.5216398
+   }
+  ],
+  "evidence": [
+   {
+    "id": "ev_bcf7e7a6",
+    "run_id": "run_608d27f0de",
+    "node_id": "node_01",
+    "kind": "literature",
+    "claim": "Patient has left foot dystonic inversion on gait.",
+    "quote": "Left foot dystonic inversion on walking.",
+    "source_id": "mf_01",
+    "finding_ids": "[\"mf_01\"]",
+    "stance": "supports",
+    "hypothesis": "focal lower limb dystonia",
+    "grounded": 1,
+    "grounding_note": "Quote verified in mf_01",
+    "created_at": 1792276229.4722948
+   },
+   {
+    "id": "ev_22eab33c",
+    "run_id": "run_608d27f0de",
+    "node_id": "node_01",
+    "kind": "literature",
+    "claim": "Patient exhibits bilateral postural and action tremor with coarse wing-beating quality.",
+    "quote": "Bilateral postural and action tremor of the hands with a proximal, coarse 'wing-beating' quality on arm abduction.",
+    "source_id": "mf_02",
+    "finding_ids": "[\"mf_02\"]",
+    "stance": "supports",
+    "hypothesis": "action tremor",
+    "grounded": 1,
+    "grounding_note": "Quote verified in mf_02",
+    "created_at": 1792276229.475002
+   },
+   {
+    "id": "ev_17848d25",
+    "run_id": "run_608d27f0de",
+    "node_id": "node_01",
+    "kind": "literature",
+    "claim": "Patient has mild dysarthria.",
+    "quote": "Mild dysarthria.",
+    "source_id": "mf_03",
+    "finding_ids": "[\"mf_03\"]",
+    "stance": "supports",
+    "hypothesis": "speech involvement",
+    "grounded": 1,
+    "grounding_note": "Quote verified in mf_03",
+    "created_at": 1792276229.4762912
+   },
+   {
+    "id": "ev_a2b440d1",
+    "run_id": "run_608d27f0de",
+    "node_id": "node_01",
+    "kind": "literature",
+    "claim": "Serum ceruloplasmin is low at 18 mg/dL.",
+    "quote": "Serum ceruloplasmin, result: 18 mg/dL, reference range: 20–40, note: Wilson disease excluded.",
+    "source_id": "lab_02",
+    "finding_ids": "[\"lab_02\"]",
+    "stance": "supports",
+    "hypothesis": "possible Wilson disease",
+    "grounded": 1,
+    "grounding_note": "Quote verified in lab_02",
+    "created_at": 1792276229.4780412
+   },
+   {
+    "id": "ev_bcf9867c",
+    "run_id": "run_608d27f0de",
+    "node_id": "node_01",
+    "kind": "literature",
+    "claim": "MRI brain shows symmetric T2 hyperintensity in the bilateral putamina and thalami.",
+    "quote": "Symmetric T2 hyperintensity in the bilateral putamina and thalami.",
+    "source_id": "img_01",
+    "finding_ids": "[\"img_01\"]",
+    "stance": "supports",
+    "hypothesis": "Wilson disease",
+    "grounded": 1,
+    "grounding_note": "Quote verified in img_01",
+    "created_at": 1792276229.479417
+   },
+   {
+    "id": "ev_6fa6c6d8",
+    "run_id": "run_608d27f0de",
+    "node_id": "node_01",
+    "kind": "heldout",
+    "claim": "Kayser–Fleischer rings are present.",
+    "quote": "Kayser–Fleischer rings present; urine copper 210 µg/24h.",
+    "source_id": "HELDOUT:gap_04",
+    "finding_ids": "[]",
+    "stance": "supports",
+    "hypothesis": "Wilson disease",
+    "grounded": 1,
+    "grounding_note": "Quote verified in HELDOUT:gap_04",
+    "created_at": 1792276229.48086
+   },
+   {
+    "id": "ev_c09f42c4",
+    "run_id": "run_608d27f0de",
+    "node_id": "node_01",
+    "kind": "literature",
+    "claim": "Referral considered the condition probable dopa‑responsive dystonia and excluded Wilson disease.",
+    "quote": "Referral letter: 'Probable dopa‑responsive dystonia; Wilson excluded; please start levodopa.'",
+    "source_id": "prior_workup_and_opinions",
+    "finding_ids": "[]",
+    "stance": "contradicts",
+    "hypothesis": "initial impression of DRD may be incorrect",
+    "grounded": 1,
+    "grounding_note": "Quote verified in prior_workup_and_opinions",
+    "created_at": 1792276229.4823492
+   }
+  ],
+  "sources": [
+   {
+    "id": "HELDOUT:gap_02",
+    "run_id": "run_608d27f0de",
+    "title": "Radiology addendum",
+    "url": "",
+    "text": "Findings section is correct; summary line was a template error.",
+    "meta": "{\"held_out\": true, \"media\": null}"
+   },
+   {
+    "id": "HELDOUT:gap_04",
+    "run_id": "run_608d27f0de",
+    "title": "Slit lamp and 24-hour urine copper",
+    "url": "",
+    "text": "Kayser–Fleischer rings present; urine copper 210 µg/24h.",
+    "meta": "{\"held_out\": true, \"media\": null}"
+   },
+   {
+    "id": "PMID:41450729",
+    "run_id": "run_608d27f0de",
+    "title": "DNAJC12 Disease: Clinical Spectrum and Long-Term Outcomes.",
+    "url": "https://europepmc.org/article/MED/41450729",
+    "text": "Background and objectivesAutosomal recessive DNAJC12 disease, the most recently identified disorder of biogenic amine synthesis, presents with a broad clinical spectrum and variable outcomes, ranging from asymptomatic patients to early-onset parkinsonism. This study aimed to better outline the clinical phenotype and outcomes of DNAJC12 disease, the prognostic value of the metabolic and genetic biomarkers, and the treatment response.MethodsWe systematically collected clinical, biochemical, and genetic data from 56 patients with DNAJC12 disease in accordance with Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) guidelines: 51 from the literature since the disease was first described and 5 unpublished personal cases.ResultsThree prevalent clinical patterns of presentation and outcome were identified: (1) asymptomatic condition, (2) neurodevelopmental disorders (NDD) leading to intellectual disability with psychiatric issues and dystonia-parkinsonism (D-P) during the second decade of life in some patients, and (3) early-onset static l-dopa-responsive parkinsonism in previously asymptomatic adult patients. Hyperphenylalaninemia was the most consistent metabolic alteration. CSF depletion of homovanillic acid (HVA) and 5-HIAA was detected in 18 and 20 of 29 symptomatic patients, respectively. Three stepwise regression analyses identified significant predictors of clinical outcomes in patients with phenylketonuria (PKU). CSF HVA levels and phenylalanine levels at diagnosis predicted the occurrence of D-P, while 26% of intellectual disability variability was explained by CSF HVA at diagnosis, and 31% of psychiatric disorder variability by later age at diagnosis. The phenotype was consistently associated with only a few DNAJC12 pathogenic variants, primarily for phenotypes A and C.Movement disorders responded positively to the various therapies in all symptomatic patients. The preventive effects on NDD and psychiatric problems were less clear.DiscussionDNAJC12 disease is a new metabolic neurodevelopmental disorder linked to parkinsonism. The combined effects of neurotransmitter depletion and disrupted enzyme proteostasis in dopaminergic and serotoninergic neurons may underlie the early neurodevelopmental presentation and subsequent neurologic and psychiatric disorders.",
+    "meta": "{\"pmid\": \"41450729\", \"pmcid\": \"PMC12737867\", \"doi\": \"10.1212/nxg.0000000000200335\", \"year\": \"2026\", \"authors\": \"Manti F, Ricciardi G, Nardecchia F, Tolve M, Artiola C, Carbone MT, Carducci C, Mei D, Porta F, Ortolano R, Candela E, Burlina A, Guerrini R, Pisani F, Angeloni A, Leuzzi V.\", \"journal\": \"Neurol Genet\", \"volume\": \"12\", \"issue\": \"1\", \"pages\": \"e200335\"}"
+   },
+   {
+    "id": "PMID:41541975",
+    "run_id": "run_608d27f0de",
+    "title": "Re-examining the Diagnostic Criteria for Wilson's Disease: A Case Report and Literature Review.",
+    "url": "https://europepmc.org/article/MED/41541975",
+    "text": "Wilson's disease (WD) is a heterogeneous genetic disorder for which diagnosis is challenging. We present the case of a 54-year-old woman with a complicated medical history, including hepatitis C, cirrhosis, hepatic encephalopathy, and extensive psychiatric disease, who was transferred to our hospital for management of a spinal epidural abscess. Further findings suggested undiagnosed WD, including bilateral rings around Descemet's membrane and modestly low ceruloplasmin but normal urinary copper excretion. Many algorithms have been proposed for Wilson disease diagnosis, including clinical, laboratory, imaging, and genetic findings; however, no single test is diagnostic. The European Association for the Study of the Liver (EASL) guidelines are the most commonly employed algorithm. Updated 2022 guidelines by both the American Association for the Study of Liver Diseases (AASLD) and the British Association for the Study of the Liver (BASL) build upon this algorithm. Our patient scored 5 points on the EASL scale, which is sufficient for diagnosis. Nevertheless, we believe that she met the diagnostic criteria without having the actual disease. Newer guidelines by AASLD and BASL do not provide additional conclusivity. Our case demonstrates the need for re-evaluation of the diagnostic criteria of WD, where uncertainty can mean permanent hepatic and brain damage. Diagnostic guidelines should incorporate new biomarkers, ophthalmological techniques, and advanced technologies such as next-generation sequencing or CRISPR-Cas-based tools.",
+    "meta": "{\"pmid\": \"41541975\", \"pmcid\": \"PMC12802368\", \"doi\": \"10.7759/cureus.99271\", \"year\": \"2025\", \"authors\": \"Hummel L, Carr C, Biow S, Asher K, Sauer T, Maylin M.\", \"journal\": \"Cureus\", \"volume\": \"17\", \"issue\": \"12\", \"pages\": \"e99271\"}"
+   },
+   {
+    "id": "PMID:41635375",
+    "run_id": "run_608d27f0de",
+    "title": "Clinical and Demographic Profile of Wilson Disease in Young Adults: A Retrospective Study at a Tertiary Care Center in Peshawar, Pakistan.",
+    "url": "https://europepmc.org/article/MED/41635375",
+    "text": "Background Wilson disease (WD) is a rare autosomal recessive disorder of copper metabolism and an important treatable cause of hepatic dysfunction in young adults. Data from South Asian populations remains limited. Hence, the current study aimed to assess the demographic characteristics, clinical features, and diagnostic profile of patients with WD presenting at a tertiary care hospital in Peshawar, Pakistan. Methods This retrospective descriptive study was conducted in the Department of Medicine, Hayatabad Medical Complex, Peshawar, between January 2023 and December 2024. Medical records were systematically reviewed to identify all patients diagnosed with WD during this period. 21 patients with a confirmed WD diagnosis based on the modified Leipzig scoring system (score ≥ 4) and complete diagnostic workup were included. Complete diagnostic data was defined as documented serum ceruloplasmin, 24-hour urinary copper excretion, liver function tests, slit-lamp examination for Kayser-Fleischer (KF) rings, and negative screening for viral and autoimmune hepatitis. Demographic, clinical, and biochemical data were extracted from hospital records and analyzed using SPSS version 25. Post-hoc ethical approval was obtained from the institutional review board. Results The mean age at presentation was 23.2 ± 4.8 years (range 18-35), with a male-to-female ratio of 2:1. 15 patients (71.4%) were between 18 and 25 years of age. Jaundice was the predominant symptom, observed in 21 (100%) patients, while hepatomegaly and KF rings were observed in 18 (85.7%) and 12 (57.1%) of patients, respectively. The mean 24-hour urinary copper excretion was 1,450.3 ± 420.7 µg/day, and the mean serum ceruloplasmin level was 8.4 ± 3.2 mg/dL. Four patients (19%) were from two consanguineous families. A positive correlation between urinary copper and total bilirubin levels was observed (r = 0.74, p < 0.001). Conclusion WD in this internal medicine cohort primarily affected young adults presenting with hepatic manifestations, most commonly jaundice. Elevated urinary copper excretion and reduced serum ceruloplasmin levels were consistent diagnostic findings. Familial clustering, particularly in consanguineous families, was also observed, indicating a pattern consistent with autosomal recessive inheritance within this population.",
+    "meta": "{\"pmid\": \"41635375\", \"pmcid\": \"PMC12862504\", \"doi\": \"10.7759/cureus.100661\", \"year\": \"2026\", \"authors\": \"Khan I, Iftikhar M, Khan SJ.\", \"journal\": \"Cureus\", \"volume\": \"18\", \"issue\": \"1\", \"pages\": \"e100661\"}"
+   },
+   {
+    "id": "PMID:41694794",
+    "run_id": "run_608d27f0de",
+    "title": "Generalized Dystonia in a Patient With Wilson Disease 5 Years After Liver Transplant: A Case Report.",
+    "url": "https://europepmc.org/article/MED/41694794",
+    "text": "BackgroundLiver transplant (LT) is considered curative for Wilson disease (WD) with hepatic failure refractory to medical therapy, particularly when neurologic symptoms are absent.Case reportA 29-year-old man with WD developed progressive generalized dystonia five years after LT. He presented with acute-on-chronic neck pain, dysphagia, and dystonic posturing of the neck, trunk, and upper and lower extremities. MRI brain and copper studies were normal. Genetic testing confirmed two heterozygous pathogenic ATP7B variants. Symptoms improved with botulinum toxin injections.DiscussionPost-LT neurologic complications may arise from copper dysregulation, immunosuppressant neurotoxicity, or unrelated primary dystonia. Early recognition enables effective symptomatic management.",
+    "meta": "{\"pmid\": \"41694794\", \"pmcid\": \"PMC12904119\", \"doi\": \"10.5334/tohm.1120\", \"year\": \"2026\", \"authors\": \"Edwards E, Coleman B, Feldman M, Charles JH, Shpiner DS.\", \"journal\": \"Tremor Other Hyperkinet Mov (N Y)\", \"volume\": \"16\", \"issue\": null, \"pages\": \"13\"}"
+   },
+   {
+    "id": "PMID:41824837",
+    "run_id": "run_608d27f0de",
+    "title": "A cross-sectional assessment of the diagnostic value of serum ceruloplasmin for Wilson's disease in children.",
+    "url": "https://europepmc.org/article/MED/41824837",
+    "text": "Wilson's disease (WD) is a rare autosomal recessive disorder of copper metabolism requiring early diagnosis to prevent severe hepatic and neurological damage, particularly in children, where diagnostic challenges are pronounced. Serum ceruloplasmin (CPN) is a critical biochemical marker, yet its diagnostic accuracy and optimal cutoff value in pediatric populations need further evaluation in specific regional contexts. This study evaluates the diagnostic performance of serum CPN in diagnosing WD among children at Damascus University Children's Hospital and determines an optimal diagnostic cutoff value for this population. A bidirectional cross-sectional study was conducted from January 2019 to December 2022 at Damascus University Children's Hospital, including 80 children diagnosed with WD (case group) and 80 children with hepatic symptoms but without WD (control group), all under 13 years. Serum CPN was measured using immunoturbidimetry. Data on demographics, clinical presentations, Kayser-Fleischer rings, CPN levels, and 24-hour urinary copper were collected. Statistical analyses included t-tests, receiver operating characteristic analysis, and multiple linear regression (Statistical Package for Social Sciences). Ethical approval and informed consent were obtained. Mean age in the WD group was 119.15 ± 30.47 months (57.5% female). Serum CPN was significantly lower in WD (9.8 ± 3.2 mg/dL) versus controls (27.6 ± 10.4 mg/dL, P < .001). Receiver operating characteristic analysis showed high diagnostic accuracy (AUC = 0.967, 95% CI: 0.945-0.988), with an optimal CPN cutoff of 15 mg/dL (sensitivity 93.8%, specificity 85.0%). Regression identified age, female sex, neurological symptoms, Kayser-Fleischer rings, and urinary copper as predictors of lower CPN. Serum CPN is a highly accurate diagnostic marker for pediatric WD, with a 15 mg/dL cutoff optimizing sensitivity and specificity. Interpretation should consider age, sex, and clinical features.",
+    "meta": "{\"pmid\": \"41824837\", \"pmcid\": \"PMC12991615\", \"doi\": \"10.1097/md.0000000000048082\", \"year\": \"2026\", \"authors\": \"Yaldany M, Abboud F, Haddad S, Madanieh S, Mahmod J, Alhazaimeh M, Atoom G.\", \"journal\": \"Medicine (Baltimore)\", \"volume\": \"105\", \"issue\": \"11\", \"pages\": \"e48082\"}"
+   },
+   {
+    "id": "PMID:41896882",
+    "run_id": "run_608d27f0de",
+    "title": "Burden and severity of inherited monoamine neurotransmitter rare genetic disorders in India.",
+    "url": "https://europepmc.org/article/MED/41896882",
+    "text": "Monoamine neurotransmitter metabolic disorders (mNMDs) are a diverse group of rare genetic conditions caused by disruptions in the metabolism of catecholamines (dopamine, epinephrine, and norepinephrine) and serotonin. These disorders predominantly affect children, often manifesting as neurodevelopmental and mental health challenges. Despite their clinical significance, there is a conspicuous lack of comprehensive reviews focused on the Indian population. The prevalence and distribution of mNMDs within India remain largely unexplored, underlining an urgent need for systematic data collection and analysis. This review aims to address this knowledge gap by compiling individual case reports of mNMDs documented in India, identifying genetic factors contributing to these conditions, and describing their manifestations. It provides an overview of diagnosed cases of mNMDs from various hospitals across the country, emphasizing the current limitations of diagnostic tools and the need for specialized testing. By illuminating mNMDs occurrence and clinical characteristics in India, this review seeks to encourage greater awareness about these disorders in India and the need to develop effective diagnostic and therapeutic strategies.",
+    "meta": "{\"pmid\": \"41896882\", \"pmcid\": \"PMC13147586\", \"doi\": \"10.1186/s13023-026-04309-2\", \"year\": \"2026\", \"authors\": \"Hamid R, Gowda VK, Tauro L, Mishra R.\", \"journal\": \"Orphanet J Rare Dis\", \"volume\": \"21\", \"issue\": \"1\", \"pages\": \"179\"}"
+   },
+   {
+    "id": "PMID:41965601",
+    "run_id": "run_608d27f0de",
+    "title": "Genetic analysis reveals phenotypic variability in three Colombian families with dopa-responsive dystonia: novel genotype-phenotype correlations.",
+    "url": "https://europepmc.org/article/MED/41965601",
+    "text": "BACKGROUND: Dopa-responsive Dystonia (DRD) due to GTP cyclohydrolase 1 (GTPCH1) deficiency is a neurogenetic disorder caused by pathogenic GCH1 variants. Tetrahydrobiopterin (BH4) deficiency impairs dopamine synthesis in the basal ganglia, leading to childhood-onset dystonia with excellent response to levodopa. CASE PRESENTATION: We report eight patients from three unrelated families with GCH1 (NM_000161.3) variants: c.142 C > T; p.(Gln48*), c.241T > C; p.(Ser81Pro), and c.607G > A; p.(Gly203Arg). Two individuals homozygous for c.142 C > T showed phenotypic discordance. Mean age at onset was 7.3 years (range: 6–12), with an average diagnostic delay of 13.4 years. All symptomatic individuals responded well to low-dose levodopa. DISCUSSION: This is the first report to describe variable expressivity among individuals homozygous for p.(Gln48*). Previous literature has focused on heterozygous carriers with incomplete penetrance, and homozygous variability remains scarcely documented. CONCLUSIONS: Our findings expand the clinical and molecular spectrum of DRD and challenge the assumption that autosomal recessive GCH1 variants invariably cause a severe phenotype. This report underscores the importance of family-based genetic studies, detailed pedigrees, and careful clinical surveillance of asymptomatic carriers. A low threshold for levodopa trials is warranted, even when inheritance patterns or symptom severity deviate from classical expectations. These insights are critical to improving early recognition and timely treatment.",
+    "meta": "{\"pmid\": \"41965601\", \"pmcid\": \"PMC13251127\", \"doi\": \"10.1186/s12920-025-02287-1\", \"year\": \"2026\", \"authors\": \"Lince-Rivera I, Martinez-C\\u00f3rdoba N, Ram\\u00f3n-G\\u00f3mez JL, Cabarcas L, Zarante-Baham\\u00f3n AM.\", \"journal\": \"BMC Med Genomics\", \"volume\": \"19\", \"issue\": \"1\", \"pages\": \"98\"}"
+   },
+   {
+    "id": "PMID:42187864",
+    "run_id": "run_608d27f0de",
+    "title": "Ocular Clues to Liver Disease: A Strategic Diagnostic Lens.",
+    "url": "https://europepmc.org/article/MED/42187864",
+    "text": "Background/objectivesHepatic diseases frequently present with ocular manifestations that aid diagnosis, provide prognostic data, and guide therapy. Despite the clear utility of the liver-eye axis, the literature lacks reviews that categorize these manifestations by etiology. This review evaluates current evidence to identify ocular findings that serve as clinical tools for diagnosis, prognosis, and therapeutic monitoring of hepatic pathologies.MethodsA narrative review was conducted using PubMed and Google Scholar to identify English-language articles addressing ocular manifestations associated with liver disease. The primary search encompassed publications from 2000 to 2025, with inclusion of select foundational works published prior to 2000 when they represented seminal studies establishing diagnostic criteria, pathophysiological mechanisms, or natural history data not superseded by subsequent research. Search terms included combinations of liver, hepatic, hepatitis, cirrhosis, cholestasis, eye, ocular, retina, cornea, sclera, conjunctiva, ophthalmic manifestations, and specific disease names. All study designs were eligible. Society guidelines, systematic reviews, and studies from high-impact journals were prioritized. The final selection comprised 59 references representing the most authoritative sources across the spectrum of hepatic conditions.ResultsA spectrum of ocular findings linked to distinct hepatic conditions was identified. Manifestations with established clinicopathologic associations were categorized into congenital and acquired etiologies. Congenital liver pathologies included metabolic disorders (Wilson disease, galactosemia, lysosomal storage disorders) and syndromic/genetic causes (Alagille syndrome, hereditary hemochromatosis). Acquired liver diseases encompassed infectious (hepatitis B/C), drug-induced and iatrogenic (interferon, immune checkpoint inhibitors), nutritional (vitamin A deficiency), neoplastic (metastatic hepatocellular carcinoma), and cirrhotic causes.ConclusionsSpecific ocular signs raise clinical suspicion for underlying liver disease and warrant targeted hepatic evaluation. Recognizing these associations facilitates earlier diagnosis and improves outcomes. Systematic screening for these signs is supported in at-risk populations, and prospective validation studies should establish their sensitivity and specificity.",
+    "meta": "{\"pmid\": \"42187864\", \"pmcid\": \"PMC13205696\", \"doi\": \"10.3390/diseases14050152\", \"year\": \"2026\", \"authors\": \"Dahshan M, Dahshan H, Basoglu A, Kadikoy H.\", \"journal\": \"Diseases\", \"volume\": \"14\", \"issue\": \"5\", \"pages\": \"152\"}"
+   },
+   {
+    "id": "PMID:42196589",
+    "run_id": "run_608d27f0de",
+    "title": "PANDAS Syndrome: A Narrative Review of the Diagnostic Conundrum in Children with Acute Neuropsychiatric Symptoms.",
+    "url": "https://europepmc.org/article/MED/42196589",
+    "text": "The hypothesis that Group A beta-haemolytic Streptococcus (GAS) triggers an autoimmune cascade targeting basal ganglia dopaminergic circuits-producing obsessive-compulsive disorder (OCD), tic disorders, or chorea depending on the receptor subtype involved-is biologically compelling and supported by emerging molecular evidence. Yet PANDAS has remained a diagnostic conundrum since its original description in 1998, with ongoing uncertainty surrounding diagnostic criteria, the interpretation of streptococcal serology, and the distinction from primary neurodevelopmental disorders. This study aimed to review the diagnostic challenges of PANDAS, with focus on streptococcal serology interpretation, advances in dopamine receptor autoantibody biology, the genetic epidemiology of primary tic disorders, and the differential diagnosis of acute neuropsychiatric presentations in children. A structured narrative review was conducted using PubMed, MEDLINE, EMBASE, and the Cochrane Library for publications from 1998 to early 2025 addressing PANDAS, PANS, streptococcal antibodies, childhood movement disorders, autoimmune encephalitis, and the genetics of tic disorders. No currently available biomarker-including ASO, anti-DNase B, anti-basal-ganglia antibodies, or the Cunningham Panel-has demonstrated adequate individual-level diagnostic accuracy for PANDAS. Emerging molecular evidence identifies anti-D1R autoantibodies, acting via G protein-and beta-arrestin-mediated signalling, as candidate biomarkers for PANDAS/PANS neuropsychiatric phenotypes, and anti-D2R autoantibodies for Sydenham chorea movement phenotypes; independent replication in unselected populations is required. Primary tic disorders carry heritability estimates of 50-80% and first-degree familial risk ratios of approximately 18-fold in large population-based cohorts. Prospective blinded studies have not demonstrated a consistent population-level association between GAS infections and tic or OCD exacerbations: PANDAS and PANS remain diagnoses of exclusion. The high background prevalence of both GAS exposure and primary neurodevelopmental disorders in overlapping paediatric age ranges creates conditions for incidental temporal co-occurrence. In the absence of validated molecular biomarkers, diagnostic imprecision carries direct clinical consequences: children may be exposed to treatments with significant risk profiles-including IVIG, plasma exchange, and prolonged antibiotic prophylaxis-while evidence-based therapies are delayed. A stepwise diagnostic approach incorporating the full differential diagnosis is both an epistemological and a patient safety imperative.",
+    "meta": "{\"pmid\": \"42196589\", \"pmcid\": \"PMC13208071\", \"doi\": \"10.3390/ijms27104612\", \"year\": \"2026\", \"authors\": \"Cesaroni CA, Pisan\\u00f2 G, Rizzi S, Pantani A, Frattini D, Fusco C.\", \"journal\": \"Int J Mol Sci\", \"volume\": \"27\", \"issue\": \"10\", \"pages\": \"4612\"}"
+   },
+   {
+    "id": "PMID:42279596",
+    "run_id": "run_608d27f0de",
+    "title": "LGMD R18 Mimicking Wilson Disease: 6-Year Longitudinal Muscle MRI Evolution and Clinical Insights into &lt;i&gt;TRAPPC11&lt;/i&gt; Mutation.",
+    "url": "https://europepmc.org/article/MED/42279596",
+    "text": "Background and Clinical Significance: Limb-girdle muscular dystrophy R18 is a rare autosomal recessive disorder that may present with both muscular and hepatic involvement, potentially leading to diagnostic confusion. Longitudinal MRI data documenting this disease from childhood remain scarce. Case Presentation: We report a female patient with disease onset that occurred at 8 years of age, initially presenting with elevated liver enzymes and decreased ceruloplasmin levels, which raised suspicion of Wilson's disease. Genetic testing confirmed TRAPPC11 mutation. Serial MRI scans of the thigh muscles over a six-year period demonstrated progressive fatty infiltration, predominantly affecting the adductor magnus and posterior thigh muscles, with relative sparing of the gracilis and anterior compartment muscles. Conclusions: This case highlights that limb-girdle muscular dystrophy R18 can clinically mimic Wilson disease. Longitudinal muscle MRI offers valuable diagnostic insights and reveals a characteristic pattern of muscle involvement.",
+    "meta": "{\"pmid\": \"42279596\", \"pmcid\": \"PMC13257075\", \"doi\": \"10.3390/diagnostics16111729\", \"year\": \"2026\", \"authors\": \"Chou YT, Chou HP, Chen YW.\", \"journal\": \"Diagnostics (Basel)\", \"volume\": \"16\", \"issue\": \"11\", \"pages\": \"1729\"}"
+   },
+   {
+    "id": "PMID:42483444",
+    "run_id": "run_608d27f0de",
+    "title": "Pediatric parkinsonism: clinical review and a proposed clinical algorithm.",
+    "url": "https://europepmc.org/article/MED/42483444",
+    "text": "Pediatric parkinsonism (PP) is a rare but disabling movement disorder characterized by bradykinesia and rigidity, with tremor being less frequent. Additional features include gait disturbances and impaired postural reflexes. In younger children, hypotonia is often a predominant sign. Clinical expression evolves with neurodevelopment and is frequently associated with other movement abnormalities, such as dystonia. The condition may arise from a variety of pathophysiological mechanisms and multiple etiologies, with genetic causes being particularly prominent. A classification system has been proposed based on age of onset, clinical features, prognosis and etiology, comprising: Developmental parkinsonism, Infantile degenerative parkinsonism, Parkinsonism in the setting of postnatal neurodevelopmental disorders, Parkinsonism associated with multisystemic brain diseases, Juvenile parkinsonism and dystonia-parkinsonism and Acquired parkinsonism. A specific assessment tool-the Infantile Parkinsonism-Dystonia Rating Scale-has recently been developed and primarily validated to quantify severity, monitor disease progression and assess treatment response. This review aims to provide a comprehensive overview of the clinical features, pathophysiology, etiologies and treatment approaches of pediatric parkinsonism. In addition, we propose a diagnostic algorithm to support clinical decision-making.",
+    "meta": "{\"pmid\": \"42483444\", \"pmcid\": \"PMC13387017\", \"doi\": \"10.3389/fneur.2026.1788936\", \"year\": \"2026\", \"authors\": \"Naranjo-Lobo V, Hidalgo-Bravo MJ, Munoz-Chesta D, Troncoso-Schifferli M.\", \"journal\": \"Front Neurol\", \"volume\": \"17\", \"issue\": null, \"pages\": \"1788936\"}"
+   },
+   {
+    "id": "PMID:42534655",
+    "run_id": "run_608d27f0de",
+    "title": "Follow-up and outcome of patients with primary BH4 deficiencies.",
+    "url": "https://europepmc.org/article/MED/42534655",
+    "text": "BH4 deficiencies may occur with or without hyperphenylalaninemia (HPA). If identified early through neonatal screening for PKU, the clinical follow-up aims to prevent the onset of typical disease symptoms. In contrast, for the conditions not associated with HPA, diagnosis usually occurs once symptoms manifest, and follow-up focuses on monitoring the treatment's effectiveness in restoring normal neurological function. Except for pterin-4-alpha-carbinolamine dehydratase defect (PCCDd), the core symptoms and natural course of these diseases involve neurodevelopmental impairment and movement disorders. Current information on clinical follow-up and outcome comes from retrospective observational studies, with standardized measures used in only a few of them. Serial clinical observations focusing on the two most consistent areas of neurological impairment are the best predictors of outcome and the main follow-up targets. Available clinical data, often aggregating early- and late-treated patients, show that the best clinical outcome occurs in autosomal dominant guanosine triphosphate cyclohydrolase I deficiency (AD-GTPCHd). In contrast, for recessive conditions, prognosis is variably associated with both the timing of treatment (autosomal recessive [AR]-GTPCHd, 6-pyruvoyltetrahydropterin synthase [PTPS]d, sepiapterin [SR]d, q-dihydropyridine reductase [DHPR]d) and the severity of metabolic derangement (AR-GTPCHd, PTPSd). Neurocognitive, psychiatric, and sleep disorders are currently underestimated and can occur in children and adults, affecting social adaptation and quality of life. Among metabolic alterations, blood Phe levels, when altered, warrant regular monitoring. CSF evaluation can be considered in subjects unresponsive to treatment or with an unexpected clinical course. CSF 5-MTHF monitoring should be reserved for patients with DHPRd experiencing neurological deterioration and seizures. Monitoring prolactin levels, when altered, may assist in personalizing pharmacological treatment. Serum magnesium and glucose are metabolic markers that should be assessed in PDCCd. Brain MRI monitoring is recommended for patients experiencing unusual courses, epilepsy, and neurological deterioration (particularly in PTPSd and DHPRd). A DAT scan is advised for those with AD-GTPCH who present or develop Parkinsonism, and EEG monitoring should be conducted for every patient with epilepsy or suspected seizures. For future clinical studies, it is mandatory that the clinical assessment adopt standardized tools that score impairment across neurological and behavioral domains, taking the patient's age into account.Systematic review registrationhttps://www.crd.york.ac.uk/PROSPERO/display_record.php?RecordID=1144143, identifier (CRD420251144143).",
+    "meta": "{\"pmid\": \"42534655\", \"pmcid\": \"PMC13422167\", \"doi\": \"10.3389/fneur.2026.1793300\", \"year\": \"2026\", \"authors\": \"Nardecchia F, Manti F, De Giorgi A, Galosi S, Friedman J, Leuzzi V.\", \"journal\": \"Front Neurol\", \"volume\": \"17\", \"issue\": null, \"pages\": \"1793300\"}"
+   },
+   {
+    "id": "PMID:42648177",
+    "run_id": "run_608d27f0de",
+    "title": "Salivary copper as a screening tool for pediatric Wilson's disease: A pilot study.",
+    "url": "https://europepmc.org/article/MED/42648177",
+    "text": "BackgroundWilson's disease (WD) is a treatable disorder of copper metabolism in which early diagnosis remains challenging, particularly during the asymptomatic pediatric phase, limiting the feasibility of population-level screening strategies.ObjectivesTo assess the feasibility of salivary copper as a screening biomarker for pediatric WD and establish preliminary reference values in asymptomatic children.MethodsIn this cross-sectional pilot study, healthy children aged 5-15 years were recruited from pediatric outpatient clinics at a tertiary academic center. Salivary copper concentrations were quantified by ICP-MS, and percentile-based reference values were estimated. Associations with age and sex were assessed using multivariable linear regression with log10-transformed copper values. An exploratory post-hoc analysis integrating pediatric controls with patients with confirmed WD was performed using receiver operating characteristic (ROC) curve analysis.ResultsA total of 114 children were included. Salivary copper concentrations showed a right-skewed distribution, with a median of 12.19 μg/L (IQR: 8.67-19.73 μg/L). The preliminary upper reference threshold was 30.73 μg/L after exclusion of extreme outliers. Salivary copper levels were not significantly associated with age or sex. In exploratory ROC analysis, salivary copper showed promising discriminative performance for WD (AUC 0.822, 95% CI 0.701-0.942). The Youden-derived cutoff (14.94 μg/L) showed higher sensitivity and moderate specificity, whereas higher thresholds demonstrated high specificity but lower sensitivity.ConclusionsSalivary copper measurement is a feasible, non-invasive biomarker with potential application in pediatric WD screening. These findings support a dual-threshold strategy for screening and confirmatory assessment, although larger multicenter validation studies are required.",
+    "meta": "{\"pmid\": \"42648177\", \"pmcid\": null, \"doi\": \"10.1016/j.parkreldis.2026.108948\", \"year\": \"2026\", \"authors\": \"Morais GF, Kalinowski FCM, Coutinho L, Bonilha PAAM, de Souza VC, Brand\\u00e3o I, Costa FS, Amaral CDB, Betini BG, Barbosa ER, Teive HAG.\", \"journal\": \"Parkinsonism Relat Disord\", \"volume\": \"151\", \"issue\": null, \"pages\": \"108948\"}"
+   },
+   {
+    "id": "PMID:42764666",
+    "run_id": "run_608d27f0de",
+    "title": "Phenotypic Spectrum and Clinical Approach to Early-Onset Hereditary Spastic Paraplegia.",
+    "url": "https://europepmc.org/article/MED/42764666",
+    "text": "BackgroundEarly-onset hereditary spastic paraplegias (HSPs) are an underrecognized cause of progressive spasticity, gait impairment, and movement disorders in children and young adults. HSPs frequently mimic cerebral palsy or genetic, metabolic, and acquired disorders, resulting in diagnostic delay. Their broad phenotypic spectrum, encompassing dystonia, parkinsonism, and neurodevelopmental features, makes them highly relevant to movement disorder practitioners across the lifespan.ObjectivesThis review summarizes the phenotypic spectrum of early-onset HSP, outlines a practical diagnostic approach for clinicians, and discusses therapeutic strategies.MethodsWe conducted a narrative review of PubMed-indexed literature through February 2026, supplemented by expert consensus. HSPs typically presenting in childhood and adolescence, inclusive of forms presenting across a broader age spectrum, with attention to subtypes presenting with movement disorders, were considered.ResultsEarly-onset HSPs encompass both pure and complex forms, with SPG4 (SPAST) and SPG11 (SPG11/KIAA1840) among the most prevalent etiologies. Diagnostic challenges include distinction from cerebral palsy and other movement disorders including dopa-responsive dystonia, and identification of neuroimaging signatures in specific subtypes. A multidisciplinary management approach remains central, with spasticity, movement disorder, and neurological comorbidities each requiring targeted consideration. Disease-modifying therapies are emerging, including gene replacement strategies and antisense oligonucleotide approaches for select subtypes.ConclusionsEarly-onset HSPs represent a clinically and genetically heterogeneous group with substantial overlap with movement disorder practice. Awareness of characteristic phenotypes, early genetic testing, and an individualized multidisciplinary approach are essential. Recent advances in natural history characterization and mechanism-targeted therapeutics signal a transition toward disease-modifying treatment strategies and offer cautious optimism for affected individuals.",
+    "meta": "{\"pmid\": \"42764666\", \"pmcid\": null, \"doi\": \"10.1002/mdc3.70827\", \"year\": \"2026\", \"authors\": \"Wilson JL, Blackstone C, Ebrahimi-Fakhari D, Fran\\u00e7a Junior MC.\", \"journal\": \"Mov Disord Clin Pract\", \"volume\": null, \"issue\": null, \"pages\": null}"
+   }
+  ],
+  "events": [
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 1,
+    "ts": 1792276106.989166,
+    "type": "run.started",
+    "data": "{\"run_id\": \"run_608d27f0de\", \"slot\": \"10\", \"mode\": \"scored\", \"case_id\": \"case_10\", \"llm_backend\": \"crusoe\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 2,
+    "ts": 1792276106.990093,
+    "type": "node.created",
+    "data": "{\"node\": {\"id\": \"node_00\", \"run_id\": \"run_608d27f0de\", \"parent_id\": null, \"depth\": 0, \"role\": \"lead\", \"model\": \"nvidia/NVIDIA-Nemotron-3-Super-120B-A12B\", \"objective\": \"Investigate case_10: 16-year-old with a year of progressive left foot twisting, hand tremor and slurred speech\", \"justification\": null, \"status\": \"queued\", \"checkpoint\": \"created\", \"verification\": \"pending\", \"retry_count\": 0}}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 3,
+    "ts": 1792276106.991362,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"running\", \"checkpoint\": \"created\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 4,
+    "ts": 1792276178.242156,
+    "type": "node.decision",
+    "data": "{\"node_id\": \"node_00\", \"action\": \"spawn\", \"requested_children\": 2, \"rationale\": \"A 16\\u2011year\\u2011old male presents with a year of progressive left foot dystonic inversion that is worse in the morning and improves through the day, bilateral postural/action hand tremor with a wing\\u2011beating quality, mild dysarthria, mild bradykinesia, hyperreflexia, mildly slowed processing with inappropriate jocularity, mildly elevated ALT, low serum ceruloplasmin, and MRI showing symmetric T2 hyperintensity in the putamina and thalami. The referral letter suggests dopa\\u2011responsive dystonia and excludes Wilson disease, but no slit\\u2011lamp exam or 24\\u2011hour urine copper has been performed. The key diagnostic uncertainty is whether Wilson disease is present, which would explain the liver abnormality, low ceruloplasmin, basal ganglia MRI changes, neuropsychiatric features, and movement disorder, versus a dopa\\u2011responsive dystonia, which would be supported by the age of onset, diurnal fluctuation of foot dystonia, and mild bradykinesia but is contradicted by the abnormal MRI, tremor type, dysarthria, hyperreflexia, and liver findings.\", \"hypotheses\": [\"Wilson disease\", \"Dopa\\u2011responsive dystonia (DRD)\"]}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 5,
+    "ts": 1792276178.249781,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"running\", \"checkpoint\": \"analyzed\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 6,
+    "ts": 1792276178.255265,
+    "type": "node.created",
+    "data": "{\"node\": {\"id\": \"node_01\", \"run_id\": \"run_608d27f0de\", \"parent_id\": \"node_00\", \"depth\": 1, \"role\": \"investigator\", \"model\": \"nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B\", \"objective\": \"Obtain slit\\u2011lamp examination to assess for Kayser\\u2011Fleischer rings.\", \"justification\": \"Slit\\u2011lamp exam is a required component of the Wilson disease workup; it has not been documented and its result would directly address the leading can't\\u2011miss hypothesis.\", \"status\": \"queued\", \"checkpoint\": \"created\", \"verification\": \"pending\", \"retry_count\": 0}}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 7,
+    "ts": 1792276178.2563179,
+    "type": "spawn.rejected",
+    "data": "{\"node_id\": \"node_00\", \"objective\": \"\", \"reason\": \"Objective is not specific enough\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 8,
+    "ts": 1792276178.257705,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"running\", \"checkpoint\": \"children_spawned\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 9,
+    "ts": 1792276178.259097,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"waiting_children\", \"checkpoint\": \"children_spawned\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 10,
+    "ts": 1792276178.2607691,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"running\", \"checkpoint\": \"created\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 11,
+    "ts": 1792276184.2198348,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"running\", \"checkpoint\": \"planned\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 12,
+    "ts": 1792276184.223538,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"researching\", \"checkpoint\": \"planned\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 13,
+    "ts": 1792276185.954368,
+    "type": "search.performed",
+    "data": "{\"node_id\": \"node_01\", \"query\": \"dopa-responsive dystonia pediatric presentation\", \"query_used\": \"dopa-responsive dystonia pediatric presentation\", \"attempts\": [{\"source\": \"europepmc\", \"query\": \"dopa-responsive dystonia pediatric presentation\", \"ok\": true, \"n\": 5}], \"results\": [{\"source_id\": \"PMID:41965601\", \"title\": \"Genetic analysis reveals phenotypic variability in three Colombian families with dopa-responsive dystonia: novel genotype-phenotype correlations.\", \"url\": \"https://europepmc.org/article/MED/41965601\"}, {\"source_id\": \"PMID:42483444\", \"title\": \"Pediatric parkinsonism: clinical review and a proposed clinical algorithm.\", \"url\": \"https://europepmc.org/article/MED/42483444\"}, {\"source_id\": \"PMID:42534655\", \"title\": \"Follow-up and outcome of patients with primary BH4 deficiencies.\", \"url\": \"https://europepmc.org/article/MED/42534655\"}, {\"source_id\": \"PMID:41896882\", \"title\": \"Burden and severity of inherited monoamine neurotransmitter rare genetic disorders in India.\", \"url\": \"https://europepmc.org/article/MED/41896882\"}, {\"source_id\": \"PMID:41450729\", \"title\": \"DNAJC12 Disease: Clinical Spectrum and Long-Term Outcomes.\", \"url\": \"https://europepmc.org/article/MED/41450729\"}]}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 14,
+    "ts": 1792276187.392956,
+    "type": "search.performed",
+    "data": "{\"node_id\": \"node_01\", \"query\": \"Wilson disease movement disorder pediatric\", \"query_used\": \"Wilson disease movement disorder pediatric\", \"attempts\": [{\"source\": \"europepmc\", \"query\": \"Wilson disease movement disorder pediatric\", \"ok\": true, \"n\": 5}], \"results\": [{\"source_id\": \"PMID:42764666\", \"title\": \"Phenotypic Spectrum and Clinical Approach to Early-Onset Hereditary Spastic Paraplegia.\", \"url\": \"https://europepmc.org/article/MED/42764666\"}, {\"source_id\": \"PMID:42648177\", \"title\": \"Salivary copper as a screening tool for pediatric Wilson's disease: A pilot study.\", \"url\": \"https://europepmc.org/article/MED/42648177\"}, {\"source_id\": \"PMID:42483444\", \"title\": \"Pediatric parkinsonism: clinical review and a proposed clinical algorithm.\", \"url\": \"https://europepmc.org/article/MED/42483444\"}, {\"source_id\": \"PMID:42196589\", \"title\": \"PANDAS Syndrome: A Narrative Review of the Diagnostic Conundrum in Children with Acute Neuropsychiatric Symptoms.\", \"url\": \"https://europepmc.org/article/MED/42196589\"}, {\"source_id\": \"PMID:41694794\", \"title\": \"Generalized Dystonia in a Patient With Wilson Disease 5 Years After Liver Transplant: A Case Report.\", \"url\": \"https://europepmc.org/article/MED/41694794\"}]}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 15,
+    "ts": 1792276189.131073,
+    "type": "search.performed",
+    "data": "{\"node_id\": \"node_01\", \"query\": \"slit lamp Kayser-Fleischer rings clinical utility\", \"query_used\": \"slit lamp Kayser-Fleischer rings clinical utility\", \"attempts\": [{\"source\": \"europepmc\", \"query\": \"slit lamp Kayser-Fleischer rings clinical utility\", \"ok\": true, \"n\": 5}], \"results\": [{\"source_id\": \"PMID:42187864\", \"title\": \"Ocular Clues to Liver Disease: A Strategic Diagnostic Lens.\", \"url\": \"https://europepmc.org/article/MED/42187864\"}, {\"source_id\": \"PMID:42279596\", \"title\": \"LGMD R18 Mimicking Wilson Disease: 6-Year Longitudinal Muscle MRI Evolution and Clinical Insights into &lt;i&gt;TRAPPC11&lt;/i&gt; Mutation.\", \"url\": \"https://europepmc.org/article/MED/42279596\"}, {\"source_id\": \"PMID:41541975\", \"title\": \"Re-examining the Diagnostic Criteria for Wilson's Disease: A Case Report and Literature Review.\", \"url\": \"https://europepmc.org/article/MED/41541975\"}, {\"source_id\": \"PMID:41635375\", \"title\": \"Clinical and Demographic Profile of Wilson Disease in Young Adults: A Retrospective Study at a Tertiary Care Center in Peshawar, Pakistan.\", \"url\": \"https://europepmc.org/article/MED/41635375\"}, {\"source_id\": \"PMID:41824837\", \"title\": \"A cross-sectional assessment of the diagnostic value of serum ceruloplasmin for Wilson's disease in children.\", \"url\": \"https://europepmc.org/article/MED/41824837\"}]}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 16,
+    "ts": 1792276189.1320992,
+    "type": "heldout.released",
+    "data": "{\"node_id\": \"node_01\", \"request\": \"Arrange slit-lamp examination to evaluate for Kayser-Fleischer rings\", \"gap_id\": \"gap_04\", \"source_id\": \"HELDOUT:gap_04\", \"investigation\": \"Slit lamp and 24-hour urine copper\", \"result\": \"Kayser\\u2013Fleischer rings present; urine copper 210 \\u00b5g/24h.\", \"media\": null}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 17,
+    "ts": 1792276189.133177,
+    "type": "heldout.released",
+    "data": "{\"node_id\": \"node_01\", \"request\": \"Consider 24-hour urinary copper testing if slit-lamp inconclusive\", \"gap_id\": \"gap_04\", \"source_id\": \"HELDOUT:gap_04\", \"investigation\": \"Slit lamp and 24-hour urine copper\", \"result\": \"Kayser\\u2013Fleischer rings present; urine copper 210 \\u00b5g/24h.\", \"media\": null}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 18,
+    "ts": 1792276189.1339579,
+    "type": "heldout.released",
+    "data": "{\"node_id\": \"node_01\", \"request\": \"Re\\u2011review MRI brain report for putaminal changes (currently reported as normal) to confirm absence of typical Wilson findings\", \"gap_id\": \"gap_02\", \"source_id\": \"HELDOUT:gap_02\", \"investigation\": \"Radiology addendum\", \"result\": \"Findings section is correct; summary line was a template error.\", \"media\": null}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 19,
+    "ts": 1792276189.1349142,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"researching\", \"checkpoint\": \"research_done\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 20,
+    "ts": 1792276189.135927,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"running\", \"checkpoint\": \"research_done\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 21,
+    "ts": 1792276229.474072,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_bcf7e7a6\", \"run_id\": \"run_608d27f0de\", \"node_id\": \"node_01\", \"kind\": \"literature\", \"claim\": \"Patient has left foot dystonic inversion on gait.\", \"quote\": \"Left foot dystonic inversion on walking.\", \"source_id\": \"mf_01\", \"finding_ids\": [\"mf_01\"], \"stance\": \"supports\", \"hypothesis\": \"focal lower limb dystonia\", \"grounded\": true, \"grounding_note\": \"Quote verified in mf_01\"}}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 22,
+    "ts": 1792276229.475626,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_22eab33c\", \"run_id\": \"run_608d27f0de\", \"node_id\": \"node_01\", \"kind\": \"literature\", \"claim\": \"Patient exhibits bilateral postural and action tremor with coarse wing-beating quality.\", \"quote\": \"Bilateral postural and action tremor of the hands with a proximal, coarse 'wing-beating' quality on arm abduction.\", \"source_id\": \"mf_02\", \"finding_ids\": [\"mf_02\"], \"stance\": \"supports\", \"hypothesis\": \"action tremor\", \"grounded\": true, \"grounding_note\": \"Quote verified in mf_02\"}}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 23,
+    "ts": 1792276229.477278,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_17848d25\", \"run_id\": \"run_608d27f0de\", \"node_id\": \"node_01\", \"kind\": \"literature\", \"claim\": \"Patient has mild dysarthria.\", \"quote\": \"Mild dysarthria.\", \"source_id\": \"mf_03\", \"finding_ids\": [\"mf_03\"], \"stance\": \"supports\", \"hypothesis\": \"speech involvement\", \"grounded\": true, \"grounding_note\": \"Quote verified in mf_03\"}}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 24,
+    "ts": 1792276229.4787352,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_a2b440d1\", \"run_id\": \"run_608d27f0de\", \"node_id\": \"node_01\", \"kind\": \"literature\", \"claim\": \"Serum ceruloplasmin is low at 18 mg/dL.\", \"quote\": \"Serum ceruloplasmin, result: 18 mg/dL, reference range: 20\\u201340, note: Wilson disease excluded.\", \"source_id\": \"lab_02\", \"finding_ids\": [\"lab_02\"], \"stance\": \"supports\", \"hypothesis\": \"possible Wilson disease\", \"grounded\": true, \"grounding_note\": \"Quote verified in lab_02\"}}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 25,
+    "ts": 1792276229.480109,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_bcf9867c\", \"run_id\": \"run_608d27f0de\", \"node_id\": \"node_01\", \"kind\": \"literature\", \"claim\": \"MRI brain shows symmetric T2 hyperintensity in the bilateral putamina and thalami.\", \"quote\": \"Symmetric T2 hyperintensity in the bilateral putamina and thalami.\", \"source_id\": \"img_01\", \"finding_ids\": [\"img_01\"], \"stance\": \"supports\", \"hypothesis\": \"Wilson disease\", \"grounded\": true, \"grounding_note\": \"Quote verified in img_01\"}}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 26,
+    "ts": 1792276229.481652,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_6fa6c6d8\", \"run_id\": \"run_608d27f0de\", \"node_id\": \"node_01\", \"kind\": \"heldout\", \"claim\": \"Kayser\\u2013Fleischer rings are present.\", \"quote\": \"Kayser\\u2013Fleischer rings present; urine copper 210 \\u00b5g/24h.\", \"source_id\": \"HELDOUT:gap_04\", \"finding_ids\": [], \"stance\": \"supports\", \"hypothesis\": \"Wilson disease\", \"grounded\": true, \"grounding_note\": \"Quote verified in HELDOUT:gap_04\"}}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 27,
+    "ts": 1792276229.482857,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_c09f42c4\", \"run_id\": \"run_608d27f0de\", \"node_id\": \"node_01\", \"kind\": \"literature\", \"claim\": \"Referral considered the condition probable dopa\\u2011responsive dystonia and excluded Wilson disease.\", \"quote\": \"Referral letter: 'Probable dopa\\u2011responsive dystonia; Wilson excluded; please start levodopa.'\", \"source_id\": \"prior_workup_and_opinions\", \"finding_ids\": [], \"stance\": \"contradicts\", \"hypothesis\": \"initial impression of DRD may be incorrect\", \"grounded\": true, \"grounding_note\": \"Quote verified in prior_workup_and_opinions\"}}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 28,
+    "ts": 1792276229.48341,
+    "type": "node.decision",
+    "data": "{\"node_id\": \"node_01\", \"action\": \"finish\", \"requested_children\": 0, \"rationale\": \"Wilson disease is the most likely etiology given low ceruloplasmin, putaminal hyperintensity, positive Kayser\\u2013Fleischer rings, and elevated urinary copper; the prior impression of dopa\\u2011responsive dystonia is contradicted.\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 29,
+    "ts": 1792276229.4853618,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"running\", \"checkpoint\": \"analyzed\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 30,
+    "ts": 1792276229.486819,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"running\", \"checkpoint\": \"children_spawned\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 31,
+    "ts": 1792276229.487743,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"running\", \"checkpoint\": \"children_done\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 32,
+    "ts": 1792276229.4885602,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"done\", \"checkpoint\": \"finished\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 33,
+    "ts": 1792276229.489365,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"verifying\", \"checkpoint\": \"finished\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 34,
+    "ts": 1792276275.077326,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"done\", \"checkpoint\": \"finished\", \"verification\": \"insufficient\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 35,
+    "ts": 1792276275.0780869,
+    "type": "verification",
+    "data": "{\"node_id\": \"node_01\", \"verdict\": \"insufficient\", \"feedback\": \"C1 (finding 3): quoted passage does not appear verbatim in source text; need to match exact punctuation or adjust quote.\", \"rejected_evidence_ids\": [\"ev_a2b440d1\"]}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 36,
+    "ts": 1792276290.520451,
+    "type": "node.decision",
+    "data": "{\"node_id\": \"node_00\", \"action\": \"spawn\", \"trigger\": \"verifier\", \"about\": \"node_01\", \"rationale\": \"Feedback indicates the previous child objective's quoted passage did not match the source text exactly. A specific, discriminating question is needed to verify whether slit\\u2011lamp examination for Kayser\\u2011Fleischer rings has been documented, as required to address the can't\\u2011miss condition Wilson disease.\", \"requested_children\": 1}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 37,
+    "ts": 1792276290.5225291,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"unresolved\", \"checkpoint\": \"finished\", \"verification\": \"insufficient\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 38,
+    "ts": 1792276290.5241542,
+    "type": "spawn.rejected",
+    "data": "{\"node_id\": \"node_00\", \"objective\": \"Obtain documentation of slit\\u2011lamp examination to assess for Kayser\\u2011Fleischer rings.\", \"reason\": \"Duplicate of an existing task (similarity 0.88): Obtain slit\\u2011lamp examination to assess for Kayser\\u2011Fleischer rings.\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 39,
+    "ts": 1792276290.526885,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"running\", \"checkpoint\": \"children_spawned\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 40,
+    "ts": 1792276290.527998,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"running\", \"checkpoint\": \"children_done\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 41,
+    "ts": 1792276309.978548,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"retrying\", \"checkpoint\": \"children_done\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 42,
+    "ts": 1792276309.981504,
+    "type": "node.retry",
+    "data": "{\"node_id\": \"node_00\", \"attempt\": 1, \"checkpoint\": \"children_done\", \"reason\": \"RateLimitError: Error code: 429 - {'error': {'param': None, 'type': 'rate_limit_error', 'code': None, 'message': 'Too many requests. Reason: max_requests_limit (orchestrator)'}}\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 43,
+    "ts": 1792276324.986277,
+    "type": "node.recovered",
+    "data": "{\"node_id\": \"node_00\", \"from_checkpoint\": \"children_done\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 44,
+    "ts": 1792276324.9897118,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"running\", \"checkpoint\": \"children_done\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 45,
+    "ts": 1792276403.174916,
+    "type": "report.ready",
+    "data": "{\"report\": {\"summary\": \"A 16\\u2011year\\u2011old male has a year of progressive left foot dystonic inversion that is worse in the morning and improves through the day, bilateral postural/action hand tremor with a wing\\u2011beating quality, mild dysarthria, mild bradykinesia, hyperreflexia, mildly slowed processing with inappropriate jocularity, mildly elevated ALT, low serum ceruloplasmin, and MRI showing symmetric T2 hyperintensity in the putamina and thalami. Slit\\u2011lamp examination reveals Kayser\\u2013Fleischer rings and 24\\u2011hour urine copper is markedly elevated (210 \\u00b5g/24h). These findings together satisfy diagnostic criteria for Wilson disease, while features that might suggest dopa\\u2011responsive dystonia (age <40, morning\\u2011worsening foot dystonia, mild bradykinesia) are outweighed by the abnormal MRI, tremor type, dysarthria, hyperreflexia, neuropsychiatric changes, and liver abnormalities.\", \"differential\": [{\"rank\": 1, \"hypothesis\": \"Wilson disease\", \"confidence\": \"high\", \"supporting_evidence_ids\": [\"lab_01\", \"lab_02\", \"img_01\", \"neurological_exam.mental_status\", \"neurological_exam.coordination\", \"mf_02\", \"mf_03\", \"family_history\", \"HELDOUT:gap_04\"], \"contradicting_evidence_ids\": [\"prior_workup_and_opinions\"]}, {\"rank\": 2, \"hypothesis\": \"Dopa\\u2011responsive dystonia (DRD)\", \"confidence\": \"low\", \"supporting_evidence_ids\": [\"neurological_exam.bradykinesia_screen\", \"mf_01\", \"prior_workup_and_opinions\"], \"contradicting_evidence_ids\": [\"img_01\", \"mf_02\", \"mf_03\", \"neurological_exam.reflexes\", \"neurological_exam.mental_status\", \"lab_01\", \"lab_02\", \"HELDOUT:gap_04\"]}], \"cant_miss\": [{\"condition\": \"Wilson disease\", \"status\": \"addressed\", \"basis\": \"Kayser\\u2013Fleischer rings present on slit\\u2011lamp exam and 24\\u2011hour urine copper elevated (HELDOUT:gap_04), establishing the diagnosis.\"}, {\"condition\": \"Dopa\\u2011responsive dystonia\", \"status\": \"open\", \"basis\": \"No supervised levodopa trial performed; clinical features atypical for DRD, so the possibility remains unresolved.\"}], \"unresolved_questions\": [\"Need for ATP7B genetic testing (including deletion/duplication analysis) to confirm Wilson disease diagnosis.\", \"Need to evaluate and manage neuropsychiatric symptoms (slowed processing, inappropriate jocularity).\", \"Need to screen at\\u2011risk family members (older sister) for Wilson disease.\"], \"suggested_investigations\": [{\"investigation\": \"ATP7B gene sequencing (including deletion/duplication analysis)\", \"rationale\": \"To confirm Wilson disease diagnosis given positive slit\\u2011lamp and urine copper results.\"}], \"disclaimer\": \"Hypotheses for physician review; not a diagnosis.\", \"dropped_invalid_ids\": [], \"dropped_already_resulted\": [\"Screening of asymptomatic older sister for Wilson disease (serum ceruloplasmin, 24\\u2011hour urine copper, slit\\u2011lamp examination)\"]}}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 46,
+    "ts": 1792276403.1798542,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"done\", \"checkpoint\": \"reported\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_608d27f0de",
+    "seq": 47,
+    "ts": 1792276403.18316,
+    "type": "run.finished",
+    "data": "{\"status\": \"completed\", \"nodes\": 2}"
+   }
+  ]
+ }
+}
