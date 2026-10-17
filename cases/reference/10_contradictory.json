@@ -3,7 +3,7 @@
   "reference_diagnosis": {
     "name": "Indeterminate until records are reconciled; Wilson disease must be urgently excluded",
     "confidence": "working",
-    "basis": "This is a verification test. The case contains deliberate contradictions: diurnal pattern (morning vs. afternoon), reflexes (normal vs. 3+), ceruloplasmin (low vs. 'Wilson excluded'), MRI (summary 'normal' vs. findings of basal ganglia/thalamic T2 hyperintensity). The underlying clinical picture is most consistent with Wilson disease."
+    "basis": "This is a verification test. The case contains deliberate contradictions: diurnal pattern (referral: worse in the mornings; mother: worse late in the afternoon), reflexes (referral normal vs. clinic 3+), ceruloplasmin (low vs. 'Wilson excluded'), and MRI (summary 'normal' vs. findings of putaminal and thalamic T2 hyperintensity). Once reconciled, the picture is most consistent with neurological Wilson disease: dysarthria, wing-beating tremor, dystonia, cognitive and behavioural change, raised ALT, low ceruloplasmin, a typical MRI pattern, and a sibling with unexplained hepatitis (autosomal recessive inheritance)."
   },
   "acceptable_top5": [
     "Wilson disease",
@@ -16,12 +16,27 @@
     {
       "hypothesis": "Wilson disease",
       "why_plausible": "Neuropsychiatric change, wing-beating tremor, dysarthria, low ceruloplasmin, raised ALT, T2 basal ganglia/thalamic signal, sibling hepatitis",
-      "what_argues_against": "Referral letter claims exclusion, but data contradict this"
+      "what_argues_against": "Only the referral letter's 'Wilson excluded', which the held-out clarification shows was based on a liver ultrasound alone. Not confirmed until slit lamp and 24-hour urine copper are done."
     },
     {
       "hypothesis": "DRD",
       "why_plausible": "Referral letter suggests it; leg dystonia",
-      "what_argues_against": "Diurnal claim is contradicted; MRI abnormal; cognitive/psychiatric change"
+      "what_argues_against": "The afternoon worsening, once reconciled, fits DRD and must not be dismissed, but DRD does not explain the abnormal MRI, cognitive and behavioural change, raised ALT, low ceruloplasmin, wing-beating tremor or the sibling's hepatitis. DRD has a normal MRI."
+    },
+    {
+      "hypothesis": "Neurodegeneration with brain iron accumulation (e.g. PKAN)",
+      "why_plausible": "Progressive dystonia, dysarthria and behavioural change in a teenager",
+      "what_argues_against": "MRI shows putaminal and thalamic T2 hyperintensity, not the globus pallidus 'eye of the tiger' pattern; does not explain raised ALT, low ceruloplasmin or the sibling's hepatitis"
+    },
+    {
+      "hypothesis": "Juvenile Huntington disease",
+      "why_plausible": "Cognitive and behavioural decline with a movement disorder in a teenager",
+      "what_argues_against": "No family history of Huntington disease; does not explain the liver and copper findings; MRI pattern is not caudate atrophy"
+    },
+    {
+      "hypothesis": "Mitochondrial disorder (Leigh-like)",
+      "why_plausible": "Bilateral basal ganglia and thalamic T2 change",
+      "what_argues_against": "Does not explain low ceruloplasmin; the liver involvement and sibling history fit Wilson better; no lactate or other mitochondrial features recorded"
     }
   ],
   "key_evidence_gaps": [
@@ -44,6 +59,11 @@
       "id": "gap_04",
       "question": "Slit lamp, 24-hour urine copper",
       "why_it_matters": "Urgent, treatable condition"
+    },
+    {
+      "id": "gap_05",
+      "question": "Which reflex examination is current?",
+      "why_it_matters": "Referral says normal, clinic exam says 3+; the system should flag it and prefer the direct, dated examination"
     }
   ],
   "held_out_evidence": [
@@ -70,6 +90,12 @@
       "investigation": "Slit lamp and 24-hour urine copper",
       "result": "Kayser–Fleischer rings present; urine copper 210 µg/24h.",
       "release_to_agent": "on_request"
+    },
+    {
+      "gap_id": "gap_05",
+      "investigation": "Clarification with referrer",
+      "result": "Referral examination was 9 months ago; the clinic examination is current.",
+      "release_to_agent": "on_request"
     }
   ],
   "discriminating_investigations": [
@@ -80,13 +106,49 @@
     },
     {
       "rank": 2,
-      "investigation": "Slit lamp + 24-hour urine copper",
-      "discriminates_between": "Wilson disease"
+      "investigation": "Urgent slit lamp and 24-hour urine copper",
+      "discriminates_between": "Wilson disease vs. the rest; treatable and progressive"
     },
     {
       "rank": 3,
-      "investigation": "Hepatology assessment",
-      "discriminates_between": "Wilson disease"
+      "investigation": "Hepatology assessment (liver function, synthetic function, ultrasound)",
+      "discriminates_between": "Extent of liver involvement"
+    },
+    {
+      "rank": 4,
+      "investigation": "ATP7B genetic testing",
+      "discriminates_between": "Confirms Wilson disease and enables family testing"
+    },
+    {
+      "rank": 5,
+      "investigation": "Screening of first-degree relatives, starting with the sister",
+      "discriminates_between": "Autosomal recessive; siblings have a 1 in 4 risk, and her 'unexplained hepatitis' may be undiagnosed Wilson disease"
+    }
+  ],
+  "cant_miss": [
+    {
+      "condition": "Wilson disease",
+      "why_required": "Treatable, progressive, and most consistent with the reconciled picture",
+      "addressed_by": "Slit lamp for Kayser-Fleischer rings, 24-hour urine copper, ATP7B genetics",
+      "status_in_record": "open and urgent: ceruloplasmin low, ALT raised, MRI pattern typical; 'Wilson excluded' is unsupported"
+    },
+    {
+      "condition": "Dopa-responsive dystonia",
+      "why_required": "Treatable; the referrer proposes it",
+      "addressed_by": "Clinical pattern; levodopa trial only after Wilson disease is addressed",
+      "status_in_record": "open but unlikely: abnormal MRI and systemic features are not explained by DRD"
+    },
+    {
+      "condition": "Drug-induced movement disorder",
+      "why_required": "Reversible",
+      "addressed_by": "Medication and drug history",
+      "status_in_record": "addressed: no medications; alcohol and drugs denied by patient and parents"
+    },
+    {
+      "condition": "Structural lesion",
+      "why_required": "May need specific treatment",
+      "addressed_by": "MRI brain",
+      "status_in_record": "addressed once the MRI contradiction is resolved: symmetric putaminal and thalamic signal suggests a metabolic, not focal structural, cause"
     }
   ],
   "red_flags_for_wrong_reasoning": [
@@ -97,9 +159,12 @@
     "Stating any diagnosis as established rather than as a hypothesis for physician review",
     "Recommending treatment as an instruction rather than a consideration for the treating physician",
     "Citing literature that does not exist or does not support the specific claim",
-    "Asserting case facts that are not in the case record"
+    "Asserting case facts that are not in the case record",
+    "Treating the reconciled afternoon worsening as evidence for DRD that outweighs the MRI, liver and copper findings",
+    "Treating the referral's reflex finding as current without flagging the conflict with the clinic exam",
+    "Omitting the sister's 'unexplained hepatitis' or not suggesting family screening"
   ],
-  "expected_system_behavior": "System should explicitly list each contradiction, refuse to accept conclusions that depend on unresolved contradictions, and prioritize Wilson disease exclusion.",
-  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "expected_system_behavior": "The system should list each contradiction explicitly (diurnal pattern, reflexes, ceruloplasmin vs. 'Wilson excluded', MRI summary vs. findings), refuse to accept conclusions that depend on unresolved contradictions, and request clarification. It should rank Wilson disease first as most likely and urgent to exclude, not endorse the referrer's levodopa request before Wilson disease is addressed, suggest slit lamp and 24-hour urine copper, hepatology input, ATP7B testing and screening of the sister, and state that DRD is considered but does not explain the MRI and systemic findings.",
+  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). Clinically coherent: the reconciled picture is classic neurological Wilson disease in a teenager, and the held-out results (Kayser-Fleischer rings, urine copper 210 µg/24h) are consistent. Fixed: the DRD counter-argument relied on 'diurnal claim is contradicted', but the reconciled afternoon worsening actually fits DRD; the argument now rests on the MRI and systemic findings. Added: a reflex reconciliation gap, three further competing hypotheses (PKAN, juvenile HD, mitochondrial), ATP7B testing and sibling screening (the sister's hepatitis fits autosomal recessive Wilson), cant_miss, three red flags, and a fuller expected behaviour.",
   "agent_case_id": "case_10"
 }
