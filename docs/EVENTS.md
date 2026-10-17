@@ -29,7 +29,7 @@ The contract between the backend (`backend/app/`) and the React frontend. Keep i
 
 ```json
 {"id": "node_03", "run_id": "...", "parent_id": "node_01", "depth": 2,
- "role": "lead" | "investigator", "model": "nvidia/Nemotron-3-Nano-30B-A3B",
+ "role": "lead" | "investigator", "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
  "objective": "...", "justification": "...",
  "status": "queued" | "running" | "researching" | "waiting_children" | "verifying" | "retrying" | "done" | "unresolved" | "failed",
  "checkpoint": "created" | "planned" | "research_done" | "analyzed" | "children_spawned" | "children_done" | "finished" | "reported",

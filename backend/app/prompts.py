@@ -4,11 +4,15 @@ The orchestrator sends a JSON payload as the user message. Prompts describe the 
 and the required output; Python validates the output and enforces limits.
 """
 
+from .config import REPO_ROOT
+
 SAFETY = (
     "You support a physician; you do not diagnose or treat. State conclusions as hypotheses for "
     "physician review. Suggest investigations as considerations, never as orders. Use only facts "
     "in the case record, retrieved passages, or released investigation results; do not invent "
-    "case facts or citations."
+    "case facts or citations. Scope is diagnostic investigation: what is uncertain and what would "
+    "resolve it. Treatment planning (doses, injection targets, therapy choice) is out of scope; a "
+    "treatment trial belongs only when it is itself a diagnostic test (e.g. a levodopa trial)."
 )
 
 JSON_ONLY = "Respond with a single JSON object and nothing else."
@@ -19,8 +23,13 @@ LEAD_PLAN = f"""You are the lead investigator for a rare neurological movement-d
 Payload: {{"case": <case record>, "limits": {{"max_children": int, "remaining_nodes": int}}}}
 
 Analyze the case, form competing hypotheses, and identify the uncertainties that matter most.
-Then decide at runtime whether to delegate. Delegate only for a specific, justified question
-that needs literature or further investigation; you may request zero children.
+Then decide at runtime whether to delegate.
+
+What you can and cannot do: you cannot search the literature or obtain investigation results
+(drug trials, imaging, genetic or CSF testing) yourself. Only delegated investigators can, and
+each can delegate further. If you finish without delegating, your brief can rely only on the
+case record. Delegate for each specific, justified question that needs literature or results not
+in the record; request zero children only if the record alone settles the case.
 
 Output:
 {{"summary": str,
@@ -54,9 +63,10 @@ Payload: {{"case": <case record>, "objective": str, "depth": int,
   "investigation_results": [{{"request": str, "status": "released"|"withheld"|"not_available", "source_id": str|null, "result": str|null}}],
   "can_spawn": bool, "remaining_nodes": int}}
 
-Record findings. Every finding must be grounded: either quote a passage VERBATIM from a
-search result or released investigation result (give its source_id), or cite case finding ids,
-or both. Ungrounded findings are discarded by code.
+Record findings. Every finding must be grounded: quote a passage VERBATIM and give its source_id,
+or cite case finding ids, or both. Valid source_ids: a search result's source_id, a released
+investigation result's source_id (HELDOUT:...), or a case finding id (mf_*, tl_*, lab_*, img_*, np_*)
+when quoting that entry of the case record. Ungrounded findings are discarded by code.
 
 Then decide at runtime whether a deeper, more specific sub-question is needed (only if can_spawn).
 
@@ -74,7 +84,9 @@ VERIFIER = f"""You are an independent clinical verifier. You did not produce the
 Payload: {{"case": <case record>, "objective": str, "findings": [...], "conclusion": str,
   "sources": [{{"source_id": str, "text": str}}], "child_conclusions": [str]}}
 
-Check each finding against its quoted source and the case record. Reject claims that the
+Check each finding against its quoted source and the case record. Sources with ids starting
+"HELDOUT:" are investigation results obtained during this investigation; treat them as part of
+the patient's record. Sources whose id is a case finding id (mf_*, lab_*, ...) quote the case record. Reject claims that the
 passage does not support, that apply a study population that does not match this patient,
 that rule out a condition because a variable feature is absent, or that ignore incomplete
 penetrance. Judge whether the conclusion follows from accepted findings.
@@ -108,7 +120,8 @@ Payload: {{"case": <case record>, "plan": <your earlier plan>,
   "branches": [{{"objective": str, "verification": str, "conclusion": str,
                  "findings": [{{"evidence_id": str, "claim": str, "stance": str, "hypothesis": str}}]}}]}}
 
-Write the brief from verified branches. Branches that are not ACCEPTED must be reported as
+Write the brief from verified branches. Evidence ids are the evidence_id values in branches or
+case finding ids (mf_*, tl_*, lab_*, img_*, np_*); cite no other ids. Use "functional", not "psychogenic". Branches that are not ACCEPTED must be reported as
 unresolved, not as conclusions. Always state whether Wilson disease and dopa-responsive
 dystonia were addressed, excluded by a named test, or remain open, when the presentation
 calls for them.
@@ -123,6 +136,23 @@ Output:
   "disclaimer": "Hypotheses for physician review; not a diagnosis."}}
 Give at most 5 differential entries.
 {JSON_ONLY}"""
+
+def _clinical_doc(name: str) -> str:
+    path = REPO_ROOT / "docs" / "clinical" / name
+    return f"\n\n# Clinical rules (clinical lead)\n\n{path.read_text()}" if path.exists() else ""
+
+
+_RULES_ROLES = {"lead_plan", "investigator_plan", "investigator_analyze", "replan", "lead_report"}
+
+
+def get_prompt(role: str) -> str:
+    """Role prompt plus the clinical lead's rules from docs/clinical/, read at call time."""
+    if role == "verifier":
+        return PROMPTS[role] + _clinical_doc("verifier_checklist.md")
+    if role in _RULES_ROLES:
+        return PROMPTS[role] + _clinical_doc("reasoning_rules.md")
+    return PROMPTS[role]
+
 
 PROMPTS = {
     "lead_plan": LEAD_PLAN,
