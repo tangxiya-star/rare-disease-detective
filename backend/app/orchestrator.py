@@ -31,6 +31,7 @@ CHECKPOINTS = {
                      "finished"],
 }
 MAX_ATTEMPTS = 3
+RATE_LIMIT_BACKOFF_S = 15  # doubled per attempt; only for rate-limit errors
 VERDICTS = {"ACCEPT": "accepted", "REVISE": "revise", "INSUFFICIENT": "insufficient"}
 
 
@@ -84,6 +85,9 @@ class Orchestrator:
         nodes = self.db.get_nodes(run_id)
         lead = next(n for n in nodes if n["role"] == "lead")
         ctx = self._context(run_id, load_case(run["slot"], run["mode"]))
+        for n in nodes:  # failed nodes get another set of attempts, from their last checkpoint
+            if n["status"] == "failed":
+                self._set(ctx, n, status="retrying")
         self.db.update_run(run_id, status="running")
         ctx.task = asyncio.create_task(self._drive(ctx, lead["id"]))
 
@@ -183,6 +187,8 @@ class Orchestrator:
                 self.bus.emit(ctx.run_id, "node.retry", {"node_id": node_id, "attempt": attempt + 1,
                                                          "checkpoint": node["checkpoint"],
                                                          "reason": f"{type(e).__name__}: {e}"[:300]})
+                if "RateLimit" in type(e).__name__ and attempt < MAX_ATTEMPTS - 1:
+                    await asyncio.sleep(min(60, RATE_LIMIT_BACKOFF_S * 2 ** attempt))
         self._set(ctx, self.db.get_node(ctx.run_id, node_id), status="failed")
 
     # --- lead ---------------------------------------------------------------

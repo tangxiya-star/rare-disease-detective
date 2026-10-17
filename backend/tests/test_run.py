@@ -136,3 +136,17 @@ async def test_recording_round_trip_is_verbatim(orch, tmp_path):
     assert fresh.get_run(run_id) == orch.db.get_run(run_id)
     import_recordings(fresh, tmp_path / "rec")  # idempotent
     assert len(fresh.events_since(run_id)) == len(orch.db.events_since(run_id))
+
+
+async def test_failed_run_resumes_from_checkpoint(orch):
+    run_id = await orch.start_run("01", "demo")
+    await orch.wait(run_id)
+    lead = next(n for n in orch.db.get_nodes(run_id) if n["role"] == "lead")
+    orch.db.update_node(run_id, lead["id"], status="failed", checkpoint="children_done")
+    orch.db.update_run(run_id, status="failed", report=None)
+    before = {n["id"]: n["attempts"] for n in orch.db.get_nodes(run_id)}
+    await orch.resume_run(run_id)
+    await orch.wait(run_id)
+    assert orch.db.get_run(run_id)["status"] == "completed" and orch.db.get_run(run_id)["report"]
+    after = {n["id"]: n["attempts"] for n in orch.db.get_nodes(run_id)}
+    assert all(after[i] == before[i] for i in before if i != lead["id"]), "only the lead reruns"
