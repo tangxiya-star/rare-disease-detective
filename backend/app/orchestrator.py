@@ -111,7 +111,7 @@ class Orchestrator:
 
     async def _drive(self, ctx: RunContext, lead_id: str) -> None:
         await self._run_node(ctx, lead_id)
-        lead = self.db.get_node(lead_id)
+        lead = self.db.get_node(ctx.run_id, lead_id)
         status = "completed" if lead["status"] == "done" else "failed"
         self.db.update_run(ctx.run_id, status=status)
         self.bus.emit(ctx.run_id, "run.finished", {"status": status,
@@ -132,7 +132,7 @@ class Orchestrator:
         return node
 
     def _set(self, ctx: RunContext, node: dict, **fields) -> None:
-        self.db.update_node(node["id"], **fields)
+        self.db.update_node(ctx.run_id, node["id"], **fields)
         node.update(fields)
         if "status" in fields or "checkpoint" in fields or "verification" in fields:
             self.bus.emit(ctx.run_id, "node.status", {"node_id": node["id"], "status": node["status"],
@@ -160,7 +160,7 @@ class Orchestrator:
 
     async def _run_node(self, ctx: RunContext, node_id: str) -> None:
         for attempt in range(MAX_ATTEMPTS):
-            node = self.db.get_node(node_id)
+            node = self.db.get_node(ctx.run_id, node_id)
             if node["status"] in ("done", "unresolved", "failed"):
                 return
             try:
@@ -174,12 +174,12 @@ class Orchestrator:
                     await self._investigator(ctx, node)
                 return
             except Exception as e:  # noqa: BLE001 - any stage failure is retried from its checkpoint
-                node = self.db.get_node(node_id)
+                node = self.db.get_node(ctx.run_id, node_id)
                 self._set(ctx, node, retry_count=node["retry_count"] + 1, status="retrying")
                 self.bus.emit(ctx.run_id, "node.retry", {"node_id": node_id, "attempt": attempt + 1,
                                                          "checkpoint": node["checkpoint"],
                                                          "reason": f"{type(e).__name__}: {e}"[:300]})
-        self._set(ctx, self.db.get_node(node_id), status="failed")
+        self._set(ctx, self.db.get_node(ctx.run_id, node_id), status="failed")
 
     # --- lead ---------------------------------------------------------------
 
@@ -204,14 +204,14 @@ class Orchestrator:
         if not self._reached(node, "children_done"):
             self._set(ctx, node, status="waiting_children")
             await self._run_children(ctx, node["id"])
-            node = self.db.get_node(node["id"])
+            node = self.db.get_node(ctx.run_id, node["id"])
             a = node["artifact"]
             self._set(ctx, node, status="running")
             self._save(ctx, node, "children_done")
 
         branches = []
         for cid in a.get("child_ids", []):
-            c = self.db.get_node(cid)
+            c = self.db.get_node(ctx.run_id, cid)
             branches.append({
                 "objective": c["objective"], "verification": c["verification"],
                 "conclusion": c["artifact"].get("analysis", {}).get("conclusion", ""),
@@ -241,7 +241,7 @@ class Orchestrator:
     async def _investigator(self, ctx: RunContext, node: dict) -> None:
         a = node["artifact"]
         case = ctx.bundle.agent_view()
-        parent = self.db.get_node(node["parent_id"])
+        parent = self.db.get_node(ctx.run_id, node["parent_id"])
 
         if not self._reached(node, "planned"):
             a["plan"] = await self._ask(ctx, "investigator_plan", node["model"], {
@@ -324,7 +324,7 @@ class Orchestrator:
             if a.get("child_ids"):
                 self._set(ctx, node, status="waiting_children")
                 await self._run_children(ctx, node["id"])
-                node = self.db.get_node(node["id"])
+                node = self.db.get_node(ctx.run_id, node["id"])
                 a = node["artifact"]
             self._save(ctx, node, "children_done")
 
@@ -351,22 +351,22 @@ class Orchestrator:
         return ids
 
     async def _run_children(self, ctx: RunContext, parent_id: str) -> None:
-        parent = self.db.get_node(parent_id)
+        parent = self.db.get_node(ctx.run_id, parent_id)
         await asyncio.gather(*[self._run_branch(ctx, parent_id, cid)
                                for cid in parent["artifact"].get("child_ids", [])])
 
     async def _run_branch(self, ctx: RunContext, parent_id: str, child_id: str) -> None:
         await self._run_node(ctx, child_id)
-        child = self.db.get_node(child_id)
+        child = self.db.get_node(ctx.run_id, child_id)
         if child["status"] == "failed":
             return
         if child["verification"] == "pending":
             await self._verify(ctx, child)
-            child = self.db.get_node(child_id)
+            child = self.db.get_node(ctx.run_id, child_id)
         if child["verification"] == "accepted":
             return
 
-        parent = self.db.get_node(parent_id)
+        parent = self.db.get_node(ctx.run_id, parent_id)
         root = child["artifact"].get("replan_root", child_id)
         replans = parent["artifact"].setdefault("replans", {})
         if replans.get(root, 0) >= self.s.max_replans_per_branch:
@@ -388,9 +388,9 @@ class Orchestrator:
                                                     "requested_children": len(decision.get("children") or [])})
         self._set(ctx, child, status="unresolved")
         if action == "spawn" and can_spawn:
-            parent = self.db.get_node(parent_id)
+            parent = self.db.get_node(ctx.run_id, parent_id)
             new_ids = self._spawn(ctx, parent, (decision.get("children") or [])[:1], extra={"replan_root": root})
-            parent = self.db.get_node(parent_id)
+            parent = self.db.get_node(ctx.run_id, parent_id)
             parent["artifact"].setdefault("child_ids", []).extend(new_ids)
             self._set(ctx, parent, artifact=parent["artifact"])
             for nid in new_ids:
@@ -405,7 +405,7 @@ class Orchestrator:
         sources += [{"source_id": i, "text": case_src[i]} for i in sorted(cited) if i in case_src]
         child_conclusions = []
         for cid in a.get("child_ids", []):
-            c = self.db.get_node(cid)
+            c = self.db.get_node(ctx.run_id, cid)
             child_conclusions.append(f"[{c['verification']}] {c['artifact'].get('analysis', {}).get('conclusion', '')}")
         self._set(ctx, child, status="verifying")
         v = await self._ask(ctx, "verifier", self.s.lead_model, {

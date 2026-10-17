@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS runs (
   updated_at REAL NOT NULL
 );
 CREATE TABLE IF NOT EXISTS nodes (
-  id TEXT PRIMARY KEY,
+  id TEXT NOT NULL,
   run_id TEXT NOT NULL REFERENCES runs(id),
   parent_id TEXT,
   depth INTEGER NOT NULL,
@@ -37,9 +37,9 @@ CREATE TABLE IF NOT EXISTS nodes (
   attempts INTEGER NOT NULL DEFAULT 0,
   artifact TEXT NOT NULL DEFAULT '{}',
   created_at REAL NOT NULL,
-  updated_at REAL NOT NULL
+  updated_at REAL NOT NULL,
+  PRIMARY KEY (run_id, id)
 );
-CREATE INDEX IF NOT EXISTS nodes_run ON nodes(run_id);
 CREATE TABLE IF NOT EXISTS evidence (
   id TEXT PRIMARY KEY,
   run_id TEXT NOT NULL,
@@ -125,12 +125,13 @@ class DB:
              node["objective"], node.get("justification"), node["status"], node["checkpoint"],
              node["verification"], 0, 0, json.dumps(node.get("artifact", {})), now, now))
 
-    def update_node(self, node_id: str, **fields) -> None:
+    def update_node(self, run_id: str, node_id: str, **fields) -> None:
         for k in NODE_JSON_FIELDS:
             if k in fields:
                 fields[k] = json.dumps(fields[k])
         sets = ", ".join(f"{k}=?" for k in fields)
-        self.execute(f"UPDATE nodes SET {sets}, updated_at=? WHERE id=?", (*fields.values(), time.time(), node_id))
+        self.execute(f"UPDATE nodes SET {sets}, updated_at=? WHERE run_id=? AND id=?",
+                     (*fields.values(), time.time(), run_id, node_id))
 
     def get_nodes(self, run_id: str) -> list[dict]:
         rows = self.query("SELECT * FROM nodes WHERE run_id=? ORDER BY created_at", (run_id,))
@@ -138,8 +139,8 @@ class DB:
             r["artifact"] = json.loads(r["artifact"])
         return rows
 
-    def get_node(self, node_id: str) -> dict:
-        r = self.query("SELECT * FROM nodes WHERE id=?", (node_id,))[0]
+    def get_node(self, run_id: str, node_id: str) -> dict:
+        r = self.query("SELECT * FROM nodes WHERE run_id=? AND id=?", (run_id, node_id))[0]
         r["artifact"] = json.loads(r["artifact"])
         return r
 
