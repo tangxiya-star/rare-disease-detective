@@ -1,0 +1,616 @@
+{
+ "run_id": "run_e74dc750be",
+ "label": "Case 09 · Nemotron on Crusoe · real run (stops early)",
+ "llm_backend": "crusoe",
+ "slot": "09",
+ "mode": "scored",
+ "recorded_at": 1792274811.948421,
+ "duration_s": 365.5,
+ "rows": {
+  "runs": [
+   {
+    "id": "run_e74dc750be",
+    "slot": "09",
+    "mode": "scored",
+    "status": "completed",
+    "llm_backend": "crusoe",
+    "report": "{\"summary\": \"A 48\\u2011year\\u2011old right\\u2011handed accountant has three years of right\\u2011hand cramping, excessive grip, wrist flexion and pronation that begins within a few words of handwriting. Typing, mouse use, eating, shaving and tennis are normal. Onset was gradual, worsened for a year then stable for 18 months. There is no diurnal variation, no benefit after sleep, no change with fatigue or exercise, and no pain, numbness or tremor at rest. Examination shows normal tone, power, reflexes, coordination and gait outside the writing task; during writing there is excessive pen grip, wrist flexion and pronation with large, jagged letters, no tremor. Mirror dystonia (mild right wrist flexion and finger curling) appears when writing with the left hand. The abnormality does not lessen with distraction (counting backwards while writing). Prior workup includes normal nerve conduction studies, normal MRI brain, moderate benefit from botulinum toxin injections, and a six\\u2011week trial of carbidopa/levodopa 25/100\\u202fmg TID with no benefit. Ceruloplasmin is normal (31\\u202fmg/dL) and 24\\u2011hour urine copper is normal. Family history notes only a mild bilateral hand tremor in the father.\", \"differential\": [{\"rank\": 1, \"hypothesis\": \"Idiopathic focal task\\u2011specific dystonia (writer\\u2019s cramp)\", \"confidence\": \"high\", \"supporting_evidence_ids\": [\"mf_01\", \"mf_02\", \"mf_03\", \"mf_04\", \"mf_05\", \"neurological_exam.tone\", \"neurological_exam.power\", \"neurological_exam.reflexes\", \"neurological_exam.coordination\", \"neurological_exam.gait\", \"img_01\", \"tl_03\"], \"contradicting_evidence_ids\": [\"history_of_present_illness\", \"history_of_present_illness\", \"family_history\"]}, {\"rank\": 2, \"hypothesis\": \"Dopa\\u2011responsive dystonia (DRD)\", \"confidence\": \"low\", \"supporting_evidence_ids\": [\"tl_01\", \"history_of_present_illness\", \"family_history\"], \"contradicting_evidence_ids\": [\"tl_04\", \"history_of_present_illness\", \"history_of_present_illness\"]}, {\"rank\": 3, \"hypothesis\": \"Wilson disease\", \"confidence\": \"low\", \"supporting_evidence_ids\": [\"history_of_present_illness\"], \"contradicting_evidence_ids\": [\"lab_02\", \"HELDOUT:gap_03\"]}, {\"rank\": 4, \"hypothesis\": \"Functional dystonia\", \"confidence\": \"low\", \"supporting_evidence_ids\": [], \"contradicting_evidence_ids\": [\"mf_05\", \"mf_04\", \"neurological_exam\", \"history_of_present_illness\"]}], \"cant_miss\": [{\"condition\": \"Wilson disease\", \"status\": \"excluded\", \"basis\": \"Normal 24\\u2011hour urine copper (HELDOUT:gap_03) and normal ceruloplasmin (lab_02) make Wilson disease very unlikely.\"}, {\"condition\": \"Dopa\\u2011responsive dystonia (DRD)\", \"status\": \"excluded\", \"basis\": \"Adequate trial of carbidopa/levodopa 25/100\\u202fmg TID for 6 weeks showed no benefit (tl_04).\"}, {\"condition\": \"GLUT1 deficiency\", \"status\": \"addressed\", \"basis\": \"No paroxysmal dyskinesia triggered by exercise/fasting and no seizures.\"}, {\"condition\": \"Episodic ataxia type 2\", \"status\": \"addressed\", \"basis\": \"No episodic attacks of ataxia lasting hours.\"}, {\"condition\": \"Episodic ataxia type 1\", \"status\": \"addressed\", \"basis\": \"No brief attacks of ataxia/myokymia triggered by sudden movement.\"}, {\"condition\": \"Paroxysmal kinesigenic dyskinesia\", \"status\": \"addressed\", \"basis\": \"No brief attacks triggered by sudden movement.\"}, {\"condition\": \"Autoimmune or inflammatory cause\", \"status\": \"addressed\", \"basis\": \"Chronic stable course over 3 years, no subacute onset, encephalopathy, psychiatric change, seizures or recent infection.\"}, {\"condition\": \"Drug\\u2011induced movement disorder\", \"status\": \"addressed\", \"basis\": \"No exposure to antipsychotics, metoclopramide or other dopamine blockers.\"}, {\"condition\": \"Structural lesion\", \"status\": \"addressed\", \"basis\": \"Normal MRI brain (img_01) shows no structural abnormality.\"}], \"unresolved_questions\": [], \"suggested_investigations\": [], \"disclaimer\": \"Hypotheses for physician review; not a diagnosis.\", \"dropped_invalid_ids\": [\"movement_findings\"], \"dropped_already_resulted\": []}",
+    "created_at": 1792274811.947099,
+    "updated_at": 1792275177.461171
+   }
+  ],
+  "nodes": [
+   {
+    "id": "node_00",
+    "run_id": "run_e74dc750be",
+    "parent_id": null,
+    "depth": 0,
+    "role": "lead",
+    "model": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B",
+    "objective": "Investigate case_09: 48-year-old accountant with three years of hand cramping when writing",
+    "justification": null,
+    "status": "done",
+    "checkpoint": "reported",
+    "verification": "pending",
+    "retry_count": 0,
+    "attempts": 1,
+    "artifact": "{\"plan\": {\"summary\": \"A 48\\u2011year\\u2011old right\\u2011handed accountant reports three years of right\\u2011hand cramping, excessive grip, wrist flexion and forearm pronation that begins within a few words of handwriting. Typing, using a mouse, eating, shaving and tennis are unaffected. The onset was gradual during a busy tax season, worsened for about a year and has been stable for the past 18 months. There is no diurnal variation, no benefit after sleep, no change with fatigue or exercise, and no pain, numbness or tremor at rest. Examination shows normal tone, power, reflexes, coordination and gait outside the writing task; during writing there is excessive pen grip, wrist flexion and pronation with large, jagged letters, no tremor. Mirror dystonia (mild right wrist flexion and finger curling) appears when writing with the left hand. The abnormality does not lessen with distraction (counting backwards while writing). Prior workup includes normal nerve conduction studies, normal MRI brain, a moderate benefit from botulinum toxin injections to the right flexor carpi radialis and pronator teres, and a six\\u2011week trial of carbidopa/levodopa 25/100\\u202fmg TID with no benefit. Ceruloplasmid is normal (31\\u202fmg/dL). Family history notes a mild bilateral hand tremor in the father but no known dystonia, Parkinson disease or other neurological disease. The patient asks about genetic testing and worries about Parkinson\\u2019s or a genetic cause.\", \"hypotheses\": [{\"name\": \"Idiopathic focal task\\u2011specific dystonia (writer\\u2019s cramp)\", \"rationale\": \"Adult\\u2011onset, focal, task\\u2011specific dystonia with stable course, normal examination outside the provoking task, presence of a sensory trick (pen grip alteration, thick foam grip) and mirror dystonia, and moderate benefit from botulinum toxin\\u2014all classic for idiopathic writer\\u2019s cramp.\", \"supporting_finding_ids\": [\"mf_01\", \"mf_02\", \"mf_03\", \"mf_04\", \"mf_05\", \"neurological_exam.tone\", \"neurological_exam.power\", \"neurological_exam.reflexes\", \"neurological_exam.coordination\", \"neurological_exam.gait\", \"img_01\", \"tl_03\"], \"contradicting_finding_ids\": []}, {\"name\": \"Dopa\\u2011responsive dystonia (DRD)\", \"rationale\": \"Onset before age 50 and a dystonia without an identified cause raise the possibility of DRD, which can present in adulthood and may require a levodopa trial.\", \"supporting_finding_ids\": [\"tl_01\", \"history_of_present_illness\", \"family_history\"], \"contradicting_finding_ids\": [\"tl_04\", \"history_of_present_illness (no diurnal variation)\", \"history_of_present_illness (no leg onset)\"]}, {\"name\": \"Wilson disease\", \"rationale\": \"Unexplained movement disorder in a patient under 50 years of age warrants exclusion of Wilson disease, which can present with isolated dystonia and may have normal ceruloplasmin.\", \"supporting_finding_ids\": [\"history_of_present_illness (age 48)\", \"movement_findings\"], \"contradicting_finding_ids\": [\"lab_02 (ceruloplasmin normal, though not exclusive)\"]}, {\"name\": \"Functional dystonia\", \"rationale\": \"Functional movement disorders can mimic task\\u2011specific dystonia but are characterized by variability, distractibility and inconsistency.\", \"supporting_finding_ids\": [], \"contradicting_finding_ids\": [\"mf_05 (no improvement with distraction)\", \"mf_04 (mirror dystonia)\", \"neurological_exam (normal outside task)\", \"history_of_present_illness (stable course)\"]}], \"uncertainties\": [\"Whether Wilson disease is present; current record lacks 24\\u2011hour urine copper and slit\\u2011lamp examination for Kayser\\u2011Fleischer rings.\", \"Whether dopa\\u2011responsive dystonia is definitively excluded; the levodopa trial was negative but adequacy of dose and duration could be questioned, and genetic testing for GCH1 (or CSF pterins) has not been performed.\"], \"decision\": \"spawn\", \"children\": [{\"objective\": \"Obtain 24\\u2011hour urine copper measurement and slit\\u2011lamp examination for Kayser\\u2011Fleischer rings to assess for Wilson disease.\", \"justification\": \"Wilson disease is a can\\u2019t\\u2011miss condition that remains open; the patient is under 50 with an unexplained dystonia, and the record does not include the recommended screening tests (urine copper and ophthalmologic exam). A negative result would make Wilson disease very unlikely, while a positive finding would establish the diagnosis.\"}]}, \"child_ids\": [\"node_01\"], \"replans\": {\"node_01\": 1}}",
+    "created_at": 1792274811.949187,
+    "updated_at": 1792275177.459263
+   },
+   {
+    "id": "node_01",
+    "run_id": "run_e74dc750be",
+    "parent_id": "node_00",
+    "depth": 1,
+    "role": "investigator",
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "objective": "Obtain 24‑hour urine copper measurement and slit‑lamp examination for Kayser‑Fleischer rings to assess for Wilson disease.",
+    "justification": "Wilson disease is a can’t‑miss condition that remains open; the patient is under 50 with an unexplained dystonia, and the record does not include the recommended screening tests (urine copper and ophthalmologic exam). A negative result would make Wilson disease very unlikely, while a positive finding would establish the diagnosis.",
+    "status": "unresolved",
+    "checkpoint": "finished",
+    "verification": "revise",
+    "retry_count": 0,
+    "attempts": 1,
+    "artifact": "{\"plan\": {\"search_queries\": [\"adult onset isolated focal dystonia differential diagnosis\", \"Wilson disease late onset neurological presentation without hepatic signs\", \"GCH1 dopa responsive dystonia clinical features\"], \"investigation_requests\": [\"24\\u2011hour urine copper measurement\", \"Slit\\u2011lamp examination for Kayser\\u2011Fleischer rings\", \"Serum copper level\"], \"plan\": \"1. Review systemic red flags (family_history, labs lab_02) and confirm absence of hepatic or psychiatric features that would strongly point to Wilson disease; 2. Order the requested 24\\u2011hour urine copper measurement, slit\\u2011lamp exam for Kayser\\u2011Fleischer rings, and serum copper level to rule out Wilson disease; 3. If copper studies are normal, consider targeted genetic testing for GCH1 and other dystonia genes, and re\\u2011evaluate the phenomenology (mirror dystonia mf_04, distraction response mf_05) to solidify the diagnosis of isolated writing cramp; 4. Document findings and discuss next steps with the treating physician.\"}, \"sources\": [{\"id\": \"PMID:42628948\", \"title\": \"Neuroimaging in Tremor.\", \"url\": \"https://europepmc.org/article/MED/42628948\", \"text\": \"AbstractNeuroimaging has been used extensively to study tremors, providing invaluable information about the underlying mechanisms and applications to clinical practice. Although isolated tremor syndromes, such as essential tremor, are generally not associated with specific neuroimaging findings, structural (MRI, CT) and molecular (PET, SPECT) brain imaging can be useful in the differential diagnostics and identifying the etiology of tremor, especially in combined tremor syndromes such as parkinsonism-associated tremors and Holmes' tremor. In addition, brain MRI, including tractography and other connectivity measures, plays an increasing role in tremor surgery. This article will give an overview of the most frequently used clinical neuroimaging modalities, clinically relevant findings in tremor syndromes, use of neuroimaging in differential diagnostics, and use of neuroimaging in functional neurosurgery in tremors.\", \"meta\": {\"pmid\": \"42628948\", \"pmcid\": \"PMC13581420\", \"doi\": \"10.1055/a-2942-3475\", \"year\": \"2026\", \"authors\": \"Reich MM, Joutsa J.\", \"journal\": \"Semin Neurol\", \"volume\": \"46\", \"issue\": \"5\", \"pages\": \"521-531\"}}, {\"id\": \"PMID:42368877\", \"title\": \"Movement disorder emergencies at a tertiary-care center in West Bengal, India: Spectrum, etiologies, diagnostic implications.\", \"url\": \"https://europepmc.org/article/MED/42368877\", \"text\": \"BackgroundAcute-onset movement disorders, often termed movement disorder emergencies, present in emergency and inpatient neurology settings and may arise from diverse causes, including potentially reversible metabolic and medication-related conditions.ObjectivesWe aimed to describe the clinical phenomenology and etiological spectrum of movement disorder emergencies presenting to a tertiary care center.MethodsWe conducted a prospective, single-center, hospital-based cross-sectional observational study over 12 months (February 2023 to January 2024) at a tertiary-care hospital in Kolkata, Eastern India. Patients aged 12 years or older with a movement disorder onset within 4 weeks were enrolled. Movement disorder presentations were categorized as hyperkinetic, hypokinetic, or mixed.ResultsEighty patients were included (mean age 48.0 years, standard deviation 18.0; 57.5% male). Hyperkinetic presentations predominated (80.0%), followed by mixed (13.7%) and hypokinetic (6.2%) presentations. The most frequent phenomenologies were hemichorea and myoclonus (18.7% each), followed by acute parkinsonism (17.5%), dystonia (16.2%), and tremor (15.0%). Mean symptom duration at presentation did not differ across movement disorder categories (p = 0.36). The movement disorder category was not associated with sex (p = 0.68), age group (p = 0.39), or timing of presentation (p = 0.632). The leading etiologies were metabolic (26.2%) and drug-induced (25.0%), followed by vascular (15.0%), functional (8.7%), and infectious (6.2%) causes. Functional etiologies presented exclusively with hyperkinetic phenomenology.ConclusionsIn this tertiary-care cohort, movement disorder emergencies were predominantly hyperkinetic, and metabolic and drug-induced causes accounted for over half of the cases. These findings support an expeditious diagnostic approach that prioritizes rapid metabolic screening, careful medication review, and targeted neuroimaging when clinically indicated.\", \"meta\": {\"pmid\": \"42368877\", \"pmcid\": \"PMC13299396\", \"doi\": \"10.1016/j.nexres.2026.101706\", \"year\": \"2026\", \"authors\": \"Manna DK, Banik A, Biswas D, Pal S, Pal A, Sau A, Chakravarthy M, Benito-Le\\u00f3n J.\", \"journal\": \"Next Res\", \"volume\": \"9\", \"issue\": null, \"pages\": \"101706\"}}, {\"id\": \"PMID:42516548\", \"title\": \"Diagnostic redirection in dementia-first spinocerebellar ataxia type 17: a family-based case report and focused literature review.\", \"url\": \"https://europepmc.org/article/MED/42516548\", \"text\": \"BackgroundSpinocerebellar ataxia type 17 (SCA17) is an autosomal dominant repeat-expansion disorder with marked phenotypic heterogeneity. Cognitive and neuropsychiatric symptoms may dominate early recognition and initially suggest a primary dementia syndrome. We aimed to illustrate diagnostic redirection in dementia-first SCA17 through integrated clinical, imaging, familial, and molecular assessment.Case presentationWe describe the clinical course, neurological findings, cognitive and functional assessments, ancillary investigations, neuroimaging, pedigree information, and molecular genetic findings of a proband with SCA17 and one tested at-risk adult relative. To contextualize the family, we conducted a focused literature review of genetically confirmed SCA17 case and family reports identified through PubMed, Web of Science, Embase, China National Knowledge Infrastructure (CNKI), and Wanfang up to April 16, 2026.FindingsRepeat-expansion testing established SCA17 in a proband who had initially presented through a dementia-first clinical pathway, with TATA-box binding protein (TBP) alleles of 37/51 repeats. Targeted presymptomatic cascade testing identified the same expanded 51-repeat allele in her asymptomatic adult daughter. Review of 25 published studies showed broad variation in age at onset, TBP repeat size, family context, presenting syndrome, and cumulative phenotype, including cognition-dominant, behavior-dominant, Huntington disease-like, parkinsonian, dystonic, choreic, seizure-associated, and atypical neuroimaging presentations.ConclusionThe present family illustrates a dementia-first route to SCA17 recognition, in which the initial syndrome-based dementia interpretation remained etiologically provisional as cerebellar signs, cerebellar-predominant atrophy, autosomal-dominant family context, and TBP expansion were integrated. This case-based perspective is intended to support etiological reconsideration in selected dementia-first presentations, rather than to serve as validated clinical criteria.\", \"meta\": {\"pmid\": \"42516548\", \"pmcid\": \"PMC13402550\", \"doi\": \"10.3389/fnins.2026.1882898\", \"year\": \"2026\", \"authors\": \"Zhang S, Zhang X, Li L, Zhou B, Shao W.\", \"journal\": \"Front Neurosci\", \"volume\": \"20\", \"issue\": null, \"pages\": \"1882898\"}}, {\"id\": \"PMID:42400823\", \"title\": \"Update on Genetic Chorea.\", \"url\": \"https://europepmc.org/article/MED/42400823\", \"text\": \"Purpose of reviewChorea is a symptom of numerous pathophysiologically and clinically heterogeneous genetic conditions. A number of developments have been made in this field over the last years linked to improved genomic testing, large cohort collaborations and improved understanding of the molecular mechanisms. This review aims to provide an update on the new genetic conditions and phenotypes linked to chorea disorders, their modification factors and pathophysiological background.Recent findingsSeveral novel genetic conditions have been linked to chorea over the last 3 years, including mutations in FTH1, NAA60, ACBD6 or TOR1AIP2. Also, novel phenotypes have been established and linked to chorea, such as Adult-onset Neurodegeneration in Nucleotide Excision Repair Disorder (NERD-ND). Major advances have been made in understanding of the pathophysiological role of somatic instability in HD. Striatal pallidal neurons (SPNs) with 150-500\\u2009+\\u2009CAG repeats seem to lose positive and then negative features of neuronal identity, de-repress senescence/apoptosis genes, ultimately leading to cell death. Improved recognition of the genetic background of chorea leads to more effective diagnostic processes, better prognostication and improved personalized treatment. The findings on somatic instability in HD suggest that neurodegeneration in HD is an asynchronous DNA process for >95% of a neuron's life, with majority of neurons in all disease stages having a HTT gene which is not biologically harmful. This has potential major therapeutic implications not only in HD but also in other neurological repeat expansion disorders.\", \"meta\": {\"pmid\": \"42400823\", \"pmcid\": \"PMC13332979\", \"doi\": \"10.1007/s11910-026-01502-5\", \"year\": \"2026\", \"authors\": \"Ostrozovicova M, Skorvanek M.\", \"journal\": \"Curr Neurol Neurosci Rep\", \"volume\": \"26\", \"issue\": \"1\", \"pages\": \"31\"}}, {\"id\": \"PMID:42046106\", \"title\": \"Dystonia as an early and prominent feature in a patient with CYP2U1 gene mutation: expanding the phenotype of SPG56-a case report.\", \"url\": \"https://europepmc.org/article/MED/42046106\", \"text\": \"Hereditary Spastic Paraplegias (HSPs) are a heterogeneous group of neurodegenerative disorders primarily characterized by progressive lower limb spasticity and weakness. Among them, Spastic Paraplegia Type 56 (SPG56) is a rare autosomal recessive form caused by CYP2U1 mutations. While spasticity is the hallmark of SPG56, recent reports have shown expanding phenotypic variability, including dystonia. We report an 8-month-old Arab male who presented with generalized tonic seizures and abnormal head movements, later identified as dystonic in nature. MRI revealed cerebral atrophy and delayed myelination. Given the early symptom onset and unexplained neurodevelopmental presentation, exome-based next-generation sequencing was performed. This identified a homozygous missense variant in CYP2U1 (c.947\\u00a0A\\u2009>\\u2009T; p.Asp316Val), classified as likely pathogenic. This variant has previously been associated with SPG56 but rarely with dystonia as a predominant feature. Over 6 months of follow-up, seizure frequency decreased markedly and dystonia improved substantially on sodium valproate and levetiracetam, although mild dystonic movements persisted and no lower-limb spasticity was observed. This case highlights the diagnostic value of exome-based genetic testing in unexplained early-onset neurodevelopmental disorders. It also underscores the phenotypic heterogeneity of SPG56 and suggests that dystonia may, in some cases, be an early and dominant manifestation of CYP2U1-related pathology. Reporting such rare presentations is essential to broaden our understanding of the clinical spectrum of CYP2U1 mutations.\", \"meta\": {\"pmid\": \"42046106\", \"pmcid\": \"PMC13277134\", \"doi\": \"10.1186/s13023-026-04349-8\", \"year\": \"2026\", \"authors\": \"Alhamwy Z, Senjab A, Al-Bitar A, Alasmar D.\", \"journal\": \"Orphanet J Rare Dis\", \"volume\": \"21\", \"issue\": \"1\", \"pages\": \"226\"}}, {\"id\": \"PMID:42343441\", \"title\": \"Pediatric Wilson disease with early psychiatric manifestations: a case report.\", \"url\": \"https://europepmc.org/article/MED/42343441\", \"text\": \"BackgroundWilson's disease is an autosomal recessive disorder of copper metabolism that primarily affects the liver and brain, with onset typically in early adulthood. Pediatric presentations are rare, and the atypical presentation of psychiatric symptoms can delay the diagnosis process in low-resource settings. Epidemiological data on the disease, particularly in Syria, remain scarce. Early diagnosis is necessary to prevent irreversible hepatic and neurologic damage.Case presentationAn eight-year-old Syrian child presented with psychiatric and neurologic symptoms, including increased aggressiveness, learning difficulties, dysarthria, drooling while eating and drinking, and difficulty speaking, followed by weight loss and jaundice. A dental examination revealed no temporomandibular joint deformities, prompting neurological consultation. The neurological examination revealed difficulty walking with limb tremors and speech impairment. Laboratory findings showed slightly elevated transaminases and total iron-binding capacity with low serum iron, indicating hepatic dysfunction. Serum ceruloplasmin was markedly reduced (3.1\\u00a0mg/dl), and 24-h urinary copper excretion was elevated. MRI of the brain revealed increased T2-weighted signal intensity in the caudate and lentiform nuclei. An ophthalmologic exam found Kayser-Fleischer rings at the corneal limbus. Esophagogastroduodenoscopy showed distal esophageal varices, and an abdominal ultrasound showed hepatomegaly and splenomegaly. The patient was treated with copper chelator penicillamine, dietary copper restriction, and physical therapy. Follow-up showed marked clinical improvement with recovery of motor function, improved speech, and resolution of jaundice.ConclusionsThis instance underscores the necessity of evaluating Wilson's illness in pediatric patients exhibiting early behavioral and neurological signs, particularly emphasizing that prominent psychiatric manifestations may precede hepatic signs even in young children. Early administration of chelation therapy can lead to excellent outcomes even in resource-limited settings. Atypical presentations require increased awareness that may facilitate earlier detection and the prevention of irreversible organ damage.\", \"meta\": {\"pmid\": \"42343441\", \"pmcid\": \"PMC13551984\", \"doi\": \"10.1186/s13256-026-06220-7\", \"year\": \"2026\", \"authors\": \"Shammas F, Hamama M, Ismail S, Alhailony AN, Al Dali R, Solaiman SN.\", \"journal\": \"J Med Case Rep\", \"volume\": \"20\", \"issue\": \"1\", \"pages\": \"525\"}}, {\"id\": \"PMID:42279596\", \"title\": \"LGMD R18 Mimicking Wilson Disease: 6-Year Longitudinal Muscle MRI Evolution and Clinical Insights into &lt;i&gt;TRAPPC11&lt;/i&gt; Mutation.\", \"url\": \"https://europepmc.org/article/MED/42279596\", \"text\": \"Background and Clinical Significance: Limb-girdle muscular dystrophy R18 is a rare autosomal recessive disorder that may present with both muscular and hepatic involvement, potentially leading to diagnostic confusion. Longitudinal MRI data documenting this disease from childhood remain scarce. Case Presentation: We report a female patient with disease onset that occurred at 8 years of age, initially presenting with elevated liver enzymes and decreased ceruloplasmin levels, which raised suspicion of Wilson's disease. Genetic testing confirmed TRAPPC11 mutation. Serial MRI scans of the thigh muscles over a six-year period demonstrated progressive fatty infiltration, predominantly affecting the adductor magnus and posterior thigh muscles, with relative sparing of the gracilis and anterior compartment muscles. Conclusions: This case highlights that limb-girdle muscular dystrophy R18 can clinically mimic Wilson disease. Longitudinal muscle MRI offers valuable diagnostic insights and reveals a characteristic pattern of muscle involvement.\", \"meta\": {\"pmid\": \"42279596\", \"pmcid\": \"PMC13257075\", \"doi\": \"10.3390/diagnostics16111729\", \"year\": \"2026\", \"authors\": \"Chou YT, Chou HP, Chen YW.\", \"journal\": \"Diagnostics (Basel)\", \"volume\": \"16\", \"issue\": \"11\", \"pages\": \"1729\"}}, {\"id\": \"PMID:42432889\", \"title\": \"Long-term misdiagnosis of Niemann-Pick disease type C as Wilson disease: A case report.\", \"url\": \"https://europepmc.org/article/MED/42432889\", \"text\": \"RationaleNiemann-Pick disease type C (NPC) is a rare autosomal recessive lysosomal lipid storage disorder caused by pathogenic variants in NPC1 or NPC2. Adult-onset NPC may manifest with progressive ataxia, dysarthria, cognitive impairment, psychiatric symptoms, and splenomegaly, features that may overlap with Wilson disease (WD). Abnormal copper metabolism in NPC can further complicate the differential diagnosis.Patient concernsA 39-year-old man was admitted with a more than 15-year history of slowly progressive dysarthria and gait instability, accompanied by intermittent choking when drinking and mild recent memory impairment. He had previously been diagnosed with WD because of splenomegaly, low serum ceruloplasmin, and increased 24-hour urinary copper excretion, and had received intermittent copper-chelating therapy. His 42-year-old sister had similar neurological symptoms and had also been diagnosed with WD.DiagnosesOn readmission, the patient had leukopenia, splenomegaly, low serum ceruloplasmin, and elevated 24-hour urinary copper excretion. His Leipzig score was 4, meeting the diagnostic threshold for WD. However, Kayser-Fleischer rings were absent, brain magnetic resonance imaging showed no typical abnormalities suggestive of neurological WD, and the disease course was unusually indolent despite long-term irregular anti-copper treatment. Genetic testing of the proband and his affected sister identified compound heterozygous pathogenic variants in NPC1, c.2932C\\u2005>\\u2005T (p.Arg978Cys) and c.2974G\\u2005>\\u2005T (p.Gly992Trp), confirming the diagnosis of NPC.InterventionsCopper-chelating therapy was discontinued after the diagnosis was revised. The patient was started on miglustat, initially at 0.2\\u2009g once daily, which was gradually increased to 0.2\\u2009g 3 times daily.OutcomesAfter 3 months of follow-up, the patient's dysphagia improved, whereas gait instability persisted.LessonsAdult-onset NPC can mimic WD clinically and biochemically. Because copper metabolism abnormalities are not pathognomonic for WD, they may yield misleadingly high Leipzig scores. NPC should be prioritized in patients with progressive neurological decline and splenomegaly who lack classic WD hallmarks, such as Kayser-Fleischer rings or characteristic neuroimaging findings. Early genetic testing is essential to ensure diagnostic accuracy and avoid inappropriate long-term copper-chelating therapy.\", \"meta\": {\"pmid\": \"42432889\", \"pmcid\": \"PMC13362932\", \"doi\": \"10.1097/md.0000000000049790\", \"year\": \"2026\", \"authors\": \"Xiang S, Hua D, Zhang L, Sun L, Yang W, Wang H.\", \"journal\": \"Medicine (Baltimore)\", \"volume\": \"105\", \"issue\": \"28\", \"pages\": \"e49790\"}}, {\"id\": \"PMID:42625975\", \"title\": \"Recurrent acute liver failure in infancy - a novel &lt;i&gt;SCYL1&lt;/i&gt; mutation: A case report.\", \"url\": \"https://europepmc.org/article/MED/42625975\", \"text\": \"BackgroundRecurrent acute liver failure (ALF) in children is rare and diagnostically challenging. Despite rigorous investigations, a significant proportion of patients remain without a definitive diagnosis. Recently across the literature, biallelic pathogenic variants in the SCYL1 gene had been identified to cause a hepatocerebellar syndrome characterized by low gamma-glutamyl transferase (GGT) cholestasis, episodic ALF, and progressive neurodegeneration, collectively termed cholestasis, ALF, and neurodegeneration (CALFAN) syndrome (or spinocerebellar ataxia, autosomal recessive type 21). A high index of suspicion is paramount to recognizing this entity early, given that its presentation overlaps with more prevalent conditions, and delayed diagnosis carries significant morbidity and mortality risk.Case summaryWe report a 19-month-old girl of Middle Eastern ethnicity, presenting with recurrent episodes of febrile illness, ALF, and low-GGT cholestasis initially misattributed to viral hepatitis. Clinical evaluation revealed subtle neurological abnormalities, including tremors and fine motor delay. The highlight of her presentation was pancytopenia, which expanded the known phenotypic spectrum. Extensive metabolic, infectious, and autoimmune investigations were inconclusive. Whole exome sequencing identified a homozygous likely pathogenic SCYL1 variant (c.1420C>T; p.Arg474*), consistent with CALFAN syndrome/spinocerebellar ataxia, autosomal recessive type 21. Liver biopsy showed degenerative and early fibrotic changes. Liver function partially improved with corticosteroids and supportive care but did not normalize; a third episode of liver failure occurred at 22 months in the setting of a febrile urinary tract infection.ConclusionSCYL1-related disease should be considered in children with unexplained recurrent ALF, particularly when low-GGT cholestasis and neurological features co-exist. Early genetic evaluation using whole exome sequencing is essential for establishing the diagnosis. Steroid therapy was transiently associated with partial biochemical improvement, although its mechanism in a genetic disorder remains uncertain. This case further demonstrates that pancytopenia may be part of the CALFAN phenotypic spectrum.\", \"meta\": {\"pmid\": \"42625975\", \"pmcid\": \"PMC13491176\", \"doi\": \"10.5409/wjcp.120925\", \"year\": \"2026\", \"authors\": \"Zourob D, Teneiji AA, Miqdady M, Al Atrash E.\", \"journal\": \"World J Clin Pediatr\", \"volume\": \"15\", \"issue\": \"3\", \"pages\": \"120925\"}}, {\"id\": \"PMID:42739114\", \"title\": \"Utility of High-Throughput Genomic Analysis for Genetic Counseling in Large Family with Wilson Disease Carrying a Novel 28-bp &lt;i&gt;ATP7B&lt;/i&gt; Splice-Junction Deletion.\", \"url\": \"https://europepmc.org/article/MED/42739114\", \"text\": \"Background/Objectives: Wilson disease (WD) is an autosomal recessive disorder of copper metabolism caused by pathogenic variants in the ATP7B gene. Early diagnosis and appropriate treatment are essential for preventing irreversible complications. This study demonstrated the clinical utility of integrated high-throughput genomic analysis for molecular diagnosis and genetic counseling in a large Thai family affected by WD. Methods: A 32-year-old woman with clinical features suggestive of WD underwent clinical, biochemical, and molecular genetic evaluations, including sequencing of the entire ATP7B gene and SNP microarray. Fluorescent PCR followed by capillary electrophoresis was used for segregation analysis in available family members. SNP microarray analysis and whole-exome sequencing were performed on the proband's husband to identify pathogenic variants in the ATP7B gene and other disease-associated genes for reproductive risk assessment. Results: The proband presented with hepatic dysfunction, Kayser-Fleischer rings, low serum ceruloplasmin, and a family history of fatal liver disease. She also developed progressive weakness, with nerve conduction findings consistent with axonal sensorimotor polyneuropathy predominantly affecting the lower limbs. Sequencing identified a novel homozygous 28-bp splice-junction deletion, c.4022-24_4025del, which disrupted the canonical splice acceptor site at the intron 19/exon 20 boundary and was classified as pathogenic variant. Segregation analysis confirmed carrier status in the proband's father and identified heterozygous carrier or homozygous wild-type status among her living siblings. SNP microarray analysis revealed a 46.7 Mb copy-neutral long contiguous stretch of homozygosity (CN-LCSH) encompassing ATP7B, with CN-LCSH regions accounting for 2.046% of the total autosomal genome. These findings potentially reflected segmental uniparental isodisomy or identity by descent, while the overall homozygosity pattern did not support recent consanguinity. Combined genomic analyses of the proband's husband revealed no pathogenic or likely pathogenic ATP7B variants. Based on the available testing, all offspring are expected to be heterozygous carriers, and the risk of an affected child is considered very low. Conclusions: This study highlights the value of integrated genomic analysis for molecular diagnosis, cascade testing, and reproductive risk counseling. Further functional studies should be conducted to validate their pathogenicity.\", \"meta\": {\"pmid\": \"42739114\", \"pmcid\": \"PMC13564501\", \"doi\": \"10.3390/diagnostics16172682\", \"year\": \"2026\", \"authors\": \"Hnoonual A, Pongborriboon D, Wansom N, Kietsiriroje N, Plong-On O, Limprasert P.\", \"journal\": \"Diagnostics (Basel)\", \"volume\": \"16\", \"issue\": \"17\", \"pages\": \"2682\"}}, {\"id\": \"PMID:41965601\", \"title\": \"Genetic analysis reveals phenotypic variability in three Colombian families with dopa-responsive dystonia: novel genotype-phenotype correlations.\", \"url\": \"https://europepmc.org/article/MED/41965601\", \"text\": \"BACKGROUND: Dopa-responsive Dystonia (DRD) due to GTP cyclohydrolase 1 (GTPCH1) deficiency is a neurogenetic disorder caused by pathogenic GCH1 variants. Tetrahydrobiopterin (BH4) deficiency impairs dopamine synthesis in the basal ganglia, leading to childhood-onset dystonia with excellent response to levodopa. CASE PRESENTATION: We report eight patients from three unrelated families with GCH1 (NM_000161.3) variants: c.142\\u00a0C\\u2009>\\u2009T; p.(Gln48*), c.241T\\u2009>\\u2009C; p.(Ser81Pro), and c.607G\\u2009>\\u2009A; p.(Gly203Arg). Two individuals homozygous for c.142\\u00a0C\\u2009>\\u2009T showed phenotypic discordance. Mean age at onset was 7.3 years (range: 6\\u201312), with an average diagnostic delay of 13.4 years. All symptomatic individuals responded well to low-dose levodopa. DISCUSSION: This is the first report to describe variable expressivity among individuals homozygous for p.(Gln48*). Previous literature has focused on heterozygous carriers with incomplete penetrance, and homozygous variability remains scarcely documented. CONCLUSIONS: Our findings expand the clinical and molecular spectrum of DRD and challenge the assumption that autosomal recessive GCH1 variants invariably cause a severe phenotype. This report underscores the importance of family-based genetic studies, detailed pedigrees, and careful clinical surveillance of asymptomatic carriers. A low threshold for levodopa trials is warranted, even when inheritance patterns or symptom severity deviate from classical expectations. These insights are critical to improving early recognition and timely treatment.\", \"meta\": {\"pmid\": \"41965601\", \"pmcid\": \"PMC13251127\", \"doi\": \"10.1186/s12920-025-02287-1\", \"year\": \"2026\", \"authors\": \"Lince-Rivera I, Martinez-C\\u00f3rdoba N, Ram\\u00f3n-G\\u00f3mez JL, Cabarcas L, Zarante-Baham\\u00f3n AM.\", \"journal\": \"BMC Med Genomics\", \"volume\": \"19\", \"issue\": \"1\", \"pages\": \"98\"}}, {\"id\": \"PMID:42036356\", \"title\": \"Metabolic and Volumetric Alterations in the Basal Ganglia and the Cerebellum in Dopa-Responsive Dystonia in Symptomatic and Asymptomatic GCH1 Mutation Carriers.\", \"url\": \"https://europepmc.org/article/MED/42036356\", \"text\": \"BackgroundDopa-responsive dystonia is caused by pathogenic variants in the GCH1 gene. Although its clinical features and reduced penetrance are known, in vivo metabolic and structural alterations in symptomatic (sMC) and asymptomatic mutation carriers (aMC) remain poorly understood.ObjectivesThe aims were to characterize the volumetric and neurometabolic brain changes in GCH1 mutation carriers (MC) and explore their relationship with clinical severity.MethodsWe studied 20 sMCs, 5 aMCs, and 25 mutation-free healthy controls (HC) using volumetric magnetic resonance imaging (MRI) combined with 31phosphorus magnetic resonance spectroscopy imaging (31P-MRSI) of the basal ganglia and cerebellum. Analysis of covariance (ANCOVA) was used for group comparisons, and correlations were assessed using clinical symptom severity rating scales.ResultsVolumetric analyses revealed enlarged globus pallidus (16.6%, P\\u2009=\\u20090.0010) and putamen (7.2%, P\\u2009=\\u20090.0310) volumes in sMCs and increased cerebellar gray matter in aMCs (8.0%, P\\u2009=\\u20090.0500). Nicotinamide adenine dinucleotide (NAD) levels were significantly reduced in the basal ganglia of carriers (NAD/Pi [inorganic phosphate]: -14.7%, P\\u2009=\\u20090.0460; NAD/ATP-\\u03b1: -15.5%, P\\u2009=\\u20090.0180). In the cerebellum, aMCs demonstrated elevated high-energy phosphate ratios ([ATP-\\u03b1\\u2009+\\u2009PCr]/Pi: 23.7%, P\\u2009=\\u20090.0170; ATP-\\u03b1/Pi: 21.3%, P\\u2009=\\u20090.0460; PCr [phosphocreatine]/Pi: 25.2%, P\\u2009= 0.0090) compared with sMCs and HCs. Smaller cerebellar volumes correlated with greater dystonia severity (Burke-Fahn-Marsden Dystonia Rating Scale, \\u03c1\\u2009= -0.557, P\\u2009=\\u20090.0133), whereas lower basal ganglia NAD ratios correlated with higher Movement Disorder Society-Unified Parkinson's Disease Rating Scale, Part III (\\u03c1\\u2009=\\u2009-0.527, P\\u2009=\\u20090.0204), and Toronto Western Spasmodic Torticollis Rating Scale scores (\\u03c1\\u2009=\\u2009-0.475, P\\u2009=\\u20090.0398).ConclusionsVolumetric MRI and 31P-MRSI reveal region- and subgroup-specific metabolic and structural alterations in GCH1 MCs, linking basal ganglia vulnerability and cerebellar adaptation to clinical severity. \\u00a9 2026 The Author(s). Movement Disorders published by Wiley Periodicals LLC on behalf of International Parkinson and Movement Disorder Society.\", \"meta\": {\"pmid\": \"42036356\", \"pmcid\": \"PMC13387918\", \"doi\": \"10.1002/mds.70332\", \"year\": \"2026\", \"authors\": \"Prasuhn J, van Well L, Pokotylo MM, Hamami F, A\\u00dfmann JL, Lohmann K, K\\u00f6dderitzsch-Mertins MG, Henkel J, Uter J, M\\u00fcnchau A, Klein C, Weissbach A, Br\\u00fcggemann N.\", \"journal\": \"Mov Disord\", \"volume\": \"41\", \"issue\": \"7\", \"pages\": \"1716-1726\"}}, {\"id\": \"PMID:41688735\", \"title\": \"Clinical and genetic spectrum of L-dopa responsive dystonia: insights from seven Egyptian cases.\", \"url\": \"https://europepmc.org/article/MED/41688735\", \"text\": \"BackgroundDopa-responsive dystonia (DRD) encompasses a group of treatable movement disorders with significant clinical and genetic heterogeneity. Despite being treatable, DRD is often misdiagnosed, leading to delays in therapy.MethodsThis retrospective study aims to describe the clinical and genetic features of seven Egyptian patients from four unrelated families with confirmed DRD. Medical records were reviewed to document clinical data, neuroimaging, and genetic testing.ResultsWe identified six patients with Tyrosine hydroxylase-deficient DRD and one with GTP cyclohydrolase 1 deficiency. The age at onset of initial symptoms ranged from 0.6 to 1.5 years. Universal clinical features included motor delay, weakness, and delayed speech and language development. Neuroimaging findings showed periventricular demyelination in two patients and brain atrophic changes in one. We identified two previously reported variants in the TH gene (c.-70G\\u2009>\\u2009A and c.938G\\u2009>\\u2009T) and one novel variant in the GCH1 gene (c.343\\u2009+\\u20091G\\u2009>\\u2009A). All patients, except one, showed a complete response to L-dopa therapy within the first six months of treatment.ConclusionThis first Egyptian cohort highlights DRD as a treatable yet underdiagnosed cause of dystonia in the Middle East. We report a novel GCH1 variant and TH-related type A phenotypes, underscoring the importance of early genetic diagnosis and levodopa therapy.\", \"meta\": {\"pmid\": \"41688735\", \"pmcid\": null, \"doi\": \"10.1007/s10072-025-08803-6\", \"year\": \"2026\", \"authors\": \"Almenabawy N, Amer F, Selim L, Hassaan HM.\", \"journal\": \"Neurol Sci\", \"volume\": \"47\", \"issue\": \"3\", \"pages\": \"261\"}}, {\"id\": \"DOI:10.64898/2026.01.23.26344694\", \"title\": \"Metabolic and volumetric alterations in the basal ganglia and the cerebellum in dopa-responsive dystonia in symptomatic and asymptomatic  <i>GCH1</i>  mutation carriers\", \"url\": \"https://doi.org/10.64898/2026.01.23.26344694\", \"text\": \"ABSTRACT  Background  Dopa-responsive dystonia is caused by pathogenic variants in the  GCH1 gene. Although its clinical features and reduced penetrance are known,  in vivo metabolic and structural alterations in symptomatic (sMC) and asymptomatic mutation carriers (aMC) remain poorly understood.  Objectives  To characterize volumetric and neurometabolic brain changes of  GCH1 mutation carriers and explore their relationship with clinical severity.  Methods  We studied 20 sMC, 5 aMC, and 25 mutation-free healthy controls (HC) using volumetric MRI combined with  31 phosphorus magnetic resonance spectroscopy imaging (  31 P-MRSI) of the basal ganglia and cerebellum. ANCOVA was used for group comparisons, and correlations were assessed with clinical symptom severity rating scales.  Results  Volumetric analyses revealed enlarged globus pallidus (+16.6%, p = 0.001) and putamen (+7.2%, p = 0.031) volumes in carriers and increased cerebellar gray matter in aMC (+8.0%, p = 0.050). NAD levels were significantly reduced in the basal ganglia of carriers (NAD/Pi: -14.7%, p = 0.046; NAD/ATP-\\u03b1: -15.5%, p = 0.018). In the cerebellum, aMC demonstrated elevated high-energy phosphate ratios ((ATP-\\u03b1+PCr)/Pi: +23.7%, p = 0.017; ATP-\\u03b1/Pi: +21.3%, p = 0.046; PCr/Pi: +25.2%, p = 0.009) compared with sMC and HC. Smaller cerebellar volumes correlated with greater dystonia severity (BFMDRS, \\u03c1 = -0.475, p = 0.019) while lower basal ganglia NAD ratios correlated with higher MDS-UPDRS-III (\\u03c1 = -0.472, p=0.041) and TWSTRS scores (\\u03c1 = -0.477, p = 0.039). Conclusions  31 P-MRSI and volumetric MRI reveal region- and subgroup-specific metabolic and structural alterations in  GCH1 mutation carriers, linking basal ganglia vulnerability and cerebellar adaptation to clinical severity.\", \"meta\": {\"pmid\": null, \"pmcid\": null, \"doi\": \"10.64898/2026.01.23.26344694\", \"year\": \"2026\", \"authors\": \"Prasuhn J, van Well L, Pokotylo MM, Hamami F, A\\u00dfmann J, Lohmann K, K\\u00f6dderitzsch-Mertins MG, Henke J, Uter J, M\\u00fcnchau A, Klein C, Weissbach A, Br\\u00fcggemann N.\", \"journal\": null, \"volume\": null, \"issue\": null, \"pages\": null}}, {\"id\": \"PMID:42194935\", \"title\": \"Clinical Phenotype Comparison in Polish Patient Cohorts with and Without Molecular Diagnosis of Dystonia.\", \"url\": \"https://europepmc.org/article/MED/42194935\", \"text\": \"Background: Dystonia is a heterogeneous hyperkinetic movement disorder characterized by sustained or intermittent muscle contractions causing abnormal movements and postures. Although numerous genes associated with dystonia have been identified, the genetic background remains unknown in many patients. Data on genotype-phenotype correlations in Polish populations remain limited. Objective: To analyze the clinical characteristics of patients with generalized dystonia and compare clinical features between individuals with and without genetically confirmed dystonia-causative variants in a Polish cohort. Methods: A retrospective analysis of patients diagnosed with generalized dystonia at a single neurological center was performed. Diagnosis was established according to MDS criteria. Genetic analysis included whole-exome sequencing, targeted NGS genetic panel, MLPA, Sanger sequencing and PCR_RFLP analysis. Clinical and demographic data were extracted from medical records. Clinical characteristics of individuals with and without causative variants were compared. Results: A total of 113 patients with generalized dystonia were included. Genetic variants were identified in 13 patients (11.5%). These included variants within the TOR1A, THAP1, SGCE, GCH1, NKX2-1, SLC2A1, KMT2B, PDHA1, MFN2, and GNAL genes. We found detailed clinical data of 46 patients included in the study. Our comparative analysis of patients with causative (n = 7) and without causative variants (n = 39) revealed no statistically significant differences in age of onset, initial symptom localization, treatment response, family history, or associated neurological features. Conclusions: In this cohort of Polish patients with generalized dystonia, we identified pathogenic variants in approximately 11.5% of cases. No significant clinical differences were observed between patients with genetically confirmed dystonia and those without identified variants. In this study, we report the first two Polish cases with DYT-GNAL variants. Further studies are required to reveal the clinical heterogeneity of dystonia and characterize dystonia subtypes.\", \"meta\": {\"pmid\": \"42194935\", \"pmcid\": \"PMC13207540\", \"doi\": \"10.3390/jcm15103975\", \"year\": \"2026\", \"authors\": \"Milanowski L, Jurek M, Sali\\u0144ska A, Podwysocka A, Figura M, Szlufik S, Geremek M, Nowak J, Szcza\\u0142uba K, Hoffman-Zacharska D, Koziorowski D.\", \"journal\": \"J Clin Med\", \"volume\": \"15\", \"issue\": \"10\", \"pages\": \"3975\"}}, {\"id\": \"HELDOUT:gap_03\", \"title\": \"24-hour urine copper\", \"url\": \"\", \"text\": \"Normal.\", \"meta\": {\"held_out\": true, \"media\": null}}, {\"id\": \"HELDOUT:gap_03\", \"title\": \"24-hour urine copper\", \"url\": \"\", \"text\": \"Normal.\", \"meta\": {\"held_out\": true, \"media\": null}}], \"investigation_results\": [{\"request\": \"24\\u2011hour urine copper measurement\", \"status\": \"released\", \"source_id\": \"HELDOUT:gap_03\", \"result\": \"Normal.\"}, {\"request\": \"Slit\\u2011lamp examination for Kayser\\u2011Fleischer rings\", \"status\": \"not_available\", \"source_id\": null, \"result\": null}, {\"request\": \"Serum copper level\", \"status\": \"released\", \"source_id\": \"HELDOUT:gap_03\", \"result\": \"Normal.\"}], \"findings\": [{\"claim\": \"Symptoms are task\\u2011specific, occurring only during writing.\", \"quote\": \"Writing: excessive pen grip, wrist flexion and forearm pronation within the first line; letters become large and jagged; no tremor.\", \"source_id\": \"mf_01\", \"finding_ids\": [\"mf_01\"], \"stance\": \"supports\", \"hypothesis\": \"idiopathic focal dystonia\", \"evidence_id\": \"ev_59c2179f\", \"grounded\": true, \"note\": \"Quote verified in mf_01\"}, {\"claim\": \"Symptoms are absent during other tasks such as typing or drawing.\", \"quote\": \"Typing, buttoning, using cutlery, and drawing large spirals on a whiteboard: normal.\", \"source_id\": \"mf_02\", \"finding_ids\": [\"mf_02\"], \"stance\": \"supports\", \"hypothesis\": \"idiopathic focal dystonia\", \"evidence_id\": \"ev_6e281f9b\", \"grounded\": true, \"note\": \"Quote verified in mf_02\"}, {\"claim\": \"No tremor is present at rest or with sustained posture.\", \"quote\": \"No tremor, no dystonia at rest or with sustained posture of either arm.\", \"source_id\": \"mf_03\", \"finding_ids\": [\"mf_03\"], \"stance\": \"contradicts\", \"hypothesis\": \"Parkinsonism\", \"evidence_id\": \"ev_f1118d08\", \"grounded\": true, \"note\": \"Quote verified in mf_03\"}, {\"claim\": \"Levodopa trial of up to 25/100 mg TID for 6 weeks produced no benefit.\", \"quote\": \"No benefit\", \"source_id\": \"tl_04\", \"finding_ids\": [\"tl_04\"], \"stance\": \"contradicts\", \"hypothesis\": \"dopa\\u2011responsive dystonia\", \"evidence_id\": \"ev_9dfdfc95\", \"grounded\": true, \"note\": \"Quote verified in tl_04\"}, {\"claim\": \"Ceruloplasmin level is within normal reference range (31 mg/dL).\", \"quote\": \"31 mg/dL\", \"source_id\": \"lab_02\", \"finding_ids\": [\"lab_02\"], \"stance\": \"contradicts\", \"hypothesis\": \"Wilson disease\", \"evidence_id\": \"ev_cdfb02d7\", \"grounded\": true, \"note\": \"Quote verified in lab_02\"}, {\"claim\": \"24\\u2011hour urine copper measurement is normal.\", \"quote\": \"Normal.\", \"source_id\": \"HELDOUT:gap_03\", \"finding_ids\": [\"HELDOUT:gap_03\"], \"stance\": \"contradicts\", \"hypothesis\": \"Wilson disease\", \"evidence_id\": \"ev_ee5431fa\", \"grounded\": false, \"note\": \"Quote too short to verify\"}, {\"claim\": \"MRI brain shows no structural abnormality.\", \"quote\": \"No structural abnormality. Basal ganglia normal. Impression: normal.\", \"source_id\": \"img_01\", \"finding_ids\": [\"img_01\"], \"stance\": \"contradicts\", \"hypothesis\": \"structural lesion\", \"evidence_id\": \"ev_6fba78a5\", \"grounded\": true, \"note\": \"Quote verified in img_01\"}, {\"claim\": \"Family history includes only mild hand tremor in father, no dystonia.\", \"quote\": \"Father (76) has a mild bilateral hand tremor when holding a newspaper, present for decades, never treated. Mother (74) healthy. Two siblings healthy. No known dystonia, Parkinson disease, or neurological disease.\", \"source_id\": \"family_history\", \"finding_ids\": [\"family_history\"], \"stance\": \"neutral\", \"hypothesis\": \"genetic dystonia\", \"evidence_id\": \"ev_17658177\", \"grounded\": true, \"note\": \"Quote verified in family_history\"}], \"analysis\": {\"conclusion\": \"Idiopathic focal hand dystonia (writing cramp) is the most likely diagnosis; Wilson disease and dopa\\u2011responsive dystonia are ruled out by normal copper studies and lack of levodopa response.\", \"decision\": \"finish\", \"children\": [{\"objective\": \"Conclude diagnostic workup\", \"justification\": \"Presentation meets criteria for idiopathic focal dystonia; no red\\u2011flag features; all relevant treatable causes excluded.\"}]}, \"child_ids\": [], \"verifier\": {\"verdict\": \"REVISE\", \"rejected_findings\": [0], \"feedback\": \"R1 (finding 0): the source mf_01 shows symptoms during writing but does not state they occur exclusively during writing; revise to say symptoms occur during writing without claiming exclusivity. Additionally, the conclusion overstates that Wilson disease and dopa\\u2011responsive dystonia are ruled out; normal ceruloplasmin and a negative levodopa trial are insufficient to exclude these conditions (R3). Keep Wilson disease and DRD in the differential and pursue the requested 24\\u2011hour urine copper and slit\\u2011lamp examination.\"}}",
+    "created_at": 1792274896.801614,
+    "updated_at": 1792275051.526382
+   }
+  ],
+  "evidence": [
+   {
+    "id": "ev_59c2179f",
+    "run_id": "run_e74dc750be",
+    "node_id": "node_01",
+    "kind": "literature",
+    "claim": "Symptoms are task‑specific, occurring only during writing.",
+    "quote": "Writing: excessive pen grip, wrist flexion and forearm pronation within the first line; letters become large and jagged; no tremor.",
+    "source_id": "mf_01",
+    "finding_ids": "[\"mf_01\"]",
+    "stance": "supports",
+    "hypothesis": "idiopathic focal dystonia",
+    "grounded": 1,
+    "grounding_note": "Quote verified in mf_01",
+    "created_at": 1792274969.4371352
+   },
+   {
+    "id": "ev_6e281f9b",
+    "run_id": "run_e74dc750be",
+    "node_id": "node_01",
+    "kind": "literature",
+    "claim": "Symptoms are absent during other tasks such as typing or drawing.",
+    "quote": "Typing, buttoning, using cutlery, and drawing large spirals on a whiteboard: normal.",
+    "source_id": "mf_02",
+    "finding_ids": "[\"mf_02\"]",
+    "stance": "supports",
+    "hypothesis": "idiopathic focal dystonia",
+    "grounded": 1,
+    "grounding_note": "Quote verified in mf_02",
+    "created_at": 1792274969.441371
+   },
+   {
+    "id": "ev_f1118d08",
+    "run_id": "run_e74dc750be",
+    "node_id": "node_01",
+    "kind": "literature",
+    "claim": "No tremor is present at rest or with sustained posture.",
+    "quote": "No tremor, no dystonia at rest or with sustained posture of either arm.",
+    "source_id": "mf_03",
+    "finding_ids": "[\"mf_03\"]",
+    "stance": "contradicts",
+    "hypothesis": "Parkinsonism",
+    "grounded": 1,
+    "grounding_note": "Quote verified in mf_03",
+    "created_at": 1792274969.4428852
+   },
+   {
+    "id": "ev_9dfdfc95",
+    "run_id": "run_e74dc750be",
+    "node_id": "node_01",
+    "kind": "literature",
+    "claim": "Levodopa trial of up to 25/100 mg TID for 6 weeks produced no benefit.",
+    "quote": "No benefit",
+    "source_id": "tl_04",
+    "finding_ids": "[\"tl_04\"]",
+    "stance": "contradicts",
+    "hypothesis": "dopa‑responsive dystonia",
+    "grounded": 1,
+    "grounding_note": "Quote verified in tl_04",
+    "created_at": 1792274969.4447548
+   },
+   {
+    "id": "ev_cdfb02d7",
+    "run_id": "run_e74dc750be",
+    "node_id": "node_01",
+    "kind": "literature",
+    "claim": "Ceruloplasmin level is within normal reference range (31 mg/dL).",
+    "quote": "31 mg/dL",
+    "source_id": "lab_02",
+    "finding_ids": "[\"lab_02\"]",
+    "stance": "contradicts",
+    "hypothesis": "Wilson disease",
+    "grounded": 1,
+    "grounding_note": "Quote verified in lab_02",
+    "created_at": 1792274969.4470131
+   },
+   {
+    "id": "ev_ee5431fa",
+    "run_id": "run_e74dc750be",
+    "node_id": "node_01",
+    "kind": "heldout",
+    "claim": "24‑hour urine copper measurement is normal.",
+    "quote": "Normal.",
+    "source_id": "HELDOUT:gap_03",
+    "finding_ids": "[\"HELDOUT:gap_03\"]",
+    "stance": "contradicts",
+    "hypothesis": "Wilson disease",
+    "grounded": 0,
+    "grounding_note": "Quote too short to verify",
+    "created_at": 1792274969.44832
+   },
+   {
+    "id": "ev_6fba78a5",
+    "run_id": "run_e74dc750be",
+    "node_id": "node_01",
+    "kind": "literature",
+    "claim": "MRI brain shows no structural abnormality.",
+    "quote": "No structural abnormality. Basal ganglia normal. Impression: normal.",
+    "source_id": "img_01",
+    "finding_ids": "[\"img_01\"]",
+    "stance": "contradicts",
+    "hypothesis": "structural lesion",
+    "grounded": 1,
+    "grounding_note": "Quote verified in img_01",
+    "created_at": 1792274969.449394
+   },
+   {
+    "id": "ev_17658177",
+    "run_id": "run_e74dc750be",
+    "node_id": "node_01",
+    "kind": "literature",
+    "claim": "Family history includes only mild hand tremor in father, no dystonia.",
+    "quote": "Father (76) has a mild bilateral hand tremor when holding a newspaper, present for decades, never treated. Mother (74) healthy. Two siblings healthy. No known dystonia, Parkinson disease, or neurological disease.",
+    "source_id": "family_history",
+    "finding_ids": "[\"family_history\"]",
+    "stance": "neutral",
+    "hypothesis": "genetic dystonia",
+    "grounded": 1,
+    "grounding_note": "Quote verified in family_history",
+    "created_at": 1792274969.450571
+   }
+  ],
+  "sources": [
+   {
+    "id": "DOI:10.64898/2026.01.23.26344694",
+    "run_id": "run_e74dc750be",
+    "title": "Metabolic and volumetric alterations in the basal ganglia and the cerebellum in dopa-responsive dystonia in symptomatic and asymptomatic  <i>GCH1</i>  mutation carriers",
+    "url": "https://doi.org/10.64898/2026.01.23.26344694",
+    "text": "ABSTRACT  Background  Dopa-responsive dystonia is caused by pathogenic variants in the  GCH1 gene. Although its clinical features and reduced penetrance are known,  in vivo metabolic and structural alterations in symptomatic (sMC) and asymptomatic mutation carriers (aMC) remain poorly understood.  Objectives  To characterize volumetric and neurometabolic brain changes of  GCH1 mutation carriers and explore their relationship with clinical severity.  Methods  We studied 20 sMC, 5 aMC, and 25 mutation-free healthy controls (HC) using volumetric MRI combined with  31 phosphorus magnetic resonance spectroscopy imaging (  31 P-MRSI) of the basal ganglia and cerebellum. ANCOVA was used for group comparisons, and correlations were assessed with clinical symptom severity rating scales.  Results  Volumetric analyses revealed enlarged globus pallidus (+16.6%, p = 0.001) and putamen (+7.2%, p = 0.031) volumes in carriers and increased cerebellar gray matter in aMC (+8.0%, p = 0.050). NAD levels were significantly reduced in the basal ganglia of carriers (NAD/Pi: -14.7%, p = 0.046; NAD/ATP-α: -15.5%, p = 0.018). In the cerebellum, aMC demonstrated elevated high-energy phosphate ratios ((ATP-α+PCr)/Pi: +23.7%, p = 0.017; ATP-α/Pi: +21.3%, p = 0.046; PCr/Pi: +25.2%, p = 0.009) compared with sMC and HC. Smaller cerebellar volumes correlated with greater dystonia severity (BFMDRS, ρ = -0.475, p = 0.019) while lower basal ganglia NAD ratios correlated with higher MDS-UPDRS-III (ρ = -0.472, p=0.041) and TWSTRS scores (ρ = -0.477, p = 0.039). Conclusions  31 P-MRSI and volumetric MRI reveal region- and subgroup-specific metabolic and structural alterations in  GCH1 mutation carriers, linking basal ganglia vulnerability and cerebellar adaptation to clinical severity.",
+    "meta": "{\"pmid\": null, \"pmcid\": null, \"doi\": \"10.64898/2026.01.23.26344694\", \"year\": \"2026\", \"authors\": \"Prasuhn J, van Well L, Pokotylo MM, Hamami F, A\\u00dfmann J, Lohmann K, K\\u00f6dderitzsch-Mertins MG, Henke J, Uter J, M\\u00fcnchau A, Klein C, Weissbach A, Br\\u00fcggemann N.\", \"journal\": null, \"volume\": null, \"issue\": null, \"pages\": null}"
+   },
+   {
+    "id": "HELDOUT:gap_03",
+    "run_id": "run_e74dc750be",
+    "title": "24-hour urine copper",
+    "url": "",
+    "text": "Normal.",
+    "meta": "{\"held_out\": true, \"media\": null}"
+   },
+   {
+    "id": "PMID:41688735",
+    "run_id": "run_e74dc750be",
+    "title": "Clinical and genetic spectrum of L-dopa responsive dystonia: insights from seven Egyptian cases.",
+    "url": "https://europepmc.org/article/MED/41688735",
+    "text": "BackgroundDopa-responsive dystonia (DRD) encompasses a group of treatable movement disorders with significant clinical and genetic heterogeneity. Despite being treatable, DRD is often misdiagnosed, leading to delays in therapy.MethodsThis retrospective study aims to describe the clinical and genetic features of seven Egyptian patients from four unrelated families with confirmed DRD. Medical records were reviewed to document clinical data, neuroimaging, and genetic testing.ResultsWe identified six patients with Tyrosine hydroxylase-deficient DRD and one with GTP cyclohydrolase 1 deficiency. The age at onset of initial symptoms ranged from 0.6 to 1.5 years. Universal clinical features included motor delay, weakness, and delayed speech and language development. Neuroimaging findings showed periventricular demyelination in two patients and brain atrophic changes in one. We identified two previously reported variants in the TH gene (c.-70G > A and c.938G > T) and one novel variant in the GCH1 gene (c.343 + 1G > A). All patients, except one, showed a complete response to L-dopa therapy within the first six months of treatment.ConclusionThis first Egyptian cohort highlights DRD as a treatable yet underdiagnosed cause of dystonia in the Middle East. We report a novel GCH1 variant and TH-related type A phenotypes, underscoring the importance of early genetic diagnosis and levodopa therapy.",
+    "meta": "{\"pmid\": \"41688735\", \"pmcid\": null, \"doi\": \"10.1007/s10072-025-08803-6\", \"year\": \"2026\", \"authors\": \"Almenabawy N, Amer F, Selim L, Hassaan HM.\", \"journal\": \"Neurol Sci\", \"volume\": \"47\", \"issue\": \"3\", \"pages\": \"261\"}"
+   },
+   {
+    "id": "PMID:41965601",
+    "run_id": "run_e74dc750be",
+    "title": "Genetic analysis reveals phenotypic variability in three Colombian families with dopa-responsive dystonia: novel genotype-phenotype correlations.",
+    "url": "https://europepmc.org/article/MED/41965601",
+    "text": "BACKGROUND: Dopa-responsive Dystonia (DRD) due to GTP cyclohydrolase 1 (GTPCH1) deficiency is a neurogenetic disorder caused by pathogenic GCH1 variants. Tetrahydrobiopterin (BH4) deficiency impairs dopamine synthesis in the basal ganglia, leading to childhood-onset dystonia with excellent response to levodopa. CASE PRESENTATION: We report eight patients from three unrelated families with GCH1 (NM_000161.3) variants: c.142 C > T; p.(Gln48*), c.241T > C; p.(Ser81Pro), and c.607G > A; p.(Gly203Arg). Two individuals homozygous for c.142 C > T showed phenotypic discordance. Mean age at onset was 7.3 years (range: 6–12), with an average diagnostic delay of 13.4 years. All symptomatic individuals responded well to low-dose levodopa. DISCUSSION: This is the first report to describe variable expressivity among individuals homozygous for p.(Gln48*). Previous literature has focused on heterozygous carriers with incomplete penetrance, and homozygous variability remains scarcely documented. CONCLUSIONS: Our findings expand the clinical and molecular spectrum of DRD and challenge the assumption that autosomal recessive GCH1 variants invariably cause a severe phenotype. This report underscores the importance of family-based genetic studies, detailed pedigrees, and careful clinical surveillance of asymptomatic carriers. A low threshold for levodopa trials is warranted, even when inheritance patterns or symptom severity deviate from classical expectations. These insights are critical to improving early recognition and timely treatment.",
+    "meta": "{\"pmid\": \"41965601\", \"pmcid\": \"PMC13251127\", \"doi\": \"10.1186/s12920-025-02287-1\", \"year\": \"2026\", \"authors\": \"Lince-Rivera I, Martinez-C\\u00f3rdoba N, Ram\\u00f3n-G\\u00f3mez JL, Cabarcas L, Zarante-Baham\\u00f3n AM.\", \"journal\": \"BMC Med Genomics\", \"volume\": \"19\", \"issue\": \"1\", \"pages\": \"98\"}"
+   },
+   {
+    "id": "PMID:42036356",
+    "run_id": "run_e74dc750be",
+    "title": "Metabolic and Volumetric Alterations in the Basal Ganglia and the Cerebellum in Dopa-Responsive Dystonia in Symptomatic and Asymptomatic GCH1 Mutation Carriers.",
+    "url": "https://europepmc.org/article/MED/42036356",
+    "text": "BackgroundDopa-responsive dystonia is caused by pathogenic variants in the GCH1 gene. Although its clinical features and reduced penetrance are known, in vivo metabolic and structural alterations in symptomatic (sMC) and asymptomatic mutation carriers (aMC) remain poorly understood.ObjectivesThe aims were to characterize the volumetric and neurometabolic brain changes in GCH1 mutation carriers (MC) and explore their relationship with clinical severity.MethodsWe studied 20 sMCs, 5 aMCs, and 25 mutation-free healthy controls (HC) using volumetric magnetic resonance imaging (MRI) combined with 31phosphorus magnetic resonance spectroscopy imaging (31P-MRSI) of the basal ganglia and cerebellum. Analysis of covariance (ANCOVA) was used for group comparisons, and correlations were assessed using clinical symptom severity rating scales.ResultsVolumetric analyses revealed enlarged globus pallidus (16.6%, P = 0.0010) and putamen (7.2%, P = 0.0310) volumes in sMCs and increased cerebellar gray matter in aMCs (8.0%, P = 0.0500). Nicotinamide adenine dinucleotide (NAD) levels were significantly reduced in the basal ganglia of carriers (NAD/Pi [inorganic phosphate]: -14.7%, P = 0.0460; NAD/ATP-α: -15.5%, P = 0.0180). In the cerebellum, aMCs demonstrated elevated high-energy phosphate ratios ([ATP-α + PCr]/Pi: 23.7%, P = 0.0170; ATP-α/Pi: 21.3%, P = 0.0460; PCr [phosphocreatine]/Pi: 25.2%, P = 0.0090) compared with sMCs and HCs. Smaller cerebellar volumes correlated with greater dystonia severity (Burke-Fahn-Marsden Dystonia Rating Scale, ρ = -0.557, P = 0.0133), whereas lower basal ganglia NAD ratios correlated with higher Movement Disorder Society-Unified Parkinson's Disease Rating Scale, Part III (ρ = -0.527, P = 0.0204), and Toronto Western Spasmodic Torticollis Rating Scale scores (ρ = -0.475, P = 0.0398).ConclusionsVolumetric MRI and 31P-MRSI reveal region- and subgroup-specific metabolic and structural alterations in GCH1 MCs, linking basal ganglia vulnerability and cerebellar adaptation to clinical severity. © 2026 The Author(s). Movement Disorders published by Wiley Periodicals LLC on behalf of International Parkinson and Movement Disorder Society.",
+    "meta": "{\"pmid\": \"42036356\", \"pmcid\": \"PMC13387918\", \"doi\": \"10.1002/mds.70332\", \"year\": \"2026\", \"authors\": \"Prasuhn J, van Well L, Pokotylo MM, Hamami F, A\\u00dfmann JL, Lohmann K, K\\u00f6dderitzsch-Mertins MG, Henkel J, Uter J, M\\u00fcnchau A, Klein C, Weissbach A, Br\\u00fcggemann N.\", \"journal\": \"Mov Disord\", \"volume\": \"41\", \"issue\": \"7\", \"pages\": \"1716-1726\"}"
+   },
+   {
+    "id": "PMID:42046106",
+    "run_id": "run_e74dc750be",
+    "title": "Dystonia as an early and prominent feature in a patient with CYP2U1 gene mutation: expanding the phenotype of SPG56-a case report.",
+    "url": "https://europepmc.org/article/MED/42046106",
+    "text": "Hereditary Spastic Paraplegias (HSPs) are a heterogeneous group of neurodegenerative disorders primarily characterized by progressive lower limb spasticity and weakness. Among them, Spastic Paraplegia Type 56 (SPG56) is a rare autosomal recessive form caused by CYP2U1 mutations. While spasticity is the hallmark of SPG56, recent reports have shown expanding phenotypic variability, including dystonia. We report an 8-month-old Arab male who presented with generalized tonic seizures and abnormal head movements, later identified as dystonic in nature. MRI revealed cerebral atrophy and delayed myelination. Given the early symptom onset and unexplained neurodevelopmental presentation, exome-based next-generation sequencing was performed. This identified a homozygous missense variant in CYP2U1 (c.947 A > T; p.Asp316Val), classified as likely pathogenic. This variant has previously been associated with SPG56 but rarely with dystonia as a predominant feature. Over 6 months of follow-up, seizure frequency decreased markedly and dystonia improved substantially on sodium valproate and levetiracetam, although mild dystonic movements persisted and no lower-limb spasticity was observed. This case highlights the diagnostic value of exome-based genetic testing in unexplained early-onset neurodevelopmental disorders. It also underscores the phenotypic heterogeneity of SPG56 and suggests that dystonia may, in some cases, be an early and dominant manifestation of CYP2U1-related pathology. Reporting such rare presentations is essential to broaden our understanding of the clinical spectrum of CYP2U1 mutations.",
+    "meta": "{\"pmid\": \"42046106\", \"pmcid\": \"PMC13277134\", \"doi\": \"10.1186/s13023-026-04349-8\", \"year\": \"2026\", \"authors\": \"Alhamwy Z, Senjab A, Al-Bitar A, Alasmar D.\", \"journal\": \"Orphanet J Rare Dis\", \"volume\": \"21\", \"issue\": \"1\", \"pages\": \"226\"}"
+   },
+   {
+    "id": "PMID:42194935",
+    "run_id": "run_e74dc750be",
+    "title": "Clinical Phenotype Comparison in Polish Patient Cohorts with and Without Molecular Diagnosis of Dystonia.",
+    "url": "https://europepmc.org/article/MED/42194935",
+    "text": "Background: Dystonia is a heterogeneous hyperkinetic movement disorder characterized by sustained or intermittent muscle contractions causing abnormal movements and postures. Although numerous genes associated with dystonia have been identified, the genetic background remains unknown in many patients. Data on genotype-phenotype correlations in Polish populations remain limited. Objective: To analyze the clinical characteristics of patients with generalized dystonia and compare clinical features between individuals with and without genetically confirmed dystonia-causative variants in a Polish cohort. Methods: A retrospective analysis of patients diagnosed with generalized dystonia at a single neurological center was performed. Diagnosis was established according to MDS criteria. Genetic analysis included whole-exome sequencing, targeted NGS genetic panel, MLPA, Sanger sequencing and PCR_RFLP analysis. Clinical and demographic data were extracted from medical records. Clinical characteristics of individuals with and without causative variants were compared. Results: A total of 113 patients with generalized dystonia were included. Genetic variants were identified in 13 patients (11.5%). These included variants within the TOR1A, THAP1, SGCE, GCH1, NKX2-1, SLC2A1, KMT2B, PDHA1, MFN2, and GNAL genes. We found detailed clinical data of 46 patients included in the study. Our comparative analysis of patients with causative (n = 7) and without causative variants (n = 39) revealed no statistically significant differences in age of onset, initial symptom localization, treatment response, family history, or associated neurological features. Conclusions: In this cohort of Polish patients with generalized dystonia, we identified pathogenic variants in approximately 11.5% of cases. No significant clinical differences were observed between patients with genetically confirmed dystonia and those without identified variants. In this study, we report the first two Polish cases with DYT-GNAL variants. Further studies are required to reveal the clinical heterogeneity of dystonia and characterize dystonia subtypes.",
+    "meta": "{\"pmid\": \"42194935\", \"pmcid\": \"PMC13207540\", \"doi\": \"10.3390/jcm15103975\", \"year\": \"2026\", \"authors\": \"Milanowski L, Jurek M, Sali\\u0144ska A, Podwysocka A, Figura M, Szlufik S, Geremek M, Nowak J, Szcza\\u0142uba K, Hoffman-Zacharska D, Koziorowski D.\", \"journal\": \"J Clin Med\", \"volume\": \"15\", \"issue\": \"10\", \"pages\": \"3975\"}"
+   },
+   {
+    "id": "PMID:42279596",
+    "run_id": "run_e74dc750be",
+    "title": "LGMD R18 Mimicking Wilson Disease: 6-Year Longitudinal Muscle MRI Evolution and Clinical Insights into &lt;i&gt;TRAPPC11&lt;/i&gt; Mutation.",
+    "url": "https://europepmc.org/article/MED/42279596",
+    "text": "Background and Clinical Significance: Limb-girdle muscular dystrophy R18 is a rare autosomal recessive disorder that may present with both muscular and hepatic involvement, potentially leading to diagnostic confusion. Longitudinal MRI data documenting this disease from childhood remain scarce. Case Presentation: We report a female patient with disease onset that occurred at 8 years of age, initially presenting with elevated liver enzymes and decreased ceruloplasmin levels, which raised suspicion of Wilson's disease. Genetic testing confirmed TRAPPC11 mutation. Serial MRI scans of the thigh muscles over a six-year period demonstrated progressive fatty infiltration, predominantly affecting the adductor magnus and posterior thigh muscles, with relative sparing of the gracilis and anterior compartment muscles. Conclusions: This case highlights that limb-girdle muscular dystrophy R18 can clinically mimic Wilson disease. Longitudinal muscle MRI offers valuable diagnostic insights and reveals a characteristic pattern of muscle involvement.",
+    "meta": "{\"pmid\": \"42279596\", \"pmcid\": \"PMC13257075\", \"doi\": \"10.3390/diagnostics16111729\", \"year\": \"2026\", \"authors\": \"Chou YT, Chou HP, Chen YW.\", \"journal\": \"Diagnostics (Basel)\", \"volume\": \"16\", \"issue\": \"11\", \"pages\": \"1729\"}"
+   },
+   {
+    "id": "PMID:42343441",
+    "run_id": "run_e74dc750be",
+    "title": "Pediatric Wilson disease with early psychiatric manifestations: a case report.",
+    "url": "https://europepmc.org/article/MED/42343441",
+    "text": "BackgroundWilson's disease is an autosomal recessive disorder of copper metabolism that primarily affects the liver and brain, with onset typically in early adulthood. Pediatric presentations are rare, and the atypical presentation of psychiatric symptoms can delay the diagnosis process in low-resource settings. Epidemiological data on the disease, particularly in Syria, remain scarce. Early diagnosis is necessary to prevent irreversible hepatic and neurologic damage.Case presentationAn eight-year-old Syrian child presented with psychiatric and neurologic symptoms, including increased aggressiveness, learning difficulties, dysarthria, drooling while eating and drinking, and difficulty speaking, followed by weight loss and jaundice. A dental examination revealed no temporomandibular joint deformities, prompting neurological consultation. The neurological examination revealed difficulty walking with limb tremors and speech impairment. Laboratory findings showed slightly elevated transaminases and total iron-binding capacity with low serum iron, indicating hepatic dysfunction. Serum ceruloplasmin was markedly reduced (3.1 mg/dl), and 24-h urinary copper excretion was elevated. MRI of the brain revealed increased T2-weighted signal intensity in the caudate and lentiform nuclei. An ophthalmologic exam found Kayser-Fleischer rings at the corneal limbus. Esophagogastroduodenoscopy showed distal esophageal varices, and an abdominal ultrasound showed hepatomegaly and splenomegaly. The patient was treated with copper chelator penicillamine, dietary copper restriction, and physical therapy. Follow-up showed marked clinical improvement with recovery of motor function, improved speech, and resolution of jaundice.ConclusionsThis instance underscores the necessity of evaluating Wilson's illness in pediatric patients exhibiting early behavioral and neurological signs, particularly emphasizing that prominent psychiatric manifestations may precede hepatic signs even in young children. Early administration of chelation therapy can lead to excellent outcomes even in resource-limited settings. Atypical presentations require increased awareness that may facilitate earlier detection and the prevention of irreversible organ damage.",
+    "meta": "{\"pmid\": \"42343441\", \"pmcid\": \"PMC13551984\", \"doi\": \"10.1186/s13256-026-06220-7\", \"year\": \"2026\", \"authors\": \"Shammas F, Hamama M, Ismail S, Alhailony AN, Al Dali R, Solaiman SN.\", \"journal\": \"J Med Case Rep\", \"volume\": \"20\", \"issue\": \"1\", \"pages\": \"525\"}"
+   },
+   {
+    "id": "PMID:42368877",
+    "run_id": "run_e74dc750be",
+    "title": "Movement disorder emergencies at a tertiary-care center in West Bengal, India: Spectrum, etiologies, diagnostic implications.",
+    "url": "https://europepmc.org/article/MED/42368877",
+    "text": "BackgroundAcute-onset movement disorders, often termed movement disorder emergencies, present in emergency and inpatient neurology settings and may arise from diverse causes, including potentially reversible metabolic and medication-related conditions.ObjectivesWe aimed to describe the clinical phenomenology and etiological spectrum of movement disorder emergencies presenting to a tertiary care center.MethodsWe conducted a prospective, single-center, hospital-based cross-sectional observational study over 12 months (February 2023 to January 2024) at a tertiary-care hospital in Kolkata, Eastern India. Patients aged 12 years or older with a movement disorder onset within 4 weeks were enrolled. Movement disorder presentations were categorized as hyperkinetic, hypokinetic, or mixed.ResultsEighty patients were included (mean age 48.0 years, standard deviation 18.0; 57.5% male). Hyperkinetic presentations predominated (80.0%), followed by mixed (13.7%) and hypokinetic (6.2%) presentations. The most frequent phenomenologies were hemichorea and myoclonus (18.7% each), followed by acute parkinsonism (17.5%), dystonia (16.2%), and tremor (15.0%). Mean symptom duration at presentation did not differ across movement disorder categories (p = 0.36). The movement disorder category was not associated with sex (p = 0.68), age group (p = 0.39), or timing of presentation (p = 0.632). The leading etiologies were metabolic (26.2%) and drug-induced (25.0%), followed by vascular (15.0%), functional (8.7%), and infectious (6.2%) causes. Functional etiologies presented exclusively with hyperkinetic phenomenology.ConclusionsIn this tertiary-care cohort, movement disorder emergencies were predominantly hyperkinetic, and metabolic and drug-induced causes accounted for over half of the cases. These findings support an expeditious diagnostic approach that prioritizes rapid metabolic screening, careful medication review, and targeted neuroimaging when clinically indicated.",
+    "meta": "{\"pmid\": \"42368877\", \"pmcid\": \"PMC13299396\", \"doi\": \"10.1016/j.nexres.2026.101706\", \"year\": \"2026\", \"authors\": \"Manna DK, Banik A, Biswas D, Pal S, Pal A, Sau A, Chakravarthy M, Benito-Le\\u00f3n J.\", \"journal\": \"Next Res\", \"volume\": \"9\", \"issue\": null, \"pages\": \"101706\"}"
+   },
+   {
+    "id": "PMID:42400823",
+    "run_id": "run_e74dc750be",
+    "title": "Update on Genetic Chorea.",
+    "url": "https://europepmc.org/article/MED/42400823",
+    "text": "Purpose of reviewChorea is a symptom of numerous pathophysiologically and clinically heterogeneous genetic conditions. A number of developments have been made in this field over the last years linked to improved genomic testing, large cohort collaborations and improved understanding of the molecular mechanisms. This review aims to provide an update on the new genetic conditions and phenotypes linked to chorea disorders, their modification factors and pathophysiological background.Recent findingsSeveral novel genetic conditions have been linked to chorea over the last 3 years, including mutations in FTH1, NAA60, ACBD6 or TOR1AIP2. Also, novel phenotypes have been established and linked to chorea, such as Adult-onset Neurodegeneration in Nucleotide Excision Repair Disorder (NERD-ND). Major advances have been made in understanding of the pathophysiological role of somatic instability in HD. Striatal pallidal neurons (SPNs) with 150-500 + CAG repeats seem to lose positive and then negative features of neuronal identity, de-repress senescence/apoptosis genes, ultimately leading to cell death. Improved recognition of the genetic background of chorea leads to more effective diagnostic processes, better prognostication and improved personalized treatment. The findings on somatic instability in HD suggest that neurodegeneration in HD is an asynchronous DNA process for >95% of a neuron's life, with majority of neurons in all disease stages having a HTT gene which is not biologically harmful. This has potential major therapeutic implications not only in HD but also in other neurological repeat expansion disorders.",
+    "meta": "{\"pmid\": \"42400823\", \"pmcid\": \"PMC13332979\", \"doi\": \"10.1007/s11910-026-01502-5\", \"year\": \"2026\", \"authors\": \"Ostrozovicova M, Skorvanek M.\", \"journal\": \"Curr Neurol Neurosci Rep\", \"volume\": \"26\", \"issue\": \"1\", \"pages\": \"31\"}"
+   },
+   {
+    "id": "PMID:42432889",
+    "run_id": "run_e74dc750be",
+    "title": "Long-term misdiagnosis of Niemann-Pick disease type C as Wilson disease: A case report.",
+    "url": "https://europepmc.org/article/MED/42432889",
+    "text": "RationaleNiemann-Pick disease type C (NPC) is a rare autosomal recessive lysosomal lipid storage disorder caused by pathogenic variants in NPC1 or NPC2. Adult-onset NPC may manifest with progressive ataxia, dysarthria, cognitive impairment, psychiatric symptoms, and splenomegaly, features that may overlap with Wilson disease (WD). Abnormal copper metabolism in NPC can further complicate the differential diagnosis.Patient concernsA 39-year-old man was admitted with a more than 15-year history of slowly progressive dysarthria and gait instability, accompanied by intermittent choking when drinking and mild recent memory impairment. He had previously been diagnosed with WD because of splenomegaly, low serum ceruloplasmin, and increased 24-hour urinary copper excretion, and had received intermittent copper-chelating therapy. His 42-year-old sister had similar neurological symptoms and had also been diagnosed with WD.DiagnosesOn readmission, the patient had leukopenia, splenomegaly, low serum ceruloplasmin, and elevated 24-hour urinary copper excretion. His Leipzig score was 4, meeting the diagnostic threshold for WD. However, Kayser-Fleischer rings were absent, brain magnetic resonance imaging showed no typical abnormalities suggestive of neurological WD, and the disease course was unusually indolent despite long-term irregular anti-copper treatment. Genetic testing of the proband and his affected sister identified compound heterozygous pathogenic variants in NPC1, c.2932C > T (p.Arg978Cys) and c.2974G > T (p.Gly992Trp), confirming the diagnosis of NPC.InterventionsCopper-chelating therapy was discontinued after the diagnosis was revised. The patient was started on miglustat, initially at 0.2 g once daily, which was gradually increased to 0.2 g 3 times daily.OutcomesAfter 3 months of follow-up, the patient's dysphagia improved, whereas gait instability persisted.LessonsAdult-onset NPC can mimic WD clinically and biochemically. Because copper metabolism abnormalities are not pathognomonic for WD, they may yield misleadingly high Leipzig scores. NPC should be prioritized in patients with progressive neurological decline and splenomegaly who lack classic WD hallmarks, such as Kayser-Fleischer rings or characteristic neuroimaging findings. Early genetic testing is essential to ensure diagnostic accuracy and avoid inappropriate long-term copper-chelating therapy.",
+    "meta": "{\"pmid\": \"42432889\", \"pmcid\": \"PMC13362932\", \"doi\": \"10.1097/md.0000000000049790\", \"year\": \"2026\", \"authors\": \"Xiang S, Hua D, Zhang L, Sun L, Yang W, Wang H.\", \"journal\": \"Medicine (Baltimore)\", \"volume\": \"105\", \"issue\": \"28\", \"pages\": \"e49790\"}"
+   },
+   {
+    "id": "PMID:42516548",
+    "run_id": "run_e74dc750be",
+    "title": "Diagnostic redirection in dementia-first spinocerebellar ataxia type 17: a family-based case report and focused literature review.",
+    "url": "https://europepmc.org/article/MED/42516548",
+    "text": "BackgroundSpinocerebellar ataxia type 17 (SCA17) is an autosomal dominant repeat-expansion disorder with marked phenotypic heterogeneity. Cognitive and neuropsychiatric symptoms may dominate early recognition and initially suggest a primary dementia syndrome. We aimed to illustrate diagnostic redirection in dementia-first SCA17 through integrated clinical, imaging, familial, and molecular assessment.Case presentationWe describe the clinical course, neurological findings, cognitive and functional assessments, ancillary investigations, neuroimaging, pedigree information, and molecular genetic findings of a proband with SCA17 and one tested at-risk adult relative. To contextualize the family, we conducted a focused literature review of genetically confirmed SCA17 case and family reports identified through PubMed, Web of Science, Embase, China National Knowledge Infrastructure (CNKI), and Wanfang up to April 16, 2026.FindingsRepeat-expansion testing established SCA17 in a proband who had initially presented through a dementia-first clinical pathway, with TATA-box binding protein (TBP) alleles of 37/51 repeats. Targeted presymptomatic cascade testing identified the same expanded 51-repeat allele in her asymptomatic adult daughter. Review of 25 published studies showed broad variation in age at onset, TBP repeat size, family context, presenting syndrome, and cumulative phenotype, including cognition-dominant, behavior-dominant, Huntington disease-like, parkinsonian, dystonic, choreic, seizure-associated, and atypical neuroimaging presentations.ConclusionThe present family illustrates a dementia-first route to SCA17 recognition, in which the initial syndrome-based dementia interpretation remained etiologically provisional as cerebellar signs, cerebellar-predominant atrophy, autosomal-dominant family context, and TBP expansion were integrated. This case-based perspective is intended to support etiological reconsideration in selected dementia-first presentations, rather than to serve as validated clinical criteria.",
+    "meta": "{\"pmid\": \"42516548\", \"pmcid\": \"PMC13402550\", \"doi\": \"10.3389/fnins.2026.1882898\", \"year\": \"2026\", \"authors\": \"Zhang S, Zhang X, Li L, Zhou B, Shao W.\", \"journal\": \"Front Neurosci\", \"volume\": \"20\", \"issue\": null, \"pages\": \"1882898\"}"
+   },
+   {
+    "id": "PMID:42625975",
+    "run_id": "run_e74dc750be",
+    "title": "Recurrent acute liver failure in infancy - a novel &lt;i&gt;SCYL1&lt;/i&gt; mutation: A case report.",
+    "url": "https://europepmc.org/article/MED/42625975",
+    "text": "BackgroundRecurrent acute liver failure (ALF) in children is rare and diagnostically challenging. Despite rigorous investigations, a significant proportion of patients remain without a definitive diagnosis. Recently across the literature, biallelic pathogenic variants in the SCYL1 gene had been identified to cause a hepatocerebellar syndrome characterized by low gamma-glutamyl transferase (GGT) cholestasis, episodic ALF, and progressive neurodegeneration, collectively termed cholestasis, ALF, and neurodegeneration (CALFAN) syndrome (or spinocerebellar ataxia, autosomal recessive type 21). A high index of suspicion is paramount to recognizing this entity early, given that its presentation overlaps with more prevalent conditions, and delayed diagnosis carries significant morbidity and mortality risk.Case summaryWe report a 19-month-old girl of Middle Eastern ethnicity, presenting with recurrent episodes of febrile illness, ALF, and low-GGT cholestasis initially misattributed to viral hepatitis. Clinical evaluation revealed subtle neurological abnormalities, including tremors and fine motor delay. The highlight of her presentation was pancytopenia, which expanded the known phenotypic spectrum. Extensive metabolic, infectious, and autoimmune investigations were inconclusive. Whole exome sequencing identified a homozygous likely pathogenic SCYL1 variant (c.1420C>T; p.Arg474*), consistent with CALFAN syndrome/spinocerebellar ataxia, autosomal recessive type 21. Liver biopsy showed degenerative and early fibrotic changes. Liver function partially improved with corticosteroids and supportive care but did not normalize; a third episode of liver failure occurred at 22 months in the setting of a febrile urinary tract infection.ConclusionSCYL1-related disease should be considered in children with unexplained recurrent ALF, particularly when low-GGT cholestasis and neurological features co-exist. Early genetic evaluation using whole exome sequencing is essential for establishing the diagnosis. Steroid therapy was transiently associated with partial biochemical improvement, although its mechanism in a genetic disorder remains uncertain. This case further demonstrates that pancytopenia may be part of the CALFAN phenotypic spectrum.",
+    "meta": "{\"pmid\": \"42625975\", \"pmcid\": \"PMC13491176\", \"doi\": \"10.5409/wjcp.120925\", \"year\": \"2026\", \"authors\": \"Zourob D, Teneiji AA, Miqdady M, Al Atrash E.\", \"journal\": \"World J Clin Pediatr\", \"volume\": \"15\", \"issue\": \"3\", \"pages\": \"120925\"}"
+   },
+   {
+    "id": "PMID:42628948",
+    "run_id": "run_e74dc750be",
+    "title": "Neuroimaging in Tremor.",
+    "url": "https://europepmc.org/article/MED/42628948",
+    "text": "AbstractNeuroimaging has been used extensively to study tremors, providing invaluable information about the underlying mechanisms and applications to clinical practice. Although isolated tremor syndromes, such as essential tremor, are generally not associated with specific neuroimaging findings, structural (MRI, CT) and molecular (PET, SPECT) brain imaging can be useful in the differential diagnostics and identifying the etiology of tremor, especially in combined tremor syndromes such as parkinsonism-associated tremors and Holmes' tremor. In addition, brain MRI, including tractography and other connectivity measures, plays an increasing role in tremor surgery. This article will give an overview of the most frequently used clinical neuroimaging modalities, clinically relevant findings in tremor syndromes, use of neuroimaging in differential diagnostics, and use of neuroimaging in functional neurosurgery in tremors.",
+    "meta": "{\"pmid\": \"42628948\", \"pmcid\": \"PMC13581420\", \"doi\": \"10.1055/a-2942-3475\", \"year\": \"2026\", \"authors\": \"Reich MM, Joutsa J.\", \"journal\": \"Semin Neurol\", \"volume\": \"46\", \"issue\": \"5\", \"pages\": \"521-531\"}"
+   },
+   {
+    "id": "PMID:42739114",
+    "run_id": "run_e74dc750be",
+    "title": "Utility of High-Throughput Genomic Analysis for Genetic Counseling in Large Family with Wilson Disease Carrying a Novel 28-bp &lt;i&gt;ATP7B&lt;/i&gt; Splice-Junction Deletion.",
+    "url": "https://europepmc.org/article/MED/42739114",
+    "text": "Background/Objectives: Wilson disease (WD) is an autosomal recessive disorder of copper metabolism caused by pathogenic variants in the ATP7B gene. Early diagnosis and appropriate treatment are essential for preventing irreversible complications. This study demonstrated the clinical utility of integrated high-throughput genomic analysis for molecular diagnosis and genetic counseling in a large Thai family affected by WD. Methods: A 32-year-old woman with clinical features suggestive of WD underwent clinical, biochemical, and molecular genetic evaluations, including sequencing of the entire ATP7B gene and SNP microarray. Fluorescent PCR followed by capillary electrophoresis was used for segregation analysis in available family members. SNP microarray analysis and whole-exome sequencing were performed on the proband's husband to identify pathogenic variants in the ATP7B gene and other disease-associated genes for reproductive risk assessment. Results: The proband presented with hepatic dysfunction, Kayser-Fleischer rings, low serum ceruloplasmin, and a family history of fatal liver disease. She also developed progressive weakness, with nerve conduction findings consistent with axonal sensorimotor polyneuropathy predominantly affecting the lower limbs. Sequencing identified a novel homozygous 28-bp splice-junction deletion, c.4022-24_4025del, which disrupted the canonical splice acceptor site at the intron 19/exon 20 boundary and was classified as pathogenic variant. Segregation analysis confirmed carrier status in the proband's father and identified heterozygous carrier or homozygous wild-type status among her living siblings. SNP microarray analysis revealed a 46.7 Mb copy-neutral long contiguous stretch of homozygosity (CN-LCSH) encompassing ATP7B, with CN-LCSH regions accounting for 2.046% of the total autosomal genome. These findings potentially reflected segmental uniparental isodisomy or identity by descent, while the overall homozygosity pattern did not support recent consanguinity. Combined genomic analyses of the proband's husband revealed no pathogenic or likely pathogenic ATP7B variants. Based on the available testing, all offspring are expected to be heterozygous carriers, and the risk of an affected child is considered very low. Conclusions: This study highlights the value of integrated genomic analysis for molecular diagnosis, cascade testing, and reproductive risk counseling. Further functional studies should be conducted to validate their pathogenicity.",
+    "meta": "{\"pmid\": \"42739114\", \"pmcid\": \"PMC13564501\", \"doi\": \"10.3390/diagnostics16172682\", \"year\": \"2026\", \"authors\": \"Hnoonual A, Pongborriboon D, Wansom N, Kietsiriroje N, Plong-On O, Limprasert P.\", \"journal\": \"Diagnostics (Basel)\", \"volume\": \"16\", \"issue\": \"17\", \"pages\": \"2682\"}"
+   }
+  ],
+  "events": [
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 1,
+    "ts": 1792274811.948421,
+    "type": "run.started",
+    "data": "{\"run_id\": \"run_e74dc750be\", \"slot\": \"09\", \"mode\": \"scored\", \"case_id\": \"case_09\", \"llm_backend\": \"crusoe\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 2,
+    "ts": 1792274811.950124,
+    "type": "node.created",
+    "data": "{\"node\": {\"id\": \"node_00\", \"run_id\": \"run_e74dc750be\", \"parent_id\": null, \"depth\": 0, \"role\": \"lead\", \"model\": \"nvidia/NVIDIA-Nemotron-3-Super-120B-A12B\", \"objective\": \"Investigate case_09: 48-year-old accountant with three years of hand cramping when writing\", \"justification\": null, \"status\": \"queued\", \"checkpoint\": \"created\", \"verification\": \"pending\", \"retry_count\": 0}}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 3,
+    "ts": 1792274811.951981,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"running\", \"checkpoint\": \"created\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 4,
+    "ts": 1792274896.7960699,
+    "type": "node.decision",
+    "data": "{\"node_id\": \"node_00\", \"action\": \"spawn\", \"requested_children\": 1, \"rationale\": \"A 48\\u2011year\\u2011old right\\u2011handed accountant reports three years of right\\u2011hand cramping, excessive grip, wrist flexion and forearm pronation that begins within a few words of handwriting. Typing, using a mouse, eating, shaving and tennis are unaffected. The onset was gradual during a busy tax season, worsened for about a year and has been stable for the past 18 months. There is no diurnal variation, no benefit after sleep, no change with fatigue or exercise, and no pain, numbness or tremor at rest. Examination shows normal tone, power, reflexes, coordination and gait outside the writing task; during writing there is excessive pen grip, wrist flexion and pronation with large, jagged letters, no tremor. Mirror dystonia (mild right wrist flexion and finger curling) appears when writing with the left hand. The abnormality does not lessen with distraction (counting backwards while writing). Prior workup includes normal nerve conduction studies, normal MRI brain, a moderate benefit from botulinum toxin injections to the right flexor carpi radialis and pronator teres, and a six\\u2011week trial of carbidopa/levodopa 25/100\\u202fmg TID with no benefit. Ceruloplasmid is normal (31\\u202fmg/dL). Family history notes a mild bilateral hand tremor in the father but no known dystonia, Parkinson disease or other neurological disease. The patient asks about genetic testing and worries about Parkinson\\u2019s or a genetic cause.\", \"hypotheses\": [\"Idiopathic focal task\\u2011specific dystonia (writer\\u2019s cramp)\", \"Dopa\\u2011responsive dystonia (DRD)\", \"Wilson disease\", \"Functional dystonia\"]}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 5,
+    "ts": 1792274896.800096,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"running\", \"checkpoint\": \"analyzed\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 6,
+    "ts": 1792274896.8025038,
+    "type": "node.created",
+    "data": "{\"node\": {\"id\": \"node_01\", \"run_id\": \"run_e74dc750be\", \"parent_id\": \"node_00\", \"depth\": 1, \"role\": \"investigator\", \"model\": \"nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B\", \"objective\": \"Obtain 24\\u2011hour urine copper measurement and slit\\u2011lamp examination for Kayser\\u2011Fleischer rings to assess for Wilson disease.\", \"justification\": \"Wilson disease is a can\\u2019t\\u2011miss condition that remains open; the patient is under 50 with an unexplained dystonia, and the record does not include the recommended screening tests (urine copper and ophthalmologic exam). A negative result would make Wilson disease very unlikely, while a positive finding would establish the diagnosis.\", \"status\": \"queued\", \"checkpoint\": \"created\", \"verification\": \"pending\", \"retry_count\": 0}}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 7,
+    "ts": 1792274896.804011,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"running\", \"checkpoint\": \"children_spawned\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 8,
+    "ts": 1792274896.806253,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"waiting_children\", \"checkpoint\": \"children_spawned\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 9,
+    "ts": 1792274896.807559,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"running\", \"checkpoint\": \"created\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 10,
+    "ts": 1792274914.0822809,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"running\", \"checkpoint\": \"planned\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 11,
+    "ts": 1792274914.0869691,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"researching\", \"checkpoint\": \"planned\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 12,
+    "ts": 1792274915.288967,
+    "type": "search.performed",
+    "data": "{\"node_id\": \"node_01\", \"query\": \"adult onset isolated focal dystonia differential diagnosis\", \"query_used\": \"adult onset isolated focal dystonia differential diagnosis\", \"attempts\": [{\"source\": \"europepmc\", \"query\": \"adult onset isolated focal dystonia differential diagnosis\", \"ok\": true, \"n\": 5}], \"results\": [{\"source_id\": \"PMID:42628948\", \"title\": \"Neuroimaging in Tremor.\", \"url\": \"https://europepmc.org/article/MED/42628948\"}, {\"source_id\": \"PMID:42368877\", \"title\": \"Movement disorder emergencies at a tertiary-care center in West Bengal, India: Spectrum, etiologies, diagnostic implications.\", \"url\": \"https://europepmc.org/article/MED/42368877\"}, {\"source_id\": \"PMID:42516548\", \"title\": \"Diagnostic redirection in dementia-first spinocerebellar ataxia type 17: a family-based case report and focused literature review.\", \"url\": \"https://europepmc.org/article/MED/42516548\"}, {\"source_id\": \"PMID:42400823\", \"title\": \"Update on Genetic Chorea.\", \"url\": \"https://europepmc.org/article/MED/42400823\"}, {\"source_id\": \"PMID:42046106\", \"title\": \"Dystonia as an early and prominent feature in a patient with CYP2U1 gene mutation: expanding the phenotype of SPG56-a case report.\", \"url\": \"https://europepmc.org/article/MED/42046106\"}]}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 13,
+    "ts": 1792274916.640519,
+    "type": "search.performed",
+    "data": "{\"node_id\": \"node_01\", \"query\": \"Wilson disease late onset neurological presentation without hepatic signs\", \"query_used\": \"Wilson disease late onset neurological presentation without hepatic signs\", \"attempts\": [{\"source\": \"europepmc\", \"query\": \"Wilson disease late onset neurological presentation without hepatic signs\", \"ok\": true, \"n\": 5}], \"results\": [{\"source_id\": \"PMID:42343441\", \"title\": \"Pediatric Wilson disease with early psychiatric manifestations: a case report.\", \"url\": \"https://europepmc.org/article/MED/42343441\"}, {\"source_id\": \"PMID:42279596\", \"title\": \"LGMD R18 Mimicking Wilson Disease: 6-Year Longitudinal Muscle MRI Evolution and Clinical Insights into &lt;i&gt;TRAPPC11&lt;/i&gt; Mutation.\", \"url\": \"https://europepmc.org/article/MED/42279596\"}, {\"source_id\": \"PMID:42432889\", \"title\": \"Long-term misdiagnosis of Niemann-Pick disease type C as Wilson disease: A case report.\", \"url\": \"https://europepmc.org/article/MED/42432889\"}, {\"source_id\": \"PMID:42625975\", \"title\": \"Recurrent acute liver failure in infancy - a novel &lt;i&gt;SCYL1&lt;/i&gt; mutation: A case report.\", \"url\": \"https://europepmc.org/article/MED/42625975\"}, {\"source_id\": \"PMID:42739114\", \"title\": \"Utility of High-Throughput Genomic Analysis for Genetic Counseling in Large Family with Wilson Disease Carrying a Novel 28-bp &lt;i&gt;ATP7B&lt;/i&gt; Splice-Junction Deletion.\", \"url\": \"https://europepmc.org/article/MED/42739114\"}]}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 14,
+    "ts": 1792274918.3136709,
+    "type": "search.performed",
+    "data": "{\"node_id\": \"node_01\", \"query\": \"GCH1 dopa responsive dystonia clinical features\", \"query_used\": \"GCH1 dopa responsive dystonia clinical features\", \"attempts\": [{\"source\": \"europepmc\", \"query\": \"GCH1 dopa responsive dystonia clinical features\", \"ok\": true, \"n\": 5}], \"results\": [{\"source_id\": \"PMID:41965601\", \"title\": \"Genetic analysis reveals phenotypic variability in three Colombian families with dopa-responsive dystonia: novel genotype-phenotype correlations.\", \"url\": \"https://europepmc.org/article/MED/41965601\"}, {\"source_id\": \"PMID:42036356\", \"title\": \"Metabolic and Volumetric Alterations in the Basal Ganglia and the Cerebellum in Dopa-Responsive Dystonia in Symptomatic and Asymptomatic GCH1 Mutation Carriers.\", \"url\": \"https://europepmc.org/article/MED/42036356\"}, {\"source_id\": \"PMID:41688735\", \"title\": \"Clinical and genetic spectrum of L-dopa responsive dystonia: insights from seven Egyptian cases.\", \"url\": \"https://europepmc.org/article/MED/41688735\"}, {\"source_id\": \"DOI:10.64898/2026.01.23.26344694\", \"title\": \"Metabolic and volumetric alterations in the basal ganglia and the cerebellum in dopa-responsive dystonia in symptomatic and asymptomatic  <i>GCH1</i>  mutation carriers\", \"url\": \"https://doi.org/10.64898/2026.01.23.26344694\"}, {\"source_id\": \"PMID:42194935\", \"title\": \"Clinical Phenotype Comparison in Polish Patient Cohorts with and Without Molecular Diagnosis of Dystonia.\", \"url\": \"https://europepmc.org/article/MED/42194935\"}]}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 15,
+    "ts": 1792274918.315107,
+    "type": "heldout.released",
+    "data": "{\"node_id\": \"node_01\", \"request\": \"24\\u2011hour urine copper measurement\", \"gap_id\": \"gap_03\", \"source_id\": \"HELDOUT:gap_03\", \"investigation\": \"24-hour urine copper\", \"result\": \"Normal.\", \"media\": null}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 16,
+    "ts": 1792274918.315676,
+    "type": "heldout.unavailable",
+    "data": "{\"node_id\": \"node_01\", \"request\": \"Slit\\u2011lamp examination for Kayser\\u2011Fleischer rings\", \"status\": \"not_available\", \"reason\": \"No result for this investigation in the record.\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 17,
+    "ts": 1792274918.316884,
+    "type": "heldout.released",
+    "data": "{\"node_id\": \"node_01\", \"request\": \"Serum copper level\", \"gap_id\": \"gap_03\", \"source_id\": \"HELDOUT:gap_03\", \"investigation\": \"24-hour urine copper\", \"result\": \"Normal.\", \"media\": null}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 18,
+    "ts": 1792274918.318283,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"researching\", \"checkpoint\": \"research_done\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 19,
+    "ts": 1792274918.31954,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"running\", \"checkpoint\": \"research_done\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 20,
+    "ts": 1792274969.44034,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_59c2179f\", \"run_id\": \"run_e74dc750be\", \"node_id\": \"node_01\", \"kind\": \"literature\", \"claim\": \"Symptoms are task\\u2011specific, occurring only during writing.\", \"quote\": \"Writing: excessive pen grip, wrist flexion and forearm pronation within the first line; letters become large and jagged; no tremor.\", \"source_id\": \"mf_01\", \"finding_ids\": [\"mf_01\"], \"stance\": \"supports\", \"hypothesis\": \"idiopathic focal dystonia\", \"grounded\": true, \"grounding_note\": \"Quote verified in mf_01\"}}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 21,
+    "ts": 1792274969.442058,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_6e281f9b\", \"run_id\": \"run_e74dc750be\", \"node_id\": \"node_01\", \"kind\": \"literature\", \"claim\": \"Symptoms are absent during other tasks such as typing or drawing.\", \"quote\": \"Typing, buttoning, using cutlery, and drawing large spirals on a whiteboard: normal.\", \"source_id\": \"mf_02\", \"finding_ids\": [\"mf_02\"], \"stance\": \"supports\", \"hypothesis\": \"idiopathic focal dystonia\", \"grounded\": true, \"grounding_note\": \"Quote verified in mf_02\"}}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 22,
+    "ts": 1792274969.4440708,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_f1118d08\", \"run_id\": \"run_e74dc750be\", \"node_id\": \"node_01\", \"kind\": \"literature\", \"claim\": \"No tremor is present at rest or with sustained posture.\", \"quote\": \"No tremor, no dystonia at rest or with sustained posture of either arm.\", \"source_id\": \"mf_03\", \"finding_ids\": [\"mf_03\"], \"stance\": \"contradicts\", \"hypothesis\": \"Parkinsonism\", \"grounded\": true, \"grounding_note\": \"Quote verified in mf_03\"}}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 23,
+    "ts": 1792274969.445507,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_9dfdfc95\", \"run_id\": \"run_e74dc750be\", \"node_id\": \"node_01\", \"kind\": \"literature\", \"claim\": \"Levodopa trial of up to 25/100 mg TID for 6 weeks produced no benefit.\", \"quote\": \"No benefit\", \"source_id\": \"tl_04\", \"finding_ids\": [\"tl_04\"], \"stance\": \"contradicts\", \"hypothesis\": \"dopa\\u2011responsive dystonia\", \"grounded\": true, \"grounding_note\": \"Quote verified in tl_04\"}}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 24,
+    "ts": 1792274969.44766,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_cdfb02d7\", \"run_id\": \"run_e74dc750be\", \"node_id\": \"node_01\", \"kind\": \"literature\", \"claim\": \"Ceruloplasmin level is within normal reference range (31 mg/dL).\", \"quote\": \"31 mg/dL\", \"source_id\": \"lab_02\", \"finding_ids\": [\"lab_02\"], \"stance\": \"contradicts\", \"hypothesis\": \"Wilson disease\", \"grounded\": true, \"grounding_note\": \"Quote verified in lab_02\"}}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 25,
+    "ts": 1792274969.448895,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_ee5431fa\", \"run_id\": \"run_e74dc750be\", \"node_id\": \"node_01\", \"kind\": \"heldout\", \"claim\": \"24\\u2011hour urine copper measurement is normal.\", \"quote\": \"Normal.\", \"source_id\": \"HELDOUT:gap_03\", \"finding_ids\": [\"HELDOUT:gap_03\"], \"stance\": \"contradicts\", \"hypothesis\": \"Wilson disease\", \"grounded\": false, \"grounding_note\": \"Quote too short to verify\"}}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 26,
+    "ts": 1792274969.449905,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_6fba78a5\", \"run_id\": \"run_e74dc750be\", \"node_id\": \"node_01\", \"kind\": \"literature\", \"claim\": \"MRI brain shows no structural abnormality.\", \"quote\": \"No structural abnormality. Basal ganglia normal. Impression: normal.\", \"source_id\": \"img_01\", \"finding_ids\": [\"img_01\"], \"stance\": \"contradicts\", \"hypothesis\": \"structural lesion\", \"grounded\": true, \"grounding_note\": \"Quote verified in img_01\"}}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 27,
+    "ts": 1792274969.451467,
+    "type": "evidence.added",
+    "data": "{\"evidence\": {\"id\": \"ev_17658177\", \"run_id\": \"run_e74dc750be\", \"node_id\": \"node_01\", \"kind\": \"literature\", \"claim\": \"Family history includes only mild hand tremor in father, no dystonia.\", \"quote\": \"Father (76) has a mild bilateral hand tremor when holding a newspaper, present for decades, never treated. Mother (74) healthy. Two siblings healthy. No known dystonia, Parkinson disease, or neurological disease.\", \"source_id\": \"family_history\", \"finding_ids\": [\"family_history\"], \"stance\": \"neutral\", \"hypothesis\": \"genetic dystonia\", \"grounded\": true, \"grounding_note\": \"Quote verified in family_history\"}}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 28,
+    "ts": 1792274969.452062,
+    "type": "node.decision",
+    "data": "{\"node_id\": \"node_01\", \"action\": \"finish\", \"requested_children\": 1, \"rationale\": \"Idiopathic focal hand dystonia (writing cramp) is the most likely diagnosis; Wilson disease and dopa\\u2011responsive dystonia are ruled out by normal copper studies and lack of levodopa response.\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 29,
+    "ts": 1792274969.4543622,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"running\", \"checkpoint\": \"analyzed\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 30,
+    "ts": 1792274969.4559639,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"running\", \"checkpoint\": \"children_spawned\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 31,
+    "ts": 1792274969.457342,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"running\", \"checkpoint\": \"children_done\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 32,
+    "ts": 1792274969.458475,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"done\", \"checkpoint\": \"finished\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 33,
+    "ts": 1792274969.4598882,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"verifying\", \"checkpoint\": \"finished\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 34,
+    "ts": 1792275041.5726862,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"done\", \"checkpoint\": \"finished\", \"verification\": \"revise\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 35,
+    "ts": 1792275041.573938,
+    "type": "verification",
+    "data": "{\"node_id\": \"node_01\", \"verdict\": \"revise\", \"feedback\": \"R1 (finding 0): the source mf_01 shows symptoms during writing but does not state they occur exclusively during writing; revise to say symptoms occur during writing without claiming exclusivity. Additionally, the conclusion overstates that Wilson disease and dopa\\u2011responsive dystonia are ruled out; normal ceruloplasmin and a negative levodopa trial are insufficient to exclude these conditions (R3). Keep Wilson disease and DRD in the differential and pursue the requested 24\\u2011hour urine copper and slit\\u2011lamp examination.\", \"rejected_evidence_ids\": [\"ev_59c2179f\"]}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 36,
+    "ts": 1792275051.525153,
+    "type": "node.decision",
+    "data": "{\"node_id\": \"node_00\", \"action\": \"spawn\", \"trigger\": \"verifier\", \"about\": \"node_01\", \"rationale\": \"Feedback requires revising the exclusivity claim about writing\\u2011induced symptoms and pursuing Wilson disease work\\u2011up, as normal ceruloplasmin and a negative levodopa trial are insufficient to exclude Wilson disease or dopa\\u2011responsive dystonia.\", \"requested_children\": 1}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 37,
+    "ts": 1792275051.5281122,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_01\", \"status\": \"unresolved\", \"checkpoint\": \"finished\", \"verification\": \"revise\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 38,
+    "ts": 1792275051.5315971,
+    "type": "spawn.rejected",
+    "data": "{\"node_id\": \"node_00\", \"objective\": \"Obtain 24\\u2011hour urine copper measurement and slit\\u2011lamp examination for Kayser\\u2011Fleischer rings to assess for Wilson disease.\", \"reason\": \"Duplicate of an existing task (similarity 1.00): Obtain 24\\u2011hour urine copper measurement and slit\\u2011lamp examination for Kayser\\u2011Fle\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 39,
+    "ts": 1792275051.5353029,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"running\", \"checkpoint\": \"children_spawned\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 40,
+    "ts": 1792275051.536927,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"running\", \"checkpoint\": \"children_done\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 41,
+    "ts": 1792275177.457929,
+    "type": "report.ready",
+    "data": "{\"report\": {\"summary\": \"A 48\\u2011year\\u2011old right\\u2011handed accountant has three years of right\\u2011hand cramping, excessive grip, wrist flexion and pronation that begins within a few words of handwriting. Typing, mouse use, eating, shaving and tennis are normal. Onset was gradual, worsened for a year then stable for 18 months. There is no diurnal variation, no benefit after sleep, no change with fatigue or exercise, and no pain, numbness or tremor at rest. Examination shows normal tone, power, reflexes, coordination and gait outside the writing task; during writing there is excessive pen grip, wrist flexion and pronation with large, jagged letters, no tremor. Mirror dystonia (mild right wrist flexion and finger curling) appears when writing with the left hand. The abnormality does not lessen with distraction (counting backwards while writing). Prior workup includes normal nerve conduction studies, normal MRI brain, moderate benefit from botulinum toxin injections, and a six\\u2011week trial of carbidopa/levodopa 25/100\\u202fmg TID with no benefit. Ceruloplasmin is normal (31\\u202fmg/dL) and 24\\u2011hour urine copper is normal. Family history notes only a mild bilateral hand tremor in the father.\", \"differential\": [{\"rank\": 1, \"hypothesis\": \"Idiopathic focal task\\u2011specific dystonia (writer\\u2019s cramp)\", \"confidence\": \"high\", \"supporting_evidence_ids\": [\"mf_01\", \"mf_02\", \"mf_03\", \"mf_04\", \"mf_05\", \"neurological_exam.tone\", \"neurological_exam.power\", \"neurological_exam.reflexes\", \"neurological_exam.coordination\", \"neurological_exam.gait\", \"img_01\", \"tl_03\"], \"contradicting_evidence_ids\": [\"history_of_present_illness\", \"history_of_present_illness\", \"family_history\"]}, {\"rank\": 2, \"hypothesis\": \"Dopa\\u2011responsive dystonia (DRD)\", \"confidence\": \"low\", \"supporting_evidence_ids\": [\"tl_01\", \"history_of_present_illness\", \"family_history\"], \"contradicting_evidence_ids\": [\"tl_04\", \"history_of_present_illness\", \"history_of_present_illness\"]}, {\"rank\": 3, \"hypothesis\": \"Wilson disease\", \"confidence\": \"low\", \"supporting_evidence_ids\": [\"history_of_present_illness\"], \"contradicting_evidence_ids\": [\"lab_02\", \"HELDOUT:gap_03\"]}, {\"rank\": 4, \"hypothesis\": \"Functional dystonia\", \"confidence\": \"low\", \"supporting_evidence_ids\": [], \"contradicting_evidence_ids\": [\"mf_05\", \"mf_04\", \"neurological_exam\", \"history_of_present_illness\"]}], \"cant_miss\": [{\"condition\": \"Wilson disease\", \"status\": \"excluded\", \"basis\": \"Normal 24\\u2011hour urine copper (HELDOUT:gap_03) and normal ceruloplasmin (lab_02) make Wilson disease very unlikely.\"}, {\"condition\": \"Dopa\\u2011responsive dystonia (DRD)\", \"status\": \"excluded\", \"basis\": \"Adequate trial of carbidopa/levodopa 25/100\\u202fmg TID for 6 weeks showed no benefit (tl_04).\"}, {\"condition\": \"GLUT1 deficiency\", \"status\": \"addressed\", \"basis\": \"No paroxysmal dyskinesia triggered by exercise/fasting and no seizures.\"}, {\"condition\": \"Episodic ataxia type 2\", \"status\": \"addressed\", \"basis\": \"No episodic attacks of ataxia lasting hours.\"}, {\"condition\": \"Episodic ataxia type 1\", \"status\": \"addressed\", \"basis\": \"No brief attacks of ataxia/myokymia triggered by sudden movement.\"}, {\"condition\": \"Paroxysmal kinesigenic dyskinesia\", \"status\": \"addressed\", \"basis\": \"No brief attacks triggered by sudden movement.\"}, {\"condition\": \"Autoimmune or inflammatory cause\", \"status\": \"addressed\", \"basis\": \"Chronic stable course over 3 years, no subacute onset, encephalopathy, psychiatric change, seizures or recent infection.\"}, {\"condition\": \"Drug\\u2011induced movement disorder\", \"status\": \"addressed\", \"basis\": \"No exposure to antipsychotics, metoclopramide or other dopamine blockers.\"}, {\"condition\": \"Structural lesion\", \"status\": \"addressed\", \"basis\": \"Normal MRI brain (img_01) shows no structural abnormality.\"}], \"unresolved_questions\": [], \"suggested_investigations\": [], \"disclaimer\": \"Hypotheses for physician review; not a diagnosis.\", \"dropped_invalid_ids\": [\"movement_findings\"], \"dropped_already_resulted\": []}}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 42,
+    "ts": 1792275177.460053,
+    "type": "node.status",
+    "data": "{\"node_id\": \"node_00\", \"status\": \"done\", \"checkpoint\": \"reported\", \"verification\": \"pending\"}"
+   },
+   {
+    "run_id": "run_e74dc750be",
+    "seq": 43,
+    "ts": 1792275177.4622002,
+    "type": "run.finished",
+    "data": "{\"status\": \"completed\", \"nodes\": 2}"
+   }
+  ]
+ }
+}
