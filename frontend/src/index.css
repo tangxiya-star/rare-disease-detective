@@ -112,23 +112,23 @@ details.panel-section[open] > summary { margin-bottom: 8px; }
 /* patient & motion */
 .motion { padding: 12px 16px; border-bottom: 1px solid var(--line-2); }
 .hud { position: absolute; left: 8px; top: 8px; right: 8px; display: flex; flex-direction: column; gap: 3px; pointer-events: none; font-size: 10.5px; }
-.hud-row { display: inline-flex; gap: 8px; align-items: baseline; align-self: flex-start; background: rgba(5, 7, 9, 0.72); border: 1px solid rgba(245, 164, 59, 0.35);
+.hud-row { display: inline-flex; gap: 8px; align-items: baseline; align-self: flex-start; background: rgba(5, 7, 9, 0.72); border: 1px solid var(--line);
   padding: 2px 8px; border-radius: 5px; color: var(--ink-2); backdrop-filter: blur(4px); }
-.hud-row b { color: var(--amber); font-family: var(--mono); font-weight: 600; }
+.hud-row b { color: var(--ink); font-family: var(--mono); font-weight: 600; }
 .hud-row b.hot { color: var(--bad); }
 .ann-now { margin-top: 8px; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--panel-2); font-size: 12px; min-height: 32px; transition: background 0.2s; }
 .ann-now.on { background: var(--amber-soft); border-color: rgba(245, 164, 59, 0.5); color: var(--ink); }
 .kin { margin-top: 10px; }
 .kin-head { display: flex; gap: 12px; flex-wrap: wrap; font-size: 10.5px; color: var(--ink-2); margin-bottom: 4px; }
 .kin-head .sw { display: inline-block; width: 12px; height: 2px; margin-right: 5px; vertical-align: 3px; }
-.sw.ext { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
+.sw.ext { background: var(--amber); }
 .sw.spread { background: var(--accent); }
 .kin-svg { width: 100%; height: 96px; display: block; background: #07090b; border: 1px solid var(--line); border-radius: 6px; cursor: crosshair; }
 .kin-band { fill: rgba(245, 164, 59, 0.08); }
 .kin-band.on { fill: rgba(245, 164, 59, 0.2); }
 .kin-band.cited { fill: rgba(255, 214, 102, 0.22); }
 .kin-line { fill: none; vector-effect: non-scaling-stroke; }
-.kin-line.ext { stroke: var(--amber); stroke-width: 2; filter: drop-shadow(0 0 3px rgba(245, 164, 59, 0.8)); }
+.kin-line.ext { stroke: var(--amber); stroke-width: 1.8; }
 .kin-line.spread { stroke: rgba(79, 209, 224, 0.7); stroke-width: 1.2; }
 .kin-head-line { stroke: #fff; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 .motion-controls { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin: 8px 0 6px; font-size: 11.5px; color: var(--ink-2); }
@@ -139,7 +139,13 @@ details.panel-section[open] > summary { margin-bottom: 8px; }
 .patient-title { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; margin: 2px 0 4px; }
 .patient-demo { color: var(--ink-2); }
 .lede { font-weight: 500; }
-.video-stage { position: relative; border-radius: 8px; overflow: hidden; background: #000; }
+.video-stage { position: relative; border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 1 / 1; cursor: pointer;
+  border: 1px solid var(--line); }
+.video-src { position: absolute; width: 2px; height: 2px; opacity: 0; pointer-events: none; }
+.motion-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.play-hint { position: absolute; inset: 0; display: grid; place-items: center; font-size: 30px; color: rgba(255, 255, 255, 0.8); pointer-events: none; }
+.stage-time { position: absolute; right: 10px; bottom: 8px; color: rgba(255, 255, 255, 0.75); font-size: 11px; pointer-events: none; }
+.ctl { background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px; cursor: pointer; color: var(--ink); }
 .video { width: 100%; display: block; background: #000; border-radius: 8px; }
 .video-stage .video { border-radius: 0; }
 .landmarks { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
@@ -228,7 +234,10 @@ details.panel-section[open] > summary { margin-bottom: 8px; }
 .orb-meta .res { color: var(--ok); }
 
 /* evidence graph */
-.graph-wrap { position: absolute; inset: 0; overflow: hidden; cursor: grab; }
+.graph-wrap { position: absolute; inset: 0; overflow: hidden; cursor: grab; background: #030507; }
+.graph-wrap canvas { display: block; }
+.graph-stats { position: absolute; left: 12px; top: 10px; display: flex; gap: 12px; font-size: 10.5px; color: var(--muted); pointer-events: none; }
+.graph-stats b { color: #bff6ff; font-family: var(--mono); font-weight: 500; }
 .graph-wrap:active { cursor: grabbing; }
 .g-link { stroke: rgba(79, 209, 224, 0.28); stroke-width: 0.8; transition: opacity 0.2s; }
 .g-link.k-supports { stroke: rgba(63, 207, 142, 0.75); stroke-width: 1.4; }
@@ -249,7 +258,7 @@ details.panel-section[open] > summary { margin-bottom: 8px; }
 .graph-legend { position: absolute; left: 12px; bottom: 10px; display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 11px; color: var(--muted);
   background: rgba(10, 12, 15, 0.8); padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line); max-width: 70%; }
 .graph-legend span { display: flex; align-items: center; gap: 5px; }
-.graph-legend i { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid; display: inline-block; }
+.graph-legend i { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
 .graph-legend i.k-hyp { border-color: var(--amber); background: rgba(245, 164, 59, 0.25); }
 .graph-legend i.k-ev { border-color: var(--accent); background: var(--accent); }
 .graph-legend i.k-src { border-color: #7fdde9; background: #0f2a33; }
