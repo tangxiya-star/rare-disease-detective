@@ -20,7 +20,7 @@
 - **Repository must be public** at submission. Make it public before 4:30 PM. Reference answers become visible; that is acceptable, since agents never load them.
 - **1-minute demo video** is required in the submission form, showing only what we built today.
 - **New work only, clearly identified.** Case 01 and its videos come from Hasegawa et al. 2021 (CC BY 4.0 / CC0): credit them on screen and in the README. Everything else was written today.
-- **Banned: "any project using AI to generate and give medical advice."** We are a clinician-facing verification system on synthetic and published cases. It gives no advice to patients and no diagnosis or treatment decision, and every output is "for physician review". Eligibility question posted to #questions (@CV). Say this in the first 20 seconds of every demo.
+- **Banned: "any project using AI to generate and give medical advice." Cleared with the organisers (17 Oct):** the rule targets ungrounded "AI doctor" projects from non-clinical teams; ours is led by a doctor and is fine. **Condition: present it as human-in-the-loop.** The agents investigate and verify; the clinician decides. It gives no advice to patients and no diagnosis or treatment decision, and every output is "for physician review". Say this in the first 20 seconds of every demo and show the "needs clinician input" stop.
 - **Banned: a dashboard as the main feature.** The agent tree is the product; the scorecard is one slide.
 
 **Judging weights (round one):** Technicality 40%, Creativity 25%, Live demo 20%, Future potential 15%. Lead with the hard engineering.
@@ -403,7 +403,7 @@ Freeze changes at 4:15 PM. Anything not working by then is cut, not fixed.
 
 ## 11. Three-Minute Demo (Done Means Done framing)
 
-- **0:00–0:20: Hook and scope:** case 01 video S1 (credited). "Ten years, one label, and nobody asked whether the work was done. We built an agent team that refuses to say 'done' until it can prove it. Clinician-facing, synthetic and published cases, never advice to patients."
+- **0:00–0:20: Hook and scope:** case 01 video S1 (credited). "Ten years, one label, and nobody asked whether the work was done. We built an agent team that refuses to say 'done' until it can prove it. It's human-in-the-loop: the agents investigate and verify, a doctor decides. Synthetic and published cases, never advice to patients."
 - **0:20–0:40: Definition of done:** one-line goal in; the lead writes its own done-checklist (clinical floor plus case-specific checks) on screen.
 - **0:40–1:20: Recursion:** the lead spawns children at runtime; a child spawns a deeper question. Nemotron Super plans, Nano investigates.
 - **1:20–1:45: Verification:** a red rejection with its rule id, e.g. "R3: absence of diurnal variation does not exclude DRD". The agent re-plans.
