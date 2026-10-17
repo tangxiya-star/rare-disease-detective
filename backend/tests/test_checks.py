@@ -48,6 +48,18 @@ def test_grounding_accepts_case_quotes_and_ignores_style():
     assert check_finding({"quote": "", "finding_ids": ["mf_01", "case_01"]}, texts, {"mf_01"}).grounded
 
 
+def test_grounding_accepts_labelled_case_fields_but_not_misquotes():
+    texts = {"lab_02": "Serum ceruloplasmin 18 mg/dL 20–40 Referral letter states 'Wilson excluded'",
+             "PMID:1": "Serum ceruloplasmin 18 mg/dL in this cohort"}
+    ids = {"lab_02"}
+    ok = lambda q, s="lab_02": check_finding({"quote": q, "source_id": s}, texts, ids).grounded
+    assert ok("Serum ceruloplasmin, result: 18 mg/dL, reference_range: 20–40, note: 'Wilson excluded'")
+    assert ok("Serum ceruloplasmin 18 mg/dL ... 'Wilson excluded'")
+    assert not ok("Serum ceruloplasmin, note: 'Wilson disease excluded'")   # words added
+    assert not ok("result: 18 mg/dL, normal")
+    assert not ok("Serum ceruloplasmin, result: 18 mg/dL", "PMID:1")       # literature stays strictly verbatim
+
+
 def test_clinical_rules_loaded_when_present(tmp_path, monkeypatch):
     from app import prompts
     monkeypatch.setattr(prompts, "REPO_ROOT", tmp_path)
