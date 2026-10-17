@@ -6,7 +6,6 @@ import { AgentTree } from './components/AgentTree'
 import { BottomTabs } from './components/BottomTabs'
 import { EvidenceGraph } from './components/EvidenceGraph'
 import { Inspector } from './components/Inspector'
-import { KpiStrip } from './components/KpiStrip'
 import { PatientPanel } from './components/PatientPanel'
 import { Stage } from './components/Stage'
 import { Timeline } from './components/Timeline'
@@ -182,7 +181,6 @@ export default function App() {
           <div className="graph-pane">
             <EvidenceGraph state={state} onSelectAgent={setSelected} runId={runId} caseRecord={view?.case} />
           </div>
-          <KpiStrip state={state} />
           <BottomTabs state={state} onSelect={setSelected} />
         </section>
         <aside className="panel right">
