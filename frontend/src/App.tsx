@@ -13,7 +13,7 @@ import type { CaseView, Health, Mode, Recording } from './types'
 import { stateAt, useRun } from './useRun'
 import { useDirector, usePlayback } from './useStage'
 
-type Layout = 'workbench' | 'stage'
+type Layout = 'workbench' | 'agents' | 'stage'
 
 const STATUS_TEXT = { idle: 'Ready', running: 'Investigating', completed: 'Report ready', failed: 'Failed' }
 
@@ -33,11 +33,11 @@ export default function App() {
   }
   const [selected, setSelected] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [layout, setLayoutState] = useState<Layout>(params.get('view') === 'stage' ? 'stage' : 'workbench')
+  const [layout, setLayoutState] = useState<Layout>((['stage', 'agents'] as const).find(v => v === params.get('view')) ?? 'workbench')
   const setLayout = (l: Layout) => {
     setLayoutState(l)
     const u = new URL(location.href)
-    if (l === 'stage') u.searchParams.set('view', 'stage'); else u.searchParams.delete('view')
+    if (l !== 'workbench') u.searchParams.set('view', l); else u.searchParams.delete('view')
     history.replaceState(null, '', u)
   }
   const [pinned, setPinned] = useState<number | null>(null)
@@ -121,10 +121,10 @@ export default function App() {
         </div>
         <div className={`run-status st-${live.status}`}><i />{STATUS_TEXT[live.status]}</div>
         <div className="seg">
-          {(['workbench', 'stage'] as Layout[]).map(l => (
+          {(['workbench', 'agents', 'stage'] as Layout[]).map(l => (
             <button key={l} className={layout === l ? 'on' : ''} onClick={() => setLayout(l)}
-              title={l === 'stage' ? 'One main stage that cuts to each pivot; for projecting (keys: space, 1–5, 0)' : 'All panels at once'}>
-              {l === 'stage' ? <MonitorPlay size={13} /> : <LayoutGrid size={13} />}{l}</button>
+              title={l === 'stage' ? 'One main stage that cuts to each pivot; for projecting (keys: space, 1–5, 0)' : l === 'agents' ? 'Agent orchestration: the runtime-built tree and each agent\'s decisions' : 'Patient, evidence graph and result'}>
+              {l === 'stage' ? <MonitorPlay size={13} /> : l === 'agents' ? <Workflow size={13} /> : <LayoutGrid size={13} />}{l}</button>
           ))}
         </div>
         {recordings.length > 0 && (
@@ -168,6 +168,27 @@ export default function App() {
       {layout === 'stage' ? (
         <Stage state={state} view={view} slot={slot} mode={mode} beat={beat} pinned={pinned} setPinned={setPinned}
           selected={selected} onSelect={setSelected} highlighted={highlighted} />
+      ) : layout === 'agents' ? (
+      <main className="workspace agents-view">
+        <section className="panel center">
+          <div className="panel-title" title="Each agent was created by a model decision at runtime"><span className="title-icon violet"><Workflow size={15} /></span>Agent orchestration
+            <span className="title-chip">{state.order.length} agents</span></div>
+          <div className="tree-pane">
+            <AgentTree nodes={state.nodes} order={state.order} activity={state.activity} selected={selected} onSelect={setSelected} />
+          </div>
+        </section>
+        <aside className="panel right">
+          <div className="panel-title">
+            {selected ? <><span className="title-icon green"><FileSearch size={15} /></span>Agent inspector
+              <button className="title-chip as-btn" onClick={() => setSelected(null)}>Back to result</button></>
+              : <><span className="title-icon rose"><Stethoscope size={15} /></span>Most likely diagnoses
+              <span className="title-chip">{state.report ? 'for clinician review' : 'in progress'}</span></>}
+          </div>
+          <div className="inspector-pane">
+            <Inspector state={state} selected={selected} />
+          </div>
+        </aside>
+      </main>
       ) : (
       <main className="workspace">
         <aside className="panel left">
@@ -184,12 +205,7 @@ export default function App() {
           <BottomTabs state={state} onSelect={setSelected} />
         </section>
         <aside className="panel right">
-          <div className="panel-title" title="Each agent was created by a model decision at runtime"><span className="title-icon violet"><Workflow size={15} /></span>Agent orchestration
-            <span className="title-chip">{state.order.length} agents</span></div>
-          <div className="tree-pane">
-            <AgentTree nodes={state.nodes} order={state.order} activity={state.activity} selected={selected} onSelect={setSelected} />
-          </div>
-          <div className="panel-title sub">
+          <div className="panel-title">
             {selected ? <><span className="title-icon green"><FileSearch size={15} /></span>Agent inspector
               <button className="title-chip as-btn" onClick={() => setSelected(null)}>Back to result</button></>
               : <><span className="title-icon rose"><Stethoscope size={15} /></span>Most likely diagnoses
