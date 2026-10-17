@@ -12,6 +12,10 @@ _STYLE = {ord(c): "-" for c in "‐‑‒–—−"} | {
 
 
 _SOURCE_ID = re.compile(r"^(HELDOUT:|PMID:|PMC\d|DOI:)", re.I)
+# Case record entries reach the model as labelled fields ({"result": "18 mg/dL", "note": ...}), so models
+# quote them as "result: 18 mg/dL, note: ...". Split such quotes into pieces and drop the field labels.
+_PIECE = re.compile(r"\.\.\.|…|[;,]")
+_LABEL = re.compile(r"^[a-z][a-z_ ]{0,30}:\s*")
 
 
 def _norm(text: str) -> str:
@@ -44,10 +48,17 @@ def check_finding(finding: dict, source_texts: dict[str, str], case_finding_ids:
             return GroundingResult(False, "Quote too short to verify")
         if source_id not in source_texts:
             return GroundingResult(False, f"Unknown source_id {source_id!r}")
-        if quote not in _norm(source_texts[source_id]):
+        text = _norm(source_texts[source_id])
+        if quote not in text and not (from_case and _pieces_in(quote, text)):
             return GroundingResult(False, f"Quote not found verbatim in {source_id}")
         return GroundingResult(True, f"Quote verified in {source_id}" + (f"; cites {', '.join(ids)}" if ids else ""))
 
     if ids:
         return GroundingResult(True, f"Cites case findings {', '.join(ids)}")
     return GroundingResult(False, "No quote and no case finding ids")
+
+
+def _pieces_in(quote: str, text: str) -> bool:
+    """Every piece of a case-record quote, minus field labels, appears verbatim in the entry."""
+    pieces = [p for p in (_LABEL.sub("", p.strip()).strip(" '\".") for p in _PIECE.split(quote)) if p]
+    return bool(pieces) and max(map(len, pieces)) >= 4 and all(p in text for p in pieces)
