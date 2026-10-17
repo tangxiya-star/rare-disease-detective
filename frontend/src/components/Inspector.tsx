@@ -1,6 +1,6 @@
 import type { Evidence } from '../types'
 import type { RunState } from '../useRun'
-import { STATUS_LABEL } from './AgentCanvas'
+import { STATUS_LABEL } from './AgentTree'
 
 function SourceLink({ id, state }: { id: string | null; state: RunState }) {
   if (!id) return null

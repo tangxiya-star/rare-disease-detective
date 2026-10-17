@@ -175,11 +175,12 @@ export function EvidenceGraph({ state, onSelectAgent }: { state: RunState; onSel
         if (!view.current.manual && nodes.length) {
           let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity
           for (const n of nodes) { if (n.x == null) continue; x0 = Math.min(x0, n.x); y0 = Math.min(y0, n.y!); x1 = Math.max(x1, n.x); y1 = Math.max(y1, n.y!) }
-          const k = Math.min(2.2, (w - 40) / Math.max(1, x1 - x0), (h - 40) / Math.max(1, y1 - y0))
+          // leave room for labels left and right, and for the legend at the bottom
+          const k = Math.min(2.2, (w - 220) / Math.max(1, x1 - x0), (h - 130) / Math.max(1, y1 - y0))
           const v = view.current
           v.k += (k - v.k) * 0.08
           v.x += (w / 2 - v.k * (x0 + x1) / 2 - v.x) * 0.08
-          v.y += (h / 2 - v.k * (y0 + y1) / 2 - v.y) * 0.08
+          v.y += ((h - 50) / 2 - v.k * (y0 + y1) / 2 - v.y) * 0.08
         }
         const { x: tx, y: ty, k } = view.current
         g.setTransform(dpr, 0, 0, dpr, 0, 0)
