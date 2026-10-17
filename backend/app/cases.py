@@ -132,7 +132,7 @@ _SYNONYMS = [
     ["evening", "diurnal", "morning", "repeat", "waking", "fluctuation"],
     ["follow", "followup", "spread"],
     ["accelerometry", "entrainment", "tapping"],
-    ["records", "clarification", "referrer", "addendum", "radiology"],
+    ["records", "clarification", "referrer", "addendum", "radiology", "neuroradiology", "radiologist"],
 ]
 _CANON = {w: g[0] for g in _SYNONYMS for w in g}
 _CORE = {g[0] for g in _SYNONYMS}  # one canonical term per investigation type
