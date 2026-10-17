@@ -46,3 +46,9 @@ Backend and frontend scaffolds land during the 9–11 AM block. See the build pl
 ## Core principle
 
 > We define the rules of recursion, not the shape of the investigation tree.
+
+## Credits and what we built today
+
+- **Case 01 (demo hero) is not our work.** Case details and both videos are adapted from Hasegawa T, Hosaka T, Harada R, Kawahata I, Hoshino K, Sugeno N, Kikuchi A, Aoki M. *Case Report: Guitarist's cramp as the initial manifestation of dopa-responsive dystonia with a novel heterozygous GCH1 mutation.* F1000Research 2021;10:361, doi:10.12688/f1000research.51433.1 (CC BY 4.0). Videos: Dryad, doi:10.5061/dryad.pzgmsbckd (CC0 1.0). Patient consent for publication was obtained by the original authors. The videos are not committed; download them from Dryad (see `cases/README.md`).
+- **Built during the hackathon (17 Oct 2026):** the orchestrator, verifier, grounding checks, held-out release harness, MediaPipe kinematics, UI, the synthetic cases 02 to 10 and the synthetic version of case 01, all reference answers, the clinical rules in `docs/clinical/`, the verifier challenge set, and the evaluation runners in `backend/tools/`.
+- **Human-in-the-loop:** agents investigate and verify; a clinician decides. Outputs are considerations for physician review, never a diagnosis or advice to patients.

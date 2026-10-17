@@ -60,6 +60,7 @@ export default function App() {
     <div className="app">
       <header className="topbar">
         <div className="brand">Rare Disease Detective</div>
+        <span className="badge hitl" title="Agents investigate and verify; the clinician decides">Human-in-the-loop · for physician review</span>
         <div className="case-picker">
           <div className="seg">
             {(['demo', 'scored'] as Mode[]).map(m => (

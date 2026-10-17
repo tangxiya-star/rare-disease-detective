@@ -241,7 +241,7 @@ export function MotionViewer({ view, highlighted }: { view: CaseView; highlighte
           </li>
         ))}
       </ul>
-      <p className="fineprint">{view.annotations?.video?.license}</p>
+      <p className="fineprint credit">{view.annotations?.video?.credit ?? view.annotations?.video?.license}</p>
     </section>
   )
 }
