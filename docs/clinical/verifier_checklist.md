@@ -34,7 +34,7 @@ A claim that fails any of these never reaches the verifier model. It is returned
 |---|---|
 | **R1** | Right direction, but overclaimed, or the source is only tangential. |
 | **R2** | It ignores a contradicting finding that is in the case record. |
-| **R3** | It rules a condition out with a test or feature that is not sensitive enough. Examples: no diurnal variation, adult onset, or no leg involvement does not exclude DRD; no family history does not exclude GCH1 DRD (incomplete penetrance); no benefit from anticholinergics, benzodiazepines or botulinum toxin does not exclude DRD; a normal MRI does not exclude DRD, Wilson disease or the paroxysmal disorders; normal ceruloplasmin or serum copper does not exclude Wilson disease. |
+| **R3** | It rules a condition out with a test or feature that is not sensitive enough. Examples: no diurnal variation, adult onset, or no leg involvement does not exclude DRD; no family history does not exclude GCH1 DRD (incomplete penetrance); no benefit from anticholinergics, benzodiazepines or botulinum toxin does not exclude DRD; a short or low-dose levodopa trial without response does not exclude GCH1 DRD; a normal MRI does not exclude DRD, Wilson disease or the paroxysmal disorders; normal ceruloplasmin or serum copper, absent Kayser-Fleischer rings, or age over 50 does not exclude Wilson disease. |
 | **R4** | The proposed next step is not discriminating, is invasive before a cheaper discriminating step, or is a broad genetic panel without a clinical reason. |
 | **R5** | It closes a can't-miss condition (see reasoning rules, section 3) without the test that settles it. |
 
