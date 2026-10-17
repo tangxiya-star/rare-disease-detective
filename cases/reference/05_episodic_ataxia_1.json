@@ -129,7 +129,7 @@
     "Asserting case facts that are not in the case record",
     "Treating the brief post-attack hand stiffness as dystonia that proves PKD"
   ],
-  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). Well built EA1 case with a clear discriminating attack in clinic. Added epilepsy and functional hypotheses, cant_miss, one red flag and expected behaviour.",
+  "clinician_review_notes": "Clinical review 2026-10-17 (signed off by W. Milczyńska). Well built EA1 case with a clear discriminating attack in clinic. Added epilepsy and functional hypotheses, cant_miss, one red flag and expected behaviour.",
   "expected_system_behavior": "EA1 should rank first. The system should describe the provoked attack as ataxic rather than dystonic, highlight interictal myokymia, separate EA1 from PKD and EA2, and suggest EMG and KCNA1/PRRT2 genetics. The father's similar spells support autosomal dominant inheritance.",
   "agent_case_id": "case_05"
 }

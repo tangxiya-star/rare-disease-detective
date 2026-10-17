@@ -131,7 +131,7 @@
     "Asserting case facts that are not in the case record",
     "Overlooking that valproate, previously used, can worsen GLUT1 deficiency (relevant history, not a treatment instruction)"
   ],
-  "clinician_review_notes": "Clinical review 2026-10-17 (pending Wiki sign-off). Classic GLUT1 deficiency. Added DRD as a hypothesis and to the acceptable top 5 (childhood exercise-induced leg dystonia must prompt it under the reasoning rules), cant_miss, one red flag and expected behaviour.",
+  "clinician_review_notes": "Clinical review 2026-10-17 (signed off by W. Milczyńska). Classic GLUT1 deficiency. Added DRD as a hypothesis and to the acceptable top 5 (childhood exercise-induced leg dystonia must prompt it under the reasoning rules), cant_miss, one red flag and expected behaviour.",
   "expected_system_behavior": "GLUT1 deficiency should rank first as a unifying diagnosis for early-onset absence epilepsy, exercise-induced leg dyskinesia worse when fasting, mild ataxia and learning difficulty. The system should reject 'two unrelated conditions', separate PED from PKD by trigger, consider DRD and downgrade it, and suggest a fasting lumbar puncture with paired blood glucose and SLC2A1 testing.",
   "agent_case_id": "case_07"
 }

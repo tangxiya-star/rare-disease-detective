@@ -3,9 +3,9 @@
   "title": "14-year-old with brief, frequent attacks of incoordination triggered by sudden movement",
   "provenance": {
     "type": "synthetic",
-    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
-    "reviewed_by": "",
-    "review_status": "draft — pending W. Milczyńska review"
+    "citation": "Synthetic case written 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "W. Milczyńska (clinical lead)",
+    "review_status": "reviewed 2026-10-17"
   },
   "demographics": {
     "age": 14,
@@ -47,25 +47,25 @@
       "id": "mf_01",
       "observation": "Attack provoked in clinic by rising quickly from a squat: 90-second episode of bilateral limb ataxia with dysmetria on finger–nose, wide-based unsteady gait, and slurred dysarthric speech; no dystonic or choreic postures; fully responsive throughout.",
       "context": "provoked attack",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_02",
       "observation": "Interictal: fine continuous rippling of periorbital muscles and small hand muscles (first dorsal interosseous), consistent with myokymia; more visible after the provoked attack.",
       "context": "rest",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_03",
       "observation": "Interictal: no nystagmus in primary gaze, lateral gaze, or after head-shaking.",
       "context": "eye movements",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_04",
       "observation": "Immediately after the provoked attack: brief stiffness of the hands with slightly slow finger opening, resolving within a minute.",
       "context": "post-attack",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     }
   ],
   "neurological_exam": {

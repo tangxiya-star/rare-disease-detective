@@ -1,11 +1,11 @@
 {
   "case_id": "case_09",
-  "title": "48-year-old accountant with isolated writing difficulty",
+  "title": "48-year-old accountant with three years of hand cramping when writing",
   "provenance": {
     "type": "synthetic",
-    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
-    "reviewed_by": "",
-    "review_status": "draft — pending W. Milczyńska review"
+    "citation": "Synthetic case written 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "W. Milczyńska (clinical lead)",
+    "review_status": "reviewed 2026-10-17"
   },
   "demographics": {
     "age": 48,
@@ -47,31 +47,31 @@
       "id": "mf_01",
       "observation": "Writing: excessive pen grip, wrist flexion and forearm pronation within the first line; letters become large and jagged; no tremor.",
       "context": "task (writing)",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_02",
       "observation": "Typing, buttoning, using cutlery, and drawing large spirals on a whiteboard: normal.",
       "context": "other tasks",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_03",
       "observation": "No tremor, no dystonia at rest or with sustained posture of either arm.",
       "context": "rest / posture",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_04",
       "observation": "Mirror dystonia: mild right wrist flexion and finger curling when he writes with the left hand.",
       "context": "contralateral task",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_05",
       "observation": "Pattern is consistent across repeated trials and does not lessen with distraction (counting backwards while writing).",
       "context": "task (writing), distraction",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     }
   ],
   "neurological_exam": {

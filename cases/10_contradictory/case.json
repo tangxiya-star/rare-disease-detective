@@ -1,11 +1,11 @@
 {
   "case_id": "case_10",
-  "title": "16-year-old with leg dystonia: internally inconsistent records",
+  "title": "16-year-old with a year of progressive left foot twisting, hand tremor and slurred speech",
   "provenance": {
     "type": "synthetic",
-    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
-    "reviewed_by": "",
-    "review_status": "draft — pending W. Milczyńska review"
+    "citation": "Synthetic case written 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "W. Milczyńska (clinical lead)",
+    "review_status": "reviewed 2026-10-17"
   },
   "demographics": {
     "age": 16,
@@ -37,19 +37,19 @@
       "id": "mf_01",
       "observation": "Left foot dystonic inversion on walking.",
       "context": "gait",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_02",
       "observation": "Bilateral postural and action tremor of the hands with a proximal, coarse 'wing-beating' quality on arm abduction.",
       "context": "posture",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_03",
       "observation": "Mild dysarthria.",
       "context": "speech",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     }
   ],
   "neurological_exam": {
