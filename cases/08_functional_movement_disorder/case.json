@@ -78,12 +78,12 @@
     "mental_status": "Normal",
     "cranial_nerves": "Normal",
     "tone": "Normal with distraction",
-    "power": "Collapsing 'give-way' weakness of right grip; Hoover-type sign not applicable (upper limb)",
+    "power": "Collapsing 'give-way' weakness of right grip",
     "reflexes": "2+ symmetric, flexor plantars",
     "coordination": "Normal",
     "gait": "Normal",
     "bradykinesia_screen": "Slow right finger tapping without decrement, improves with encouragement",
-    "other": "Right wrist fully healed"
+    "other": "Right wrist fully healed. No swelling, colour change, temperature asymmetry, sweating change, allodynia or trophic change of the right hand. No pain at rest."
   },
   "labs": [
     {
@@ -111,7 +111,7 @@
   ],
   "medications": {
     "current": [
-      "Sumatriptan PRN"
+      "Sumatriptan as needed for migraine. No antiemetic or neuroleptic use."
     ],
     "prior_trials": [
       {
