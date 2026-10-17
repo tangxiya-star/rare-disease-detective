@@ -136,7 +136,7 @@ export default function App() {
             ))}
           </select>
         )}
-        {recording && <span className="badge replay" title={`Recorded ${new Date(recording.recorded_at * 1000).toLocaleString()}; replayed from its event log`}>REPLAY</span>}
+        {recording && <span className="badge replay" title={`Recorded ${new Date(recording.recorded_at * 1000).toLocaleString()}; replayed from its event log`}>RECORDED RUN</span>}
         {backend === 'mock' && <span className="badge mock" title="Scripted answers; not clinical output">MOCK MODEL</span>}
         {backend === 'crusoe' && <span className="badge live" title={`${health?.lead_model} / ${health?.child_model}`}>Nemotron · Crusoe</span>}
         <div className="spacer" />

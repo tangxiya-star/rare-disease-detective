@@ -234,3 +234,4 @@ details.panel-section[open] > summary h3::after { transform: rotate(90deg); }
 .dx-next li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--pill); }
 .tree-pane { flex: 1; }
 .inspector-pane { flex: 1.25; }
+.topbar button, .topbar .badge, .topbar .run-status { white-space: nowrap; flex: none; }
