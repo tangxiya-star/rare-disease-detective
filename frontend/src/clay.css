@@ -165,3 +165,6 @@ button.primary:active:not(:disabled) { transform: scale(0.92); box-shadow: var(-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* the old graph background was translucent; over light clay it showed a grey haze, so make the screen opaque */
+.graph-pane { background: radial-gradient(ellipse at 50% 45%, #1e2a44 0%, #0b1120 70%); }
