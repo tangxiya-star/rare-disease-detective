@@ -57,12 +57,14 @@ Every report must state, for each relevant condition above: addressed, excluded 
 - **Functional disorder is a positive diagnosis.** It needs positive examination signs: entrainment, distractibility, variability, co-activation, give-way weakness, a fixed posture that releases with distraction. Abrupt onset to maximum severity and spontaneous remissions support it but are history, not signs. Stress, anxiety, past depression or a remission alone are never enough. Functional and organic disorders can coexist.
 - **Rare-disease enthusiasm.** If the presentation has no red flags, the common explanation is usually right. Say so.
 - **Normal imaging is expected** in most of these conditions. A normal MRI does not count against DRD, the episodic ataxias or PKD, and does not exclude Wilson disease (MRI is usually abnormal in neurological Wilson, but not always).
-- **Do not invent findings** to make a hypothesis fit. If a supporting feature is missing, report it as missing.
+- **Do not invent findings** to make a hypothesis fit. If a supporting feature is missing, report it as missing. An absent classic feature counts against the classic form of a hypothesis, never for it; list it as contradicting or missing.
 - **Video measurements (ka_*) describe, they do not diagnose.** They are automated, 2D and not physician-reviewed. They can support a physician-reviewed finding (mf_*) but never establish phenomenology on their own, never override the examination, and their stated limits apply.
 
 ## 5. Investigation hierarchy
 
 Prefer the test that best separates the leading hypotheses, then the cheapest and safest one.
+
+Never suggest a test whose question is already answered. Once a causative variant is found in a gene, further testing of that gene (for example deletion/duplication analysis) adds nothing; deletion/duplication analysis is for when sequencing is negative.
 
 1. Clarify the history and examination (for example, examine in the morning and the evening).
 2. Blood and urine tests (the Wilson screen, to the depth section 3 calls for).

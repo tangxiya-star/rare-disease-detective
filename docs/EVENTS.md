@@ -58,6 +58,7 @@ Investigator checkpoints: `created → planned → research_done → analyzed �
 | `node.retry` | `{node_id, attempt, checkpoint, reason}` | ↻ on the node |
 | `node.recovered` | `{node_id, from_checkpoint}` | "Restored from checkpoint X" |
 | `failure.injected` | `{kind, node_id}` | Demo marker |
+| `report.check` | `{check: "C3", passed: bool}` | Agent events. Emitted when the rank-1 hypothesis listed no contradicting findings and the lead was re-asked |
 | `report.ready` | `{report: {summary, differential[], cant_miss[], unresolved_questions[], suggested_investigations[], disclaimer}}` | Clinical Report tab |
 | `run.finished` | `{status: "completed" \| "failed", nodes}` | Header status |
 
