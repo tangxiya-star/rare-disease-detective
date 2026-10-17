@@ -65,6 +65,8 @@ class MockClient:
             "uncertainties": ["[mock] response to dopaminergic treatment unknown"],
             "decision": "spawn" if children else "finish",
             "children": children,
+            "done_criteria": [{"id": "A1", "criterion": f"[mock] {hyps[0]} separated from its main alternative "
+                                                         "by a named discriminator"}],
         }
 
     def investigator_plan(self, p: dict) -> dict:
@@ -145,5 +147,8 @@ class MockClient:
                           {"condition": "Dopa-responsive dystonia", "status": "open", "basis": "[mock]"}],
             "unresolved_questions": [b["objective"] for b in p["branches"] if b["verification"] != "accepted"],
             "suggested_investigations": [{"investigation": "Supervised levodopa trial", "rationale": "[mock]"}],
+            "record_contradictions": [],
+            "done_criteria_status": [{"id": "A1", "met": bool(p.get("feedback")), "evidence_ids": ev[:1],
+                                      "note": "[mock]" if p.get("feedback") else "[mock] discriminator not yet named"}],
             "disclaimer": "Hypotheses for physician review; not a diagnosis.",
         }

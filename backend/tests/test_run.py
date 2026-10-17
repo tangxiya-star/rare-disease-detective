@@ -152,11 +152,15 @@ async def test_failed_run_resumes_from_checkpoint(orch):
     assert all(after[i] == before[i] for i in before if i != lead["id"]), "only the lead reruns"
 
 
-async def test_report_c3_reasks_when_top_hypothesis_lists_nothing_against(orch):
+async def test_done_gate_lead_writes_criteria_and_failed_check_triggers_one_replan(orch):
     run_id = await orch.start_run("01", "demo")
     await orch.wait(run_id)
     report = orch.db.get_run(run_id)["report"]
+    events = orch.db.events_since(run_id)
+    crit = [e["data"] for e in events if e["type"] == "run.done_criteria"]
+    assert crit and [c["id"] for c in crit[0]["floor"]] == ["D1", "D2", "D3", "D4", "D5"] and crit[0]["agent"]
+    done = [e["data"] for e in events if e["type"] == "run.done_check"]
+    assert [d["attempt"] for d in done] == [1, 2] and not done[0]["passed"] and done[1]["passed"]
+    assert report["done_check"]["passed"] and report["done_check"]["attempts"] == 2
     top = sorted(report["differential"], key=lambda d: d["rank"])[0]
-    assert top["contradicting_evidence_ids"], "re-ask must make the leading hypothesis list contradicting findings"
-    assert report["report_checks"]["C3_top_hypothesis_contradicting"] == "passed after re-ask"
-    assert "report.check" in types(orch, run_id)
+    assert top["contradicting_evidence_ids"]

@@ -142,7 +142,7 @@ def write_blind_pack(records: list[dict], out: Path, seed: int) -> None:
             label = f"case_{slot}_{letter}"
             key[label] = r["arm"]
             # Drop fields only one arm produces, so the grader can't tell the arms apart by shape.
-            report = {k: v for k, v in r["report"].items() if k not in ("dropped_invalid_ids",)}
+            report = {k: v for k, v in r["report"].items() if k not in ("dropped_invalid_ids", "done_check", "not_done", "done_criteria_status", "record_contradictions")}
             (blind / f"{label}.json").write_text(json.dumps(
                 {"case_id": r["case_id"], "output": label, "report": report}, indent=2, ensure_ascii=False))
             rows.append({

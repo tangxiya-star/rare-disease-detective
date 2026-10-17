@@ -34,6 +34,15 @@ MAX_ATTEMPTS = 3
 RATE_LIMIT_BACKOFF_S = 15  # doubled per attempt; only for rate-limit errors
 VERDICTS = {"ACCEPT": "accepted", "REVISE": "revise", "INSUFFICIENT": "insufficient"}
 
+# Clinical floor of the done gate (PRD §6). The lead adds its own case-specific criteria on top.
+DONE_FLOOR = [
+    ("D1", "Every cited evidence id is grounded"),
+    ("D2", "Every can't-miss condition has a status and a basis"),
+    ("D3", "Every branch is verified or explicitly unresolved"),
+    ("D4", "Contradictions in the record are listed, or stated as none"),
+    ("D5", "The leading hypothesis lists contradicting or missing findings"),
+]
+
 
 class InjectedCrash(RuntimeError):
     pass
@@ -205,6 +214,9 @@ class Orchestrator:
                 "node_id": node["id"], "action": plan.get("decision", "finish"),
                 "requested_children": len(plan.get("children") or []), "rationale": plan.get("summary", ""),
                 "hypotheses": [h.get("name") for h in plan.get("hypotheses", [])]})
+            self.bus.emit(ctx.run_id, "run.done_criteria", {
+                "node_id": node["id"], "floor": [{"id": i, "criterion": c} for i, c in DONE_FLOOR],
+                "agent": plan.get("done_criteria") or []})
             self._save(ctx, node, "analyzed")
         if not self._reached(node, "children_spawned"):
             plan = a["plan"]
@@ -232,17 +244,28 @@ class Orchestrator:
             "case": case, "plan": a["plan"], "branches": branches,
             "investigation_results": self._resulted(ctx)})
         self._check_report_ids(ctx, report)
-        if not self._top_has_contradicting(report):
-            # C3 / done-check D5: the leading hypothesis must list what argues against it. One re-ask.
+        # Done gate: the clinical floor (D1-D5) plus the lead's own done_criteria, checked in code.
+        # A failing gate gets one re-plan of the report with the failures as feedback; if it still
+        # fails, the report says "not done" and lists what is missing, instead of claiming success.
+        checks = self._done_check(a["plan"], report, branches)
+        attempts = 1
+        self.bus.emit(ctx.run_id, "run.done_check", {"attempt": 1, "passed": all(c["passed"] for c in checks),
+                                                     "checks": checks})
+        failed = [c for c in checks if not c["passed"]]
+        if failed:
             report = await self._ask(ctx, "lead_report", node["model"], {
                 "case": case, "plan": a["plan"], "branches": branches,
                 "investigation_results": self._resulted(ctx),
-                "feedback": "C3: the rank-1 hypothesis lists no contradicting or missing findings. List the "
-                            "findings that argue against it, including absent classic features."})
+                "feedback": "Done check failed: " + "; ".join(f"{c['id']} {c['criterion']}: {c['note']}" for c in failed)})
             self._check_report_ids(ctx, report)
-            passed = self._top_has_contradicting(report)
-            report["report_checks"] = {"C3_top_hypothesis_contradicting": "passed after re-ask" if passed else "failed"}
-            self.bus.emit(ctx.run_id, "report.check", {"check": "C3", "passed": passed})
+            checks = self._done_check(a["plan"], report, branches)
+            attempts = 2
+            self.bus.emit(ctx.run_id, "run.done_check", {"attempt": 2, "passed": all(c["passed"] for c in checks),
+                                                         "checks": checks})
+        passed = all(c["passed"] for c in checks)
+        report["done_check"] = {"passed": passed, "attempts": attempts, "checks": checks}
+        if not passed:
+            report["not_done"] = [f"{c['id']}: {c['criterion']}" for c in checks if not c["passed"]]
         self._drop_resulted_suggestions(ctx, report)
         self.db.update_run(ctx.run_id, report=report)
         self.bus.emit(ctx.run_id, "report.ready", {"report": report})
@@ -270,6 +293,34 @@ class Orchestrator:
                 dropped += [i for i in ids if i not in valid]
                 item[key] = [i for i in ids if i in valid]
         report["dropped_invalid_ids"] = sorted(set(dropped))
+
+    def _done_check(self, plan: dict, report: dict, branches: list[dict]) -> list[dict]:
+        def chk(i, criterion, ok, note):
+            return {"id": i, "criterion": criterion, "passed": bool(ok), "note": "" if ok else note}
+        floor = dict(DONE_FLOOR)
+        cm = report.get("cant_miss") or []
+        bad_cm = [c.get("condition", "?") for c in cm
+                  if c.get("status") not in ("addressed", "excluded", "open") or not (c.get("basis") or "").strip()]
+        pending = [b["objective"][:60] for b in branches if b.get("verification") not in ("accepted", "revise", "insufficient")]
+        checks = [
+            chk("D1", floor["D1"], not report.get("dropped_invalid_ids"),
+                f"ungrounded ids cited: {', '.join(report.get('dropped_invalid_ids') or [])}"),
+            chk("D2", floor["D2"], cm and not bad_cm,
+                "no can't-miss list" if not cm else f"missing status or basis: {', '.join(bad_cm)}"),
+            chk("D3", floor["D3"], not pending, f"branches neither verified nor unresolved: {'; '.join(pending)}"),
+            chk("D4", floor["D4"], isinstance(report.get("record_contradictions"), list),
+                "record_contradictions missing; list contradictions in the record or []"),
+            chk("D5", floor["D5"], self._top_has_contradicting(report),
+                "rank-1 hypothesis lists no contradicting or missing findings, including absent classic features"),
+        ]
+        status = {s.get("id"): s for s in report.get("done_criteria_status") or [] if isinstance(s, dict)}
+        for c in plan.get("done_criteria") or []:
+            if not isinstance(c, dict) or not c.get("id"):
+                continue
+            s = status.get(c["id"])
+            checks.append(chk(c["id"], c.get("criterion", ""), s and s.get("met") is True,
+                              "not reported" if not s else (s.get("note") or "reported as not met")))
+        return checks
 
     @staticmethod
     def _top_has_contradicting(report: dict) -> bool:

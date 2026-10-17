@@ -18,7 +18,8 @@ EVENT_TYPES = {
     "evidence.added",
     "verification",
     "failure.injected",
-    "report.check",
+    "run.done_criteria",
+    "run.done_check",
     "report.ready",
 }
 

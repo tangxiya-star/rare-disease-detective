@@ -36,7 +36,13 @@ Output:
   "hypotheses": [{{"name": str, "rationale": str, "supporting_finding_ids": [str], "contradicting_finding_ids": [str]}}],
   "uncertainties": [str],
   "decision": "spawn" | "finish",
-  "children": [{{"objective": str, "justification": str}}]}}
+  "children": [{{"objective": str, "justification": str}}],
+  "done_criteria": [{{"id": "A1", "criterion": str}}]}}
+done_criteria is your own definition of done for this case: 2 to 5 specific, checkable statements
+that must hold before you report (e.g. "DRD and early-onset PD separated by a named discriminator").
+Code also enforces a fixed clinical floor (D1 to D5): grounded citations, a status for every can't-miss
+condition, every branch verified or unresolved, record contradictions listed, and contradicting findings
+for the leading hypothesis.
 Finding ids are the "id" fields in the case (mf_*, tl_*, lab_*, img_*, np_*, ka_*).
 Narrative sections are cited by their key (e.g. family_history, history_of_present_illness, medications) and exam fields as neurological_exam.<field> (e.g. neurological_exam.reflexes).
 ka_* entries, when present, are automated hand-tracking measurements from the case video: quantitative
@@ -151,7 +157,13 @@ Output:
   "cant_miss": [{{"condition": str, "status": "addressed"|"excluded"|"open", "basis": str}}],
   "unresolved_questions": [str],
   "suggested_investigations": [{{"investigation": str, "rationale": str}}],
+  "record_contradictions": [str],
+  "done_criteria_status": [{{"id": str, "met": bool, "evidence_ids": [str], "note": str}}],
   "disclaimer": "Hypotheses for physician review; not a diagnosis."}}
+record_contradictions lists places where the case record disagrees with itself (two sources, two
+dates, a summary and its findings); use [] only if there are none. done_criteria_status gives, for
+each of your plan's done_criteria, an honest met true/false with the evidence. Do not mark a criterion
+met to finish; an unmet criterion is reported to the clinician.
 Give at most 5 differential entries.
 {JSON_ONLY}"""
 
