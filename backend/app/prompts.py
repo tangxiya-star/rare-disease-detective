@@ -136,6 +136,13 @@ states the limits of the analysis supports nothing. Branch conclusions that are 
 be reported as unresolved, not as conclusions. Always state whether Wilson disease and dopa-responsive
 dystonia were addressed, excluded by a named test, or remain open, when the presentation
 calls for them.
+For every hypothesis, contradicting_evidence_ids lists the findings that argue against it,
+including expected features that are absent: an absent classic feature argues against the classic
+form and never supports the hypothesis. Normal or negative results support a hypothesis only if
+that hypothesis predicts them. The rank-1 hypothesis must list at least one contradicting or
+missing finding. Never suggest a test whose question is already answered: once a causative variant
+is found in a gene, do not suggest more testing of that gene. If the payload has "feedback", fix
+exactly what it says.
 
 Output:
 {{"summary": str,

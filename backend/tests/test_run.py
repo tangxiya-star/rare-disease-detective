@@ -150,3 +150,13 @@ async def test_failed_run_resumes_from_checkpoint(orch):
     assert orch.db.get_run(run_id)["status"] == "completed" and orch.db.get_run(run_id)["report"]
     after = {n["id"]: n["attempts"] for n in orch.db.get_nodes(run_id)}
     assert all(after[i] == before[i] for i in before if i != lead["id"]), "only the lead reruns"
+
+
+async def test_report_c3_reasks_when_top_hypothesis_lists_nothing_against(orch):
+    run_id = await orch.start_run("01", "demo")
+    await orch.wait(run_id)
+    report = orch.db.get_run(run_id)["report"]
+    top = sorted(report["differential"], key=lambda d: d["rank"])[0]
+    assert top["contradicting_evidence_ids"], "re-ask must make the leading hypothesis list contradicting findings"
+    assert report["report_checks"]["C3_top_hypothesis_contradicting"] == "passed after re-ask"
+    assert "report.check" in types(orch, run_id)

@@ -232,6 +232,17 @@ class Orchestrator:
             "case": case, "plan": a["plan"], "branches": branches,
             "investigation_results": self._resulted(ctx)})
         self._check_report_ids(ctx, report)
+        if not self._top_has_contradicting(report):
+            # C3 / done-check D5: the leading hypothesis must list what argues against it. One re-ask.
+            report = await self._ask(ctx, "lead_report", node["model"], {
+                "case": case, "plan": a["plan"], "branches": branches,
+                "investigation_results": self._resulted(ctx),
+                "feedback": "C3: the rank-1 hypothesis lists no contradicting or missing findings. List the "
+                            "findings that argue against it, including absent classic features."})
+            self._check_report_ids(ctx, report)
+            passed = self._top_has_contradicting(report)
+            report["report_checks"] = {"C3_top_hypothesis_contradicting": "passed after re-ask" if passed else "failed"}
+            self.bus.emit(ctx.run_id, "report.check", {"check": "C3", "passed": passed})
         self._drop_resulted_suggestions(ctx, report)
         self.db.update_run(ctx.run_id, report=report)
         self.bus.emit(ctx.run_id, "report.ready", {"report": report})
@@ -259,6 +270,11 @@ class Orchestrator:
                 dropped += [i for i in ids if i not in valid]
                 item[key] = [i for i in ids if i in valid]
         report["dropped_invalid_ids"] = sorted(set(dropped))
+
+    @staticmethod
+    def _top_has_contradicting(report: dict) -> bool:
+        diff = sorted(report.get("differential") or [], key=lambda d: d.get("rank", 99))
+        return not diff or bool(diff[0].get("contradicting_evidence_ids"))
 
     def _drop_resulted_suggestions(self, ctx: RunContext, report: dict) -> None:
         """A brief must not recommend a test whose result is already in hand."""

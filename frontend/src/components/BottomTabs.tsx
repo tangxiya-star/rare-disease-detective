@@ -15,6 +15,7 @@ function describe(e: RunEvent): string {
     case 'heldout.released': return `${d.node_id} obtained ${d.investigation}`
     case 'heldout.unavailable': return `${d.node_id} requested “${d.request}”: ${d.status.replace('_', ' ')}`
     case 'evidence.added': return `${d.evidence.node_id} ${d.evidence.grounded ? 'recorded' : 'discarded'} finding: ${d.evidence.claim}`
+    case 'report.check': return `Report check ${d.check}: ${d.passed ? 'passed after re-ask' : 'failed, top hypothesis lists no contradicting findings'}`
     case 'verification': return `Verifier ${d.verdict} on ${d.node_id}${d.feedback ? `: ${d.feedback}` : ''}`
     case 'node.retry': return `${d.node_id} failed at ${d.checkpoint}, retrying: ${d.reason}`
     case 'node.recovered': return `${d.node_id} restored from checkpoint ${d.from_checkpoint}`

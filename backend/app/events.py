@@ -18,6 +18,7 @@ EVENT_TYPES = {
     "evidence.added",
     "verification",
     "failure.injected",
+    "report.check",
     "report.ready",
 }
 
