@@ -1,0 +1,16 @@
+{
+  "case_id": "01_guitarist_drd",
+  "video": {
+    "file": "movement.mp4",
+    "license": "State the reuse permission, or 'placeholder' if not cleared",
+    "duration_s": 0
+  },
+  "annotations": [
+    {
+      "t_start": 0.0,
+      "t_end": 0.0,
+      "label": "Physician-reviewed observation visible in this segment",
+      "finding_id": "mf_01"
+    }
+  ]
+}

@@ -14,6 +14,8 @@ An autonomous clinical investigation system that recursively investigates rare n
 ## Docs
 
 - [PRD v4.0](docs/PRD.md) — full product spec, architecture, build plan, MVP cut line, demo script
+- [Clinical Lead Brief](docs/CLINICAL_LEAD_BRIEF.md) — Wiki's deliverables, deadlines, and file formats
+- [Case templates](cases/_template/) — `case.json`, `reference.example.json`, `annotations.json`
 
 ## Stack
 

@@ -1,0 +1,39 @@
+{
+  "case_id": "01_guitarist_drd",
+  "reference_diagnosis": {
+    "name": "",
+    "confidence": "confirmed | probable | working",
+    "basis": "One line on how the reference diagnosis was established"
+  },
+  "acceptable_top5": [
+    "Diagnoses that would be reasonable in a Top 5 for this presentation"
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis": "",
+      "why_plausible": "",
+      "what_argues_against": ""
+    }
+  ],
+  "key_evidence_gaps": [
+    {
+      "id": "gap_01",
+      "question": "What a good clinician would want to know that is not in case.json",
+      "why_it_matters": ""
+    }
+  ],
+  "held_out_evidence": [
+    {
+      "gap_id": "gap_01",
+      "investigation": "e.g. Levodopa trial 100mg TID x 2 weeks",
+      "result": "",
+      "release_to_agent": "on_request | never | after_depth_2"
+    }
+  ],
+  "discriminating_investigations": [
+    { "rank": 1, "investigation": "", "discriminates_between": "" }
+  ],
+  "red_flags_for_wrong_reasoning": [
+    "Statements that, if an agent makes them, the Verifier should reject"
+  ]
+}
