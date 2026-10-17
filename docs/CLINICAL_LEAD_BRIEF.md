@@ -34,6 +34,8 @@ Priority order if time runs short: **A → B → D → C → J → G0 → E → 
 
 **Case 01 — Guitarist with dopa-responsive dystonia.**
 
+> **Update 2026-10-17:** Case 01 now exists in two versions. The **demo** version (`cases/01_guitarist_drd/`) is adapted from Hasegawa et al. 2021 and has a real clinical video; it is **not scored**, because published cases may be memorised. The **scored** version is the synthetic guitarist you already reviewed, now in `cases/_alt/01_guitarist_drd_synthetic/`. Please review both; see `cases/manifest.json`.
+
 File: `cases/01_guitarist_drd/case.json` (draft written). Check it against the points below and correct anything that isn't clinically right. Specific questions are in `clinician_review_notes` in the reference file.
 
 What the agents will see. **Do not include the diagnosis, the levodopa response, or any finding that gives it away.** Those go in the reference file (Deliverable B).

@@ -1,5 +1,7 @@
 {
   "case_id": "01_guitarist_drd",
+  "scored": false,
+  "scoring_note": "Demo-only: published case, possibly memorised and findable by retrieval. Slot 01 is scored with cases/_alt/01_guitarist_drd_synthetic/. See cases/manifest.json.",
   "source_citation": "Adapted from: Hasegawa T, Hosaka T, Harada R, Kawahata I, Hoshino K, Sugeno N, Kikuchi A, Aoki M. Case Report: Guitarist's cramp as the initial manifestation of dopa-responsive dystonia with a novel heterozygous GCH1 mutation. F1000Research 2021;10:361. doi:10.12688/f1000research.51433.1. License: CC BY 4.0. Videos: Hasegawa T (2021), Dryad, doi:10.5061/dryad.pzgmsbckd, CC0 1.0. Patient consent for publication of clinical details and videos was obtained by the original authors. Case text paraphrased and reorganized into this schema; investigations that would reveal the diagnosis are moved to the held-out reference. Fields the source does not report are marked as such and were not invented.",
   "reference_diagnosis": {
     "name": "Dopa-responsive dystonia, GCH1-related (autosomal dominant GTP cyclohydrolase 1 deficiency), adult-onset presentation as guitarist's cramp",

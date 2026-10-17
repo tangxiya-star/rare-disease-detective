@@ -54,7 +54,7 @@ If You.com access is unavailable, use Europe PMC / PubMed or a prevalidated lite
 
 | # | Case | Primary test |
 |---|---|---|
-| 01 | Guitarist — Dopa-Responsive Dystonia | Hero demo, hand motion, MRI/SPECT |
+| 01 | Guitarist — Dopa-Responsive Dystonia | Hero demo, hand motion, MRI/SPECT. Demo uses a published case with its clinical video (not scored); scoring uses a synthetic version. See `cases/manifest.json`. |
 | 02 | Classic Pediatric DRD | Typical phenotype |
 | 03 | Atypical DRD | Missing classical clues |
 | 04 | Episodic Ataxia Type 2 | Episodic motor symptoms |
