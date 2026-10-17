@@ -127,25 +127,6 @@ details.panel-section[open] > summary h3::after { transform: rotate(90deg); }
 .tabs { background: transparent; border-top: 1px solid var(--line-2); }
 .tab-bar button.on { border-bottom-color: var(--pill); }
 
-/* KPI strip */
-.kpi-strip { flex: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; padding: 0 10px 10px; }
-.kpi { --k: var(--accent); position: relative; overflow: hidden; border-radius: 14px; padding: 10px 12px 0;
-  background: linear-gradient(160deg, rgba(40, 52, 80, 0.75), rgba(22, 30, 48, 0.9)); border: 1px solid var(--card-border); }
-.kpi.cyan { --k: #6ee7f9; } .kpi.violet { --k: #a5a6fb; } .kpi.blue { --k: #60a5fa; } .kpi.green { --k: #4ade9b; } .kpi.rose { --k: #fb7185; }
-.kpi-top { display: flex; align-items: center; gap: 6px; }
-.kpi-label { font-size: 11.5px; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.kpi-tag { margin-left: auto; font-size: 9.5px; font-weight: 650; letter-spacing: 0.04em; text-transform: uppercase; color: var(--k);
-  padding: 2px 7px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--k) 45%, transparent); white-space: nowrap; }
-.kpi-mid { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
-.kpi-icon { width: 34px; height: 34px; flex: none; border-radius: 10px; display: grid; place-items: center; color: var(--k);
-  background: rgba(8, 12, 22, 0.75); border: 1px solid color-mix(in srgb, var(--k) 30%, transparent); }
-.kpi-value { font-size: 20px; font-weight: 650; color: var(--k); line-height: 1.1; font-variant-numeric: tabular-nums; }
-.kpi-sub { font-size: 10.5px; color: var(--muted); line-height: 1.25; }
-.kpi-spark { display: block; width: calc(100% + 24px); height: 34px; margin: 6px -12px 0; }
-.kpi-spark .line { fill: none; stroke: var(--k); stroke-width: 1.6; vector-effect: non-scaling-stroke;
-  filter: drop-shadow(0 0 4px var(--k)); }
-.kpi-spark .area { fill: color-mix(in srgb, var(--k) 14%, transparent); stroke: none; }
-.kpi.cyan .kpi-spark, .kpi.violet .kpi-spark, .kpi.blue .kpi-spark, .kpi.green .kpi-spark, .kpi.rose .kpi-spark { color: var(--k); }
 
 /* stage view keeps its own layout; only surfaces change */
 .stage { background: transparent; }
