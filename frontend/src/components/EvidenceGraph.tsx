@@ -243,7 +243,12 @@ export function EvidenceGraph({ state, onSelectAgent, spotlight, rejected, padRi
           // frame the spotlight (camera pushes in), otherwise the whole network
           const framed = push && lit ? nodes.filter(n => lit.has(n.id)) : nodes
           let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity
-          for (const n of framed) { if (n.x == null) continue; x0 = Math.min(x0, n.x); y0 = Math.min(y0, n.y!); x1 = Math.max(x1, n.x); y1 = Math.max(y1, n.y!) }
+          for (const n of framed) {
+            if (!Number.isFinite(n.x) || !Number.isFinite(n.y)) continue
+            x0 = Math.min(x0, n.x!); y0 = Math.min(y0, n.y!); x1 = Math.max(x1, n.x!); y1 = Math.max(y1, n.y!)
+          }
+          // nothing placed yet (e.g. the spotlight names a node not in this layer): keep the camera where it is
+          if (!Number.isFinite(x0)) { x0 = x1 = (w / 2 - view.current.x) / view.current.k; y0 = y1 = (h / 2 - view.current.y) / view.current.k }
           const pad = push ? 60 : 0
           x0 -= pad; x1 += pad; y0 -= pad; y1 += pad
           // leave room for labels left and right, and for the legend at the bottom
@@ -251,12 +256,16 @@ export function EvidenceGraph({ state, onSelectAgent, spotlight, rejected, padRi
           // (the card is narrower than a stage overlay, so it may leave the graph less room)
           const cover = Math.max(padRef.current, carded ? CARD_W + 24 : 0)
           const fw = w - Math.min(cover, Math.max(0, w - (carded ? CARD_W : 520)))
-          const k = Math.min(push ? 3 : 2.2, (fw - 220) / Math.max(1, x1 - x0), (h - 130) / Math.max(1, y1 - y0))
+          const k = Math.max(0.05, Math.min(push ? 3 : 2.2, (fw - 220) / Math.max(1, x1 - x0), (h - 130) / Math.max(1, y1 - y0)))
           const v = view.current
           const ease = push ? 0.05 : 0.08
           v.k += (k - v.k) * ease
           v.x += (fw / 2 - v.k * (x0 + x1) / 2 - v.x) * ease
           v.y += ((h - 50) / 2 - v.k * (y0 + y1) / 2 - v.y) * ease
+        }
+        // a NaN camera would never recover (each frame eases from NaN), so reset it instead
+        if (!Number.isFinite(view.current.k) || view.current.k <= 0 || !Number.isFinite(view.current.x) || !Number.isFinite(view.current.y)) {
+          view.current = { ...view.current, x: w / 2, y: h / 2, k: 1 }
         }
         const { x: tx, y: ty, k } = view.current
         g.setTransform(dpr, 0, 0, dpr, 0, 0)
