@@ -1,5 +1,5 @@
 {
-  "_comment": "Held-out verifier challenge set. Run the verifier alone on each item and compare to expected_verdict and expected_failed_rules. Items 1-10 are true and should be accepted; items 11-20 are false and should be rejected. Report: false claims caught (of 10) and true claims accepted (of 10), plus rule-level agreement. Draft for Dr. W. Milczyńska's review.",
+  "_comment": "Held-out verifier challenge set. Run the verifier alone on each item and compare to expected_verdict and expected_failed_rules. Items 1-10 are true and should be accepted; items 11-20 are false and should be rejected. Report: false claims caught (of 10) and true claims accepted (of 10), plus rule-level agreement. Reviewed by Dr. W. Milczyńska, 2026-10-17.",
   "passage_note": "Synthetic test passage written for this challenge set. It paraphrases established clinical knowledge and is not a quote from any real publication.",
   "rules_reference": "docs/clinical/verifier_checklist.md",
   "items": [

@@ -4,8 +4,8 @@
   "provenance": {
     "type": "adapted_published",
     "citation": "Adapted from a published, openly licensed case report (article CC BY 4.0; videos CC0 1.0) with patient consent for publication obtained by the original authors. Full citation is held in the reference file because the article title names the diagnosis. Fields the source does not report are marked as such and were not invented.",
-    "reviewed_by": "",
-    "review_status": "draft — pending W. Milczyńska review"
+    "reviewed_by": "W. Milczyńska (clinical lead)",
+    "review_status": "reviewed 2026-10-17"
   },
   "demographics": {
     "age": 37,
@@ -52,31 +52,31 @@
       "id": "mf_01",
       "observation": "Opening a screw-cap bottle with the right hand provokes dystonic posturing of the right upper limb with excessive wrist extension and finger hyperextension (source Video S1).",
       "context": "task (screw-cap bottle, right hand)",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska (from the source report)"
     },
     {
       "id": "mf_02",
       "observation": "Dystonic posturing is action-induced, appearing mainly during skilled voluntary movements of the right arm; not present at rest.",
       "context": "action vs. rest",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska (from the source report)"
     },
     {
       "id": "mf_03",
       "observation": "No sensory trick identified.",
       "context": "task",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska (from the source report)"
     },
     {
       "id": "mf_04",
       "observation": "No diurnal variation observed.",
       "context": "time of day",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska (from the source report)"
     },
     {
       "id": "mf_05",
       "observation": "No parkinsonism, pyramidal signs, or cerebellar ataxia.",
       "context": "general motor examination",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska (from the source report)"
     }
   ],
   "neurological_exam": {

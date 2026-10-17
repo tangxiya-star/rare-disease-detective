@@ -3,9 +3,9 @@
   "title": "38-year-old with slowly progressive asymmetric parkinsonism and mild leg posturing",
   "provenance": {
     "type": "synthetic",
-    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
-    "reviewed_by": "",
-    "review_status": "draft — pending W. Milczyńska review"
+    "citation": "Synthetic case written 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "W. Milczyńska (clinical lead)",
+    "review_status": "reviewed 2026-10-17"
   },
   "demographics": {
     "age": 38,
@@ -52,31 +52,31 @@
       "id": "mf_01",
       "observation": "On medication: mild right-hand bradykinesia on finger tapping and hand opening, reduced speed without progressive amplitude decrement over 10 taps.",
       "context": "bradykinesia testing",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_02",
       "observation": "Mild right-hand postural tremor, 6–7 Hz, low amplitude; no rest tremor during distraction (serial sevens) or while walking.",
       "context": "posture / rest",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_03",
       "observation": "On medication: normal gait with mildly reduced right arm swing; no foot posturing during a 10-minute corridor walk.",
       "context": "gait",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_04",
       "observation": "Handwriting sample: mild micrographia on the right without progressive shrinking along the line; no dystonic posturing of the hand while writing.",
       "context": "task (writing)",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_05",
       "observation": "Facial expression and blink rate normal; speech normal in volume and articulation.",
       "context": "face / speech",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     }
   ],
   "neurological_exam": {

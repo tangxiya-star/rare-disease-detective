@@ -3,9 +3,9 @@
   "title": "10-year-old with leg stiffness after long walks and a history of early absence seizures",
   "provenance": {
     "type": "synthetic",
-    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
-    "reviewed_by": "",
-    "review_status": "draft — pending W. Milczyńska review"
+    "citation": "Synthetic case written 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "W. Milczyńska (clinical lead)",
+    "review_status": "reviewed 2026-10-17"
   },
   "demographics": {
     "age": 10,
@@ -57,25 +57,25 @@
       "id": "mf_01",
       "observation": "Parent video (physician-reviewed): after a 25-minute walk before lunch, bilateral foot inversion and dystonic leg posturing with intermittent chorea, lasting ~20 minutes, improving with rest; she is talking and responsive throughout.",
       "context": "exercise-induced episode",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_02",
       "observation": "Interictal: mild gait ataxia on tandem; no dystonia at rest.",
       "context": "interictal gait",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_03",
       "observation": "In clinic, 10 minutes of brisk walking did not provoke an episode (examined after breakfast).",
       "context": "provocation",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_04",
       "observation": "Mild dysarthria with rapid syllable repetition; no tremor, no myokymia.",
       "context": "speech",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     }
   ],
   "neurological_exam": {

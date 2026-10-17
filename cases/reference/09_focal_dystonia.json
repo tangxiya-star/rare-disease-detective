@@ -133,6 +133,6 @@
     "Spawning a rare-disease investigation of Wilson disease or ordering slit lamp, ATP7B genetics or CSF studies without new features"
   ],
   "expected_system_behavior": "Report should conclude that the most likely explanation is idiopathic task-specific focal dystonia, that rare causes were considered and are not supported, and list what would change that conclusion. It must state the status of each can't-miss condition: DRD addressed by the levodopa trial; Wilson disease low risk (normal ceruloplasmin, no oestrogen, no systemic features), with 24-hour urine copper as an optional, non-invasive completion. It should finish with few or no child investigations: no rare-disease search is warranted. This is an 'unresolved / no rare disease' outcome test.",
-  "clinician_review_notes": "DRAFT. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
+  "clinician_review_notes": "Reviewed 2026-10-17 by W. Milczyńska. Wiki to check clinical plausibility, findings, held-out results, and red flags.",
   "agent_case_id": "case_09"
 }

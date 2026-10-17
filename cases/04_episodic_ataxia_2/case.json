@@ -3,9 +3,9 @@
   "title": "19-year-old with hours-long attacks of imbalance, vertigo and nausea",
   "provenance": {
     "type": "synthetic",
-    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
-    "reviewed_by": "",
-    "review_status": "draft — pending W. Milczyńska review"
+    "citation": "Synthetic case written 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "W. Milczyńska (clinical lead)",
+    "review_status": "reviewed 2026-10-17"
   },
   "demographics": {
     "age": 19,
@@ -42,19 +42,19 @@
       "id": "mf_01",
       "observation": "Interictal: downbeat nystagmus in primary gaze, more evident on lateral and downgaze; gaze-evoked nystagmus bilaterally.",
       "context": "eye movements, interictal",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_02",
       "observation": "Interictal: mild truncal ataxia on tandem gait; normal limb coordination.",
       "context": "gait",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_03",
       "observation": "During attack (ED note, physician-documented): marked gait and limb ataxia, dysarthria, vomiting; no limb weakness.",
       "context": "ictal, ED record",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     }
   ],
   "neurological_exam": {

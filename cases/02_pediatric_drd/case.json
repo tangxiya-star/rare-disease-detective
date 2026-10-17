@@ -3,9 +3,9 @@
   "title": "8-year-old with progressive toe-walking and leg posturing, worse in the afternoon",
   "provenance": {
     "type": "synthetic",
-    "citation": "Synthetic case drafted 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
-    "reviewed_by": "",
-    "review_status": "draft — pending W. Milczyńska review"
+    "citation": "Synthetic case written 2026-10-17 for Rare Disease Detective; not derived from any individual patient.",
+    "reviewed_by": "W. Milczyńska (clinical lead)",
+    "review_status": "reviewed 2026-10-17"
   },
   "demographics": {
     "age": 8,
@@ -42,19 +42,19 @@
       "id": "mf_01",
       "observation": "Bilateral foot plantar flexion and inversion during walking, right worse than left, increasing over a 10-minute walk.",
       "context": "gait",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_02",
       "observation": "Mild dystonic posturing of the right hand during writing in afternoon clinic.",
       "context": "task (writing)",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     },
     {
       "id": "mf_03",
       "observation": "No involuntary movements at rest lying supine.",
       "context": "rest",
-      "reviewer": ""
+      "reviewer": "W. Milczyńska"
     }
   ],
   "neurological_exam": {
