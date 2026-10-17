@@ -113,3 +113,20 @@ async def test_report_receives_released_results_and_never_suggests_them(orch):
     # a limits statement supports nothing; a real measurement may be cited
     ids = report["differential"][0]["supporting_evidence_ids"]
     assert "ka_02" in ids and "ka_05" not in ids and "ka_05" in report["dropped_invalid_ids"]
+
+
+async def test_recording_round_trip_is_verbatim(orch, tmp_path):
+    import json
+    from app.recordings import export_run, import_recordings
+    run_id = await orch.start_run("01", "demo")
+    await orch.wait(run_id)
+    rec = export_run(orch.db, run_id, "test")
+    (tmp_path / "rec").mkdir()
+    (tmp_path / "rec" / "r.json").write_text(json.dumps(rec))
+    fresh = DB(tmp_path / "fresh.sqlite3")
+    index = import_recordings(fresh, tmp_path / "rec")
+    assert index[0]["run_id"] == run_id and index[0]["llm_backend"] == "mock"
+    assert fresh.events_since(run_id) == orch.db.events_since(run_id)
+    assert fresh.get_run(run_id) == orch.db.get_run(run_id)
+    import_recordings(fresh, tmp_path / "rec")  # idempotent
+    assert len(fresh.events_since(run_id)) == len(orch.db.events_since(run_id))
